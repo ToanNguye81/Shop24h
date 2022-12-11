@@ -1,0 +1,67 @@
+.bg-grey{
+    background-color: #4b6584;
+}
+.bg-hor{
+    background-color: #4b6584;
+}
+.bg-min{
+    background-color:  #00b894;
+}
+.bg-ele{
+    background-color: #0984e3;
+}
+.bg-{
+    background-color: #74b9ff;
+}
+footer,footer a {
+    color: white;
+    text-decoration: none;
+}
+footer ul,footer a{
+    list-style: none;
+    color: white;
+    padding-left: 0;
+    transition: .4s ease;
+}
+footer a:hover{
+    list-style: none;
+    padding-left: 2rem;
+    transition: .4s ease;
+    color: white;
+}
+a.text-primary{
+    text-decoration: none;
+}
+body {
+    height: 100vh;
+    background: linear-gradient(to right, #00b894, #0984e3);
+    width: 100%;
+}
+.card-img-top{
+    width: 85%;
+    height: auto;
+    transition: .06s ease;
+    opacity: 80%;
+}
+
+.card-img-top:hover{
+    width: 100%;
+    height: auto;
+    transition: .06s ease;
+    opacity: 100%;
+}
+.img-thumbnail{
+    border: none;
+    border-radius: 15px;
+}
+.product-box{
+    background: #272d40;
+    border-radius: 10px;
+    color: rgb(255, 255, 255);
+} 
+.card-title a{
+    text-decoration: none;
+}
+.card-text {
+    margin: 2px auto 2px 20px ;
+}
