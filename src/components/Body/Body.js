@@ -1,14 +1,18 @@
 import BodyTitle from "./BodyTitle"
 import ProductList from "./ProductList"
+import Carousel from "./Carousel";
 
-function Body() {   
-        return(
+function Body() {
+    return (
+        <>
+            <Carousel/>
             <div className="container">
-                <div className="row mt-5 pt-5">
-                <BodyTitle/>
-                <ProductList/>
+                <div className="">
+                    <BodyTitle />
+                    <ProductList />
                 </div>
             </div>
-        )
+        </>
+    )
 }
 export default Body;
