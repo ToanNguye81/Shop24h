@@ -2,7 +2,7 @@
 function Info() {
     return(
       <>
-        <div className="col-sm-10 row mt-5 footer-info">
+        <div className="col-sm-9 row mt-5 footer-info">
             <div className="col-sm-6">
               <div className="pr-xl-4">
                 <p>
@@ -18,7 +18,7 @@ function Info() {
                 </p>
               </div>
             </div>
-            <div className="col-sm-3">
+            <div className="col-sm-4">
               <h5>Contacts</h5>
               <dl className="contact-list">
                 <dt>Address:</dt>
@@ -39,7 +39,7 @@ function Info() {
                 </dd>
               </dl>
             </div>
-            <div className="col-sm-3">
+            <div className="col-sm-2">
               <h5>Links</h5>
               <ul className="nav-list">
                 <li>

@@ -24,25 +24,39 @@ footer a {
     text-decoration: none;
 }
 
-footer ul,
-footer a {
+.footer-info ul,
+.footer-info a {
     list-style: none;
     color: white;
     padding-left: 0;
     transition: .4s ease;
 }
 
-footer a:hover {
+.footer-info a:hover {
     list-style: none;
     padding-left: 2rem;
     transition: .4s ease;
     color: white;
 }
 
-a.text-primary {
+.footer-socical span:hover {
+    cursor: pointer;
+    list-style: none;
+    transition: 0.5s;
+   transform: rotate(720deg);
+   -webkit-transform: rotate(720deg);
+   -ms-transform: rotate(720deg);
+    color:yellow;
+}
+.header-nav i:hover {
+    scale: 120%;
+    cursor: pointer;
+    list-style: none;
+    color:yellow;
+}
+a {
     text-decoration: none;
 }
-
 body {
     height: 100vh;
     background: linear-gradient(to right, #3ef1cd, #0984e3);

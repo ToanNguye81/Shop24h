@@ -2,29 +2,25 @@
 function Social () {
     return (
       <>
-        <div className="col-sm-2 mt-5 footer-info">
-          <div className="col">
+        <div className="container-fluid col-sm-2 mt-5 row footer-socical">
+          <div className="col-sm-3">
             <a className="social-inner" href="#facebook">
-              <span className="icon mdi mdi-facebook"></span>
-              <span>Facebook</span>
+              <span class="fa fa-facebook-official fa-3x"></span>
             </a>
           </div>
-          <div className="col">
+          <div className="col-sm-3">
             <a className="social-inner" href="#instagram">
-              <span className="icon mdi mdi-instagram"></span>
-              <span>instagram</span>
+              <span className="fa fa-instagram fa-3x"></span>
             </a>
           </div>
-          <div className="col">
+          <div className="col-sm-3">
             <a className="social-inner" href="#twitter">
-              <span className="icon mdi mdi-twitter"></span>
-              <span>twitter</span>
+              <span className="fa fa-twitter fa-3x"></span>
             </a>
           </div>
-          <div className="col">
+          <div className="col-sm-3">
             <a className="social-inner" href="#google">
-              <span className="icon mdi mdi-youtube-play"></span>
-              <span>google</span>
+              <span className="fa fa-youtube fa-3x"></span>
             </a>
           </div>
         </div>

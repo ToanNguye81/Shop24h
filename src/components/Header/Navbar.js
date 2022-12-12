@@ -9,40 +9,41 @@ function Navbar() {
           <a href="/" className="d-flex px-5 mx-2 align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
             <img src={Logo} width="80" alt="logo"></img>
           </a>
-
-          <ul className="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
-            <li>
-              <a href="/" className="nav-link text-secondary">
-                {/* <fa className="bi d-block mx-auto mb-1" width="24" height="24"></fa>
-                <FontAwesomeIcon icon={('home')} /> */}
-                Home
-              </a>
-            </li>
-            <li>
-              <a href="/" className="nav-link text-white">
-                {/* <svg className="bi d-block mx-auto mb-1" width="24" height="24"></svg> */}
-                Dashboard
-              </a>
-            </li>
-            <li>
-              <a href="/" className="nav-link text-white">
-                {/* <svg className="bi d-block mx-auto mb-1" width="24" height="24"></svg> */}
-                Orders
-              </a>
-            </li>
-            <li>
-              <a href="/" className="nav-link text-white">
-                {/* <svg className="bi d-block mx-auto mb-1" width="24" height="24"></svg> */}
-                Products
-              </a>
-            </li>
-            <li>
-              <a href="/" className="nav-link text-white">
-                {/* <svg className="bi d-block mx-auto mb-1" width="24" height="24"></svg> */}
-                Customers
-              </a>
-            </li>
-          </ul>
+          
+          <div>
+            <div className="container nav header-nav">
+              <div className="row p-2">
+                <a href="/" className="text-center text-secondary">
+                  <i className="fa fa-home fa-2x"></i>
+                  <div className="col-sm-2">Home</div>
+                </a>
+              </div>
+              <div className="row p-2">
+                <a href="/" className="text-center text-white ">
+                  <i className="fa fa-dashboard fa-2x"></i>
+                  <div className="col-sm-2">Dashboard</div>
+                </a>
+              </div>
+              <div className="row p-2">
+                <a href="/" className="text-center text-white">
+                  <i className="fa fa-shopping-bag fa-2x"></i>
+                  <div className="col-sm-2">Orders</div>
+                </a>
+              </div>
+              <div className="row p-2">
+                <a href="/" className="text-center text-white">
+                  <i className="fa fa-cart-plus fa-2x"></i>
+                  <div className="col-sm-2">Products</div>
+                </a>
+              </div>
+              <div className="row p-2">
+                <a href="/" className="text-center text-white">
+                  <i className="fa fa-user-circle fa-2x"></i>
+                  <div className="col-sm-2">Customers</div>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
