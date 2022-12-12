@@ -1,9 +1,8 @@
 
 function BodyTitle(){
         return(
-            <div className="mt-5">
-                <h1 class="center">Product List</h1>
-                {/* <div><p>Product List</p></div> */}
+            <div className="m-5">
+                <h1 class="text-center text-light">LATEST PRODUCT</h1>
             </div>
         )
 }

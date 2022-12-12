@@ -8,7 +8,7 @@
         "buyPrice": 90,
         "gender": "KIDS",
         "promotionPrice":75,
-        "description":"Giày Auth chất lượng cao",
+        "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "CASUAL",
         "is_in_inventory": true,
         "items_left": 3
@@ -22,7 +22,7 @@
         "buyPrice": 100,
         "gender": "KIDS",
         "promotionPrice":75,
-        "description":"Giày Auth chất lượng cao",
+        "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "CASUAL",
         "is_in_inventory": true,
         "items_left": 3
@@ -36,7 +36,7 @@
         "buyPrice": 110,
         "gender": "KIDS",
         "promotionPrice":75,
-        "description":"Giày Auth chất lượng cao",
+        "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "CASUAL",
         "is_in_inventory": true,
         "items_left": 3
@@ -50,7 +50,7 @@
         "buyPrice": 110,
         "gender": "KIDS",
         "promotionPrice":75,
-        "description":"Giày Auth chất lượng cao",
+        "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "RUNNING",
         "is_in_inventory": false,
         "items_left": 3
@@ -64,7 +64,7 @@
         "buyPrice": 80,
         "gender": "KIDS",
         "promotionPrice":75,
-        "description":"Giày Auth chất lượng cao",
+        "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "RUNNING",
         "is_in_inventory": true,
         "items_left": 3
@@ -78,7 +78,7 @@
         "buyPrice": 72,
         "gender": "MEN",
         "promotionPrice":75,
-        "description":"Giày Auth chất lượng cao",
+        "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "CASUAL",
         "is_in_inventory": true,
         "items_left": 3
@@ -92,7 +92,7 @@
         "buyPrice": 80,
         "gender": "MEN",
         "promotionPrice":75,
-        "description":"Giày Auth chất lượng cao",
+        "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "FORMAL",
         "is_in_inventory": true,
         "items_left": 5
@@ -106,7 +106,7 @@
         "buyPrice": 160,
         "gender": "MEN",
         "promotionPrice":75,
-        "description":"Giày Auth chất lượng cao",
+        "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "RUNNING",
         "is_in_inventory": true,
         "items_left": 3
@@ -120,7 +120,7 @@
         "buyPrice": 130,
         "gender": "MEN",
         "promotionPrice":75,
-        "description":"Giày Auth chất lượng cao",
+        "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "RUNNING",
         "is_in_inventory": true,
         "items_left": 3
@@ -134,7 +134,7 @@
         "buyPrice": 120,
         "gender": "WOMEN",
         "promotionPrice":75,
-        "description":"Giày Auth chất lượng cao",
+        "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "RUNNING",
         "is_in_inventory": true,
         "items_left": 3
@@ -148,7 +148,7 @@
         "buyPrice": 180,
         "gender": "WOMEN",
         "promotionPrice":75,
-        "description":"Giày Auth chất lượng cao",
+        "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "RUNNING",
         "is_in_inventory": true,
         "items_left": 3
@@ -162,7 +162,7 @@
         "buyPrice": 250,
         "gender": "WOMEN",
         "promotionPrice":75,
-        "description":"Giày Auth chất lượng cao",
+        "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "FOOTBALL",
         "is_in_inventory": true,
         "items_left": 3
@@ -176,7 +176,7 @@
         "buyPrice": 150,
         "gender": "WOMEN",
         "promotionPrice":75,
-        "description":"Giày Auth chất lượng cao",
+        "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "FOOTBALL",
         "is_in_inventory": true,
         "items_left": 3
@@ -190,7 +190,7 @@
         "buyPrice": 80,
         "gender": "WOMEN",
         "promotionPrice":75,
-        "description":"Giày Auth chất lượng cao",
+        "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "FOOTBALL",
         "is_in_inventory": true,
         "items_left": 3
@@ -204,7 +204,7 @@
         "buyPrice": 145,
         "gender": "MEN",
         "promotionPrice":75,
-        "description":"Giày Auth chất lượng cao",
+        "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "FOOTBALL",
         "is_in_inventory": true,
         "items_left": 3
@@ -218,7 +218,7 @@
         "buyPrice": 137,
         "gender": "MEN",
         "promotionPrice":75,
-        "description":"Giày Auth chất lượng cao",
+        "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "FOOTBALL",
         "is_in_inventory": true,
         "items_left": 3
@@ -232,7 +232,7 @@
         "buyPrice": 70,
         "gender": "MEN",
         "promotionPrice":75,
-        "description":"Giày Auth chất lượng cao",
+        "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "FORMAL",
         "is_in_inventory": true,
         "items_left": 6
@@ -246,7 +246,7 @@
         "buyPrice": 75,
         "gender": "MEN",
         "promotionPrice":75,
-        "description":"Giày Auth chất lượng cao",
+        "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "FORMAL",
         "is_in_inventory": true,
         "items_left": 7
@@ -260,7 +260,7 @@
         "buyPrice": 75,
         "gender": "MEN",
         "promotionPrice":75,
-        "description":"Giày Auth chất lượng cao",
+        "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "FORMAL",
         "is_in_inventory": true,
         "items_left": 2
@@ -274,7 +274,7 @@
         "buyPrice": 30,
         "gender": "WOMEN",
         "promotionPrice":75,
-        "description":"Giày Auth chất lượng cao",
+        "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "FORMAL",
         "is_in_inventory": true,
         "items_left": 6
@@ -288,7 +288,7 @@
         "buyPrice": 50,
         "gender": "WOMEN",
         "promotionPrice":75,
-        "description":"Giày Auth chất lượng cao",
+        "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "FORMAL",
         "is_in_inventory": true,
         "items_left": 4
@@ -302,7 +302,7 @@
         "buyPrice": 35,
         "gender": "WOMEN",
         "promotionPrice":75,
-        "description":"Giày Auth chất lượng cao",
+        "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "FORMAL",
         "is_in_inventory": true,
         "items_left": 3
@@ -316,7 +316,7 @@
         "buyPrice": 25,
         "gender": "WOMEN",
         "promotionPrice":75,
-        "description":"Giày Auth chất lượng cao",
+        "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "CASUAL",
         "is_in_inventory": true,
         "items_left": 7
@@ -330,7 +330,7 @@
         "buyPrice": 35,
         "gender": "WOMEN",
         "promotionPrice":75,
-        "description":"Giày Auth chất lượng cao",
+        "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "CASUAL",
         "is_in_inventory": true,
         "items_left": 4
@@ -344,7 +344,7 @@
         "buyPrice": 30,
         "gender": "WOMEN",
         "promotionPrice":75,
-        "description":"Giày Auth chất lượng cao",
+        "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "CASUAL",
         "is_in_inventory": true,
         "items_left": 3
@@ -358,7 +358,7 @@
         "buyPrice": 55,
         "gender": "KIDS",
         "promotionPrice":75,
-        "description":"Giày Auth chất lượng cao",
+        "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "CASUAL",
         "is_in_inventory": true,
         "items_left": 6
@@ -372,7 +372,7 @@
         "buyPrice": 65,
         "gender": "KIDS",
         "promotionPrice":75,
-        "description":"Giày Auth chất lượng cao",
+        "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "CASUAL",
         "is_in_inventory": true,
         "items_left": 5
@@ -386,7 +386,7 @@
         "buyPrice": 55,
         "gender": "KIDS",
         "promotionPrice":75,
-        "description":"Giày Auth chất lượng cao",
+        "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "CASUAL",
         "is_in_inventory": true,
         "items_left": 3
@@ -400,7 +400,7 @@
         "buyPrice": 120,
         "gender": "KIDS",
         "promotionPrice":75,
-        "description":"Giày Auth chất lượng cao",
+        "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "RUNNING",
         "is_in_inventory": true,
         "items_left": 3
@@ -414,7 +414,7 @@
         "buyPrice": 140,
         "gender": "WOMEN",
         "promotionPrice":75,
-        "description":"Giày Auth chất lượng cao",
+        "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "CASUAL",
         "is_in_inventory": true,
         "items_left": 5
@@ -428,7 +428,7 @@
         "buyPrice": 90,
         "gender": "WOMEN",
         "promotionPrice":75,
-        "description":"Giày Auth chất lượng cao",
+        "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "CASUAL",
         "is_in_inventory": true,
         "items_left": 3
@@ -442,7 +442,7 @@
         "buyPrice": 70,
         "gender": "MEN",
         "promotionPrice":75,
-        "description":"Giày Auth chất lượng cao",
+        "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "CASUAL",
         "is_in_inventory": true,
         "items_left": 3
@@ -456,7 +456,7 @@
         "buyPrice": 60,
         "gender": "MEN",
         "promotionPrice":75,
-        "description":"Giày Auth chất lượng cao",
+        "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "CASUAL",
         "is_in_inventory": true,
         "items_left": 3

@@ -1,10 +1,9 @@
 import Products from "../../database_sample/productsData.json"
 function CardForm(){
-
   return (
     <>
         {
-          Products.map((item, i) => {
+          Products.slice(0,12).map((item, i) => {
             return (
               <div className="col-6 col-sm-4" id={"card"-i}>
               <div className="product-box card mb-3">
@@ -20,8 +19,8 @@ function CardForm(){
                     </a>
                   </div>
                   <p className="card-text mt-3"><b>Type: </b> {item.type}</p>
-                  <p className="card-text"><b>Buy Price: </b> {item.buyPrice} $</p>
-                  <p className="card-text"><b>Promotion Price: </b> {item.promotionPrice} $</p>
+                  <p className="card-text"><b>Buy Price: </b>$ {item.buyPrice} </p>
+                  <p className="card-text"><b>Promotion Price: </b>$ {item.promotionPrice} </p>
                   <p className="card-text description"> <b>Description: </b>
                     {item.description}
                   </p>
