@@ -1,16 +1,19 @@
 import "bootstrap/dist/css/bootstrap.min.css"
-import "./assets/style/style.css"
-import Footer from './components/Footer/Footer';
-import Header from './components/Header/Header';
-import Body from './components/Body/Body';
-
+import "./assets/styles/styles.css"
+import Footer from './views/Footer';
+import Body from './views/Body';
+import Header from "./views/Header";
+import React from "react";
+import { BrowserRouter } from "react-router-dom";
 function App() {
   return (
-    <>
-    <Header/>
-    <Body/>
-    <Footer/>
-    </>
+    <React.Fragment>
+      <BrowserRouter>
+        <Header />
+        <Body />
+        <Footer />
+      </BrowserRouter>
+    </React.Fragment>
   );
 }
 export default App;

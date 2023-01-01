@@ -1,5 +1,5 @@
-import Info from "./Info";
-import Social from "./Social";
+import Info from "../components/Footer/Info";
+import Social from "../components/Footer/Social";
 
 function Footer() {
     return (

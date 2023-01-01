@@ -1,6 +1,6 @@
-import BodyTitle from "./BodyTitle"
-import ProductList from "./ProductList"
-import Carousel from "./Carousel";
+import BodyTitle from "../components/Body/BodyTitle"
+import ProductList from "../components/Body/ProductList"
+import Carousel from "../components/Body/Carousel";
 
 function Body() {
     return (

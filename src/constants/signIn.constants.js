@@ -1,0 +1,2 @@
+export const SUCCESS_LOG_IN="SUCCESS_LOG_IN"
+export const ERROR_LOG_IN="ERROR_LOG_IN"

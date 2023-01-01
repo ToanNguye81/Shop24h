@@ -109,3 +109,35 @@ body {
     height: 680px;
     opacity: 80%;
 }
+
+.circle {
+    width: 500px;
+    height: 500px;
+    line-height: 500px;
+    border-radius: 50%;
+    font-size: 50px;
+    color: #fff;
+    text-align: center;
+    background: #000
+  }
+
+  .divider {
+    display: flex;
+  }
+  .divider:before, .divider:after {
+    content: "";
+    flex: 1;
+  }
+  
+  .line {
+    align-items: center;
+    margin: 1em -1em;
+  }
+  .line:before, .line:after {
+    height: 1px;
+    margin: 0 1em;
+  }
+  
+  .one-line:before, .one-line:after {
+    background: black;
+  }
