@@ -1,5 +1,5 @@
 import BodyTitle from "../components/Body/BodyTitle"
-import ProductList from "../components/Body/ProductList"
+import LastestProducts from "../components/Body/LastestProducts"
 import Carousel from "../components/Body/Carousel";
 
 function Body() {
@@ -9,7 +9,7 @@ function Body() {
             <div className="container">
                 <div className="">
                     <BodyTitle />
-                    <ProductList />
+                    <LastestProducts />
                 </div>
             </div>
         </>

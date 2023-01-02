@@ -1,10 +1,10 @@
 import CardForm from "./CardForm";
 
-function ProductList(){
+function LastestProducts(){
         return (
           <div className="row">
             <CardForm/>
           </div>
         );
 }
-export default ProductList;
+export default LastestProducts;
