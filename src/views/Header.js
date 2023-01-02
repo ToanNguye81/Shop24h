@@ -5,7 +5,7 @@ function Header() {
     return (
       <div className="fixed-top pb-5 mb-5">
         <Navbar/>
-        <SignInNav/>
+        {/* <SignInNav/> */}
       </div>
     );
 }
