@@ -3,7 +3,7 @@ import Stack from '@mui/material/Stack';
 import { useSelector } from "react-redux";
 import React, { useState } from "react";
 
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const settings = ['Profile', 'Account', 'Dashboard'];
 export const UserAvatar = () => {
   const { photoURL,userName } = useSelector((reduxData) => reduxData.signInReducer);
   const [anchorElUser, setAnchorElUser] = useState(null);
@@ -13,6 +13,10 @@ export const UserAvatar = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+  const hanfleLogOutUser=()=>{
+
+    setAnchorElUser(null);
+  }
   return (
     <>
       {photoURL === null ?
@@ -46,6 +50,9 @@ export const UserAvatar = () => {
               <Typography textAlign="center">{setting}</Typography>
             </MenuItem>
           ))}
+           <MenuItem key={"logout"} onClick={hanfleLogOutUser}>
+              <Typography textAlign="center">Logout</Typography>
+            </MenuItem>
         </Menu>
       </Box>
       </Stack>
