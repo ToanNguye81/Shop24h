@@ -13,7 +13,7 @@ export const UserAvatar = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
-  const hanfleLogOutUser=()=>{
+  const handleLogOutUser=()=>{
 
     setAnchorElUser(null);
   }
@@ -50,14 +50,12 @@ export const UserAvatar = () => {
               <Typography textAlign="center">{setting}</Typography>
             </MenuItem>
           ))}
-           <MenuItem key={"logout"} onClick={hanfleLogOutUser}>
+           <MenuItem key={"logout"} onClick={handleLogOutUser}>
               <Typography textAlign="center">Logout</Typography>
             </MenuItem>
         </Menu>
       </Box>
       </Stack>
-
-
       }
     </>
   )
