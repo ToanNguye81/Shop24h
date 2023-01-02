@@ -1,8 +1,9 @@
 import { Avatar } from "@mui/material";
+import Stack from '@mui/material/Stack';
 import Logo from "../../assets/images/Logo.png"
 import * as React from 'react';
 import { useSelector } from 'react-redux';
-import Stack from '@mui/material/Stack';
+import { UserAvatar } from "./UserAvatar";
 
 function Navbar() {
 
@@ -19,37 +20,32 @@ function Navbar() {
           <div>
             <div className="container nav header-nav">
               <div className="row p-2">
-                <a href="/" className="text-center text-secondary">
+                <a href="/" className="text-center pt-2 text-secondary">
                   <i className="fa fa-home fa-2x"></i>
                 </a>
               </div>
               <div className="row p-2">
-                <a href="/" className="text-center text-white ">
+                <a href="/" className="text-center pt-2 text-white ">
                   <i className="fa fa-dashboard fa-2x"></i>
                 </a>
               </div>
               <div className="row p-2">
-                <a href="/" className="text-center text-white">
+                <a href="/" className="text-center pt-2 text-white">
                   <i className="fa fa-bell-o fa-2x"></i>
                 </a>
               </div>
               <div className="row p-2">
-                <a href="/" className="text-center text-white">
+                <a href="/" className="text-center pt-2 text-white">
                   <i className="fa fa-cart-plus fa-2x"></i>
                 </a>
               </div>
               <div className="row p-2">
                 {photoURL === null ?
-                  <a href="/signin" className="text-center text-white">
+                  <a href="/login" className="text-center pt-2 text-white">
                     <i className="fa fa-user-circle fa-2x"></i>
                   </a>
                   :
-                  <Stack>
-                 <Avatar
-                    alt="avatar"  sx={{ width: 32, height: 32 }}
-                    src={photoURL}
-                    />
-                  </Stack>
+                    <UserAvatar/>
                 }
               </div>
             </div>

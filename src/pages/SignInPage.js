@@ -1,6 +1,6 @@
 import React from "react"
 import auth from "../firebase.config"
-import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut } from 'firebase/auth';
+import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup } from 'firebase/auth';
 import { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { successLogIn } from "../actions/signIn.actions";
@@ -16,7 +16,8 @@ export const SignInPage = () => {
         signInWithPopup(auth, provider)
             .then((result) => {
                 setUser(result.user)
-                dispatch(successLogIn(result.user.photoURL))
+                console.log(result.user)
+                dispatch(successLogIn(result.user.photoURL,result.user.displayName))
                 navigate("/homepage")
             })
             .catch((error) => {

@@ -4,7 +4,7 @@ import { SignInPage } from "./pages/SignInPage";
 const routerList = [
     { path: "/", element:  <HomePage /> },
     { path: "/homepage", element:  <HomePage /> },
-    { path: "/signin", element: <SignInPage /> },
+    { path: "/login", element: <SignInPage /> },
 ]
 
 export default routerList;
