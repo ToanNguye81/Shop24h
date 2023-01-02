@@ -4,7 +4,7 @@ import HomePage from "../pages/HomePage";
 
 const Content = () => {
     return (
-        <div style={{margin: "20px"}}>
+        <div>
             <Routes>
                 {routes.map((router, index) => {
                     if(router.path) {
