@@ -56,6 +56,7 @@ footer a {
 }
 a {
     text-decoration: none;
+    color:white
 }
 body {
     height: 100vh;
@@ -141,3 +142,4 @@ body {
   .one-line:before, .one-line:after {
     background: black;
   }
+  

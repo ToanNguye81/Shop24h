@@ -1,9 +1,8 @@
 import Products from "../../database_sample/productsData.json"
-function CardForm(){
+export const CardForm =()=>{
   return (
     <>
-        {
-          Products.slice(0,12).map((item, i) => {
+        { Products.slice(0,12).map((item, i) => {
             return (
               <div className="col-6 col-sm-4" id={"card"-i}>
               <div className="product-box card mb-3">
@@ -38,4 +37,3 @@ function CardForm(){
   )
 }
 
-export default CardForm;
