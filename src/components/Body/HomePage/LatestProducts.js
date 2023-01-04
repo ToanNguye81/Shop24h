@@ -8,6 +8,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Products from "../../../database_sample/productsData.json"
 import { Grid } from '@mui/material';
+import ReadMore from '../../helpers/Readmore';
 
 const responsive = {
   superLargeDesktop: {
@@ -68,8 +69,8 @@ function LatestProducts() {
                 direction="row"
                 justifyContent="center"
                 alignItems="center">
-                <Button size="medium">Add to Card</Button>
-                <Button size="medium">Learn More</Button>
+                <Button size="medium" variant="contained" color="warning">Add to Card</Button>
+                <Button size="medium">Detail</Button>
                 </Grid>
               </CardActions>
             </Card>

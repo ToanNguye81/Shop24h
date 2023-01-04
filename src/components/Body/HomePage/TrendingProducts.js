@@ -1,5 +1,4 @@
 import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -8,6 +7,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Products from "../../../database_sample/productsData.json"
 import { Grid } from '@mui/material';
+import 'react-multi-carousel/lib/styles.css';
 
 const responsive = {
   superLargeDesktop: {
@@ -68,8 +68,8 @@ function TrendingProducts() {
                 direction="row"
                 justifyContent="center"
                 alignItems="center">
-                <Button size="medium">Add to Card</Button>
-                <Button size="medium">Learn More</Button>
+                <Button size="medium" variant="contained" color="warning">Add to Card</Button>
+                <Button size="medium">Detail</Button>
                 </Grid>
               </CardActions>
             </Card>

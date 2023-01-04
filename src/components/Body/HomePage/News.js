@@ -69,8 +69,8 @@ function News() {
                 direction="row"
                 justifyContent="center"
                 alignItems="center">
-                <Button size="medium">Add to Card</Button>
-                <Button size="medium">Learn More</Button>
+                <Button size="medium" variant="contained" color="warning">Add to Card</Button>
+                <Button size="medium">Detail</Button>
                 </Grid>
               </CardActions>
             </Card>
