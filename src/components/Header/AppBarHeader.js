@@ -39,7 +39,7 @@ export const AppBarHeader = () => {
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <Box backgroundColor="black" sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}>
-                        <img src={Logo} width="90" alt="logo" ></img>
+                        <img src={Logo} width="120" alt="logo" ></img>
                     </Box>
                     <Typography
                         variant="h5"
