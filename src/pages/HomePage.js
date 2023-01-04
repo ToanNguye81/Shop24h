@@ -1,15 +1,21 @@
-import LastestProducts from "../components/Body/LastestProducts"
-import Carousel from "../components/Body/Carousel";
-import { Intro } from "../components/Body/Intro";
+import Accessory from "../components/Body/HomePage/Accessory";
+import BodyCarousel from "../components/Body/HomePage/Carousel";
+import DiscountProducts from "../components/Body/HomePage/DiscountProducts";
+import { Intro } from "../components/Body/HomePage/Introduce";
+import LatestProducts from "../components/Body/HomePage/LatestProducts"
+import News from "../components/Body/HomePage/News";
+import TrendingProducts from "../components/Body/HomePage/TrendingProducts";
 
 function Body() {
     return (
         <>
-            <Carousel/>
-            <Intro></Intro>
-            <div className="container">
-                    <LastestProducts />
-            </div>
+            <BodyCarousel />
+            <Intro />
+            <LatestProducts />
+            <TrendingProducts />
+            <DiscountProducts />
+            <Accessory/>
+            <News/>
         </>
     )
 }

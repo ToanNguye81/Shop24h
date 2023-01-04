@@ -7,7 +7,7 @@ import {
   CarouselCaption,
 } from 'reactstrap';
 
-import items from '../../database_sample/imgCarousel'
+import items from '../../../database_sample/imgCarousel'
 
 
 function BodyCarousel(args) {
@@ -35,6 +35,7 @@ function BodyCarousel(args) {
     return (
       <CarouselItem 
         className="custom-tag"
+        display={{xs:{}}}
         tag="div"
         onExiting={() => setAnimating(true)}
         onExited={() => setAnimating(false)}
