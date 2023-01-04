@@ -60,7 +60,7 @@ a {
 }
 body {
     height: 100vh;
-    background: linear-gradient(to right, #3ef1cd, #0984e3);
+    background: linear-gradient(to right, #ffffff, #c5d2d3);
     width: 100%;
 }
 
@@ -101,9 +101,8 @@ body {
     max-width: 100%;
     height: 675px;
     text-align: center;
-    background: #273c75;
+    background:black;
 }
-
 .custom-tag>img {
     margin: auto 0 0 0;
     max-width: 100%;

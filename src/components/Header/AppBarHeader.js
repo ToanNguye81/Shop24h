@@ -21,7 +21,7 @@ import { UserAvatar } from './UserAvatar';
 const pages = ['NIKE', 'ADIDAS','JORDAN','YEEZY','OTHER BRANDS','SALE','BLOG','ABOUT','CONTACT'];
 
 
-export const NavBar = () => {
+export const AppBarHeader = () => {
     const [anchorElNav, setAnchorElNav] = useState(null);
     
     

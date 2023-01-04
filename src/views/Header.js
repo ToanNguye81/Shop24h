@@ -1,11 +1,9 @@
 
-import { NavBar } from "../components/Header/AppBar";
-import Navbar from "../components/Header/Navbar";
+import { AppBarHeader } from "../components/Header/AppBarHeader";
 function Header() {
     return (
       <div className="fixed-top pb-5 mb-5">
-        {/* <Navbar/> */}
-        <NavBar/>
+        <AppBarHeader/>
       </div>
     );
 }
