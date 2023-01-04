@@ -1,16 +1,24 @@
-import { CardForm } from "./CardForm";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import * as React from 'react';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 import Products from "../../../database_sample/productsData.json"
+import { Grid } from '@mui/material';
+
 const responsive = {
   superLargeDesktop: {
     // the naming can be any, depends on you.
     breakpoint: { max: 4000, min: 3000 },
-    items: 5
+    items: 8
   },
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
-    items: 3
+    items: 4
   },
   tablet: {
     breakpoint: { max: 1024, min: 464 },
@@ -23,7 +31,7 @@ const responsive = {
 };
 function News() {
   return (
-    <div class="pr-3 pl-3">
+    <div>
       <div>
         <h1 class="text-center mb-5 mt-4 pb-3">NEWS</h1>
       </div>
@@ -31,33 +39,43 @@ function News() {
         {
           Products.slice(0, 12).map((item, i) => {
             return (
-              <div>
-                <div id={"card" - i}>
-                  <div className="product-box card mb-3">
-                    <div className="card-header text-center">
-                      <h3 className="card-title">
-                        <a className="text-light h5" href={item.imageUrl}>{item.name}</a>
-                      </h3>
-                    </div>
-                    <div className="card-body">
-                      <div className="text-center">
-                        <a href={item.imageUrl}>
-                          <img className="card-img-top img-thumbnail" alt={item.name} src={item.imageUrl} />
-                        </a>
-                      </div>
-                      <p className="card-text mt-3"><b>Type: </b> {item.type}</p>
-                      <p className="card-text"><b>Buy Price: </b>$ {item.buyPrice} </p>
-                      <p className="card-text"><b>Promotion Price: </b>$ {item.promotionPrice} </p>
-                      <p className="card-text description"> <b>Description: </b>
-                        {item.description}
-                      </p>
-                      <div className="add-cart-container text-center mt-2">
-                        <button type="button" className="btn btn-success">Add to Cart</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <Grid  container
+              direction="column"
+              justifyContent="center"
+              alignItems="center">
+
+              <Card sx={{ maxWidth: 345 }}>
+              <CardMedia
+                component="img"
+                alt="green iguana"
+                height="300"
+                image={item.imageUrl}
+              />
+              <hr/>
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="div">
+                  {item.name}
+                </Typography>
+                <Typography gutterBottom variant="h6" component="div">
+                  $ {item.buyPrice}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                 {item.description}
+                </Typography>
+              </CardContent>
+              <CardActions >
+                <Grid
+                container
+                direction="row"
+                justifyContent="center"
+                alignItems="center">
+                <Button size="medium">Add to Card</Button>
+                <Button size="medium">Learn More</Button>
+                </Grid>
+              </CardActions>
+            </Card>
+            </Grid>
+
             )
           }
           )
