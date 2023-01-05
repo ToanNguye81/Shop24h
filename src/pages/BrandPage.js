@@ -8,13 +8,12 @@ import News from "../components/Body/HomePage/News"
 export const Brand = () => {
     return (
         <React.Fragment>
+            <Grid container mt={10}>
             <SortBar />
-            <Grid container>
                 <Grid item>
                 <Result />
                 </Grid>
                 <Grid item>
-                <News />
                 </Grid>
             </Grid>
         </React.Fragment>
