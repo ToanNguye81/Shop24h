@@ -11,9 +11,7 @@ function App() {
     <React.Fragment>
       <BrowserRouter>
         <Header />
-        <Grid mt={10}>
         <Body />
-        </Grid>
         <Footer />
       </BrowserRouter>
     </React.Fragment>
