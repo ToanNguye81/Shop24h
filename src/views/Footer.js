@@ -4,7 +4,7 @@ import Social from "../components/Footer/Social";
 function Footer() {
     return (
       <footer className="container-fluid bg-hor text-right b-0" style={{backgroundPosition: "bottom"}}>
-        <div className="row mt-5 ">
+        <div className="row">
             <Info/>
             <Social/>
         </div>

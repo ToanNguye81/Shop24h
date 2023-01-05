@@ -32,7 +32,7 @@ function Accessory() {
   return (
     <div class="pr-3 pl-3">
       <div>
-        <h1 class="text-center mb-5 mt-4 pb-3">ACCESSORY</h1>
+        <h2 class="text-center mb-5 mt-4 pb-3">ACCESSORY</h2>
       </div>
       <Carousel responsive={responsive}>
         {

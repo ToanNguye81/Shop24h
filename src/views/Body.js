@@ -1,8 +1,7 @@
 import routes from "../routes";
 import { Routes, Route } from "react-router-dom";
 import HomePage from "../pages/HomePage";
-import Button from "@mui/material/Button";
-import Grid from "@mui/material/Grid";
+
 const Content = () => {
     return (
         <div>
@@ -17,12 +16,6 @@ const Content = () => {
                 })}
                 <Route path="*" element={<HomePage />}></Route>
             </Routes>
-            <Grid container
-                direction="row"
-                justifyContent="center"
-                alignItems="center" mt={2}>
-                <Button variant="contained" style={{ backgroundColor: "#4b6584" }}>View All</Button>
-            </Grid>
         </div>
     )
 }

@@ -33,7 +33,7 @@ function News() {
   return (
     <div>
       <div>
-        <h1 class="text-center mb-5 mt-4 pb-3">NEWS</h1>
+        <h2 class="text-center mb-5 mt-4 pb-3">NEWS</h2>
       </div>
       <Carousel responsive={responsive}>
         {

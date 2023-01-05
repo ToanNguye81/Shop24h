@@ -5,6 +5,7 @@ import { Intro } from "../components/Body/HomePage/Introduce";
 import LatestProducts from "../components/Body/HomePage/LatestProducts"
 import News from "../components/Body/HomePage/News";
 import TrendingProducts from "../components/Body/HomePage/TrendingProducts";
+import { ViewAll } from "../components/Body/HomePage/ViewAll";
 
 function Body() {
     return (
@@ -16,6 +17,7 @@ function Body() {
             <DiscountProducts />
             <Accessory/>
             <News/>
+            <ViewAll/>
         </>
     )
 }

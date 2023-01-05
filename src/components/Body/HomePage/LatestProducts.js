@@ -6,8 +6,8 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import Products from "../../../database_sample/productsData.json"
 import { Grid } from '@mui/material';
+import Products from "../../../database_sample/productsData.json"
 
 const responsive = {
   superLargeDesktop: {
@@ -32,7 +32,7 @@ function LatestProducts() {
   return (
     <div class="pr-3 pl-3">
       <div>
-        <h1 class="text-center mb-5 mt-5">LATEST PRODUCT</h1>
+        <h2 class="text-center mb-5 mt-5">LATEST PRODUCT</h2>
       </div>
       <Carousel responsive={responsive}>
         {

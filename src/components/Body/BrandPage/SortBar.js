@@ -14,7 +14,7 @@ export const SortBar=()=>{
             direction="row"
             justifyContent="space-around"
             alignItems="start"
-            sx={{ display: {md: 'flex' }, backgroundColor: "#bdc3c7", mt:5,pt:5, pl:20,pb:5 }}
+            sx={{ display: {md: 'flex' }, backgroundColor: "#bdc3c7",pl:20,pt:5}}
             >
 
             <Grid item xs={12} md={3}
