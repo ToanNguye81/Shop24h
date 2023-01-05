@@ -10,7 +10,7 @@ export const ViewAll = () => {
         <Grid container
             direction="row"
             justifyContent="center"
-            alignItems="center" mt={2}>
+            alignItems="center" mt={2} mb={4}>
             <Button variant="contained"
             onClick={onClickHandle}
             style={{ backgroundColor: "#4b6584" }}>
