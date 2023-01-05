@@ -43,7 +43,7 @@ function DiscountProducts() {
               justifyContent="center"
               alignItems="center">
 
-              <Card sx={{ maxWidth: 345 }}>
+              <Card sx={{ maxWidth: 300 }}>
               <CardMedia
                 component="img"
                 alt="green iguana"
@@ -52,7 +52,7 @@ function DiscountProducts() {
               />
               <hr/>
               <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
+                <Typography gutterBottom variant="h6" component="div">
                   {item.name}
                 </Typography>
                 <Typography gutterBottom variant="h6" component="div">
