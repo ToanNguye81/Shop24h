@@ -46,7 +46,7 @@ export const FilterBar = () => {
                 pl={4}
             >
                 <Box sx={{ display: 'flex' }}>
-                    <FormControl sx={{ m: 2 }} component="fieldset" variant="standard">
+                    <FormControl sx={{ m: 1 }} component="fieldset" variant="standard">
                         <FormLabel component="legend" sx={{color:"#8e44ad"}}>
                             <PriceChangeIcon/>
                             Price
@@ -54,7 +54,7 @@ export const FilterBar = () => {
                         <FormGroup>
                         {priceFilter.map((value,index)=>
                             <FormControlLabel
-                            control={<Checkbox onChange={handleChange} name={value} />}
+                            control={<Checkbox onChange={handleChange} name={value}/>}
                             label={value + " ($)"}
                             />
                             )}
@@ -63,7 +63,7 @@ export const FilterBar = () => {
                 </Box>
                 
                 <Box sx={{ display: 'flex' }}>
-                    <FormControl sx={{ m: 2 }} component="fieldset" variant="standard">
+                    <FormControl sx={{ m: 1 }} component="fieldset" variant="standard">
                         <FormLabel component="legend" sx={{color:"green"}}><LoyaltyIcon/>Brand</FormLabel>
                         <FormGroup>
                             {brandFilter.map((value,index)=>
@@ -77,7 +77,7 @@ export const FilterBar = () => {
                 </Box>
 
                 <Box sx={{ display: 'flex' }}>
-                    <FormControl sx={{ m: 2 }} component="fieldset" variant="standard">
+                    <FormControl sx={{ m: 1 }} component="fieldset" variant="standard">
                         <FormLabel component="legend" sx={{color:"red"}}><ColorLensIcon/>Color</FormLabel>
                         <FormGroup>
                             {colorFilter.map((value,index)=>
@@ -91,7 +91,7 @@ export const FilterBar = () => {
                 </Box>
 
                 <Box sx={{ display: 'flex' }}>
-                    <FormControl sx={{ m: 2 }} component="fieldset" variant="standard">
+                    <FormControl sx={{ m: 1 }} component="fieldset" variant="standard">
                         <FormLabel component="legend" sx={{color:"red"}}><ColorLensIcon/>Rating</FormLabel>
                         <FormGroup>
                             {colorFilter.map((value,index)=>

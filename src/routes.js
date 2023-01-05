@@ -2,12 +2,17 @@ import HomePage from "./pages/HomePage";
 import { SignInPage } from "./pages/SignInPage";
 import { Brand } from "./pages/BrandPage";
 import { ProductList } from "./pages/ProductList";
+import { ProductInfo } from "./pages/ProductInfo";
+import { TitleName } from "./components/Body/ProductInfo/TitleName";
 
 const routerList = [
     { path: "/", element:  <HomePage /> },
     { path: "/homepage", element:  <HomePage /> },
     { path: "/login", element: <SignInPage /> },
     { path: "/products", element: <ProductList/> },
+    { path: "/products/:productId", element:  <ProductInfo/> },
+    { path: "/titlename", element:  <ProductInfo/> },
+
     { path: "/brand", element:  <Brand /> },
     // { path: "/jordan", element: <SignInPage /> },
     // { path: "/yeezy", element: <SignInPage /> },
