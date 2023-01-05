@@ -8,8 +8,6 @@ function handleClick(event) {
     event.preventDefault();
     console.info('You clicked a breadcrumb.');
   }
-  
-
 
 export const Breadcrumb = () => {
     const breadcrumbs =[
