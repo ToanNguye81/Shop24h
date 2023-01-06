@@ -1,8 +1,8 @@
 import HomePage from "./pages/HomePage";
 import { SignInPage } from "./pages/SignInPage";
-import { Brand } from "./pages/BrandPage";
 import { ProductList } from "./pages/ProductList";
 import { ProductInfo } from "./pages/ProductInfo";
+import { OrderPage } from "./pages/OrderPage";
 
 const routerList = [
     { path: "/", element:  <HomePage /> },
@@ -10,9 +10,9 @@ const routerList = [
     { path: "/login", element: <SignInPage /> },
     { path: "/products", element: <ProductList/> },
     { path: "/products/:productId", element:  <ProductInfo/> },
-    { path: "/titleBrand", element:  <ProductInfo/> },
+    { path: "/order", element:  <OrderPage/> },
 
-    { path: "/brand", element:  <Brand /> },
+    // { path: "/brand", element:  <Brand /> },
     // { path: "/jordan", element: <SignInPage /> },
     // { path: "/yeezy", element: <SignInPage /> },
     // { path: "/sale", element: <SignInPage /> },
