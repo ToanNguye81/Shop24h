@@ -3,7 +3,6 @@ import { SignInPage } from "./pages/SignInPage";
 import { Brand } from "./pages/BrandPage";
 import { ProductList } from "./pages/ProductList";
 import { ProductInfo } from "./pages/ProductInfo";
-import { TitleName } from "./components/Body/ProductInfo/TitleName";
 
 const routerList = [
     { path: "/", element:  <HomePage /> },
@@ -11,7 +10,7 @@ const routerList = [
     { path: "/login", element: <SignInPage /> },
     { path: "/products", element: <ProductList/> },
     { path: "/products/:productId", element:  <ProductInfo/> },
-    { path: "/titlename", element:  <ProductInfo/> },
+    { path: "/titleBrand", element:  <ProductInfo/> },
 
     { path: "/brand", element:  <Brand /> },
     // { path: "/jordan", element: <SignInPage /> },
