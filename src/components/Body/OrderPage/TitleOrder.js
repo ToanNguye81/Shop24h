@@ -10,14 +10,14 @@ export const TitleOrder = () => {
             alignItems="center"
             sx={{ display: {md: 'flex' }, backgroundColor: "#bdc3c7",pt:15,pb:4 }}
             >
-            <Grid item xs={12} md={4}
+            <Grid item xs={12} md={12}
                 sx={{ textAlign: 'center' }}
                 direction="column"
                 justifyContent="center"
                 alignItems="center"
             >
                 <Typography variant="h2" sx={{ color: "#d35400", fontFamily: "Papyrus", fontWeight: 400 }}>
-                   <AddShoppingCartIcon/> YOUR ORDER <LocalShippingIcon/>
+                   <AddShoppingCartIcon sx={{ fontSize: 80, color: "#c0392b" }}/> ==YOUR ORDER==<LocalShippingIcon sx={{ fontSize: 80, color: "#c0392b" }}/>
                     </Typography>
             </Grid>
         </Grid>

@@ -10,7 +10,7 @@ const routerList = [
     { path: "/login", element: <SignInPage /> },
     { path: "/products", element: <ProductList/> },
     { path: "/products/:productId", element:  <ProductInfo/> },
-    { path: "/order", element:  <OrderPage/> },
+    { path: "/orders", element:  <OrderPage/> },
 
     // { path: "/brand", element:  <Brand /> },
     // { path: "/jordan", element: <SignInPage /> },
