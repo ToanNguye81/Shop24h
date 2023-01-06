@@ -10,10 +10,16 @@ import Products from "../../../database_sample/productsData.json"
 import { Button,  ButtonGroup, Grid, IconButton, TableFooter, TextField } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
-import { display } from '@mui/system';
+import { ProductList } from '../../../pages/ProductList';
+import { useNavigate } from 'react-router-dom';
 
 
 export const AllOrder = () => {
+    const navigate = useNavigate()
+    const onBtnBuyClick=()=>{
+        navigate("/products")
+    }
+
     return (
         <React.Fragment>
             <Grid container
@@ -72,7 +78,7 @@ export const AllOrder = () => {
                     direction="row"
                     justifyContent="center"
                     alignItems="stretch">
-                    <Button class="btn col-sm-2 btn-warning rounded-pill pb-3 pt-3">Mua tiếp</Button>
+                    <Button onClick={onBtnBuyClick} class="btn col-sm-2 btn-warning rounded-pill pb-3 pt-3">Mua tiếp</Button>
                     <Button class="btn col-sm-2 btn-danger rounded-pill pb-3 pt-3">Đặt hàng</Button>
                 </Grid>
         </React.Fragment>

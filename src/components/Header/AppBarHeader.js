@@ -16,6 +16,7 @@ import Logo from "../../assets/images/Logo.png"
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import { UserAvatar } from './UserAvatar';
+import { useNavigate } from 'react-router-dom';
 
 
 const pages = ['NIKE', 'ADIDAS','JORDAN','YEEZY','OTHER BRANDS','SALE','BLOG','ABOUT','CONTACT'];
@@ -23,6 +24,7 @@ const pages = ['NIKE', 'ADIDAS','JORDAN','YEEZY','OTHER BRANDS','SALE','BLOG','A
 
 export const AppBarHeader = () => {
     const [anchorElNav, setAnchorElNav] = useState(null);
+    const navigate = useNavigate()
     
     
     const handleOpenNavMenu = (event) => {
@@ -33,6 +35,13 @@ export const AppBarHeader = () => {
         setAnchorElNav(null);
     };
 
+    const onBtnMiushopClick=()=>{
+        navigate("/homepage")
+    }
+
+    const onBtnCartClick=()=>{
+navigate("/orders")
+    }
 
     return (
         <AppBar position="static" sx={{ backgroundColor: "#FFFFFF" }}>
@@ -44,8 +53,7 @@ export const AppBarHeader = () => {
                     <Typography
                         variant="h5"
                         noWrap
-                        component="a"
-                        href="/"
+                        component="button"
                         sx={{
                             ml: 5, mr: 5, pr: 0,
                             display: { xs: 'none', md: 'flex' },
@@ -53,8 +61,11 @@ export const AppBarHeader = () => {
                             fontWeight: 700,
                             letterSpacing: '.2rem',
                             color: "black",
+                            backgroundColor:"none",
                             textDecoration: 'none',
+                            border:"none"
                         }}
+                        onClick={onBtnMiushopClick}
                     >
                         MIUSHOP
                     </Typography>
@@ -139,7 +150,7 @@ export const AppBarHeader = () => {
                     </Box>
                     <Box sx={{ flexGrow: 0 }}>
                         <Tooltip title="Your's Cart">
-                            <IconButton sx={{ pl:1 }}>
+                            <IconButton sx={{ pl:1 }} onClick={onBtnCartClick}>
                             <AddShoppingCartIcon  sx={{ fontSize: 30 ,color: "#34495e" }}/>
                             </IconButton>
                         </Tooltip>

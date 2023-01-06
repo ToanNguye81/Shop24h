@@ -1,9 +1,9 @@
 .bg-grey {
-    background-color: #4b6584;
+    background-color: #1e272e;
 }
 
 .bg-hor {
-    background-color: #4b6584;
+    background-color: #1e272e;
 }
 
 .bg-min {
@@ -110,7 +110,7 @@ body {
     max-width: 100%;
     height: auto;
     text-align: center;
-    background: black;
+    background: #1e272e;
 }
 
 .custom-tag>img {
@@ -159,5 +159,5 @@ hr{
 
 .one-line:before,
 .one-line:after {
-    background: black;
+    background: #1e272e;
 }

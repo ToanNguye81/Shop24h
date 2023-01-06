@@ -68,7 +68,7 @@ function TrendingProducts() {
                 direction="row"
                 justifyContent="center"
                 alignItems="center">
-                <Button size="medium" variant="contained" color="warning">Add to cart</Button>
+                
                 <Button size="medium">Detail</Button>
                 </Grid>
               </CardActions>
