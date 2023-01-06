@@ -17,7 +17,7 @@ export const ProductInfo = () => {return(
             </Grid>
         </Grid>
         <Grid xs={12}>
-            <Description/>
+           <Description/>
         </Grid>
     </React.Fragment>
     )

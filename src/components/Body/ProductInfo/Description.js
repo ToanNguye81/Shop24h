@@ -1,11 +1,15 @@
 import { Grid } from "@mui/material"
 import React from "react"
+import { ProductList } from "../../../pages/ProductList"
+import LatestProducts from "../HomePage/LatestProducts"
 
-export const Description=()=>{
+export const Description=()=>{return(
+
     <React.Fragment>
-        Chưa có nội dung :=ssss
         <Grid>
-            Sản phẩm liên quan nè:
+            <h1>Sản phẩm liên quan Demo nè:</h1>
         </Grid>
+        <LatestProducts/>
     </React.Fragment>
+        )
 }
