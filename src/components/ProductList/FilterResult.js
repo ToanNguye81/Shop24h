@@ -2,7 +2,7 @@ import { Card, CardContent, CardMedia, Grid, Typography, CardActions, Button, Ca
 import React from "react"
 import Rating from '@mui/material/Rating';
 import Stack from '@mui/material/Stack';
-import Products from "../../../database_sample/productsData.json"
+import Products from "../../database_sample/productsData.json"
 import { Info, ShoppingCart } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";

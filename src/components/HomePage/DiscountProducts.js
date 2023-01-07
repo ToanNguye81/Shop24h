@@ -6,8 +6,8 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import Products from "../../database_sample/productsData.json"
 import { Grid } from '@mui/material';
-import Products from "../../../database_sample/productsData.json"
 
 const responsive = {
   superLargeDesktop: {
@@ -28,11 +28,11 @@ const responsive = {
     items: 1
   }
 };
-function LatestProducts() {
+function DiscountProducts() {
   return (
     <div class="pr-3 pl-3">
       <div>
-        <h2 class="text-center mb-5 mt-5">LATEST PRODUCT</h2>
+        <h2 class="text-center mb-5 mt-4 pb-3">DISCOUNT PRODUCT</h2>
       </div>
       <Carousel responsive={responsive}>
         {
@@ -47,7 +47,7 @@ function LatestProducts() {
               <CardMedia
                 component="img"
                 alt="green iguana"
-                height="250"
+                height="300"
                 image={item.imageUrl}
               />
               <hr/>
@@ -69,7 +69,7 @@ function LatestProducts() {
                 justifyContent="center"
                 alignItems="center">
                 
-                <Button size="medium" >Detail</Button>
+                <Button size="medium">Detail</Button>
                 </Grid>
               </CardActions>
             </Card>
@@ -80,8 +80,7 @@ function LatestProducts() {
           )
         }
       </Carousel>;
-      {/* <CardForm /> */}
     </div>
   );
 }
-export default LatestProducts;
+export default DiscountProducts;

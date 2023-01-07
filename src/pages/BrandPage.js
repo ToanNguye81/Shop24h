@@ -1,8 +1,8 @@
 import { Grid } from "@mui/material"
 import React from "react"
-import { Result } from "../components/Body/BrandPage/Result"
-import { SortBar } from "../components/Body/BrandPage/SortBar"
-import News from "../components/Body/HomePage/News"
+import { Result } from "../components/BrandPage/Result"
+import { SortBar } from "../components/BrandPage/SortBar"
+import News from "../components/HomePage/News"
 
 
 export const Brand = () => {

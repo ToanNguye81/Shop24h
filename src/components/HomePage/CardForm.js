@@ -1,5 +1,5 @@
 import React from "react"
-import Products from "../../../database_sample/productsData.json"
+import Products from "../../database_sample/productsData.json"
 
 export const CardForm = () => {
   return (

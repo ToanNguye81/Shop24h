@@ -6,11 +6,11 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import Products from "../../../database_sample/productsData.json"
+import Products from "../../database_sample/productsData.json"
 import { Button,  ButtonGroup, Grid, IconButton, TableFooter, TextField } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
-import { ProductList } from '../../../pages/ProductList';
+import { ProductList } from '../../pages/ProductList';
 import { useNavigate } from 'react-router-dom';
 
 

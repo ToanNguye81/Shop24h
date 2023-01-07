@@ -1,13 +1,13 @@
 import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import Products from "../../../database_sample/productsData.json"
+import Products from "../../database_sample/productsData.json"
 import { Grid } from '@mui/material';
+import 'react-multi-carousel/lib/styles.css';
 
 const responsive = {
   superLargeDesktop: {
@@ -28,11 +28,11 @@ const responsive = {
     items: 1
   }
 };
-function Accessory() {
+function TrendingProducts() {
   return (
     <div class="pr-3 pl-3">
       <div>
-        <h2 class="text-center mb-5 mt-4 pb-3">ACCESSORY</h2>
+        <h2 class="text-center mb-5 mt-4 pb-3">TRENDING PRODUCTS</h2>
       </div>
       <Carousel responsive={responsive}>
         {
@@ -83,4 +83,4 @@ function Accessory() {
     </div>
   );
 }
-export default Accessory;
+export default TrendingProducts;

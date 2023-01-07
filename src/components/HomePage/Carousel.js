@@ -7,7 +7,7 @@ import {
   CarouselCaption,
 } from 'reactstrap';
 
-import items from '../../../database_sample/imgCarousel'
+import items from '../../database_sample/imgCarousel'
 
 
 function BodyCarousel(args) {

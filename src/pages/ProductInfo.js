@@ -1,9 +1,9 @@
 import { Grid } from "@mui/material"
 import React from "react"
-import { Description } from "../components/Body/ProductInfo/Description"
-import { ImageProduct } from "../components/Body/ProductInfo/ImageProduct"
-import { OrderInfo } from "../components/Body/ProductInfo/OrderInfo"
-import { TitleBrand } from "../components/Body/ProductInfo/TitleBrand"
+import { Description } from "../components/ProductInfo/Description"
+import { ImageProduct } from "../components/ProductInfo/ImageProduct"
+import { OrderInfo } from "../components/ProductInfo/OrderInfo"
+import { TitleBrand } from "../components/ProductInfo/TitleBrand"
 
 export const ProductInfo = () => {return(
     <React.Fragment>

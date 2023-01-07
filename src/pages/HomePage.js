@@ -1,11 +1,11 @@
-import Accessory from "../components/Body/HomePage/Accessory";
-import BodyCarousel from "../components/Body/HomePage/Carousel";
-import DiscountProducts from "../components/Body/HomePage/DiscountProducts";
-import { Intro } from "../components/Body/HomePage/Introduce";
-import LatestProducts from "../components/Body/HomePage/LatestProducts"
-import News from "../components/Body/HomePage/News";
-import TrendingProducts from "../components/Body/HomePage/TrendingProducts";
-import { ViewAll } from "../components/Body/HomePage/ViewAll";
+import Accessory from "../components/HomePage/Accessory";
+import BodyCarousel from "../components/HomePage/Carousel";
+import DiscountProducts from "../components/HomePage/DiscountProducts";
+import { Intro } from "../components/HomePage/Introduce";
+import LatestProducts from "../components/HomePage/LatestProducts"
+import News from "../components/HomePage/News";
+import TrendingProducts from "../components/HomePage/TrendingProducts";
+import { ViewAll } from "../components/HomePage/ViewAll";
 
 function Body() {
     return (

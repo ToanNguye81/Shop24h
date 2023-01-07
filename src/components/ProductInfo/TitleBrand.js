@@ -1,5 +1,5 @@
 import { Grid, Typography} from "@mui/material"
-import Products from "../../../database_sample/productsData.json"
+import Products from "../../database_sample/productsData.json"
 
 export const TitleBrand = () => {
     return (

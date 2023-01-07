@@ -1,8 +1,8 @@
 import { Grid } from "@mui/material"
 import React from "react"
-import { FilterBar } from "../components/Body/ProductList/FilterBar"
-import { FilterResult } from "../components/Body/ProductList/FilterResult"
-import { PaginationBar } from "../components/Body/ProductList/Pagination"
+import { FilterBar } from "../components/ProductList/FilterBar"
+import { FilterResult } from "../components/ProductList/FilterResult"
+import { PaginationBar } from "../components/ProductList/Pagination"
 import { Breadcrumb } from "../components/BreadCrumb"
 
 export const ProductList = () => {
