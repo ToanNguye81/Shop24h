@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 export const FilterResult = () => {
   const dispatch =useDispatch();
-  const { detailId } = useSelector((reduxData) => reduxData.detailReducer);
+  const { productId } = useSelector((reduxData) => reduxData.detailReducer);
 
 
 
@@ -19,7 +19,7 @@ export const FilterResult = () => {
     console.log("Đã click " + name)
   }
 
-  const handleDetailClick =(idProduct)=>{
+  const onBtnDetailClick =(idProduct)=>{
     navigate("/products/"+idProduct)
     dispatch(
       onProductInfo(idProduct)
@@ -58,7 +58,7 @@ export const FilterResult = () => {
                     justifyContent="space-evenly"
                     alignItems="center">
                     <Button variant="contained" color="warning"  size="small"><ShoppingCart/></Button>
-                    <Button onClick={()=>handleDetailClick(item.id)}
+                    <Button onClick={()=>onBtnDetailClick(item.id)}
                     variant="contained" color="primary" size="small"
                     ><Info/>
                     </Button>

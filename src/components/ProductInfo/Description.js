@@ -1,6 +1,5 @@
 import { Grid } from "@mui/material"
 import React from "react"
-import { ProductList } from "../../pages/ProductList"
 import LatestProducts from "../HomePage/LatestProducts"
 
 export const Description=()=>{return(
