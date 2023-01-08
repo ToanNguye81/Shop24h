@@ -19,7 +19,7 @@ export const TitleBrand = () => {
                 alignItems="center"
             >
                 <Typography variant="h2" sx={{ color: "#d35400", fontFamily: "Papyrus", fontWeight: 400 }}>
-                    {tryData.name}
+                    {tryData.brand}
                     </Typography>
             </Grid>
         </Grid>
