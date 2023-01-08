@@ -58,7 +58,7 @@ export const AllOrder = () => {
                                                 <RemoveIcon />
                                             </IconButton>
                                         </TableCell>
-                                        <TableCell align="right" width="25%">{item.promotionPrice}</TableCell>
+                                        <TableCell align="right" width="25%"><del>{item.promotionPrice}</del></TableCell>
                                     </TableRow>
                                 ))}
                                 <TableRow>

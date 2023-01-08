@@ -2,18 +2,15 @@ import { Card, CardContent, CardMedia, Grid, Typography, CardActions, Button, Ca
 import React from "react"
 import Rating from '@mui/material/Rating';
 import Stack from '@mui/material/Stack';
-import Products from "../../database_sample/productsData.json"
 import { Info, ShoppingCart } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { CardInfo } from "../CardInfo";
+import { getDetailProduct } from "../actions/detail.actions";
 
 
-export const FilterResult = () => {
+export const CardInfo = ({ProductsData}) => {
   const dispatch =useDispatch();
   const { productId } = useSelector((reduxData) => reduxData.detailReducer);
-
-
 
   const navigate = useNavigate();
   const handleClick = (name) => {
@@ -22,16 +19,15 @@ export const FilterResult = () => {
 
   const onBtnDetailClick =(idProduct)=>{
     navigate("/products/"+idProduct)
-    dispatch(
-      onProductInfo(idProduct)
+    dispatch(getDetailProduct(idProduct)
     )
   }
 
   return (
     <React.Fragment>
-      <Grid container rowSpacing={1} paddingLeft={5} columnSpacing={{ xs: 1, sm: 2, md: 3,lg:4 }} mt={0}>
-        {/* {
-          Products.slice(0,12).map((item, i) => {
+      <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} mt={0}>
+        {
+          ProductsData.map((item, i) => {
             return (
               <Card sx={{ width: 200, m: 2 }}>
                 <CardMedia
@@ -69,8 +65,7 @@ export const FilterResult = () => {
             )
           }
           )
-        } */}
-        <CardInfo ProductsData={Products}/>
+        }
       </Grid>
     </React.Fragment>
   )

@@ -1,11 +1,15 @@
 import { Grid, Typography, Button } from "@mui/material"
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import Products from "../../database_sample/productsData.json"
 
 
 export const OrderInfo = () => {
-    const tryData = Products[10];
-    return (
+    const dispatch =useDispatch();
+    const { productId } = useSelector((reduxData) => reduxData.detailReducer);
+    const tryData = Products.find(({ id }) => id === productId);
+    return(
         <React.Fragment>
             <Grid
                 container

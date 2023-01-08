@@ -21,7 +21,7 @@ export const CardForm = () => {
                 </div>
                 <p className="card-text mt-3"><b>Type: </b> {item.type}</p>
                 <p className="card-text"><b>Buy Price: </b>$ {item.buyPrice} </p>
-                <p className="card-text"><b>Promotion Price: </b>$ {item.promotionPrice} </p>
+                <p className="card-text"><b>Promotion Price: </b>$ <del>{item.promotionPrice}</del> </p>
                 <p className="card-text description"> <b>Description: </b>
                   {item.description}
                 </p>
