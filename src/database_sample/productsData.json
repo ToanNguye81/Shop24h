@@ -11,7 +11,7 @@
         "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "CASUAL",
         "is_in_inventory": true,
-        "items_left": 3
+        "amount": 3
     },
     {
         "id": 11,
@@ -25,7 +25,7 @@
         "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "CASUAL",
         "is_in_inventory": true,
-        "items_left": 3
+        "amount": 3
     },
     {
         "id": 12,
@@ -39,7 +39,7 @@
         "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "CASUAL",
         "is_in_inventory": true,
-        "items_left": 3
+        "amount": 3
     },
     {
         "id": 13,
@@ -53,7 +53,7 @@
         "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "RUNNING",
         "is_in_inventory": false,
-        "items_left": 3
+        "amount": 3
     },
     {
         "id": 14,
@@ -67,7 +67,7 @@
         "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "RUNNING",
         "is_in_inventory": true,
-        "items_left": 3
+        "amount": 3
     },
     {
         "id": 16,
@@ -81,7 +81,7 @@
         "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "CASUAL",
         "is_in_inventory": true,
-        "items_left": 3
+        "amount": 3
     },
     {
         "id": 15,
@@ -95,7 +95,7 @@
         "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "FORMAL",
         "is_in_inventory": true,
-        "items_left": 5
+        "amount": 5
     },
     {
         "id": 1,
@@ -109,7 +109,7 @@
         "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "RUNNING",
         "is_in_inventory": true,
-        "items_left": 3
+        "amount": 3
     },
     {
         "id": 2,
@@ -123,7 +123,7 @@
         "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "RUNNING",
         "is_in_inventory": true,
-        "items_left": 3
+        "amount": 3
     },
     {
         "id": 3,
@@ -137,7 +137,7 @@
         "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "RUNNING",
         "is_in_inventory": true,
-        "items_left": 3
+        "amount": 3
     },
     {
         "id": 4,
@@ -151,7 +151,7 @@
         "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "RUNNING",
         "is_in_inventory": true,
-        "items_left": 3
+        "amount": 3
     },
     {
         "id": 5,
@@ -165,7 +165,7 @@
         "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "FOOTBALL",
         "is_in_inventory": true,
-        "items_left": 3
+        "amount": 3
     },
     {
         "id": 6,
@@ -179,7 +179,7 @@
         "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "FOOTBALL",
         "is_in_inventory": true,
-        "items_left": 3
+        "amount": 3
     },
     {
         "id": 7,
@@ -193,7 +193,7 @@
         "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "FOOTBALL",
         "is_in_inventory": true,
-        "items_left": 3
+        "amount": 3
     },
     {
         "id": 8,
@@ -207,7 +207,7 @@
         "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "FOOTBALL",
         "is_in_inventory": true,
-        "items_left": 3
+        "amount": 3
     },
     {
         "id": 9,
@@ -221,7 +221,7 @@
         "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "FOOTBALL",
         "is_in_inventory": true,
-        "items_left": 3
+        "amount": 3
     },
     {
         "id": 17,
@@ -235,7 +235,7 @@
         "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "FORMAL",
         "is_in_inventory": true,
-        "items_left": 6
+        "amount": 6
     },
     {
         "id": 18,
@@ -249,7 +249,7 @@
         "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "FORMAL",
         "is_in_inventory": true,
-        "items_left": 7
+        "amount": 7
     },
     {
         "id": 19,
@@ -263,7 +263,7 @@
         "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "FORMAL",
         "is_in_inventory": true,
-        "items_left": 2
+        "amount": 2
     },
     {
         "id": 20,
@@ -277,7 +277,7 @@
         "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "FORMAL",
         "is_in_inventory": true,
-        "items_left": 6
+        "amount": 6
     },
     {
         "id": 21,
@@ -291,7 +291,7 @@
         "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "FORMAL",
         "is_in_inventory": true,
-        "items_left": 4
+        "amount": 4
     },
     {
         "id": 22,
@@ -305,7 +305,7 @@
         "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "FORMAL",
         "is_in_inventory": true,
-        "items_left": 3
+        "amount": 3
     },
     {
         "id": 23,
@@ -319,7 +319,7 @@
         "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "CASUAL",
         "is_in_inventory": true,
-        "items_left": 7
+        "amount": 7
     },
     {
         "id": 24,
@@ -333,7 +333,7 @@
         "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "CASUAL",
         "is_in_inventory": true,
-        "items_left": 4
+        "amount": 4
     },
     {
         "id": 25,
@@ -347,7 +347,7 @@
         "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "CASUAL",
         "is_in_inventory": true,
-        "items_left": 3
+        "amount": 3
     },
     {
         "id": 26,
@@ -361,7 +361,7 @@
         "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "CASUAL",
         "is_in_inventory": true,
-        "items_left": 6
+        "amount": 6
     },
     {
         "id": 27,
@@ -375,7 +375,7 @@
         "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "CASUAL",
         "is_in_inventory": true,
-        "items_left": 5
+        "amount": 5
     },
     {
         "id": 28,
@@ -389,7 +389,7 @@
         "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "CASUAL",
         "is_in_inventory": true,
-        "items_left": 3
+        "amount": 3
     },
     {
         "id": 29,
@@ -403,7 +403,7 @@
         "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "RUNNING",
         "is_in_inventory": true,
-        "items_left": 3
+        "amount": 3
     },
     {
         "id": 30,
@@ -417,7 +417,7 @@
         "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "CASUAL",
         "is_in_inventory": true,
-        "items_left": 5
+        "amount": 5
     },
     {
         "id": 31,
@@ -431,7 +431,7 @@
         "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "CASUAL",
         "is_in_inventory": true,
-        "items_left": 3
+        "amount": 3
     },
     {
         "id": 32,
@@ -445,7 +445,7 @@
         "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "CASUAL",
         "is_in_inventory": true,
-        "items_left": 3
+        "amount": 3
     },
     {
         "id": 33,
@@ -459,6 +459,6 @@
         "description":"Giày Auth chất lượng cao. Sản xuất từ công nghệ đỉnh nhất xứ Catalan và Romani",
         "category": "CASUAL",
         "is_in_inventory": true,
-        "items_left": 3
+        "amount": 3
     }
 ]
