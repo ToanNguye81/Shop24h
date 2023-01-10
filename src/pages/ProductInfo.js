@@ -10,7 +10,7 @@ export const ProductInfo = () => {return(
         <TitleBrand xs={12}/>
         <Grid container direction="row" justifyContent="center" alignItems="stretch" spacing={3} mt={2} >
             <Grid item xs={12} md={5}>
-                <ImageProduct/>
+                <ImageProduct />
             </Grid>
             <Grid item xs={12} md={5} pb={3}>
                 <OrderInfo/>

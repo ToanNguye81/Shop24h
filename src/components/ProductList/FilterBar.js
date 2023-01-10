@@ -1,111 +1,131 @@
-import { Box, FormLabel, Grid, Button} from "@mui/material"
-import React from "react"
-import FormGroup from '@mui/material/FormGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import FormControl from '@mui/material/FormControl';
-import PriceChangeIcon from '@mui/icons-material/PriceChange';
-import LoyaltyIcon from '@mui/icons-material/Loyalty';
-import ColorLensIcon from '@mui/icons-material/ColorLens';
-import {SearchSharp } from "@mui/icons-material";
-
-
-const brandFilter = ["Nike", "Adidas", "Jordan", "Sneaker", "Yezzy",]
-const colorFilter =["Red","Green","Black","Orange", "White"]
-const priceFilter =["100-200","200-300","300-400","400-500", ">500"]
-
+import React from "react";
+import { SearchRounded } from "@mui/icons-material"
+import { Grid, Typography, Button, FormControl, InputLabel, MenuItem, Select } from "@mui/material"
 
 export const FilterBar = () => {
+    const [brand, setBrand] = React.useState('');
+    const [price, setPrice] = React.useState('');
+    const [ordinal, setOrdinal] = React.useState('');
 
-    const [state, setState] = React.useState({
-        gilad: false,
-        jason: false,
-        antoine: false,
-    });
+    const [openBrand, setOpenBrand] = React.useState(false);
+    const [openPrice, setOpenPrice] = React.useState(false);
+    const [openOrdinal, setOpenOrdinal] = React.useState(false);
 
-    const handleChange = (event) => {
-        setState({
-            ...state,
-            [event.target.name]: event.target.checked,
-        });
+    const handleBrandChange = (event) => {
+        setBrand(event.target.value);
+    };
+    const handlePriceChange = (event) => {
+        setPrice(event.target.value);
+    };
+    const handleOrdinalChange = (event) => {
+        setOrdinal(event.target.value);
     };
 
-    const { gilad, jason, antoine } = state;
+    const handleClose = () => {
+        setOpenBrand(false);
+        setOpenPrice(false);
+        setOpenOrdinal(false);
+        
+    };
 
+    const handleOpenBrand = () => {
+        setOpenBrand(true);
+    };
+    const handleOpenPrice = () => {
+        setOpenPrice(true);
+    };
+    const handleOpenOrdinal = () => {
+        setOpenOrdinal(true);
+    };
     return (
-        <React.Fragment>
-            <Button variant="contained"fullWidth sx={{backgroundColor:"#34495e", mt:2}}>
-                <SearchSharp/>
-                Tìm giày đẹp !
-            </Button>
-            <Grid
-                container
+        <Grid container
+            direction="row"
+            justifyContent="space-around"
+            alignItems="flex-end"
+            spacing={3}
+            sx={{ display: { md: 'flex' }, backgroundColor: "#bdc3c7", pt: 6, pb: 4, pl:10 }}>
+            <Grid item xs={12} md={3}
+                sx={{ textAlign: 'start' }}
                 direction="column"
-                justifyContent="flex-start"
-                alignItems="stretch"
-                pl={4}
+                justifyContent="start"
+                alignItems="start"
             >
-                <Box sx={{ display: 'flex' }}>
-                    <FormControl sx={{ m: 1 }} component="fieldset" variant="standard">
-                        <FormLabel component="legend" sx={{color:"#8e44ad"}}>
-                            <PriceChangeIcon/>
-                            Price
-                            </FormLabel>
-                        <FormGroup>
-                        {priceFilter.map((value,index)=>
-                            <FormControlLabel
-                            control={<Checkbox onChange={handleChange} name={value}/>}
-                            label={value + " ($)"}
-                            />
-                            )}
-                        </FormGroup>
-                    </FormControl>
-                </Box>
-                
-                <Box sx={{ display: 'flex' }}>
-                    <FormControl sx={{ m: 1 }} component="fieldset" variant="standard">
-                        <FormLabel component="legend" sx={{color:"green"}}><LoyaltyIcon/>Brand</FormLabel>
-                        <FormGroup>
-                            {brandFilter.map((value,index)=>
-                            <FormControlLabel
-                            control={<Checkbox onChange={handleChange} name={value} />}
-                            label={value}
-                            />
-                            )}
-                        </FormGroup>
-                    </FormControl>
-                </Box>
-
-                <Box sx={{ display: 'flex' }}>
-                    <FormControl sx={{ m: 1 }} component="fieldset" variant="standard">
-                        <FormLabel component="legend" sx={{color:"red"}}><ColorLensIcon/>Color</FormLabel>
-                        <FormGroup>
-                            {colorFilter.map((value,index)=>
-                            <FormControlLabel
-                            control={<Checkbox onChange={handleChange} name={value} />}
-                            label={value}
-                            />
-                            )}
-                        </FormGroup>
-                    </FormControl>
-                </Box>
-
-                <Box sx={{ display: 'flex' }}>
-                    <FormControl sx={{ m: 1 }} component="fieldset" variant="standard">
-                        <FormLabel component="legend" sx={{color:"red"}}><ColorLensIcon/>Rating</FormLabel>
-                        <FormGroup>
-                            {colorFilter.map((value,index)=>
-                            <FormControlLabel
-                            control={<Checkbox onChange={handleChange} name={value} />}
-                            label={value}
-                            />
-                            )}
-                        </FormGroup>
-                    </FormControl>
-                </Box>
+                <Typography variant="h5" sx={{ color: "#d35400", fontFamily: "Papyrus", fontWeight: 400 }}>Chọn nhãn hiệu</Typography>
+                <FormControl sx={{ m: 1, minWidth: "90%" }}>
+                    <InputLabel id="demo-controlled-open-select-label">Brand</InputLabel>
+                    <Select
+                        labelId="demo-controlled-open-select-label"
+                        id="demo-controlled-open-select"
+                        open={openBrand}
+                        onClose={handleClose}
+                        onOpen ={handleOpenBrand}
+                        value={brand}
+                        label="Brand"
+                        onChange={handleBrandChange}
+                    >
+                        <MenuItem value={"all"}>Tất cả</MenuItem>
+                        <MenuItem value={"NIKE"}>NIKE</MenuItem>
+                        <MenuItem value={"ADIDAS"}>ADIDAS</MenuItem>
+                        <MenuItem value={"JORDAN"}>JORDAN</MenuItem>
+                        <MenuItem value={"YEEZY"}>YEEZY</MenuItem>
+                        <MenuItem value={"ORTHER"}>ORTHER</MenuItem>
+                    </Select>
+                </FormControl>
             </Grid>
-        </React.Fragment>
-
+            <Grid item xs={12} md={3}
+                sx={{ textAlign: 'start' }}
+            >
+                <Typography variant="h5" sx={{ color: "#d35400", fontFamily: "Papyrus", fontWeight: 400 }}>Chọn khoảng giá</Typography>
+                <FormControl sx={{ m: 1, minWidth: "90%" }}>
+                    <InputLabel id="demo-controlled-open-select-label">Price</InputLabel>
+                    <Select
+                        labelId="demo-controlled-open-select-label"
+                        id="demo-controlled-open-select"
+                        open={openPrice}
+                        onClose={handleClose}
+                        onOpen={handleOpenPrice}
+                        value={price}
+                        label="Price"
+                        onChange={handlePriceChange}
+                    >
+                        <MenuItem value={"ALL"}>Tất cả</MenuItem>
+                        <MenuItem value={100}>Dưới 100$</MenuItem>
+                        <MenuItem value={200}>100$-200$</MenuItem>
+                        <MenuItem value={300}>200$-300$</MenuItem>
+                        <MenuItem value={400}>300$-400$</MenuItem>
+                        <MenuItem value={1000}>Trên 400$</MenuItem>
+                    </Select>
+                </FormControl>
+            </Grid>
+            <Grid item xs={12} md={3}
+                sx={{ textAlign: 'start' }}
+            >
+                <Typography variant="h5" sx={{ color: "#d35400", fontFamily: "Papyrus", fontWeight: 400 }}>Sắp xếp theo</Typography>
+                <FormControl sx={{ m: 1, minWidth: "90%" }}>
+                    <InputLabel id="demo-controlled-open-select-label">Ordinal</InputLabel>
+                    <Select
+                        labelId="demo-controlled-open-select-label"
+                        id="demo-controlled-open-select"
+                        open={openOrdinal}
+                        onClose={handleClose}
+                        onOpen={handleOpenOrdinal}
+                        value={ordinal}
+                        label="Ordinal"
+                        onChange={handleOrdinalChange}
+                    >
+                        <MenuItem value={"Price"}>Giá từ thấp đến cao</MenuItem>
+                        <MenuItem value={"Ons"}>Tên A-Z</MenuItem>
+                        <MenuItem value={"Des"}>Tên Z-A</MenuItem>
+                    </Select>
+                </FormControl>
+            </Grid>
+            <Grid item xs={12} md={3} sx={{ textAlign: 'start' }} mb={1}>
+                <Button sx={{ backgroundColor: "#FCD603", color: "black" }}>
+                    <SearchRounded sx={{ fontSize: 50, color: "#c0392b" }} />
+                    TÌM GIÀY NHANH
+                </Button>
+            </Grid>
+        </Grid>
     )
 }
 

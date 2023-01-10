@@ -8,9 +8,10 @@ const routerList = [
     { path: "/", element:  <HomePage /> },
     { path: "/homepage", element:  <HomePage /> },
     { path: "/login", element: <SignInPage /> },
-    { path: "/products", element: <ProductList/> },
     { path: "/products/:productId", element:  <ProductInfo/> },
     { path: "/orders", element:  <OrderPage/> },
+    { path: "/products", element: <ProductList/> },
+
 
     // { path: "/brand", element:  <Brand /> },
     // { path: "/jordan", element: <SignInPage /> },

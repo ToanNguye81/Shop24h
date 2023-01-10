@@ -25,14 +25,14 @@ export const CardInfo = ({ProductsData}) => {
 
   return (
     <React.Fragment>
-      <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} mt={0}>
+      <Grid container   justifyContent="space-around" rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} mt={0}>
         {
           ProductsData.map((item, i) => {
             return (
               <Card sx={{ width: 200, m: 2 }}>
                 <CardMedia
                   component="img"
-                  alt="green iguana"
+                  alt={item.brand}
                   height="150"
                   image={item.imageUrl}
                 />
