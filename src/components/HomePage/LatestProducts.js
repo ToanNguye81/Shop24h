@@ -9,7 +9,7 @@ function LatestProducts() {
         <h2 class="text-center mb-5 mt-5">LATEST PRODUCT</h2>
       </div>
       <Container>
-      <CardInfo ProductsData={Products}/>
+      <CardInfo ProductsData={Products} limit={8}/>
       </Container>
     </div>
   );

@@ -1,14 +1,13 @@
-import { Card, CardContent, CardMedia, Grid, Typography, CardActions, Button, CardActionArea } from "@mui/material"
+import { Card, CardContent, CardMedia, Grid, Typography, CardActionArea } from "@mui/material"
 import React from "react"
 import Rating from '@mui/material/Rating';
 import Stack from '@mui/material/Stack';
-import { Info, ShoppingCart } from "@mui/icons-material";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"; 
 import { useDispatch, useSelector } from "react-redux";
 import { getDetailProduct } from "../actions/detail.actions";
 
 
-export const CardInfo = ({ProductsData}) => {
+export const CardInfo = ({ProductsData,limit}) => {
   const dispatch =useDispatch();
   const { productId } = useSelector((reduxData) => reduxData.detailReducer);
 
@@ -27,7 +26,7 @@ export const CardInfo = ({ProductsData}) => {
     <React.Fragment>
       <Grid container justifyContent="space-around" rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} mt={0}>
         {
-          ProductsData.slice(0,10).map((item, i) => {
+          ProductsData.slice(0,limit).map((item, i) => {
             return (
               <Card sx={{ width: 200, m: 2 }} key={item.id} >
               <CardActionArea onClick={()=>onBtnDetailClick(item.id)}>
