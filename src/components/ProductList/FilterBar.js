@@ -1,5 +1,5 @@
 import React from "react";
-import {  SearchRounded } from "@mui/icons-material"
+// import {  SearchRounded } from "@mui/icons-material"
 import { Grid, Typography, Button, FormControl, InputLabel, MenuItem, Select } from "@mui/material"
 import { useSelector } from "react-redux";
 
@@ -8,10 +8,13 @@ export const FilterBar = () => {
     const [brand, setBrand] = React.useState('');
     const [price, setPrice] = React.useState('');
     const [ordinal, setOrdinal] = React.useState('');
+    
 
     const [openBrand, setOpenBrand] = React.useState(false);
     const [openPrice, setOpenPrice] = React.useState(false);
     const [openOrdinal, setOpenOrdinal] = React.useState(false);
+
+
 
 
     const handleBrandChange = (event) => {
@@ -32,6 +35,7 @@ export const FilterBar = () => {
 
     const handleOpenBrand = () => {
         setOpenBrand(true);
+        
     };
     const handleOpenPrice = () => {
         setOpenPrice(true);
@@ -39,28 +43,7 @@ export const FilterBar = () => {
     const handleOpenOrdinal = () => {
         setOpenOrdinal(true);
     };
-
-    const dispatch = useDispatch();
-
-    const limit = 10;
-  
-    const {filterCondition, currentPage, totalProduct } = useSelector((reduxData) => reduxData.productReducers);
-  
-    const noPage = Math.ceil(totalProduct / limit);
     
-  
-    useEffect(() => {
-      dispatch(fetchProducts(limit, currentPage,""));
-    }, [currentPage,filterCondition]);
-  
-    const onChangePagination = (event, value) => {
-      dispatch(changePagination(value));
-    }
-    
-    const onBtnFilterClick =()=>{
-        
-     dispatch(setCondition(brand,price,ordinal))
-    }
     return (
         <Grid container
             direction="row"
@@ -143,12 +126,12 @@ export const FilterBar = () => {
                     </Select>
                 </FormControl>
             </Grid>
-            <Grid item xs={12} md={3} sx={{ textAlign: 'start' }} mb={1}>
-                <Button sx={{ backgroundColor: "#FCD603", color: "black" }} onClick={onBtnFilterClick}>
+            {/* <Grid item xs={12} md={3} sx={{ textAlign: 'start' }} mb={1}>
+                <Button sx={{ backgroundColor: "#FCD603", color: "black" }} >
                     <SearchRounded sx={{ fontSize: 50, color: "#c0392b" }} />
                     TÌM GIÀY NHANH
                 </Button>
-            </Grid>
+            </Grid> */}
         </Grid>
     )
 }
