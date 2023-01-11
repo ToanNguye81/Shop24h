@@ -1,36 +1,41 @@
-import { Card, CardContent, CardMedia, Grid, Typography, CardActions, Button, CardActionArea } from "@mui/material"
+import { CircularProgress, Grid, Pagination } from "@mui/material"
 import React from "react"
-import Rating from '@mui/material/Rating';
-import Stack from '@mui/material/Stack';
-import Products from "../../database_sample/productsData.json"
-import { Info, ShoppingCart } from "@mui/icons-material";
-import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { CardInfo } from "../CardInfo";
+import { FilteredCard } from "../FilteredCard";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { changePagination, fetchProducts } from "../../actions/product.actions";
 
+// import filteredProducts from "../../database_sample/productsData.json"
 
 export const FilterResult = () => {
-  // const dispatch =useDispatch();
-  // const { productId } = useSelector((reduxData) => reduxData.detailReducer);
+  const dispatch = useDispatch();
 
+  const limit = 10;
 
+  const {filterCondition, filteredProducts, pending, currentPage, totalProduct } = useSelector((reduxData) => reduxData.productReducers);
 
-  // const navigate = useNavigate();
-  // const handleClick = (name) => {
-  //   console.log("Đã click " + name)
-  // }
+  const noPage = Math.ceil(totalProduct / limit);
+  
 
-  // const onBtnDetailClick =(idProduct)=>{
-  //   navigate("/products/"+idProduct)
-  //   dispatch(
-  //     onProductInfo(idProduct)
-  //   )
-  // }
+  useEffect(() => {
+    dispatch(fetchProducts(limit, currentPage,""));
+  }, [currentPage,filterCondition]);
+
+  const onChangePagination = (event, value) => {
+    dispatch(changePagination(value));
+  }
+
 
   return (
     <React.Fragment>
-      <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 2,lg:3 }} mt={0}>
-        <CardInfo ProductsData={Products}/>
+      <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 2, lg: 3 }} mt={0}>
+        {pending ? null :
+          <FilteredCard ProductsData={filteredProducts} />
+        }
+      </Grid>
+      <Grid item md={12} sm={12} lg={12} xs={12} mt={5} mb={5}>
+        <Pagination count={noPage} defaultPage={currentPage} onChange={onChangePagination} />
       </Grid>
     </React.Fragment>
   )
