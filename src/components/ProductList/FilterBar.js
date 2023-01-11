@@ -1,30 +1,32 @@
 import React from "react";
 // import {  SearchRounded } from "@mui/icons-material"
 import { Grid, Typography, Button, FormControl, InputLabel, MenuItem, Select } from "@mui/material"
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { changeBrand,changeOrdinal,changePrice } from "../../actions/product.actions";
 
 export const FilterBar = () => {
 
-    const [brand, setBrand] = React.useState('');
-    const [price, setPrice] = React.useState('');
-    const [ordinal, setOrdinal] = React.useState('');
+    const dispatch = useDispatch();
     
 
+    // const [ordinal, setOrdinal] = React.useState('');
     const [openBrand, setOpenBrand] = React.useState(false);
     const [openPrice, setOpenPrice] = React.useState(false);
     const [openOrdinal, setOpenOrdinal] = React.useState(false);
 
-
-
+    const {brand,
+        minPrice,
+        ordinal } = useSelector((reduxData) => reduxData.productReducers);
+    
 
     const handleBrandChange = (event) => {
-        setBrand(event.target.value);
+        dispatch(changeBrand(event.target.value))
     };
     const handlePriceChange = (event) => {
-        setPrice(event.target.value);
+        dispatch(changePrice(event.target.value))
     };
     const handleOrdinalChange = (event) => {
-        setOrdinal(event.target.value);
+        dispatch(changeOrdinal(event.target.value))
     };
 
     const handleClose = () => {
@@ -91,16 +93,16 @@ export const FilterBar = () => {
                         open={openPrice}
                         onClose={handleClose}
                         onOpen={handleOpenPrice}
-                        value={price}
+                        value={minPrice}
                         label="Price"
                         onChange={handlePriceChange}
                     >
-                        <MenuItem value={""}>Tất cả</MenuItem>
-                        <MenuItem value={100}>Dưới 100$</MenuItem>
-                        <MenuItem value={200}>100$-200$</MenuItem>
-                        <MenuItem value={300}>200$-300$</MenuItem>
-                        <MenuItem value={400}>300$-400$</MenuItem>
-                        <MenuItem value={1000}>Trên 400$</MenuItem>
+                         <MenuItem value={""}>Tất cả</MenuItem>
+                        <MenuItem value={0}>Dưới 100$</MenuItem>
+                        <MenuItem value={100}>100$-200$</MenuItem>
+                        <MenuItem value={200}>200$-300$</MenuItem>
+                        <MenuItem value={300}>300$-400$</MenuItem>
+                        <MenuItem value={400}>Trên 400$</MenuItem>
                     </Select>
                 </FormControl>
             </Grid>
@@ -121,8 +123,8 @@ export const FilterBar = () => {
                         onChange={handleOrdinalChange}
                     >
                         <MenuItem value={""}>None</MenuItem>
-                        <MenuItem value={"Ons"}>Tên A-Z</MenuItem>
-                        <MenuItem value={"Des"}>Tên Z-A</MenuItem>
+                        <MenuItem value={"asc"}>Tên A-Z</MenuItem>
+                        <MenuItem value={"desc"}>Tên Z-A</MenuItem>
                     </Select>
                 </FormControl>
             </Grid>

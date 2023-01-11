@@ -2,13 +2,37 @@ import {
     FETCH_PRODUCTS_ERROR,
     FETCH_PRODUCTS_PENDING,
     FETCH_PRODUCTS_SUCCESS,
-    PRODUCTS_PAGINATION_CHANGE
+    PRODUCTS_PAGINATION_CHANGE,BRAND_FILTER_CHANGE,ORDINAL_FILTER_CHANGE,PRICE_FILTER_CHANGE
 } from "../constants/product.constants";
 
 export const changePagination = (page) => {
     return {
         type: PRODUCTS_PAGINATION_CHANGE,
         page: page
+    }
+}
+
+export const changeBrand = (brand) => {
+    return {
+        type: BRAND_FILTER_CHANGE,
+        brand: brand,
+        page:1
+    }
+}
+
+export const changePrice = (minPrice) => {
+    console.log(minPrice)
+    return {
+        type: PRICE_FILTER_CHANGE,
+        minPrice:minPrice,
+        maxPrice:(minPrice===""||minPrice===400)?"":minPrice+100,
+        page:1
+    }
+}
+export const changeOrdinal = (ordinal) => {
+    return {
+        type: ORDINAL_FILTER_CHANGE,
+        ordinal: ordinal,
     }
 }
 
@@ -25,18 +49,20 @@ export const fetchProducts = (limit, currentPage,brand,minPrice,maxPrice,ordinal
         });
 
         try {
-            const resAllProducts = await fetch("http://localhost:8000/products", requestOptions);
+            const allProductsRes = await fetch("http://localhost:8000/products?brand="+ brand+"&minPrice="+ minPrice+"&maxPrice="+ maxPrice+"&ordinal="+ ordinal, requestOptions);
 
-            const resAllProductsObj = await resAllProducts.json();
+            const allProductsObj = await allProductsRes.json();
 
-            const filteredRes = await fetch("http://localhost:8000/products?start=" + ((currentPage-1) * limit) + "&limit=" + limit+"&brand="+ brand+"&minPrice="+ minPrice+"&maxPrice="+ maxPrice+"&ordinal="+ ordinal, requestOptions);
-            const filteredResObj = await filteredRes.json();
+            const filteredProductRes = await fetch("http://localhost:8000/products?start=" + ((currentPage-1) * limit) + "&limit=" + limit+"&brand="+ brand+"&minPrice="+ minPrice+"&maxPrice="+ maxPrice+"&ordinal="+ ordinal, requestOptions);
+            const filteredProductObj = await filteredProductRes.json();
+            console.log(filteredProductObj)
 
             return dispatch({
                 type: FETCH_PRODUCTS_SUCCESS,
-                totalProduct: resAllProductsObj.products.length,
-                products: resAllProductsObj.products,
-                filteredProducts: filteredResObj.products,
+                products: allProductsObj.products,
+                totalProduct: allProductsObj.products.length,
+                filteredProducts: filteredProductObj.products,
+                
             })
         } catch (err) {
             return dispatch({
