@@ -13,14 +13,21 @@ export const FilterResult = () => {
 
   const limit = 10;
 
-  const {filterCondition, filteredProducts, pending, currentPage, totalProduct } = useSelector((reduxData) => reduxData.productReducers);
+  const {brand,
+    minPrice,
+    maxPrice,
+    ordinal,
+    filteredProducts,
+    pending,
+    currentPage,
+    totalProduct } = useSelector((reduxData) => reduxData.productReducers);
 
   const noPage = Math.ceil(totalProduct / limit);
   
 
   useEffect(() => {
-    dispatch(fetchProducts(limit, currentPage,""));
-  }, [currentPage,filterCondition]);
+    dispatch(fetchProducts(limit, currentPage,brand,minPrice,maxPrice,ordinal));
+  }, [currentPage,brand,minPrice,maxPrice,ordinal]);
 
   const onChangePagination = (event, value) => {
     dispatch(changePagination(value));

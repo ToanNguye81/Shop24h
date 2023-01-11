@@ -12,10 +12,13 @@ const initialState = {
     pending: false,
     error: null,
     currentPage: 1,
-    filterCondition:"",
+    brand: "",
+    minPrice: "",
+    maxPrice: "",
+    ordinal: "asc"
 }
 
-export const productReducers=(state = initialState, action)=> {
+export const productReducers = (state = initialState, action) => {
     switch (action.type) {
         case FETCH_PRODUCTS_PENDING:
             state.pending = true;
@@ -24,7 +27,7 @@ export const productReducers=(state = initialState, action)=> {
             state.totalProduct = action.totalProduct;
             state.pending = false;
             state.products = action.products;
-            state.filteredProducts=action.filteredProducts;
+            state.filteredProducts = action.filteredProducts;
             break;
         case FETCH_PRODUCTS_ERROR:
             break;
@@ -35,5 +38,5 @@ export const productReducers=(state = initialState, action)=> {
             break;
     }
 
-    return {...state};
+    return { ...state };
 }
