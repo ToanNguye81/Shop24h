@@ -12,7 +12,7 @@ export const changePagination = (page) => {
     }
 }
 
-export const fetchProducts = (limit, currentPage,condition) => {
+export const fetchProducts = (limit, currentPage,brand,minPrice,maxPrice,ordinal) => {
     return async ( dispatch ) => {
 
         var requestOptions = {
@@ -29,9 +29,8 @@ export const fetchProducts = (limit, currentPage,condition) => {
 
             const resAllProductsObj = await resAllProducts.json();
 
-            const filteredRes = await fetch("http://localhost:8000/products?start=" + ((currentPage-1) * limit) + "&limit=" + limit+"&condition="+condition, requestOptions);
+            const filteredRes = await fetch("http://localhost:8000/products?start=" + ((currentPage-1) * limit) + "&limit=" + limit+"&brand="+ brand+"&minPrice="+ minPrice+"&maxPrice="+ maxPrice+"&ordinal="+ ordinal, requestOptions);
             const filteredResObj = await filteredRes.json();
-
 
             return dispatch({
                 type: FETCH_PRODUCTS_SUCCESS,
