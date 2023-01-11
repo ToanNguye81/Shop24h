@@ -1,7 +1,7 @@
 import React from "react";
 import {  SearchRounded } from "@mui/icons-material"
 import { Grid, Typography, Button, FormControl, InputLabel, MenuItem, Select } from "@mui/material"
-import { fetchProducts } from "../../actions/product.actions";
+import { useSelector } from "react-redux";
 
 export const FilterBar = () => {
 
@@ -40,8 +40,26 @@ export const FilterBar = () => {
         setOpenOrdinal(true);
     };
 
+    const dispatch = useDispatch();
+
+    const limit = 10;
+  
+    const {filterCondition, currentPage, totalProduct } = useSelector((reduxData) => reduxData.productReducers);
+  
+    const noPage = Math.ceil(totalProduct / limit);
+    
+  
+    useEffect(() => {
+      dispatch(fetchProducts(limit, currentPage,""));
+    }, [currentPage,filterCondition]);
+  
+    const onChangePagination = (event, value) => {
+      dispatch(changePagination(value));
+    }
+    
     const onBtnFilterClick =()=>{
-    //  dispatch(fetchProducts(brand,price,ordinal))
+        
+     dispatch(setCondition(brand,price,ordinal))
     }
     return (
         <Grid container
