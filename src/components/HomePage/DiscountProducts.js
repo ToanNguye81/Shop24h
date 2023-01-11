@@ -7,7 +7,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Products from "../../database_sample/productsData.json"
-import { Grid } from '@mui/material';
+import { Container, Grid} from '@mui/material';
 
 const responsive = {
   superLargeDesktop: {
@@ -34,52 +34,55 @@ function DiscountProducts() {
       <div>
         <h2 class="text-center mb-5 mt-4 pb-3">DISCOUNT PRODUCT</h2>
       </div>
-      <Carousel responsive={responsive}>
-        {
-          Products.slice(0, 12).map((item, i) => {
-            return (
-              <Grid  container
-              direction="column"
-              justifyContent="center"
-              alignItems="center">
+      <Container>
+        <Carousel responsive={responsive}>
+          {
+            Products.slice(0, 12).map((item, i) => {
+              return (
+                <Grid container
+                  direction="column"
+                  justifyContent="center"
+                  alignItems="center">
 
-              <Card sx={{ maxWidth: 300 }}>
-              <CardMedia
-                component="img"
-                alt="green iguana"
-                height="300"
-                image={item.imageUrl}
-              />
-              <hr/>
-              <CardContent>
-                <Typography gutterBottom variant="h6" component="div">
-                  {item.name}
-                </Typography>
-                <Typography gutterBottom variant="h6" component="div">
-                  $ {item.buyPrice}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                 {item.description}
-                </Typography>
-              </CardContent>
-              <CardActions >
-                <Grid
-                container
-                direction="row"
-                justifyContent="center"
-                alignItems="center">
-                
-                <Button size="medium">Detail</Button>
+                  <Card sx={{ maxWidth: 300 }}>
+                    <CardMedia
+                      component="img"
+                      alt="green iguana"
+                      height="300"
+                      image={item.imageUrl}
+                    />
+                    <hr />
+                    <CardContent>
+                      <Typography gutterBottom variant="h6" component="div">
+                        {item.name}
+                      </Typography>
+                      <Typography gutterBottom variant="h6" component="div">
+                        $ {item.buyPrice}
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        {item.description}
+                      </Typography>
+                    </CardContent>
+                    <CardActions >
+                      <Grid
+                        container
+                        direction="row"
+                        justifyContent="center"
+                        alignItems="center">
+
+                        <Button size="medium">Detail</Button>
+                      </Grid>
+                    </CardActions>
+                  </Card>
                 </Grid>
-              </CardActions>
-            </Card>
-            </Grid>
 
+              )
+            }
             )
           }
-          )
-        }
-      </Carousel>;
+        </Carousel>;
+      </Container>
+
     </div>
   );
 }

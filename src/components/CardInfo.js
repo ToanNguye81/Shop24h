@@ -25,15 +25,16 @@ export const CardInfo = ({ProductsData}) => {
 
   return (
     <React.Fragment>
-      <Grid container   justifyContent="space-around" rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} mt={0}>
+      <Grid container justifyContent="space-around" rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} mt={0}>
         {
-          ProductsData.map((item, i) => {
+          ProductsData.slice(0,10).map((item, i) => {
             return (
-              <Card sx={{ width: 200, m: 2 }}>
+              <Card sx={{ width: 200, m: 2 }} key={item.id} >
+              <CardActionArea onClick={()=>onBtnDetailClick(item.id)}>
                 <CardMedia
                   component="img"
                   alt={item.brand}
-                  height="150"
+                  height="180"
                   image={item.imageUrl}
                 />
                 <CardContent sx={{ paddingTop: 1, paddingBottom: 1 }}>
@@ -44,24 +45,14 @@ export const CardInfo = ({ProductsData}) => {
                     <a className="text h5">{item.name}</a>
                   </CardActionArea>
                   <Typography gutterBottom component="p">
-                    $ {item.buyPrice}  <del>{item.promotionPrice}</del>
+                    <strong>
+                      {item.promotionPrice} $ <del>{item.buyPrice} $</del>
+                      </strong>
                   </Typography>
                 </CardContent>
-
-                <CardActions >
-                  <Grid
-                    container
-                    direction="row"
-                    justifyContent="space-evenly"
-                    alignItems="center">
-                    <Button variant="contained" color="warning"  size="small"><ShoppingCart/></Button>
-                    <Button onClick={()=>onBtnDetailClick(item.id)}
-                    variant="contained" color="primary" size="small"
-                    ><Info/>
-                    </Button>
-                  </Grid>
-                </CardActions>
+              </CardActionArea>
               </Card>
+
             )
           }
           )

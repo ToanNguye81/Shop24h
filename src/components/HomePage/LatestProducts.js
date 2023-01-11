@@ -1,86 +1,16 @@
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import { Grid } from '@mui/material';
+import { Container } from '@mui/material';
 import Products from "../../database_sample/productsData.json"
+import { CardInfo } from '../CardInfo';
 
-const responsive = {
-  superLargeDesktop: {
-    // the naming can be any, depends on you.
-    breakpoint: { max: 4000, min: 3000 },
-    items: 5
-  },
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 4
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 2
-  },
-  mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 1
-  }
-};
 function LatestProducts() {
   return (
     <div class="pr-3 pl-3">
       <div>
         <h2 class="text-center mb-5 mt-5">LATEST PRODUCT</h2>
       </div>
-      <Carousel responsive={responsive}>
-        {
-          Products.slice(0, 12).map((item, i) => {
-            return (
-              <Grid  container
-              direction="column"
-              justifyContent="center"
-              alignItems="center">
-
-              <Card sx={{ maxWidth: 300 }}>
-              <CardMedia
-                component="img"
-                alt="green iguana"
-                height="250"
-                image={item.imageUrl}
-              />
-              <hr/>
-              <CardContent>
-                <Typography gutterBottom variant="h6" component="div">
-                  {item.name}
-                </Typography>
-                <Typography gutterBottom variant="h6" component="div">
-                  $ {item.buyPrice}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                 {item.description}
-                </Typography>
-              </CardContent>
-              <CardActions >
-                <Grid
-                container
-                direction="row"
-                justifyContent="center"
-                alignItems="center">
-                
-                <Button size="medium" >Detail</Button>
-                </Grid>
-              </CardActions>
-            </Card>
-            </Grid>
-
-            )
-          }
-          )
-        }
-      </Carousel>;
-      {/* <CardForm /> */}
+      <Container>
+      <CardInfo ProductsData={Products}/>
+      </Container>
     </div>
   );
 }
