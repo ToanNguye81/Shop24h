@@ -26,10 +26,10 @@ export const OrderInfo = () => {
                 <hr />
                 <Typography fontSize={20}>Size: </Typography>
                 <hr />
+                <Typography fontSize={20}>Buy Price: {tryData.buyPrice}</Typography>
                 <Typography fontSize={20}>
-                    Promotion Price: {tryData.promotionPrice}
+                    Promotion Price: <strong style={{color:"red"}}>{tryData.promotionPrice}</strong>
                 </Typography>
-                <Typography fontSize={20}>Buy Price: <strong style={{color:"red"}}>{tryData.buyPrice}</strong></Typography>
                 <Typography fontSize={20}>
                     Description: {tryData.description}
                 </Typography>

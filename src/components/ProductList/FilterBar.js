@@ -1,8 +1,10 @@
 import React from "react";
-import { SearchRounded } from "@mui/icons-material"
+import {  SearchRounded } from "@mui/icons-material"
 import { Grid, Typography, Button, FormControl, InputLabel, MenuItem, Select } from "@mui/material"
+import { fetchProducts } from "../../actions/product.actions";
 
 export const FilterBar = () => {
+
     const [brand, setBrand] = React.useState('');
     const [price, setPrice] = React.useState('');
     const [ordinal, setOrdinal] = React.useState('');
@@ -10,6 +12,7 @@ export const FilterBar = () => {
     const [openBrand, setOpenBrand] = React.useState(false);
     const [openPrice, setOpenPrice] = React.useState(false);
     const [openOrdinal, setOpenOrdinal] = React.useState(false);
+
 
     const handleBrandChange = (event) => {
         setBrand(event.target.value);
@@ -25,7 +28,6 @@ export const FilterBar = () => {
         setOpenBrand(false);
         setOpenPrice(false);
         setOpenOrdinal(false);
-        
     };
 
     const handleOpenBrand = () => {
@@ -37,6 +39,10 @@ export const FilterBar = () => {
     const handleOpenOrdinal = () => {
         setOpenOrdinal(true);
     };
+
+    const onBtnFilterClick =()=>{
+    //  dispatch(fetchProducts(brand,price,ordinal))
+    }
     return (
         <Grid container
             direction="row"
@@ -63,7 +69,7 @@ export const FilterBar = () => {
                         label="Brand"
                         onChange={handleBrandChange}
                     >
-                        <MenuItem value={"all"}>Tất cả</MenuItem>
+                        <MenuItem value={""}>Tất cả</MenuItem>
                         <MenuItem value={"NIKE"}>NIKE</MenuItem>
                         <MenuItem value={"ADIDAS"}>ADIDAS</MenuItem>
                         <MenuItem value={"JORDAN"}>JORDAN</MenuItem>
@@ -88,7 +94,7 @@ export const FilterBar = () => {
                         label="Price"
                         onChange={handlePriceChange}
                     >
-                        <MenuItem value={"ALL"}>Tất cả</MenuItem>
+                        <MenuItem value={""}>Tất cả</MenuItem>
                         <MenuItem value={100}>Dưới 100$</MenuItem>
                         <MenuItem value={200}>100$-200$</MenuItem>
                         <MenuItem value={300}>200$-300$</MenuItem>
@@ -113,14 +119,14 @@ export const FilterBar = () => {
                         label="Ordinal"
                         onChange={handleOrdinalChange}
                     >
-                        <MenuItem value={"Price"}>Giá từ thấp đến cao</MenuItem>
+                        <MenuItem value={""}>None</MenuItem>
                         <MenuItem value={"Ons"}>Tên A-Z</MenuItem>
                         <MenuItem value={"Des"}>Tên Z-A</MenuItem>
                     </Select>
                 </FormControl>
             </Grid>
             <Grid item xs={12} md={3} sx={{ textAlign: 'start' }} mb={1}>
-                <Button sx={{ backgroundColor: "#FCD603", color: "black" }}>
+                <Button sx={{ backgroundColor: "#FCD603", color: "black" }} onClick={onBtnFilterClick}>
                     <SearchRounded sx={{ fontSize: 50, color: "#c0392b" }} />
                     TÌM GIÀY NHANH
                 </Button>

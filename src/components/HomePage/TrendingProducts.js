@@ -9,7 +9,7 @@ function TrendingProducts() {
         <h2 class="text-center mb-5 mt-5">TRENDING PRODUCT</h2>
       </div>
       <Container>
-      <CardInfo ProductsData={Products} limit={10}/>
+      <CardInfo ProductsData={Products}/>
       </Container>
     </div>
   );

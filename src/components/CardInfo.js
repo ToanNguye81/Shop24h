@@ -7,14 +7,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { getDetailProduct } from "../actions/detail.actions";
 
 
-export const CardInfo = ({ProductsData,limit}) => {
+export const CardInfo = ({ProductsData}) => {
   const dispatch =useDispatch();
-  const { productId } = useSelector((reduxData) => reduxData.detailReducer);
 
   const navigate = useNavigate();
-  const handleClick = (name) => {
-    console.log("Đã click " + name)
-  }
 
   const onBtnDetailClick =(idProduct)=>{
     navigate("/products/"+idProduct)
@@ -26,7 +22,7 @@ export const CardInfo = ({ProductsData,limit}) => {
     <React.Fragment>
       <Grid container justifyContent="space-around" rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} mt={0}>
         {
-          ProductsData.slice(0,limit).map((item, i) => {
+          ProductsData.slice(0,10).map((item, i) => {
             return (
               <Card sx={{ width: 200, m: 2 }} key={item.id} >
               <CardActionArea onClick={()=>onBtnDetailClick(item.id)}>
@@ -40,7 +36,7 @@ export const CardInfo = ({ProductsData,limit}) => {
                 <Stack spacing={1}>
                     <Rating name="half-rating-read" defaultValue={5} readOnly />
                   </Stack>
-                  <CardActionArea gutterBottom sx={{ color: "#3498db" }}  onClick={() => handleClick(item.name)}>
+                  <CardActionArea gutterBottom sx={{ color: "#3498db" }}>
                     <a className="text h5">{item.name}</a>
                   </CardActionArea>
                   <Typography gutterBottom component="p">
