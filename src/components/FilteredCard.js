@@ -10,9 +10,9 @@ import { getDetailProduct } from "../actions/detail.actions";
 export const FilteredCard = ({ ProductsData }) => {
   const dispatch =useDispatch();
   const navigate = useNavigate();
-  const onBtnDetailClick =(idProduct)=>{
-    navigate("/products/"+idProduct)
-    dispatch(getDetailProduct(idProduct)
+  const onBtnDetailClick =(product)=>{
+    navigate("/products/"+product._id)
+    dispatch(getDetailProduct(product)
     )
   }
   return (
@@ -22,7 +22,7 @@ export const FilteredCard = ({ ProductsData }) => {
           ProductsData.map((item, i) => {
             return (
               <Card sx={{ width: 200, m: 2 }} key={item.id} >
-                <CardActionArea onClick={() => onBtnDetailClick(item._id)}>
+                <CardActionArea onClick={() => onBtnDetailClick(item)}>
                   <CardMedia
                     component="img"
                     alt={item.brand}
