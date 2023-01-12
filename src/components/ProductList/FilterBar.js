@@ -1,47 +1,35 @@
 import React from "react";
-// import {  SearchRounded } from "@mui/icons-material"
-import { Grid, Typography, Button, FormControl, InputLabel, MenuItem, Select } from "@mui/material"
+import { Grid, Typography, FormControl, InputLabel, MenuItem, Select, TextField } from "@mui/material"
 import { useDispatch, useSelector } from "react-redux";
-import { changeBrand,changeOrdinal,changePrice } from "../../actions/product.actions";
+import { changeBrand,changeOrdinal,changeMinPrice,changeMaxPrice } from "../../actions/product.actions";
 
 export const FilterBar = () => {
 
     const dispatch = useDispatch();
-    
-
-    // const [ordinal, setOrdinal] = React.useState('');
     const [openBrand, setOpenBrand] = React.useState(false);
-    const [openPrice, setOpenPrice] = React.useState(false);
     const [openOrdinal, setOpenOrdinal] = React.useState(false);
-
-    const {brand,
-        minPrice,
-        ordinal } = useSelector((reduxData) => reduxData.productReducers);
+    const {brand,minPrice,maxPrice,ordinal } = useSelector((reduxData) => reduxData.productReducers);
     
 
     const handleBrandChange = (event) => {
         dispatch(changeBrand(event.target.value))
     };
-    const handlePriceChange = (event) => {
-        dispatch(changePrice(event.target.value))
-    };
     const handleOrdinalChange = (event) => {
         dispatch(changeOrdinal(event.target.value))
     };
-
     const handleClose = () => {
         setOpenBrand(false);
-        setOpenPrice(false);
         setOpenOrdinal(false);
     };
-
     const handleOpenBrand = () => {
         setOpenBrand(true);
-        
     };
-    const handleOpenPrice = () => {
-        setOpenPrice(true);
+    const handleMinPriceChange=(event)=>{
+        dispatch(changeMinPrice(event.target.value))
     };
+    const handleMaxPriceChange=(event)=>{
+        dispatch(changeMaxPrice(event.target.value))
+    }
     const handleOpenOrdinal = () => {
         setOpenOrdinal(true);
     };
@@ -85,26 +73,8 @@ export const FilterBar = () => {
                 sx={{ textAlign: 'start' }}
             >
                 <Typography variant="h5" sx={{ color: "#d35400", fontFamily: "Papyrus", fontWeight: 400 }}>Chọn khoảng giá</Typography>
-                <FormControl sx={{ m: 1, minWidth: "90%" }}>
-                    <InputLabel id="demo-controlled-open-select-label">Price</InputLabel>
-                    <Select
-                        labelId="demo-controlled-open-select-label"
-                        id="demo-controlled-open-select"
-                        open={openPrice}
-                        onClose={handleClose}
-                        onOpen={handleOpenPrice}
-                        value={minPrice}
-                        label="Price"
-                        onChange={handlePriceChange}
-                    >
-                         <MenuItem value={""}>Tất cả</MenuItem>
-                        <MenuItem value={0}>Dưới 100$</MenuItem>
-                        <MenuItem value={100}>100$-200$</MenuItem>
-                        <MenuItem value={200}>200$-300$</MenuItem>
-                        <MenuItem value={300}>300$-400$</MenuItem>
-                        <MenuItem value={400}>Trên 400$</MenuItem>
-                    </Select>
-                </FormControl>
+                  <TextField sx={{ mt:1,mb:1,ml:1,width: "45%" }} label="From...$"  value={minPrice} onChange={handleMinPriceChange}/>
+                  <TextField sx={{mt:1,mb:1,mr:1,width: "45%" }} label="To...$" value={maxPrice} onChange={handleMaxPriceChange}/>
             </Grid>
             <Grid item xs={12} md={3}
                 sx={{ textAlign: 'start' }}
@@ -122,18 +92,14 @@ export const FilterBar = () => {
                         label="Ordinal"
                         onChange={handleOrdinalChange}
                     >
-                        <MenuItem value={""}>None</MenuItem>
-                        <MenuItem value={"asc"}>Tên A-Z</MenuItem>
-                        <MenuItem value={"desc"}>Tên Z-A</MenuItem>
+                        <MenuItem value={0}>Ngẫu nhiên</MenuItem>
+                        <MenuItem value={1}>Giá từ thấp đến cao</MenuItem>
+                        <MenuItem value={2}>Giá từ cao đến thấp</MenuItem>
+                        <MenuItem value={3}>Tên A-Z</MenuItem>
+                        <MenuItem value={4}>Tên Z-A</MenuItem>
                     </Select>
                 </FormControl>
             </Grid>
-            {/* <Grid item xs={12} md={3} sx={{ textAlign: 'start' }} mb={1}>
-                <Button sx={{ backgroundColor: "#FCD603", color: "black" }} >
-                    <SearchRounded sx={{ fontSize: 50, color: "#c0392b" }} />
-                    TÌM GIÀY NHANH
-                </Button>
-            </Grid> */}
         </Grid>
     )
 }

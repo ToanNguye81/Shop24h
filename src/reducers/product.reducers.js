@@ -2,7 +2,11 @@ import {
     FETCH_PRODUCTS_PENDING,
     FETCH_PRODUCTS_ERROR,
     FETCH_PRODUCTS_SUCCESS,
-    PRODUCTS_PAGINATION_CHANGE, ORDINAL_FILTER_CHANGE, BRAND_FILTER_CHANGE, PRICE_FILTER_CHANGE
+    PRODUCTS_PAGINATION_CHANGE,
+    ORDINAL_FILTER_CHANGE,
+    BRAND_FILTER_CHANGE,
+    MAX_PRICE_CHANGE,
+    MIN_PRICE_CHANGE
 } from "../constants/product.constants";
 
 const initialState = {
@@ -13,9 +17,9 @@ const initialState = {
     error: null,
     currentPage: 1,
     brand: "",
-    minPrice: "",
-    maxPrice: "",
-    ordinal: "asc"
+    minPrice: 0,
+    maxPrice: 100000,
+    ordinal: 0,
 }
 
 export const productReducers = (state = initialState, action) => {
@@ -42,11 +46,15 @@ export const productReducers = (state = initialState, action) => {
             state.ordinal = action.ordinal;
             state.currentPage = action.page;
             break;
-        case PRICE_FILTER_CHANGE:
-            state.minPrice = action.minPrice;
+        case MAX_PRICE_CHANGE:
             state.maxPrice = action.maxPrice;
             state.currentPage = action.page;
             break;
+        case MIN_PRICE_CHANGE:
+            state.minPrice = action.minPrice;
+            state.currentPage = action.page;
+            break;
+
         default:
             break;
     }

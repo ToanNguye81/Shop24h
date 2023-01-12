@@ -2,7 +2,11 @@ import {
     FETCH_PRODUCTS_ERROR,
     FETCH_PRODUCTS_PENDING,
     FETCH_PRODUCTS_SUCCESS,
-    PRODUCTS_PAGINATION_CHANGE,BRAND_FILTER_CHANGE,ORDINAL_FILTER_CHANGE,PRICE_FILTER_CHANGE
+    PRODUCTS_PAGINATION_CHANGE,
+    BRAND_FILTER_CHANGE,
+    ORDINAL_FILTER_CHANGE,
+    MIN_PRICE_CHANGE,
+    MAX_PRICE_CHANGE
 } from "../constants/product.constants";
 
 export const changePagination = (page) => {
@@ -16,17 +20,24 @@ export const changeBrand = (brand) => {
     return {
         type: BRAND_FILTER_CHANGE,
         brand: brand,
-        page:1
+        page: 1
     }
 }
 
-export const changePrice = (minPrice) => {
+export const changeMinPrice = (minPrice) => {
     console.log(minPrice)
     return {
-        type: PRICE_FILTER_CHANGE,
-        minPrice:minPrice,
-        maxPrice:(minPrice===""||minPrice===400)?"":minPrice+100,
-        page:1
+        type: MIN_PRICE_CHANGE,
+        minPrice: minPrice,
+        page: 1
+    }
+}
+export const changeMaxPrice = (maxPrice) => {
+    console.log(maxPrice)
+    return {
+        type: MAX_PRICE_CHANGE,
+        maxPrice: maxPrice,
+        page: 1
     }
 }
 export const changeOrdinal = (ordinal) => {
@@ -36,8 +47,8 @@ export const changeOrdinal = (ordinal) => {
     }
 }
 
-export const fetchProducts = (limit, currentPage,brand,minPrice,maxPrice,ordinal) => {
-    return async ( dispatch ) => {
+export const fetchProducts = (limit, currentPage, brand, minPrice, maxPrice, ordinal) => {
+    return async (dispatch) => {
 
         var requestOptions = {
             method: 'GET',
@@ -49,11 +60,11 @@ export const fetchProducts = (limit, currentPage,brand,minPrice,maxPrice,ordinal
         });
 
         try {
-            const allProductsRes = await fetch("http://localhost:8000/products?brand="+ brand+"&minPrice="+ minPrice+"&maxPrice="+ maxPrice+"&ordinal="+ ordinal, requestOptions);
+            const allProductsRes = await fetch("http://localhost:8000/products?brand=" + brand + "&minPrice=" + minPrice + "&maxPrice=" + maxPrice + "&ordinal=" + ordinal, requestOptions);
 
             const allProductsObj = await allProductsRes.json();
 
-            const filteredProductRes = await fetch("http://localhost:8000/products?start=" + ((currentPage-1) * limit) + "&limit=" + limit+"&brand="+ brand+"&minPrice="+ minPrice+"&maxPrice="+ maxPrice+"&ordinal="+ ordinal, requestOptions);
+            const filteredProductRes = await fetch("http://localhost:8000/products?start=" + ((currentPage - 1) * limit) + "&limit=" + limit + "&brand=" + brand + "&minPrice=" + minPrice + "&maxPrice=" + maxPrice + "&ordinal=" + ordinal, requestOptions);
             const filteredProductObj = await filteredProductRes.json();
             console.log(filteredProductObj)
 
@@ -62,7 +73,7 @@ export const fetchProducts = (limit, currentPage,brand,minPrice,maxPrice,ordinal
                 products: allProductsObj.products,
                 totalProduct: allProductsObj.products.length,
                 filteredProducts: filteredProductObj.products,
-                
+
             })
         } catch (err) {
             return dispatch({
