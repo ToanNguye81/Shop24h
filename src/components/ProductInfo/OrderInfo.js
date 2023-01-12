@@ -3,9 +3,9 @@ import React from "react";
 import {  useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../actions/cart.action";
 
-export const OrderInfo = () => {
+export const OrderInfo = ({detailProduct}) => {
     const dispatch= useDispatch();
-    const { detailProduct } = useSelector((reduxData) => reduxData.detailReducer);
+    // const { detailProduct } = useSelector((reduxData) => reduxData.detailReducer);
 
     const onBtnAddToCart=(product)=>{
             dispatch(addToCart(product))

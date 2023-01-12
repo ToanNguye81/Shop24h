@@ -1,7 +1,7 @@
 import { Grid, Typography } from "@mui/material"
 import { useDispatch, useSelector } from "react-redux";
-export const TitleBrand = () => {
-    const { detailProduct } = useSelector((reduxData) => reduxData.detailReducer);
+export const TitleBrand = ({detailProduct}) => {
+    // const { detailProduct } = useSelector((reduxData) => reduxData.detailReducer);
     return (
         <Grid container
             direction="row"
