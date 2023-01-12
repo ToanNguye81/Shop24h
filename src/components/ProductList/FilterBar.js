@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid, Typography, FormControl, InputLabel, MenuItem, Select, TextField } from "@mui/material"
 import { useDispatch, useSelector } from "react-redux";
-import { changeBrand,changeOrdinal,changeMinPrice,changeMaxPrice } from "../../actions/product.actions";
+import { changeBrand,changeOrdinal,changeMinPrice,changeMaxPrice,changePagination } from "../../actions/product.actions";
 
 export const FilterBar = () => {
 
@@ -13,9 +13,6 @@ export const FilterBar = () => {
 
     const handleBrandChange = (event) => {
         dispatch(changeBrand(event.target.value))
-    };
-    const handleOrdinalChange = (event) => {
-        dispatch(changeOrdinal(event.target.value))
     };
     const handleClose = () => {
         setOpenBrand(false);
@@ -32,6 +29,9 @@ export const FilterBar = () => {
     }
     const handleOpenOrdinal = () => {
         setOpenOrdinal(true);
+    };
+    const handleOrdinalChange = (event) => {
+        dispatch(changeOrdinal(event.target.value))
     };
     
     return (

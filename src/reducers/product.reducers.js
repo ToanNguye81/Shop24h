@@ -40,21 +40,20 @@ export const productReducers = (state = initialState, action) => {
             break;
         case BRAND_FILTER_CHANGE:
             state.brand = action.brand;
-            state.currentPage = action.page;
+            state.currentPage = 1;
             break;
         case ORDINAL_FILTER_CHANGE:
             state.ordinal = action.ordinal;
-            state.currentPage = action.page;
+            state.currentPage = 1;
             break;
         case MAX_PRICE_CHANGE:
             state.maxPrice = action.maxPrice;
-            state.currentPage = action.page;
+            state.currentPage = 1;
             break;
         case MIN_PRICE_CHANGE:
             state.minPrice = action.minPrice;
-            state.currentPage = action.page;
+            state.currentPage = 1;
             break;
-
         default:
             break;
     }

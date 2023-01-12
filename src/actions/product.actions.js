@@ -20,7 +20,6 @@ export const changeBrand = (brand) => {
     return {
         type: BRAND_FILTER_CHANGE,
         brand: brand,
-        page: 1
     }
 }
 
@@ -29,7 +28,6 @@ export const changeMinPrice = (minPrice) => {
     return {
         type: MIN_PRICE_CHANGE,
         minPrice: minPrice,
-        page: 1
     }
 }
 export const changeMaxPrice = (maxPrice) => {
@@ -37,15 +35,12 @@ export const changeMaxPrice = (maxPrice) => {
     return {
         type: MAX_PRICE_CHANGE,
         maxPrice: maxPrice,
-        page: 1
     }
 }
 export const changeOrdinal = (ordinal) => {
-    console.log(ordinal)
     return {
         type: ORDINAL_FILTER_CHANGE,
         ordinal: ordinal,
-        page:1
     }
 }
 
