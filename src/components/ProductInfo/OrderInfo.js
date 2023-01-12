@@ -1,8 +1,19 @@
 import { Grid, Typography, Button } from "@mui/material"
 import React from "react";
-import {  useSelector } from "react-redux";
+import {  useDispatch, useSelector } from "react-redux";
+import { addToCart } from "../../actions/cart.action";
+
 export const OrderInfo = () => {
+    const dispatch= useDispatch();
     const { detailProduct } = useSelector((reduxData) => reduxData.detailReducer);
+
+    const onBtnAddToCart=(product)=>{
+            dispatch(addToCart(product))
+    }
+    const onBtnBuyInstantly=(detailProduct)=>{
+
+    }
+
     return(
         <React.Fragment>
             <Grid
@@ -34,8 +45,8 @@ export const OrderInfo = () => {
                     direction="row"
                     justifyContent="space-around"
                     alignItems="stretch">
-                    <Button class="btn col-sm-4 btn-warning rounded-pill pb-3 pt-3">ADD TO CART</Button>
-                    <Button class="btn col-sm-4 btn-danger rounded-pill pb-3 pt-3">BUY INSTANTLY</Button>
+                    <Button class="btn col-sm-4 btn-warning rounded-pill pb-3 pt-3" onClick={()=>onBtnAddToCart(detailProduct)}>ADD TO CART</Button>
+                    <Button class="btn col-sm-4 btn-danger rounded-pill pb-3 pt-3" onClick={()=>onBtnBuyInstantly(detailProduct)}>BUY INSTANTLY</Button>
                 </Grid>
             </Grid>
 
@@ -68,8 +79,8 @@ export const OrderInfo = () => {
                     direction="row"
                     justifyContent="space-around"
                     alignItems="stretch">
-                    <Button class="btn col-sm-4 btn-warning rounded-pill pb-3 pt-3">ADD TO CART</Button>
-                    <Button class="btn col-sm-4 btn-danger rounded-pill pb-3 pt-3">BUY INSTANTLY</Button>
+                    <Button class="btn col-sm-4 btn-warning rounded-pill pb-3 pt-3" onClick={onBtnAddToCart}>ADD TO CART</Button>
+                    <Button class="btn col-sm-4 btn-danger rounded-pill pb-3 pt-3" onClick={onBtnBuyInstantly}>BUY INSTANTLY</Button>
                 </Grid>
             </Grid>
 
