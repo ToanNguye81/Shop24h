@@ -22,7 +22,7 @@ export const FilteredCard = ({ ProductsData }) => {
           ProductsData.map((item, i) => {
             return (
               <Card sx={{ width: 200, m: 2 }} key={item.id} >
-                <CardActionArea onClick={() => onBtnDetailClick(item.id)}>
+                <CardActionArea onClick={() => onBtnDetailClick(item._id)}>
                   <CardMedia
                     component="img"
                     alt={item.brand}

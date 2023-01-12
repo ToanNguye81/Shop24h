@@ -1,12 +1,8 @@
 import { Grid, Typography, Button } from "@mui/material"
 import React from "react";
 import {  useSelector } from "react-redux";
-import Products from "../../database_sample/productsData.json"
-
-
 export const OrderInfo = () => {
-    const { productId } = useSelector((reduxData) => reduxData.detailReducer);
-    const tryData = Products.find(({ id }) => id === productId);
+    const { detailProduct } = useSelector((reduxData) => reduxData.detailReducer);
     return(
         <React.Fragment>
             <Grid
@@ -17,21 +13,21 @@ export const OrderInfo = () => {
                 sx={{ display: { xs: 'none', md: 'flex'},height: "100%" }}
             >
                 <h1 style={{ color: "black" }}>
-                    <strong>{tryData.name}</strong>
+                    <strong>{detailProduct.name}</strong>
                 </h1>
                 <Typography fontSize={30}>
-                    Type: <strong>{tryData.type}</strong>
+                    Type: <strong>{detailProduct.type}</strong>
                 </Typography>
-                <Typography fontSize={20}>Gender: {tryData.gender}</Typography>
+                <Typography fontSize={20}>Gender: {detailProduct.gender}</Typography>
                 <hr />
                 <Typography fontSize={20}>Size: </Typography>
                 <hr />
-                <Typography fontSize={20}>Buy Price: {tryData.buyPrice}</Typography>
+                <Typography fontSize={20}>Buy Price: {detailProduct.buyPrice}</Typography>
                 <Typography fontSize={20}>
-                    Promotion Price: <strong style={{color:"red"}}>{tryData.promotionPrice}</strong>
+                    Promotion Price: <strong style={{color:"red"}}>{detailProduct.promotionPrice}</strong>
                 </Typography>
                 <Typography fontSize={20}>
-                    Description: {tryData.description}
+                    Description: {detailProduct.description}
                 </Typography>
                 <hr/>
                 <Grid container
@@ -51,21 +47,21 @@ export const OrderInfo = () => {
                 sx={{ display: { xs: 'flex', md: 'none'}}}
             >
                 <h1 style={{ color: "black" }}>
-                    <strong>{tryData.name}</strong>
+                    <strong>{detailProduct.name}</strong>
                 </h1>
                 <Typography fontSize={30}>
-                    Type: <strong>{tryData.type}</strong>
+                    Type: <strong>{detailProduct.type}</strong>
                 </Typography>
-                <Typography fontSize={20}>Gender: {tryData.gender}</Typography>
+                <Typography fontSize={20}>Gender: {detailProduct.gender}</Typography>
                 <hr />
                 <Typography fontSize={20}>Size: </Typography>
                 <hr />
                 <Typography fontSize={20}>
-                    Promotion Price: {tryData.promotionPrice}
+                    Promotion Price: {detailProduct.promotionPrice}
                 </Typography>
-                <Typography fontSize={20}>Buy Price: <strong style={{color:"red"}}>{tryData.buyPrice}</strong></Typography>
+                <Typography fontSize={20}>Buy Price: <strong style={{color:"red"}}>{detailProduct.buyPrice}</strong></Typography>
                 <Typography fontSize={20} sx={{textAlign: 'center'}}>
-                    Description: {tryData.description}
+                    Description: {detailProduct.description}
                 </Typography>
                 <hr/>
                 <Grid container

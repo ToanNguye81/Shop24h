@@ -1,14 +1,14 @@
 import { Grid } from "@mui/material"
 import React from "react"
-import LatestProducts from "../HomePage/LatestProducts"
+import { useSelector } from "react-redux";
 
-export const Description=()=>{return(
-
+export const Description=()=>{
+    const { detailProduct } = useSelector((reduxData) => reduxData.detailReducer);
+    return(
     <React.Fragment>
         <Grid>
-            <h1>Sản phẩm liên quan Demo nè:</h1>
+            <h1>Tin tức bài viết: </h1>
         </Grid>
-        <LatestProducts/>
     </React.Fragment>
         )
 }
