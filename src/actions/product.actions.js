@@ -41,9 +41,11 @@ export const changeMaxPrice = (maxPrice) => {
     }
 }
 export const changeOrdinal = (ordinal) => {
+    console.log(ordinal)
     return {
         type: ORDINAL_FILTER_CHANGE,
         ordinal: ordinal,
+        page:1
     }
 }
 
