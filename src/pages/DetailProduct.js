@@ -11,38 +11,33 @@ import { getDetailProduct } from "../actions/detail.actions"
 
 
 export const DetailProduct = () => {
-    const navigate = useNavigate();
-    // const {detailProduct}= useSelector((DataReducer)=>{})
+    // const navigate = useNavigate();
+    const dispatch=useDispatch();
+
     const { detailProduct } = useSelector((reduxData) => reduxData.detailReducer);
 
     const { productId } = useParams();
 
     useEffect(() => {
-        if ( productId === "third" ) {
-            navigate("/thirdpage");
-        }
+        if(productId)
+        dispatch(getDetailProduct(productId))
     })
 
     return (
-        <>
-            {productId ?
-                <React.Fragment>
-                    <TitleBrand xs={12} detailProduct={detailProduct} />
-                    <Grid container direction="row" justifyContent="center" alignItems="stretch" spacing={3} mt={2} >
-                        <Grid item xs={12} md={5}>
-                            <ImageProduct detailProduct={detailProduct} />
-                        </Grid>
-                        <Grid item xs={12} md={5} pb={3}>
-                            <OrderInfo detailProduct={detailProduct} />
-                        </Grid>
-                    </Grid>
-                    <Grid xs={12}>
-                        <Description detailProduct={detailProduct} />
-                    </Grid>
-                </React.Fragment>
-                : null}
-        </>
-
+        <React.Fragment>
+            <TitleBrand xs={12} detailProduct={detailProduct} />
+            <Grid container direction="row" justifyContent="center" alignItems="stretch" spacing={3} mt={2} >
+                <Grid item xs={12} md={5}>
+                    <ImageProduct detailProduct={detailProduct} />
+                </Grid>
+                <Grid item xs={12} md={5} pb={3}>
+                    <OrderInfo detailProduct={detailProduct} />
+                </Grid>
+            </Grid>
+            <Grid xs={12}>
+                <Description detailProduct={detailProduct} />
+            </Grid>
+        </React.Fragment>
 
     )
 }
