@@ -6,7 +6,6 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { changePagination, fetchProducts } from "../../actions/product.actions";
 
-// import filteredProducts from "../../database_sample/productsData.json"
 
 export const FilterResult = () => {
   const dispatch = useDispatch();
