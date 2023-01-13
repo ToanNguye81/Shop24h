@@ -50,13 +50,22 @@ export const AllOrder = () => {
                                         </TableCell>
                                         <TableCell align="right" width="25%">{item.buyPrice}</TableCell>
                                         <TableCell align="center" width="25%">
-                                            <IconButton sx={{ backgroundColor: "green" }}>
-                                                <AddIcon />
+
+                                            <Grid container spacing={{ xs: 2, md: 3 }} sx={{border:"1px solid #E6E6E6"}} columns={{ xs: 4, sm: 8, md: 12 }}>
+                                                <Grid item sx={{borderRight:"1px solid #E6E6E6"}} textAlign="center">
+                                                <AddIcon/>
+                                                </Grid>
+                                                <Grid item >sadfh</Grid>
+                                                <Grid item sx={{borderLeft:"1px solid #E6E6E6"}}>_</Grid>
+                                            </Grid>
+
+                                            {/* <IconButton>
+                                                <AddIcon/>
                                             </IconButton>
                                             <TextField sx={{ width: "40%", textAlign: "center" }} value="50" />
-                                            <IconButton sx={{ backgroundColor: "red" }}>
+                                            <IconButton >
                                                 <RemoveIcon />
-                                            </IconButton>
+                                            </IconButton> */}
                                         </TableCell>
                                         <TableCell align="right" width="25%"><del>{item.promotionPrice}</del></TableCell>
                                     </TableRow>
