@@ -8,42 +8,36 @@ import { getDetailProduct } from "../actions/detail.actions";
 
 
 export const FilteredCard = ({ ProductsData }) => {
-  const dispatch =useDispatch();
   const navigate = useNavigate();
   const onBtnDetailClick =(product)=>{
-    navigate("/products/"+product._id)
-    dispatch(getDetailProduct(product)
-    )
+    navigate("/detail-product/"+product._id)
   }
   return (
     <React.Fragment>
-      <Grid container justifyContent="space-around" rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} mt={0}>
+      <Grid container spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }} >
         {
           ProductsData.map((item, i) => {
             return (
-              <Card sx={{ width: 200, m: 2 }} key={item.id} >
+              <Grid item xs={12} sm={4} md={3} key={item._id} mb={5}>
                 <CardActionArea onClick={() => onBtnDetailClick(item)}>
                   <CardMedia
                     component="img"
                     alt={item.brand}
-                    height="180"
+                    height="auto"
                     image={item.imageUrl}
                   />
                   <CardContent sx={{ paddingTop: 1, paddingBottom: 1 }}>
-                    <Stack spacing={1}>
-                      <Rating name="half-rating-read" defaultValue={5} readOnly />
-                    </Stack>
-                    <CardActionArea gutterBottom sx={{ color: "#3498db" }}>
-                      <a className="text h5">{item.name}</a>
-                    </CardActionArea>
-                    <Typography gutterBottom component="p">
-                      <strong>
-                        {item.promotionPrice} $ <del>{item.buyPrice} $</del>
-                      </strong>
-                    </Typography>
+                  <Typography gutterBottom component="a" sx={{color:"#7f8c8d"}}>
+                    <a>{item.name}</a>
+                  </Typography>
+                  <Typography component="p" sx={{color:"#7f8c8d"}}>
+                    <strong>
+                     ${item.promotionPrice}  <del>${item.buyPrice} </del>
+                    </strong>
+                  </Typography>
                   </CardContent>
                 </CardActionArea>
-              </Card>
+                </Grid>
             )
           }
           )

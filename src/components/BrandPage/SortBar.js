@@ -14,7 +14,7 @@ export const SortBar=()=>{
             direction="row"
             justifyContent="space-around"
             alignItems="start"
-            sx={{ display: {md: 'flex' }, backgroundColor: "#bdc3c7",pl:20,pt:5}}
+            sx={{ display: {md: 'flex' }, backgroundColor: "#222222",pl:20,pt:5}}
             >
 
             <Grid item xs={12} md={3}
@@ -24,7 +24,7 @@ export const SortBar=()=>{
                 alignItems="center"
             >
                 <FullscreenExitIcon sx={{ fontSize: 80, color: "#c0392b" }}/>
-                <Typography variant="h5" sx={{ color: "#d35400", fontFamily: "Papyrus", fontWeight: 400 }}>Choose Size</Typography>
+                <Typography variant="h5" sx={{ color: "#d35400", fontFamily: "Poppins-Regular", fontWeight: 400 }}>Choose Size</Typography>
                 <SelectSize/>
             </Grid>
 
@@ -32,7 +32,7 @@ export const SortBar=()=>{
                 sx={{ textAlign: 'start' }}
             >
                 <AttachMoneyIcon sx={{ fontSize: 80, color: "#c0392b" }} />
-                <Typography variant="h5" sx={{ color: "#d35400", fontFamily: "Papyrus", fontWeight: 400 }}>Choose Price</Typography>
+                <Typography variant="h5" sx={{ color: "#d35400", fontFamily: "Poppins-Regular", fontWeight: 400 }}>Choose Price</Typography>
                 <SelectSize/>
             </Grid>
 
@@ -40,14 +40,14 @@ export const SortBar=()=>{
                 sx={{ textAlign: 'start' }}
             >
                 <SortByAlphaIcon sx={{ fontSize: 80, color: "#c0392b" }} />
-                <Typography variant="h5" sx={{ color: "#d35400", fontFamily: "Papyrus", fontWeight: 400 }}>Sort By</Typography>
+                <Typography variant="h5" sx={{ color: "#d35400", fontFamily: "Poppins-Regular", fontWeight: 400 }}>Sort By</Typography>
                 <SelectSize />
             </Grid>
             <Grid item xs={12} md={3}
                 sx={{ textAlign: 'start' }}
             >
                 <MouseTwoToneIcon sx={{ fontSize: 80, color: "#c0392b" }} />
-                <Typography variant="h5" sx={{ color: "#d35400", fontFamily: "Papyrus", fontWeight: 400}}>Supporting 24/24</Typography>
+                <Typography variant="h5" sx={{ color: "#d35400", fontFamily: "Poppins-Regular", fontWeight: 400}}>Supporting 24/24</Typography>
                 <Button variant="contained" sx={{mt:3,backgroundColor:"#c0392b"}}>
                 <SearchTwoToneIcon sx={{ fontSize: 40, color: "#2c3e50" }} />
                     Tìm giày nhanh 

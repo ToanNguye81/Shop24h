@@ -1,14 +1,14 @@
 import HomePage from "./pages/HomePage";
 import { SignInPage } from "./pages/SignInPage";
 import { ProductList } from "./pages/ProductList";
-import { ProductInfo } from "./pages/ProductInfo";
+import { DetailProduct } from "./pages/DetailProduct";
 import { OrderPage } from "./pages/OrderPage";
 
 const routerList = [
     { path: "/", element:  <HomePage /> },
     { path: "/homepage", element:  <HomePage /> },
     { path: "/login", element: <SignInPage /> },
-    { path: "/products/:productId", element:  <ProductInfo/> },
+    { path: "/detail-product/:productId", element:  <DetailProduct/> },
     { path: "/orders", element:  <OrderPage/> },
     { path: "/products", element: <ProductList/> },
 

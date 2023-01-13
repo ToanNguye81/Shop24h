@@ -9,7 +9,7 @@ export const ImageProduct = ({detailProduct}) => {
             <Grid container
                 direction="row"
                 justifyContent="center"
-                alignItems="stretch" sx={{border:"0.5px solid orange"}} >
+                alignItems="stretch" sx={{border:"none"}} >
                 <a href={detailProduct.imageUrl}>
                     <img src={detailProduct.imageUrl} alt="product-img" width="100%" height="auto" />
                 </a>

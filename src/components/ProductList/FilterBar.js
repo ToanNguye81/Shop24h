@@ -40,14 +40,14 @@ export const FilterBar = () => {
             justifyContent="space-around"
             alignItems="flex-end"
             spacing={3}
-            sx={{ display: { md: 'flex' }, backgroundColor: "#bdc3c7", pt: 6, pb: 4, pl:10 }}>
+            sx={{ display: { md: 'flex' }, backgroundColor: "#F2F2F2", pt: 6, pb: 4, pl:10 }}>
             <Grid item xs={12} md={3}
                 sx={{ textAlign: 'start' }}
                 direction="column"
                 justifyContent="start"
                 alignItems="start"
             >
-                <Typography variant="h5" sx={{ color: "#d35400", fontFamily: "Papyrus", fontWeight: 400 }}>Chọn nhãn hiệu</Typography>
+                <Typography variant="h5" sx={{ fontFamily: "Roboto", fontWeight: 400 }}>Brand</Typography>
                 <FormControl sx={{ m: 1, minWidth: "90%" }}>
                     <InputLabel id="demo-controlled-open-select-label">Brand</InputLabel>
                     <Select
@@ -72,14 +72,14 @@ export const FilterBar = () => {
             <Grid item xs={12} md={3}
                 sx={{ textAlign: 'start' }}
             >
-                <Typography variant="h5" sx={{ color: "#d35400", fontFamily: "Papyrus", fontWeight: 400 }}>Chọn khoảng giá</Typography>
+                <Typography variant="h5" sx={{ fontWeight: 400 }}>Price</Typography>
                   <TextField sx={{ mt:1,mb:1,ml:1,width: "45%" }} label="From...$"  value={minPrice} onChange={handleMinPriceChange}/>
                   <TextField sx={{mt:1,mb:1,mr:1,width: "45%" }} label="To...$" value={maxPrice} onChange={handleMaxPriceChange}/>
             </Grid>
             <Grid item xs={12} md={3}
                 sx={{ textAlign: 'start' }}
             >
-                <Typography variant="h5" sx={{ color: "#d35400", fontFamily: "Papyrus", fontWeight: 400 }}>Sắp xếp theo</Typography>
+                <Typography variant="h5" sx={{ fontWeight: 400 }}>Sort By</Typography>
                 <FormControl sx={{ m: 1, minWidth: "90%" }}>
                     <InputLabel id="demo-controlled-open-select-label">Ordinal</InputLabel>
                     <Select

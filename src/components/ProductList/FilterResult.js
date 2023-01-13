@@ -11,7 +11,7 @@ import { changePagination, fetchProducts } from "../../actions/product.actions";
 export const FilterResult = () => {
   const dispatch = useDispatch();
 
-  const limit = 10;
+  const limit = 12;
 
   const { brand,
     minPrice,

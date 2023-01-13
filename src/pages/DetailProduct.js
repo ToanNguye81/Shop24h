@@ -1,31 +1,31 @@
 import { Grid } from "@mui/material"
 import React from "react"
-import { Description } from "../components/ProductInfo/Description"
-import { ImageProduct } from "../components/ProductInfo/ImageProduct"
-import { OrderInfo } from "../components/ProductInfo/OrderInfo"
-import { TitleBrand } from "../components/ProductInfo/TitleBrand"
+import { Description } from "../components/DetailProduct/Description"
+import { ImageProduct } from "../components/DetailProduct/ImageProduct"
+import { OrderInfo } from "../components/DetailProduct/OrderInfo"
+import { TitleBrand } from "../components/DetailProduct/TitleBrand"
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux"
 import { getDetailProduct } from "../actions/detail.actions"
 
 
-export const ProductInfo = () => {
+export const DetailProduct = () => {
+    const navigate = useNavigate();
+    // const {detailProduct}= useSelector((DataReducer)=>{})
+    const { detailProduct } = useSelector((reduxData) => reduxData.detailReducer);
 
-    const dispatch = useDispatch();
     const { productId } = useParams();
-    const { detailProduct,pending } = useSelector((reduxData) => reduxData.detailReducer);
-    
-    // useEffect(() => {
-    //     if (productId) {
-    //         console.log(productId)
-    //         dispatch(getDetailProduct(productId))
-    //     }
-    // })
+
+    useEffect(() => {
+        if ( productId === "third" ) {
+            navigate("/thirdpage");
+        }
+    })
 
     return (
         <>
-            {pending ?
+            {productId ?
                 <React.Fragment>
                     <TitleBrand xs={12} detailProduct={detailProduct} />
                     <Grid container direction="row" justifyContent="center" alignItems="stretch" spacing={3} mt={2} >

@@ -1,9 +1,10 @@
+
 .bg-grey {
-    background-color: #1e272e;
+    background-color: #222222;
 }
 
 .bg-hor {
-    background-color: #1e272e;
+    background-color: #222222;
 }
 
 .bg-min {
@@ -72,7 +73,7 @@ a {
 
 body {
     height: 100vh;
-    background: linear-gradient(to right, #ffffff, #c5d2d3);
+    /* background: linear-gradient(to right, #ffffff, #c5d2d3); */
     width: 100%;
 }
 
@@ -110,7 +111,7 @@ body {
     max-width: 100%;
     height: auto;
     text-align: center;
-    background: #1e272e;
+    background: #222222;
 }
 
 .custom-tag>img {
@@ -159,5 +160,5 @@ hr{
 
 .one-line:before,
 .one-line:after {
-    background: #1e272e;
+    background: #222222;
 }

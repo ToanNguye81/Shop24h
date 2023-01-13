@@ -15,9 +15,11 @@ export const detailReducer = (state = initializeState, action) => {
             state.pending = true;
             break;
         case GET_DETAIL_PRODUCT_SUCCESS:
+            state.pending= true;
             state.detailProduct = action.detailProduct
             break;
         case GET_DETAIL_PRODUCT_ERROR:
+            state.pending= true;
             state.error = action.error
             break;
         default:
