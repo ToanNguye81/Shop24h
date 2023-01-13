@@ -31,7 +31,7 @@ export const AllOrder = () => {
                     <TableContainer component={Paper}>
                         <Table>
                             <TableHead>
-                                <TableRow sx={{ backgroundColor: "#16a085" }}>
+                                <TableRow >
                                     <TableCell ><strong>Products</strong></TableCell>
                                     <TableCell align="right"><strong>Price</strong></TableCell>
                                     <TableCell align="center"><strong>Quantity</strong></TableCell>

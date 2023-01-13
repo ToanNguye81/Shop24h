@@ -5,22 +5,23 @@ import {
 } from "../constants/detail.constants";
 
 const initializeState = {
-    pending: false,
+    pendingDetail: false,
     error: null,
     detailProduct: null,
 }
-export const detailReducer = (state = initializeState, action) => {
+export const detailReducers = (state = initializeState, action) => {
+    console.log(action)
     switch (action.type) {
         case GET_DETAIL_PRODUCT_PENDING:
-            state.pending = true;
+            state.pendingDetail = true;
             break;
         case GET_DETAIL_PRODUCT_SUCCESS:
-            state.pending= true;
-            state.detailProduct = action.detailProduct
+            console.log(action.detailProduct)
+            state.pendingDetail= false;
+            state.detailProduct = action.detailProduct;
             break;
         case GET_DETAIL_PRODUCT_ERROR:
-            state.pending= true;
-            state.error = action.error
+            state.error = action.error;
             break;
         default:
             break;

@@ -16,8 +16,8 @@ export const TitleOrder = () => {
                 justifyContent="center"
                 alignItems="center"
             >
-                <Typography variant="h2" sx={{ color: "#d35400", fontFamily: "Poppins-Regular", fontWeight: 400 }}>
-                   <AddShoppingCartIcon sx={{ fontSize: 80, color: "#c0392b" }}/> ==YOUR ORDER==<LocalShippingIcon sx={{ fontSize: 80, color: "#c0392b" }}/>
+                <Typography variant="h2" sx={{ color: "#FFFFFF", fontFamily: "Poppins-Regular", fontWeight: 400 }}>
+                   <AddShoppingCartIcon sx={{ fontSize: 80, color: "#FFFFFF" }}/> ==YOUR ORDER==<LocalShippingIcon sx={{ fontSize: 80, color: "#FFFFFF" }}/>
                     </Typography>
             </Grid>
         </Grid>

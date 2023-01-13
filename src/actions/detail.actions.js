@@ -1,8 +1,8 @@
 import {GET_DETAIL_PRODUCT_SUCCESS,GET_DETAIL_PRODUCT_PENDING,GET_DETAIL_PRODUCT_ERROR} from "../constants/detail.constants"
 
 export const getDetailProduct = (productId) => {
+    console.log(productId);
     return async (dispatch) => {
-
         var requestOptions = {
             method: 'GET',
             redirect: 'follow'
@@ -17,8 +17,7 @@ export const getDetailProduct = (productId) => {
 
 
             const detailProductObj = await detailProductRes.json();
-            console.log(detailProductObj.data)
-
+            console.log(detailProductObj)
             return dispatch({
                 type: GET_DETAIL_PRODUCT_SUCCESS,
                 detailProduct:detailProductObj.data,
@@ -31,9 +30,3 @@ export const getDetailProduct = (productId) => {
         }
     }
 }
-// export const getDetailProduct=(product)=>{
-//     return {
-//         type: GET_DETAIL_PRODUCT_SUCCESS,
-//         detailProduct:product
-//     }
-// }

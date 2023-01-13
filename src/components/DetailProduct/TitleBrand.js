@@ -15,7 +15,7 @@ export const TitleBrand = ({detailProduct}) => {
                 justifyContent="center"
                 alignItems="center"
             >
-                <Typography variant="h2" sx={{ color: "#d35400", fontFamily: "Poppins-Regular", fontWeight: 400 }}>
+                <Typography variant="h2" sx={{ color: "#FFFFFF", fontFamily: "Poppins-Regular", fontWeight: 400 }}>
                     {detailProduct.brand}
                 </Typography>
             </Grid>
