@@ -12,6 +12,7 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { ProductList } from '../../pages/ProductList';
 import { useNavigate } from 'react-router-dom';
+import { fontWeight } from '@mui/system';
 
 
 export const AllOrder = () => {
@@ -51,20 +52,26 @@ export const AllOrder = () => {
                                         <TableCell align="right" width="25%">{item.buyPrice}</TableCell>
                                         <TableCell align="center" width="25%">
 
-                                            <Grid container spacing={{ xs: 2, md: 3 }} sx={{border:"1px solid #E6E6E6"}} columns={{ xs: 4, sm: 8, md: 12 }}>
+                                            {/* <Grid container spacing={{ xs: 2, md: 3 }} sx={{border:"1px solid #E6E6E6"}} columns={{ xs: 4, sm: 8, md: 12 }}>
                                                 <Grid item sx={{borderRight:"1px solid #E6E6E6"}} textAlign="center">
                                                 <AddIcon/>
                                                 </Grid>
                                                 <Grid item >sadfh</Grid>
                                                 <Grid item sx={{borderLeft:"1px solid #E6E6E6"}}>_</Grid>
-                                            </Grid>
+                                            </Grid> */}
+
+                                            <ButtonGroup>
+                                                <Button sx={{height:"50px",width:"50px",border:"0.1px solid #E6E6E6",color:"#555555"}}><AddIcon/></Button>
+                                                <input style={{height:"50px",width:"50px",backgroundColor:"#F7F7F7",color:"#555555" ,border:"0.1px solid #E6E6E6"}}></input>
+                                                <Button sx={{height:"50px",width:"50px",border:"0.1px solid #E6E6E6",color:"#555555"}}><RemoveIcon/></Button>
+                                            </ButtonGroup>
 
                                             {/* <IconButton>
                                                 <AddIcon/>
                                             </IconButton>
                                             <TextField sx={{ width: "40%", textAlign: "center" }} value="50" />
                                             <IconButton >
-                                                <RemoveIcon />
+                                               
                                             </IconButton> */}
                                         </TableCell>
                                         <TableCell align="right" width="25%"><del>{item.promotionPrice}</del></TableCell>
