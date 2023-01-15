@@ -1,10 +1,10 @@
 import {  combineReducers } from "redux";
-import { signInReducer } from "./signIn.reducers";
+import { signInReducers } from "./signIn.reducers";
 import {productReducers} from "./product.reducers";
 import {cartReducers} from "./cart.reducers";
 import { detailReducers } from "./detail.reducers";
 const rootReducer=combineReducers({
-    signInReducer,
+    signInReducers,
     productReducers,
     cartReducers,
     detailReducers,

@@ -16,7 +16,7 @@ export const UserAvatar = () => {
   const dispatch = useDispatch();
 
   const [anchorElUser, setAnchorElUser] = useState(null);
-  const { photoURL, userName } = useSelector((reduxData) => reduxData.signInReducer);
+  const { photoURL, userName } = useSelector((reduxData) => reduxData.signInReducers);
 
   const handleLogin = (event) => {
     navigate("/login")

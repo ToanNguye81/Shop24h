@@ -5,7 +5,7 @@ const initializeState = {
     photoURL: null,
     userName: null
 }
-export const signInReducer = (state = initializeState, action) => {
+export const signInReducers = (state = initializeState, action) => {
     switch (action.type) {
         case SUCCESS_LOG_IN:
             state.logged = true
@@ -16,7 +16,7 @@ export const signInReducer = (state = initializeState, action) => {
 
             break;
         case SUCCESS_LOG_OUT:
-            console.log("SUCCESS_LOG_OUT")
+            state.logged = false
             state.photoURL = null
             state.userName = null
             break;
