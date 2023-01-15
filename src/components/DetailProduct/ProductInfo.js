@@ -1,27 +1,34 @@
 import { Grid, Typography, Button } from "@mui/material"
 import React from "react";
-import {  useDispatch, useSelector } from "react-redux";
-import { addToCart } from "../../actions/cart.action";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { addToCart } from "../../actions/cart.actions";
 
-export const OrderInfo = ({detailProduct}) => {
-    const dispatch= useDispatch();
-    // const { detailProduct } = useSelector((reduxData) => reduxData.detailReducer);
+export const ProductInfo = ({ detailProduct }) => {
+    const dispatch = useDispatch();
+    const navigate =useNavigate()
+    const { logged } = useSelector((reduxData) => reduxData.signInReducers);
 
-    const onBtnAddToCart=(product)=>{
-            dispatch(addToCart(product))
+
+    const onBtnAddToCart=(paramProduct)=> {
+        if (logged) {
+            dispatch(addToCart(paramProduct._id))
+        } else { 
+            navigate("/login")
+        }
     }
-    const onBtnBuyInstantly=(detailProduct)=>{
+    const onBtnBuyInstantly = (detailProduct) => {
 
     }
 
-    return(
+    return (
         <React.Fragment>
             <Grid
                 container
                 direction="column"
                 justifyContent="space-between"
                 alignItems="stretch"
-                sx={{ display: { xs: 'none', md: 'flex'},height: "100%" }}
+                sx={{ display: { xs: 'none', md: 'flex' }, height: "100%" }}
             >
                 <h1 style={{ color: "black" }}>
                     <strong>{detailProduct.name}</strong>
@@ -35,27 +42,27 @@ export const OrderInfo = ({detailProduct}) => {
                 <hr />
                 <Typography fontSize={20}>Buy Price: {detailProduct.buyPrice}</Typography>
                 <Typography fontSize={20}>
-                    Promotion Price: <strong style={{color:"red"}}>{detailProduct.promotionPrice}</strong>
+                    Promotion Price: <strong style={{ color: "red" }}>{detailProduct.promotionPrice}</strong>
                 </Typography>
                 <Typography fontSize={20}>
                     Description: {detailProduct.description}
                 </Typography>
-                <hr/>
+                <hr />
                 <Grid container
                     direction="row"
                     justifyContent="space-around"
                     alignItems="stretch">
-                    <Button class="btn col-sm-4 btn-warning rounded-pill pb-3 pt-3" onClick={()=>onBtnAddToCart(detailProduct)}>ADD TO CART</Button>
-                    <Button class="btn col-sm-4 btn-danger rounded-pill pb-3 pt-3" onClick={()=>onBtnBuyInstantly(detailProduct)}>BUY INSTANTLY</Button>
+                    <Button className="btn col-sm-4 rounded-pill pb-3 pt-3" sx={{color:"white",backgroundColor:"#717FE0"}} onClick={()=>onBtnAddToCart(detailProduct)}>ADD TO CART</Button>
+                    <Button className="btn col-sm-4 rounded-pill pb-3 pt-3" onClick={onBtnBuyInstantly}>BUY INSTANTLY</Button>
                 </Grid>
             </Grid>
 
             <Grid
-               container
-               direction="column"
-               justifyContent="center"
-               alignItems="center"
-                sx={{ display: { xs: 'flex', md: 'none'}}}
+                container
+                direction="column"
+                justifyContent="center"
+                alignItems="center"
+                sx={{ display: { xs: 'flex', md: 'none' } }}
             >
                 <h1 style={{ color: "black" }}>
                     <strong>{detailProduct.name}</strong>
@@ -70,22 +77,22 @@ export const OrderInfo = ({detailProduct}) => {
                 <Typography fontSize={20}>
                     Promotion Price: {detailProduct.promotionPrice}
                 </Typography>
-                <Typography fontSize={20}>Buy Price: <strong style={{color:"red"}}>{detailProduct.buyPrice}</strong></Typography>
-                <Typography fontSize={20} sx={{textAlign: 'center'}}>
+                <Typography fontSize={20}>Buy Price: <strong style={{ color: "red" }}>{detailProduct.buyPrice}</strong></Typography>
+                <Typography fontSize={20} sx={{ textAlign: 'center' }}>
                     Description: {detailProduct.description}
                 </Typography>
-                <hr/>
+                <hr />
                 <Grid container
                     direction="row"
                     justifyContent="space-around"
                     alignItems="stretch">
-                    <Button class="btn col-sm-4 btn-warning rounded-pill pb-3 pt-3" onClick={onBtnAddToCart}>ADD TO CART</Button>
-                    <Button class="btn col-sm-4 btn-danger rounded-pill pb-3 pt-3" onClick={onBtnBuyInstantly}>BUY INSTANTLY</Button>
+                    <Button className="btn col-sm-3 rounded-pill pb-2 pt-2" onClick={()=>onBtnAddToCart(detailProduct)}>ADD TO CART</Button>
+                    <Button className="btn col-sm-3 btn-danger rounded-pill pb-2 pt-2" onClick={onBtnBuyInstantly}>BUY INSTANTLY</Button>
                 </Grid>
             </Grid>
 
 
-            
+
         </React.Fragment>
     );
 }

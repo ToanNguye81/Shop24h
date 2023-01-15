@@ -18,7 +18,8 @@ export const SignInPage = () => {
                 setUser(result.user)
                 console.log(result.user)
                 dispatch(successLogIn(result.user.photoURL,result.user.displayName))
-                navigate("/homepage")
+                // navigate("/homepage")
+                navigate(-1)
             })
             .catch((error) => {
                 console.log(error)

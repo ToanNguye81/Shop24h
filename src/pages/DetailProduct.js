@@ -2,7 +2,7 @@ import { Grid } from "@mui/material"
 import React from "react"
 import { Description } from "../components/DetailProduct/Description"
 import { ImageProduct } from "../components/DetailProduct/ImageProduct"
-import { OrderInfo } from "../components/DetailProduct/OrderInfo"
+import { ProductInfo } from "../components/DetailProduct/ProductInfo"
 import { TitleBrand } from "../components/DetailProduct/TitleBrand"
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
@@ -39,7 +39,7 @@ export const DetailProduct = () => {
                             <ImageProduct detailProduct={detailProduct} />
                         </Grid>
                         <Grid item xs={12} md={5} pb={3}>
-                            <OrderInfo detailProduct={detailProduct} />
+                            <ProductInfo detailProduct={detailProduct} />
                         </Grid>
                     </Grid>
                     <Grid xs={12}>

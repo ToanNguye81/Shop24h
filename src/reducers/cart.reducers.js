@@ -12,7 +12,6 @@ export const cartReducers = (state = initialState, action) => {
         case ADD_TO_CART:
             console.log(state.cart)
             state.cart.push(action.newProduct)
-            console.log(state.cart)
             break;
         default:
             break;
