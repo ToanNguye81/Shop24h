@@ -2,7 +2,7 @@ import { Grid } from "@mui/material"
 import React from "react"
 import { Container } from "react-bootstrap"
 import { AllOrder } from "../components/OrderPage/AllOrder"
-import { CartTotal } from "../components/OrderPage/CartTotal"
+import { Invoice } from "../components/OrderPage/Invoice"
 
 export const OrderPage = () => {
     return (
@@ -14,8 +14,8 @@ export const OrderPage = () => {
                     <Grid item xs={12} md={6.5}>
                         <AllOrder />
                     </Grid>
-                    <Grid item xs={12} md={3.5}>
-                        <CartTotal />
+                    <Grid item xs={11} md={3.5}>
+                        <Invoice />
                     </Grid>
                 </Grid>
         </React.Fragment>
