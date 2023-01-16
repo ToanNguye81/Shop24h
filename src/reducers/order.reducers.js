@@ -10,6 +10,7 @@ const initializeState = {
     detailProduct: null,
     
 }
+
 export const detailReducers = (state = initializeState, action) => {
     console.log(action)
     switch (action.type) {

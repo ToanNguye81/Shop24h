@@ -10,7 +10,7 @@ import Products from "../../database_sample/productsData.json"
 import { Button, ButtonGroup, Grid, IconButton, TableFooter, TextField } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
-import { ProductList } from '../../pages/ProductList';
+// import { ProductList } from '../../pages/ProductList';
 import { useNavigate } from 'react-router-dom';
 import { fontWeight } from '@mui/system';
 import styled from 'styled-components';
@@ -33,8 +33,7 @@ border-bottom:0.1px solid #E6E6E6;
 background-color:#F0F0F0
 `
 
-export const AllOrder = () => {
-
+export const AllOrder = ({products}) => {
 
     const navigate = useNavigate()
     const onBtnBuyClick = () => {
@@ -60,7 +59,7 @@ export const AllOrder = () => {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {Products.slice(4, 13).map((item, index) => (
+                                {Products.map((item, index) => (
                                     <TableRow
                                         key={item.name}
                                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
