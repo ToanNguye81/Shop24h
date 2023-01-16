@@ -1,9 +1,7 @@
 import { Grid } from "@mui/material"
 import React from "react"
-import {  useSelector } from "react-redux";
 
 export const ImageProduct = ({detailProduct}) => {
-    // const { detailProduct } = useSelector((reduxData) => reduxData.detailReducer);
     return (
         <React.Fragment>
             <Grid container
