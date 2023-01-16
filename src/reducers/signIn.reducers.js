@@ -3,7 +3,9 @@ import { ERROR_LOG_IN, SUCCESS_LOG_IN, SUCCESS_LOG_OUT } from "../constants/sign
 const initializeState = {
     logged: false,
     photoURL: null,
-    userName: null
+    userName: null,
+    userEmail:null
+
 }
 export const signInReducers = (state = initializeState, action) => {
     switch (action.type) {
@@ -11,6 +13,8 @@ export const signInReducers = (state = initializeState, action) => {
             state.logged = true
             state.photoURL = action.photoURL
             state.userName = action.userName
+            state.userEmail = action.userEmail
+            
             break;
         case ERROR_LOG_IN:
 
@@ -19,6 +23,7 @@ export const signInReducers = (state = initializeState, action) => {
             state.logged = false
             state.photoURL = null
             state.userName = null
+            state.userEmail = null
             break;
         default:
             break;

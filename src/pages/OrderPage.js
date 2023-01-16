@@ -12,7 +12,7 @@ export const OrderPage = () => {
                     justifyContent="space-evenly"
                     alignItems="flex-start" mt={20}>
                     <Grid item xs={12} md={6.5}>
-                        <AllOrder />
+                        <AllOrder/>
                     </Grid>
                     <Grid item xs={11} md={3.5}>
                         <Invoice />

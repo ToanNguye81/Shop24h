@@ -8,12 +8,15 @@ export const ProductInfo = ({ detailProduct }) => {
     const dispatch = useDispatch();
     const navigate =useNavigate()
     const { logged } = useSelector((reduxData) => reduxData.signInReducers);
+    const { cart } = useSelector((reduxData) => reduxData.cartReducers);
 
 
-    const onBtnAddToCart=(paramProduct)=> {
+    const onBtnAddToCart=(productId)=> {
+        console.log(productId);
         if (logged) {
-            dispatch(addToCart(paramProduct._id))
-        } else { 
+                dispatch(addToCart(cart,productId))
+            }
+            else{
             navigate("/login")
         }
     }
@@ -52,7 +55,7 @@ export const ProductInfo = ({ detailProduct }) => {
                     direction="row"
                     justifyContent="space-around"
                     alignItems="stretch">
-                    <Button className="btn col-sm-4 rounded-pill pb-3 pt-3" sx={{color:"white",backgroundColor:"#717FE0"}} onClick={()=>onBtnAddToCart(detailProduct)}>ADD TO CART</Button>
+                    <Button className="btn col-sm-4 rounded-pill pb-3 pt-3" sx={{color:"white",backgroundColor:"#717FE0"}} onClick={()=>onBtnAddToCart(detailProduct._id)}>ADD TO CART</Button>
                     <Button className="btn col-sm-4 rounded-pill pb-3 pt-3" onClick={onBtnBuyInstantly}>BUY INSTANTLY</Button>
                 </Grid>
             </Grid>
@@ -86,13 +89,10 @@ export const ProductInfo = ({ detailProduct }) => {
                     direction="row"
                     justifyContent="space-around"
                     alignItems="stretch">
-                    <Button className="btn col-sm-3 rounded-pill pb-2 pt-2" onClick={()=>onBtnAddToCart(detailProduct)}>ADD TO CART</Button>
+                    <Button className="btn col-sm-3 rounded-pill pb-2 pt-2" sx={{color:"white",backgroundColor:"#717FE0"}} onClick={()=>onBtnAddToCart(detailProduct._id)}>ADD TO CART</Button>
                     <Button className="btn col-sm-3 btn-danger rounded-pill pb-2 pt-2" onClick={onBtnBuyInstantly}>BUY INSTANTLY</Button>
                 </Grid>
             </Grid>
-
-
-
         </React.Fragment>
     );
 }

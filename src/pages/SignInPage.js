@@ -17,7 +17,7 @@ export const SignInPage = () => {
             .then((result) => {
                 setUser(result.user)
                 console.log(result.user)
-                dispatch(successLogIn(result.user.photoURL,result.user.displayName))
+                dispatch(successLogIn(result.user.photoURL,result.user.displayName, result.user.email))
                 // navigate("/homepage")
                 navigate(-1)
             })
