@@ -6,8 +6,7 @@ function Info() {
             <div className="col-sm-6">
               <div className="pr-xl-4">
                 <p>
-                  Hàng chuẩn auth 100%. Hoàn tiền 200% nếu phát hiện hàng giả.
-                  Công nghệ đến từ Thụy Điển và Đan Mạch.
+                100% authentic auth. 200% refund if found fake. Technology comes from Sweden and Denmark.
                 </p>
                 <p className="">
                   <span>©&nbsp; </span>
@@ -21,13 +20,13 @@ function Info() {
             <div className="col-sm-4">
               <h5>Contacts</h5>
               <dl className="contact-list">
-                <dt>Address:</dt>
+                <label>Address:</label>
                 <dd>
                 <a  href="dic:#">Phú Quang, Iahru, Gia Lai</a>
                 </dd>
               </dl>
               <dl className="contact-list">
-                <dt>email:</dt>
+                <label>email:</label>
                 <dd>
                   <a href="mailto:#">toannguyen@gmail.com</a>
                 </dd>

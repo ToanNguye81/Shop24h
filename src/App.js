@@ -1,5 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css"
 import "./assets/styles/styles.css"
+import "@fontsource/poppins";
 import Footer from './views/Footer';
 import Body from './views/Body';
 import Header from "./views/Header";

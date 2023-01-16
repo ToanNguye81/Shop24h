@@ -4,17 +4,17 @@ const initialState = {
     user: null,
     pending: false,
     error: null,
-    cart: [{productId:"",quantity:""}],//{productId:...,quantity:...}
+    cart: [{product:null,quantity:null}],//{product:...,quantity:...}
 }
 
 export const cartReducers = (state = initialState, action) => {
     switch (action.type) {
         case ADD_FIRST_PRODUCT:
-            state.cart=[{productId:action.productId, quantity:action.quantity}]
+            state.cart=[{product:action.product, quantity:action.quantity}]
             console.log(state.cart)
             break;
         case ADD_NEW_PRODUCT:
-            state.cart.push({ productId: action.productId, quantity: action.quantity })
+            state.cart.push({ product: action.product, quantity: action.quantity })
             console.log(state.cart)
             break;
         case ADD_QUANTITY:

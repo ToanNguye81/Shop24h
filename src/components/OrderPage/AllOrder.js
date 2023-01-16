@@ -14,6 +14,7 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import { useNavigate } from 'react-router-dom';
 import { fontWeight } from '@mui/system';
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
 
 const MyButton = styled.button`
 height:45px;
@@ -30,7 +31,9 @@ color:#555555 ;
 border:none;
 border-top:0.1px solid #E6E6E6;
 border-bottom:0.1px solid #E6E6E6;
-background-color:#F0F0F0
+background-color:#F0F0F0;
+text-align:center;
+font-family: "Poppins";
 `
 
 export const AllOrder = ({products}) => {
@@ -39,6 +42,8 @@ export const AllOrder = ({products}) => {
     const onBtnBuyClick = () => {
         navigate("/products")
     }
+
+    const {cart}= useSelector((reduxData)=>reduxData.cartReducers)
 
     return (
         <React.Fragment>
@@ -59,9 +64,9 @@ export const AllOrder = ({products}) => {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {Products.map((item, index) => (
+                                {cart.map((item, index) => (
                                     <TableRow
-                                        key={item.name}
+                                        key={item.product.name}
                                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                     >
                                         <TableCell component="th" scope="item" width="25%">
@@ -69,21 +74,21 @@ export const AllOrder = ({products}) => {
                                                 direction="column"
                                                 justifyContent="flex-start"
                                                 alignItems="center">
-                                                <img src={item.imageUrl} width="100" />
+                                                <img src={item.product.imageUrl} width="100" />
                                                 <Grid item textAlign="center">
-                                                <strong>{item.name}</strong>
+                                                <strong>{item.product.name}</strong>
                                                 </Grid>
                                             </Grid>
                                         </TableCell>
-                                        <TableCell align="center" width="25%">{item.buyPrice}</TableCell>
+                                        <TableCell align="center" width="25%">{item.product.buyPrice}</TableCell>
                                         <TableCell align="center" width="25%">
                                             <ButtonGroup>
                                                 <MyButton><AddIcon /></MyButton>
-                                                <MyTextBox></MyTextBox>
+                                                <MyTextBox value={item.quantity}/>
                                                 <MyButton><RemoveIcon /></MyButton>
                                             </ButtonGroup>
                                         </TableCell>
-                                        <TableCell align="center" width="25%">{item.promotionPrice}</TableCell>
+                                        <TableCell align="center" width="25%">{item.product.promotionPrice}</TableCell>
                                     </TableRow>
                                 ))}
                                 <TableRow>

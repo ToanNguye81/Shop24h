@@ -1,10 +1,10 @@
 import { Grid } from "@mui/material"
 import React from "react"
-import { FilterBar } from "../components/ProductList/FilterBar"
-import { FilterResult } from "../components/ProductList/FilterResult"
+import { FilterBar } from "../components/ProductsPage/FilterBar"
+import { FilterResult } from "../components/ProductsPage/FilterResult"
 import { Breadcrumb } from "../components/BreadCrumb"
 
-export const ProductList = () => {
+export const ProductsPage = () => {
     return (
         <React.Fragment>
             <Grid item xs={4} md={3} pt={10}>

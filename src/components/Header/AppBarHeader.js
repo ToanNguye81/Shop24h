@@ -101,7 +101,7 @@ navigate("/orders")
                         >
                             {pages.map((page) => (
                                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                    <Typography   textAlign="center" sx={{ color: "black",fontFamily: 'Poppins-Regular'}}>{page}</Typography>
+                                    <Typography   textAlign="center" sx={{ color: "black",fontFamily: 'Poppins'}}>{page}</Typography>
                                 </MenuItem>
                             ))}
                         </Menu>

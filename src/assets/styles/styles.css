@@ -1,4 +1,6 @@
-
+*{
+    font-family: "Poppins";
+}
 .bg-grey {
     background-color: #222222;
 }

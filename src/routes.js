@@ -1,6 +1,6 @@
 import HomePage from "./pages/HomePage";
 import { SignInPage } from "./pages/SignInPage";
-import { ProductList } from "./pages/ProductList";
+import { ProductsPage } from "./pages/ProductsPage";
 import { DetailProduct } from "./pages/DetailProduct";
 import { OrderPage } from "./pages/OrderPage";
 
@@ -10,7 +10,7 @@ const routerList = [
     { path: "/login", element: <SignInPage /> },
     { path: "/detail-product/:productId", element:  <DetailProduct/> },
     { path: "/orders", element:  <OrderPage/> },
-    { path: "/products", element: <ProductList/> },
+    { path: "/products", element: <ProductsPage/> },
 
 
     // { path: "/brand", element:  <Brand /> },
