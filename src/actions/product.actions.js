@@ -30,6 +30,7 @@ export const changeMinPrice = (minPrice) => {
         minPrice: minPrice,
     }
 }
+
 export const changeMaxPrice = (maxPrice) => {
     console.log(maxPrice)
     return {
@@ -37,6 +38,7 @@ export const changeMaxPrice = (maxPrice) => {
         maxPrice: maxPrice,
     }
 }
+
 export const changeOrdinal = (ordinal) => {
     return {
         type: ORDINAL_FILTER_CHANGE,

@@ -1,28 +1,28 @@
 import {
-    GET_DETAIL_PRODUCT_SUCCESS,
-    GET_DETAIL_PRODUCT_PENDING,
-    GET_DETAIL_PRODUCT_ERROR,
-} from "../constants/detail.constants";
+    GET_ORDER_PRODUCT_SUCCESS,
+    GET_ORDER_PRODUCT_PENDING,
+    GET_ORDER_PRODUCT_ERROR,
+} from "../constants/order.constants";
 
 const initializeState = {
     pendingDetail: false,
     error: null,
-    detailProduct: null,
+    orderProduct: null,
     
 }
 
-export const detailReducers = (state = initializeState, action) => {
+export const orderReducers = (state = initializeState, action) => {
     console.log(action)
     switch (action.type) {
-        case GET_DETAIL_PRODUCT_PENDING:
+        case GET_ORDER_PRODUCT_PENDING:
             state.pendingDetail = true;
             break;
-        case GET_DETAIL_PRODUCT_SUCCESS:
-            console.log(action.detailProduct)
+        case GET_ORDER_PRODUCT_SUCCESS:
+            console.log(action.orderProduct)
             state.pendingDetail= false;
-            state.detailProduct = action.detailProduct;
+            state.orderProduct = action.orderProduct;
             break;
-        case GET_DETAIL_PRODUCT_ERROR:
+        case GET_ORDER_PRODUCT_ERROR:
             state.error = action.error;
             break;
         default:

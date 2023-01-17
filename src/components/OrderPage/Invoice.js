@@ -4,9 +4,10 @@ import { useSelector } from "react-redux"
 import styled from "styled-components"
 
 const MyGrid = styled.div`
-border:0.1px solid #E6E6E6;
+border:1.5px solid #E6E6E6;
 background-color:#FFFFFF;
 padding: 1rem 3rem 3rem 3rem;
+margin-bottom: 3rem;
 `
 export const Invoice = () => {
 

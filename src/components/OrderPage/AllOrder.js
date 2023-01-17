@@ -6,15 +6,13 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import Products from "../../database_sample/productsData.json"
-import { Button, ButtonGroup, Grid, IconButton, TableFooter, TextField } from '@mui/material';
+import { Button, ButtonGroup, Grid, TextField } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
-// import { ProductList } from '../../pages/ProductList';
 import { useNavigate } from 'react-router-dom';
-import { fontWeight } from '@mui/system';
 import styled from 'styled-components';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { decreaseQuantity, increaseQuantity } from '../../actions/cart.actions';
 
 const MyButton = styled.button`
 height:45px;
@@ -36,22 +34,27 @@ text-align:center;
 font-family: "Poppins";
 `
 
-export const AllOrder = ({products}) => {
+export const AllOrder = ({ products }) => {
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const { cart } = useSelector((reduxData) => reduxData.cartReducers)
+
     const onBtnBuyClick = () => {
         navigate("/products")
     }
 
-    const {cart}= useSelector((reduxData)=>reduxData.cartReducers)
+    const onBtnPlusClick = (paramIndex) => {
+        dispatch(increaseQuantity(paramIndex))
+    }
+
+    const onBtnMinusClick = (paramIndex) => {
+        dispatch(decreaseQuantity(paramIndex))
+    }
 
     return (
         <React.Fragment>
-            <Grid container
-                direction="row"
-                justifyContent="center"
-                alignItems="center"
-            >
+            <Grid container direction="row" justifyContent="center" alignItems="center">
                 <Grid item xs={11} md={12} >
                     <TableContainer component={Paper}>
                         <Table>
@@ -65,37 +68,31 @@ export const AllOrder = ({products}) => {
                             </TableHead>
                             <TableBody>
                                 {cart.map((item, index) => (
-                                    <TableRow
-                                        key={item.product.name}
-                                        sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                                    >
+                                    <TableRow key={index} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                                         <TableCell component="th" scope="item" width="25%">
-                                            <Grid container
-                                                direction="column"
-                                                justifyContent="flex-start"
-                                                alignItems="center">
+                                            <Grid container direction="column" justifyContent="flex-start" alignItems="center">
                                                 <img src={item.product.imageUrl} width="100" />
                                                 <Grid item textAlign="center">
-                                                <strong>{item.product.name}</strong>
+                                                    <strong>{item.product.name}</strong>
                                                 </Grid>
                                             </Grid>
                                         </TableCell>
-                                        <TableCell align="center" width="25%">{item.product.buyPrice}</TableCell>
+                                        <TableCell align="center" width="25%">$ {item.product.promotionPrice}</TableCell>
                                         <TableCell align="center" width="25%">
                                             <ButtonGroup>
-                                                <MyButton><AddIcon /></MyButton>
+                                                <MyButton onClick={() => onBtnMinusClick(index)}><RemoveIcon /></MyButton>
                                                 <MyTextBox value={item.quantity}/>
-                                                <MyButton><RemoveIcon /></MyButton>
+                                                <MyButton onClick={() => onBtnPlusClick(index)}><AddIcon /></MyButton>
                                             </ButtonGroup>
                                         </TableCell>
-                                        <TableCell align="center" width="25%">{item.product.promotionPrice}</TableCell>
+                                        <TableCell align="center" width="25%">$ {item.product.promotionPrice*item.quantity}</TableCell>
                                     </TableRow>
                                 ))}
                                 <TableRow>
                                     <Grid container direction="column">
-                                   <TextField placeholder="Coupon Code"></TextField>
-                                   <Button>Apply coupon</Button>
-                                   <Button>Update Cart</Button>
+                                        <TextField placeholder="Coupon Code"></TextField>
+                                        <Button>Apply coupon</Button>
+                                        <Button>Update Cart</Button>
                                     </Grid>
                                 </TableRow>
                             </TableBody>
@@ -103,10 +100,7 @@ export const AllOrder = ({products}) => {
                     </TableContainer>
                 </Grid>
             </Grid>
-            <Grid container item sx={{ mt: 5, mb: 5, display: { xs: 12, md: 8 } }}
-                direction="row"
-                justifyContent="center"
-                alignItems="stretch">
+            <Grid container item sx={{ mt: 5, mb: 5, display: { xs: 12, md: 8 } }} direction="row" justifyContent="center" alignItems="stretch">
                 <Button onClick={onBtnBuyClick} class="btn col-sm-2 btn-warning rounded-pill pb-3 pt-3">Mua tiếp</Button>
                 <Button class="btn col-sm-2 btn-danger rounded-pill pb-3 pt-3">Đặt hàng</Button>
             </Grid>

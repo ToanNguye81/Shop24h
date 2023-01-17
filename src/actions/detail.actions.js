@@ -1,4 +1,6 @@
-import {GET_DETAIL_PRODUCT_SUCCESS,GET_DETAIL_PRODUCT_PENDING,GET_DETAIL_PRODUCT_ERROR} from "../constants/detail.constants"
+import {GET_DETAIL_PRODUCT_SUCCESS,
+    GET_DETAIL_PRODUCT_PENDING,
+    GET_DETAIL_PRODUCT_ERROR} from "../constants/detail.constants"
 
 export const getDetailProduct = (productId) => {
     console.log(productId);
@@ -14,7 +16,6 @@ export const getDetailProduct = (productId) => {
 
         try {
             const detailProductRes = await fetch("http://localhost:8000/products/"+productId, requestOptions);
-
 
             const detailProductObj = await detailProductRes.json();
             console.log(detailProductObj)

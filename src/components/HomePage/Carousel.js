@@ -1,3 +1,4 @@
+import { Grid } from '@mui/material';
 import React, { useState } from 'react';
 import {
   Carousel,
@@ -51,7 +52,7 @@ function BodyCarousel(args) {
   });
 
   return (
-    <>
+    <Grid mt={8}>
     <Carousel
       activeIndex={activeIndex}
       next={next}
@@ -75,7 +76,7 @@ function BodyCarousel(args) {
         onClickHandler={next}
       />
     </Carousel>
-    </>
+    </Grid>
   );
 }
 

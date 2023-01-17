@@ -1,30 +1,8 @@
-import {
-    DECREASE_QUANTITY,
-    INCREASE_QUANTITY,
-    ADD_NEW_PRODUCT,
-    ADD_FIRST_PRODUCT
-} from "../constants/cart.constants"
+import { INCREASE_QUANTITY } from "../constants/cart.constants"
+import { INCREASE_QUANTITY,INCREASE_QUANTITY } from "../constants/order.constants"
 
-//Xử lý nút giảm quantity
-export const decreaseQuantity = (paramIndex) => {
-    return {
-        type: DECREASE_QUANTITY,
-        index: paramIndex
-    }
-}
-
-//Xử lý nút tăng quantity
-export const increaseQuantity = (paramIndex) => {
-    return {
-        type: INCREASE_QUANTITY,
-        index: paramIndex
-    }
-}
-
-
-//Xử lý sự kiện nút AddToCart
 export const addToCart = (cart, paramDetailProduct) => {
-
+    
     //Hàm xử lý thêm sản phẩm lần đầu
     if (cart[0].product === null) {
         console.log(paramDetailProduct)

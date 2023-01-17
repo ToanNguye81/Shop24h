@@ -7,7 +7,7 @@ import { Breadcrumb } from "../components/BreadCrumb"
 export const ProductsPage = () => {
     return (
         <React.Fragment>
-            <Grid item xs={4} md={3} pt={10}>
+            <Grid item xs={4} md={3} pt={3}>
                     <FilterBar />
                 </Grid>
             <Grid container justifyContent={"center"} spacing={2} mt={3} pl={10} pr={2} mb={0} pb={0}>

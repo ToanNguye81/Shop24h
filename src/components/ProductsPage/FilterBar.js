@@ -40,7 +40,7 @@ export const FilterBar = () => {
             justifyContent="space-around"
             alignItems="flex-end"
             spacing={3}
-            sx={{ display: { md: 'flex' }, backgroundColor: "#F2F2F2", pt: 6, pb: 4, pl:10 }}>
+            sx={{ display: { md: 'flex' }, backgroundColor: "#F2F2F2",pb: 4, pl:10,mt:10 }}>
             <Grid item xs={12} md={3}
                 sx={{ textAlign: 'start' }}
                 direction="column"
