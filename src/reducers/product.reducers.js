@@ -10,10 +10,10 @@ import {
 } from "../constants/product.constants";
 
 const initialState = {
+    pending: false,
     totalProduct: 0,
     products: [],
     filteredProducts: [],
-    pending: false,
     error: null,
     currentPage: 1,
     brand: "",
@@ -28,8 +28,8 @@ export const productReducers = (state = initialState, action) => {
             state.pending = true;
             break;
         case FETCH_PRODUCTS_SUCCESS:
-            state.totalProduct = action.totalProduct;
             state.pending = false;
+            state.totalProduct = action.totalProduct;
             state.products = action.products;
             state.filteredProducts = action.filteredProducts;
             break;

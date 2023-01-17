@@ -18,8 +18,11 @@ export const UserAvatar = () => {
   const [anchorElUser, setAnchorElUser] = useState(null);
   const { photoURL, userName } = useSelector((reduxData) => reduxData.signInReducers);
 
+  // const handleLogin = (event) => {
+  //   navigate("/login")
+  // };
   const handleLogin = (event) => {
-    navigate("/login")
+    navigate("/signin")
   };
 
   const handleOpenUserMenu = (event) => {

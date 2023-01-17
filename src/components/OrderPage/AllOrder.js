@@ -66,7 +66,9 @@ export const AllOrder = ({ products }) => {
                                     <TableCell align="center"><h5><strong>Total &nbsp;($)</strong></h5></TableCell>
                                 </TableRow>
                             </TableHead>
-                            <TableBody>
+                            {
+                                cart[0].product?
+                                <TableBody>
                                 {cart.map((item, index) => (
                                     <TableRow key={index} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                                         <TableCell component="th" scope="item" width="25%">
@@ -96,6 +98,9 @@ export const AllOrder = ({ products }) => {
                                     </Grid>
                                 </TableRow>
                             </TableBody>
+                                :null
+                            }
+                           
                         </Table>
                     </TableContainer>
                 </Grid>

@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { changePagination, fetchProducts } from "../../actions/product.actions";
-
+import { PendingActions } from "@mui/icons-material";
 
 export const FilterResult = () => {
   const dispatch = useDispatch();
@@ -34,7 +34,7 @@ export const FilterResult = () => {
 
 
   return (
-      pending? null:
+      pending? <PendingActions/>:
         <React.Fragment>
           <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 2, lg: 3 }} mt={0}>
             <FilteredCard ProductsData={filteredProducts} />
