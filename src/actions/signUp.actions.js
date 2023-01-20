@@ -9,6 +9,7 @@ import {
     // MAX_PRICE_CHANGE
 } from "../constants/signUp.constants";
 
+const countriesUrl="https://restcountries.com/v3.1/all"
 // export const changePagination = (page) => {
 //     return {
 //         type: COUNTRIES_PAGINATION_CHANGE,
@@ -59,13 +60,12 @@ export const fetchCountries = () => {
         });
 
         try {
-            const allCountriesRes = await fetch("https://restcountries.com/v3.1/all", requestOptions);
-            
-            
+            const allCountriesRes = await fetch(countriesUrl, requestOptions);
             const allCountriesObj = await allCountriesRes.json();
-            
             console.log(allCountriesObj )
-
+            // const countryName=[]
+            // countryName.push(allCountriesObj.map((item,index)=>{item.name.common}))
+            // console.log(countryName)
             return dispatch({
                 type: FETCH_COUNTRIES_SUCCESS,
                 countryOptions:allCountriesObj

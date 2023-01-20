@@ -15,7 +15,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { fetchCountries } from '../actions/signUp.actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+import { FormControl, InputLabel, Menu, MenuItem, Select } from '@mui/material';
 
 const theme = createTheme();
 
@@ -84,9 +84,9 @@ export const SignUp=()=> {
                 {/* <TextField size="small" required fullWidth id="country" label="Country" name="country" autoComplete="country"/> */}
                 <FormControl size="small" required fullWidth>
                 <InputLabel id="select-country">Country</InputLabel>
-                <Select labelId="select-country" fullWidth id="country" label="Country" name="country" autoComplete="country">
+                <Select labelId="select-country" autoWidth id="country" label="Country" name="country" autoComplete="country">
                 {countryOptions?
-                countryOptions.map((countryOption,index)=>{ <MenuItem value={countryOption.name.common}>{countryOption.name.common}</MenuItem>}):
+                countryOptions.map((countryOption,index)=><MenuItem value={countryOption.name.common}>{countryOption.name.common}</MenuItem>):
                 null
                 }
                 </Select>
