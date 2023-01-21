@@ -12,41 +12,60 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { fetchCountries } from '../actions/signUp.actions';
+import { fetchCountries, getCountry, fetchCities, getCity, getAddress,createNewUser } from '../actions/signUp.actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { FormControl, InputLabel, Menu, MenuItem, Select } from '@mui/material';
+import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 
 const theme = createTheme();
 
 export const SignUp = () => {
   const dispatch = useDispatch();
 
-  const { loadCountriesPending, countryOptions,cityOptions,
-    country,city,address } = useSelector((reduxData) => reduxData.signUpReducers);
+  const { loadCountriesPending, countryOptions, cityOptions,
+    country, address, city } = useSelector((reduxData) => reduxData.signUpReducers);
 
   console.log(loadCountriesPending)
+
   useEffect(() => {
     dispatch(fetchCountries());
   }, []);
 
   console.log(countryOptions)
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
+    const userInfo = {
       email: data.get('email'),
       password: data.get('password'),
-    });
+      firstName: data.get('firstName'),
+      lastName: data.get('lastName'),
+      country: data.get('country'),
+      city: data.get('city'),
+      address: data.get('address'),
+    };
+    console.log(userInfo);
+    dispatch(createNewUser(userInfo));
   };
 
   const handleCountryChange = (event) => {
-    dispatch(getCountry(event.target.value))
+    dispatch(getCountry(event.target.value));
+    dispatch(fetchCities(event.target.value));
   }
+
+  const handleCityChange = (event) => {
+    dispatch(getCity(event.target.value));
+  }
+
+  const handleAddressChange = (event) => {
+    dispatch(getAddress(event.target.value));
+  }
+
 
   return (
     <ThemeProvider theme={theme}>
-      <Grid container component="main" sx={{ height: '100vh' }} mt={5}>
+      <Grid container component="main" sx={{ height: '100vh' }} mt={5} mb={15}>
         <CssBaseline />
         <Grid item xs={false} sm={4} md={7} sx={{
           backgroundImage: 'url(https://source.unsplash.com/random/?sneaker)',
@@ -68,28 +87,27 @@ export const SignUp = () => {
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
               <Grid container spacing={2}>
                 <Grid item xs={12} sm={6}>
-                  <TextField size="small" autoComplete="given-name"
+                  <TextField size="small"
                     name="firstName"
                     required
                     fullWidth
                     id="firstName"
                     label="First Name"
-                    autoFocus />
+                  />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                  <TextField size="small" required fullWidth id="lastName" label="Last Name" name="lastName" autoComplete="family-name" />
+                  <TextField size="small" required fullWidth id="lastName" label="Last Name" name="lastName" />
                 </Grid>
                 <Grid item xs={12}>
-                  <TextField size="small" required fullWidth id="Phone" label="Phone" name="Phone" autoComplete="Phone" />
+                  <TextField size="small" required fullWidth id="phone" label="Phone" name="phone" />
                 </Grid>
                 <Grid item xs={12}>
-                  <TextField size="small" required fullWidth id="email" label="Email" name="email" autoComplete="email" />
+                  <TextField size="small" required fullWidth id="email" label="Email" name="email" />
                 </Grid>
                 <Grid item xs={12}>
-                  {/* <TextField size="small" required fullWidth id="country" label="Country" name="country" autoComplete="country"/> */}
                   <FormControl size="small" required fullWidth>
                     <InputLabel id="select-country">Country</InputLabel>
-                    <Select onChange={handleCountryChange} labelId="select-country" autoWidth id="country" label="Country" name="country" autoComplete="country" value={country}>
+                    <Select onChange={handleCountryChange} labelId="select-country" autoWidth id="country" label="Country" name="country" value={country}>
                       {countryOptions ?
                         countryOptions.map((countryOption, index) => <MenuItem key={countryOption.id} value={countryOption.iso2}>{countryOption.name}</MenuItem>) :
                         null
@@ -100,20 +118,20 @@ export const SignUp = () => {
 
                 <Grid item xs={12}>
                   <FormControl size="small" required fullWidth>
-
-                    <Select size="small" required fullWidth id="city" label="City" name="city" autoComplete="city">
-                    {cityOptions ?
+                    <InputLabel id="select-city">City</InputLabel>
+                    <Select onChange={handleCityChange} size="small" required fullWidth id="city" labelId="select-city" label="City" name="city" value={city}>
+                      {cityOptions ?
                         cityOptions.map((cityOptions, index) => <MenuItem key={cityOptions.id} value={cityOptions.id}>{cityOptions.name}</MenuItem>) :
                         null
                       }
                     </Select>
-                    </FormControl>
+                  </FormControl>
                 </Grid>
                 <Grid item xs={12}>
-                  <TextField size="small" required fullWidth id="address" label="Address" name="address" autoComplete="address" />
+                  <TextField onChange={handleAddressChange} size="small" required fullWidth id="address" label="Address" name="address" value={address} />
                 </Grid>
                 <Grid item xs={12}>
-                  <TextField size="small" required fullWidth name="password" label="Password" type="password" id="password" autoComplete="new-password" />
+                  <TextField size="small" required fullWidth name="password" label="Password" type="password" id="password" />
                 </Grid>
                 <Grid item xs={12}>
                   <FormControlLabel

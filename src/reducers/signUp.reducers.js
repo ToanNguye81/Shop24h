@@ -1,13 +1,21 @@
-import { FETCH_COUNTRIES_PENDING, FETCH_COUNTRIES_SUCCESS, FETCH_COUNTRIES_ERROR, GET_COUNTRY, GET_CITY, GET_ADDRESS } from "../constants/signUp.constants"
+import { 
+    FETCH_COUNTRIES_PENDING,
+     FETCH_COUNTRIES_SUCCESS,
+     FETCH_COUNTRIES_ERROR,
+     GET_COUNTRY,
+     GET_CITY, GET_ADDRESS,
+     FETCH_CITIES_PENDING,
+     FETCH_CITIES_SUCCESS,
+     FETCH_CITIES_ERROR, } from "../constants/signUp.constants"
 
 const initializeState = {
     loadCountriesPending: false,
     loadCitiesPending: false,
     countryOptions: null,
     cityOptions: null,
-    address: null,
     country: null,
     city: null,
+    address: null,
 }
 export const signUpReducers = (state = initializeState, action) => {
     switch (action.type) {
@@ -21,10 +29,20 @@ export const signUpReducers = (state = initializeState, action) => {
             break;
         case FETCH_COUNTRIES_ERROR:
             break;
+
+        case FETCH_CITIES_PENDING:
+            state.loadCitiesPending = true
+            break;
+        case FETCH_CITIES_SUCCESS:
+            state.loadCitiesPending = false
+            state.cityOptions = action.cityOptions
+            break;
+        case FETCH_CITIES_ERROR:
+            break;
+
         case GET_COUNTRY:
             state.country = action.country
             break;
-
         case GET_CITY:
             state.city = action.city
             break;

@@ -15,8 +15,7 @@ const routerList = [
     { path: "/products", element: <ProductsPage/> },
     { path: "/signin", element: <SignIn/> },
     { path: "/signup", element: <SignUp/> },
-
-
+    
     // { path: "/brand", element:  <Brand /> },
     // { path: "/jordan", element: <SignInPage /> },
     // { path: "/yeezy", element: <SignInPage /> },
