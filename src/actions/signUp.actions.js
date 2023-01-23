@@ -7,12 +7,17 @@ import {
     FETCH_CITIES_ERROR,
     FETCH_CITIES_PENDING,
     FETCH_CITIES_SUCCESS,
+    CREATE_USER_PENDING,
+    CREATE_USER_SUCCESS,
+    CREATE_USER_ERROR,
 } from "../constants/signUp.constants";
 
-// const countriesUrl="https://restcountries.com/v3.1/all" //get countries
-// const countriesUrl="https://countriesnow.space/api/v0.1/countries/states" // Get countries and states
-const countriesUrl="https://api.countrystatecity.in/v1/countries/"
+const countriesUrl = "https://api.countrystatecity.in/v1/countries/"
+const createUserUrl = "http://localhost:8000/customers/"
+// const countriesUrl="https://restcountries.com/v3.1/all" 
+// const countriesUrl="https://countriesnow.space/api/v0.1/countries/states" 
 
+// Get cities list with REST_API
 export const fetchCities = (paramIsoCountry) => {
     return async (dispatch) => {
 
@@ -30,7 +35,7 @@ export const fetchCities = (paramIsoCountry) => {
         });
 
         try {
-            const allCitiesRes = await fetch(countriesUrl+paramIsoCountry+"/cities", requestOptions);
+            const allCitiesRes = await fetch(countriesUrl + paramIsoCountry + "/cities", requestOptions);
             const allCitiesObj = await allCitiesRes.json();
             console.log(allCitiesObj)
             return dispatch({
@@ -46,7 +51,7 @@ export const fetchCities = (paramIsoCountry) => {
     }
 }
 
-
+//Get country list
 export const fetchCountries = () => {
     return async (dispatch) => {
 
@@ -79,55 +84,131 @@ export const fetchCountries = () => {
     }
 }
 
-export const getCountry=(paramCountry)=>{
+//get country
+export const getCountry = (paramCountry) => {
     return {
-                type: GET_COUNTRY,
-                country: paramCountry,
-            }
+        type: GET_COUNTRY,
+        country: paramCountry,
+    }
 }
 
-export const getCity=(paramCity)=>{
+//get city
+export const getCity = (paramCity) => {
     return {
-                type: GET_CITY,
-                city: paramCity
-            }
+        type: GET_CITY,
+        city: paramCity
+    }
 }
 
-export const getAddress=(paramAddress)=>{
+//get Address
+export const getAddress = (paramAddress) => {
     return {
-                type: GET_CITY,
-                address: paramAddress,
-            }
+        type: GET_CITY,
+        address: paramAddress,
+    }
 }
 
-export const createNewUser=(paramNewUser)=>{
+//Create new user
+export const createNewUser = (paramUser) => {
+
+    const userInfo = {
+        email: paramUser.get('email'),
+        phone: paramUser.get('phone'),
+        firstName: paramUser.get('firstName'),
+        lastName: paramUser.get('lastName'),
+        country: paramUser.get('country'),
+        city: paramUser.get('city'),
+        address: paramUser.get('address'),
+    };
+    console.log(userInfo)
+    const isValid = validUser(userInfo)
+
+    if (isValid) {
+        sendRegisterInfo(userInfo)
+    }
+}
+
+//Send Register info to Server
+export const sendRegisterInfo = (paramUser) => {
     return async (dispatch) => {
-
-        var headers = new Headers();
-        headers.append("X-CSCAPI-KEY", "NjFRSUdoSm5EY2RIaE9TSTlMdHcxOExGN2QwWnJJTFVNelFQQVExVQ==");
-
         var requestOptions = {
-            method: 'GET',
-            headers: headers,
-            redirect: 'follow'
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(paramUser),
+
         };
 
         await dispatch({
-            type: FETCH_COUNTRIES_PENDING
+            type: CREATE_USER_PENDING
         });
 
         try {
-            const allCountriesRes = await fetch(countriesUrl, requestOptions);
-            const allCountriesObj = await allCountriesRes.json();
+            const res = await fetch(createUserUrl, requestOptions);
+            const resObj = await res.json();
+            console.log(resObj)
             return dispatch({
-                type: FETCH_COUNTRIES_SUCCESS,
-                countryOptions: allCountriesObj
+                type: CREATE_USER_SUCCESS,
+                resCreateUser: resObj
             })
         } catch (err) {
             return dispatch({
-                type: FETCH_COUNTRIES_ERROR,
+                type: CREATE_USER_ERROR,
                 error: err
             })
         }
+    }
+}
+
+//Valid User Information
+export const validUser = (paramUser) => {
+    if (!validateEmail(paramUser.email)) {
+        alert("You have entered an invalid Email!")
+        return false
+    }
+    if (!validatePhone(paramUser.phone)) {
+        alert("You have entered an invalid Phone!")
+        return false
+    }
+    if (paramUser.firstName === null) {
+        alert("You have entered an invalid First Name")
+        return false
+    }
+    if (paramUser.lastName === null) {
+        alert("You have entered an invalid Fast Name")
+        return false
+    }
+    if (paramUser.country === null) {
+        alert("You have entered an invalid Country")
+        return false
+    }
+    if (paramUser.city === null) {
+        alert("You have entered an invalid City")
+        return false
+    }
+    if (paramUser.address === null) {
+        alert("You have entered an invalid Address")
+        return false
+    }
+    return true
+}
+
+//Valid Email
+export const validateEmail = (paramEmail) => {
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(paramEmail)) {
+        return (true)
+    }
+    return (false)
+}
+
+// Validate Phone Number
+export const validatePhone = (paramPhone) => {
+    var phone = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
+    if ((paramPhone.value.match(phone))) {
+        return true;
+    }
+    else {
+        return false;
     }
 }

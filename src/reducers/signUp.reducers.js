@@ -1,12 +1,16 @@
 import { 
     FETCH_COUNTRIES_PENDING,
-     FETCH_COUNTRIES_SUCCESS,
-     FETCH_COUNTRIES_ERROR,
-     GET_COUNTRY,
-     GET_CITY, GET_ADDRESS,
-     FETCH_CITIES_PENDING,
-     FETCH_CITIES_SUCCESS,
-     FETCH_CITIES_ERROR, } from "../constants/signUp.constants"
+    FETCH_COUNTRIES_SUCCESS,
+    FETCH_COUNTRIES_ERROR,
+    GET_COUNTRY,
+    GET_CITY,
+    GET_ADDRESS,
+    FETCH_CITIES_PENDING,
+    FETCH_CITIES_SUCCESS,
+    FETCH_CITIES_ERROR,
+    CREATE_USER_PENDING,
+    CREATE_USER_SUCCESS,
+    CREATE_USER_ERROR} from "../constants/signUp.constants"
 
 const initializeState = {
     loadCountriesPending: false,
@@ -49,6 +53,17 @@ export const signUpReducers = (state = initializeState, action) => {
         case GET_ADDRESS:
             state.address = action.address
             break;
+
+        case CREATE_USER_PENDING:
+            state.country = action.country
+            break;
+        case CREATE_USER_SUCCESS:
+            state.city = action.city
+            break;
+        case CREATE_USER_ERROR:
+            state.address = action.address
+            break;
+
         default:
             break;
     }

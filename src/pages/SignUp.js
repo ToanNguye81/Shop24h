@@ -36,17 +36,7 @@ export const SignUp = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const userInfo = {
-      email: data.get('email'),
-      password: data.get('password'),
-      firstName: data.get('firstName'),
-      lastName: data.get('lastName'),
-      country: data.get('country'),
-      city: data.get('city'),
-      address: data.get('address'),
-    };
-    console.log(userInfo);
-    dispatch(createNewUser(userInfo));
+    dispatch(createNewUser(data));
   };
 
   const handleCountryChange = (event) => {
@@ -129,9 +119,6 @@ export const SignUp = () => {
                 </Grid>
                 <Grid item xs={12}>
                   <TextField onChange={handleAddressChange} size="small" required fullWidth id="address" label="Address" name="address" value={address} />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField size="small" required fullWidth name="password" label="Password" type="password" id="password" />
                 </Grid>
                 <Grid item xs={12}>
                   <FormControlLabel
