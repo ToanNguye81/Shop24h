@@ -55,7 +55,7 @@ export const SignUp = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Grid container component="main" sx={{ height: '100vh' }} mt={5} mb={15}>
+      <Grid container component="main" mt={5}>
         <CssBaseline />
         <Grid item xs={false} sm={4} md={7} sx={{
           backgroundImage: 'url(https://source.unsplash.com/random/?sneaker)',

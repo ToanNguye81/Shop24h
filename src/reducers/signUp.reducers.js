@@ -1,4 +1,4 @@
-import { 
+import {
     FETCH_COUNTRIES_PENDING,
     FETCH_COUNTRIES_SUCCESS,
     FETCH_COUNTRIES_ERROR,
@@ -10,7 +10,8 @@ import {
     FETCH_CITIES_ERROR,
     CREATE_USER_PENDING,
     CREATE_USER_SUCCESS,
-    CREATE_USER_ERROR} from "../constants/signUp.constants"
+    CREATE_USER_ERROR
+} from "../constants/signUp.constants"
 
 const initializeState = {
     loadCountriesPending: false,
@@ -55,15 +56,14 @@ export const signUpReducers = (state = initializeState, action) => {
             break;
 
         case CREATE_USER_PENDING:
-            state.country = action.country
+            console.log("CREATE_USER_PENDING")
             break;
         case CREATE_USER_SUCCESS:
-            state.city = action.city
+            console.log("CREATE_USER_SUCCESS")
             break;
         case CREATE_USER_ERROR:
-            state.address = action.address
+            console.log("CREATE_USER_ERROR")
             break;
-
         default:
             break;
     }
