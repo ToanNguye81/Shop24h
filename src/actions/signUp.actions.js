@@ -1,3 +1,4 @@
+
 import {
     FETCH_COUNTRIES_ERROR,
     FETCH_COUNTRIES_PENDING,
@@ -13,17 +14,17 @@ import {
     CREATE_USER_ERROR,
 } from "../constants/signUp.constants";
 
-const countriesUrl = "https://api.countrystatecity.in/v1/countries/"
 const createUserUrl = "http://localhost:8000/customers/"
+const countriesUrl = "https://api.countrystatecity.in/v1/countries/"
 // const countriesUrl="https://restcountries.com/v3.1/all" 
 // const countriesUrl="https://countriesnow.space/api/v0.1/countries/states" 
+const myCountryKey = "NjFRSUdoSm5EY2RIaE9TSTlMdHcxOExGN2QwWnJJTFVNelFQQVExVQ=="
 
 // Get cities list with REST_API
 export const fetchCities = (paramIsoCountry) => {
     return async (dispatch) => {
-
         var headers = new Headers();
-        headers.append("X-CSCAPI-KEY", "NjFRSUdoSm5EY2RIaE9TSTlMdHcxOExGN2QwWnJJTFVNelFQQVExVQ==");
+        headers.append("X-CSCAPI-KEY", myCountryKey);
 
         var requestOptions = {
             method: 'GET',
@@ -55,9 +56,8 @@ export const fetchCities = (paramIsoCountry) => {
 //Get country list
 export const fetchCountries = () => {
     return async (dispatch) => {
-
         var headers = new Headers();
-        headers.append("X-CSCAPI-KEY", "NjFRSUdoSm5EY2RIaE9TSTlMdHcxOExGN2QwWnJJTFVNelFQQVExVQ==");
+        headers.append("X-CSCAPI-KEY", myCountryKey);
 
         var requestOptions = {
             method: 'GET',
@@ -85,7 +85,7 @@ export const fetchCountries = () => {
     }
 }
 
-//get country
+//get country name
 export const getCountry = (paramCountry) => {
     return {
         type: GET_COUNTRY,
@@ -93,7 +93,7 @@ export const getCountry = (paramCountry) => {
     }
 }
 
-//get city
+//get city name
 export const getCity = (paramCity) => {
     return {
         type: GET_CITY,
@@ -101,7 +101,7 @@ export const getCity = (paramCity) => {
     }
 }
 
-//get Address
+//get address 
 export const getAddress = (paramAddress) => {
     return {
         type: GET_ADDRESS,
@@ -113,14 +113,52 @@ export const getAddress = (paramAddress) => {
 export const createNewUser = (paramUser) => {
 
     const userInfo = getUserInfo(paramUser)
-    console.log(userInfo)
+
     const isValid = validateUser(userInfo)
+
     if (isValid) {
-        sendRegisterInfo(userInfo)
-        console.log("success")
+        //    return sendRegisterInfo(userInfo)
+        // sendRegisterInfo(userInfo);
+        // .then(data => {
+        //     console.log(data)
+        // }).catch(err => {
+        //     console.log(err)
+        // })
+
+        return async (dispatch) => {
+            const requestOptions = {
+                method: 'POST',
+                headers: {
+                    "Content-Type": 'application/json'
+                },
+                body: JSON.stringify(paramUser)
+            };
+
+            await dispatch({
+                type: CREATE_USER_PENDING
+            });
+
+            try {
+                const res = await fetch(createUserUrl, requestOptions);
+                const resObj = await res.json();
+                return dispatch({
+                    type: CREATE_USER_SUCCESS,
+                    data: resObj
+                })
+            } catch (err) {
+                return dispatch({
+                    type: CREATE_USER_ERROR,
+                    error: err
+                })
+            }
+        }
+
+
     }
+
 }
 
+//Get User Information 
 const getUserInfo = (paramUser) => {
     return {
         email: paramUser.get('email'),
@@ -131,45 +169,131 @@ const getUserInfo = (paramUser) => {
         city: paramUser.get('city'),
         address: paramUser.get('address'),
     }
-
 }
 
-//Send Register info to Server
-export const sendRegisterInfo = (paramUser) => {
-    console.log(paramUser)
-    return async (dispatch) => {
-        var requestOptions = {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(paramUser)
-        };
+// const sendRegisterInfo = async (paramUser) => {
+//     debugger
 
-        await dispatch({
-            type: CREATE_USER_PENDING
-        });
+//     try {
+//     debugger
+//         const requestOptions = {
+//             method: 'POST',
+//             headers: {
+//                 "Content-Type": 'application/json'
+//             },
+//             body: JSON.stringify(paramUser)
+//         };
+//         const res = await fetch(createUserUrl, requestOptions);
+//         const data =await res.json()
+//         await console.log(data)
+//         if (!res.ok) {
+//             console.log(res.statusText)
+//             return {
+//                 type: CREATE_USER_ERROR,
+//                 data: res.json().statusText
+//             }
+//         }
+//         console.log(data)
 
-        try {
-            const res = await fetch(createUserUrl, requestOptions);
-            const resObj = await res.json();
-            console.log(resObj)
-            return dispatch({
-                type: CREATE_USER_SUCCESS,
-                resCreateUser: resObj
-            })
-        } catch (err) {
-            console.log("err")
-            return dispatch({
-                type: CREATE_USER_ERROR,
-                error: err
-            })
-        }
-    }
-}
+//     } catch (error) {
+//        console.log(error)
+//     }
+// }
 
-//Valid User Information
+// export const sendRegisterInfo = async (paramUser) => {
+//     debugger;
+//     try {
+//         const requestOptions = {
+//             method: 'POST',
+//             headers: {
+//                 "Content-Type": 'application/json'
+//             },
+//             body: JSON.stringify(paramUser)
+//         };
+//         const res = await fetch(createUserUrl, requestOptions);
+//         // if (res && res.status !== 201) {
+//         //     throw new Error("Something is wrong with status code : " + res.status)
+//         // }
+
+//         if (res.status === 201) {
+//             //     throw new Error("Something is wrong with status code : " + res.status)
+//             const resObj = res.json();
+//             return {
+//                 type: CREATE_USER_SUCCESS,
+//             }
+//         }
+
+//         // const resObj = await res.json();
+//         // console.log(resObj)
+//         // return resObj
+//     } catch (err) {
+//         console.log("error catch", err.message)
+//     }
+// }
+// return async (dispatch) => {
+// await dispatch({
+//     type: CREATE_USER_PENDING
+// });
+
+//     debugger
+//     console.log(paramUser)
+//     console.log("sendRegisterInfo")
+
+//     var requestOptions = {
+//         method: 'POST',
+//         headers: {
+//             "Content-Type": 'application/json'
+//         },
+//         body: JSON.stringify(paramUser)
+//     };
+
+//     // try {
+//     //     // const allProductsRes = await fetch("http://localhost:8000/products?brand=" + brand + "&minPrice=" + minPrice + "&maxPrice=" + maxPrice + "&ordinal=" + ordinal, requestOptions);
+//     //     const res = await fetch(createUserUrl, requestOptions);
+//     //     // const allProductsObj = await allProductsRes.json();
+//     //     const data = await res.json()
+//     //     console.log(data)
+//     //     if (!res.ok) {
+//     //         return dispatch({
+//     //             type: CREATE_USER_ERROR
+//     //         })
+//     //     }
+//     //     else {
+//     //         return dispatch({
+//     //             type: CREATE_USER_SUCCESS
+//     //         })
+//     //     }
+
+//     // } catch (err) {
+//     //     return dispatch({
+//     //         type: CREATE_USER_ERROR,
+//     //         error: err
+//     //     })
+//     // }
+// }
+// try {
+// debugger
+
+
+
+//     await console.log(data)
+//     if (!res.ok) {
+//         console.log(res.statusText)
+//         return {
+//             type: CREATE_USER_ERROR,
+//             data: res.json().statusText
+//         }
+//     }
+//     console.log(data)
+
+// } catch (error) {
+//    console.log(error)
+// }
+
+
+
+
+// Valid User Information
 export const validateUser = (paramUser) => {
     if (!validateEmail(paramUser.email)) {
         alert("You have entered an invalid Email!")

@@ -14,6 +14,7 @@ import {
 } from "../constants/signUp.constants"
 
 const initializeState = {
+    createNewUserPending: false, 
     loadCountriesPending: false,
     loadCitiesPending: false,
     countryOptions: null,
@@ -21,6 +22,7 @@ const initializeState = {
     country: null,
     city: null,
     address: null,
+    createRes: null
 }
 export const signUpReducers = (state = initializeState, action) => {
     switch (action.type) {
@@ -56,9 +58,13 @@ export const signUpReducers = (state = initializeState, action) => {
             break;
 
         case CREATE_USER_PENDING:
+            state.createNewUserPending = true
             console.log("CREATE_USER_PENDING")
             break;
         case CREATE_USER_SUCCESS:
+            state.createNewUserPending = false
+            // state.createRes=action.data 
+            // console.log(state.createRes)
             console.log("CREATE_USER_SUCCESS")
             break;
         case CREATE_USER_ERROR:
