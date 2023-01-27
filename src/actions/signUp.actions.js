@@ -102,7 +102,7 @@ export const getCity = (paramCity) => {
 }
 
 //get address 
-export const getAddress = (paramAddress) => {
+export const getAddress =  (paramAddress) => {
     return {
         type: GET_ADDRESS,
         address: paramAddress,
@@ -112,26 +112,18 @@ export const getAddress = (paramAddress) => {
 //Create new user
 export const createNewUser = (paramUser) => {
 
-    const userInfo = getUserInfo(paramUser)
+    const userInfo =  getUserInfo(paramUser)
 
-    const isValid = validateUser(userInfo)
+    const isValid =  validateUser(userInfo)
 
     if (isValid) {
-        //    return sendRegisterInfo(userInfo)
-        // sendRegisterInfo(userInfo);
-        // .then(data => {
-        //     console.log(data)
-        // }).catch(err => {
-        //     console.log(err)
-        // })
-
         return async (dispatch) => {
             const requestOptions = {
                 method: 'POST',
                 headers: {
                     "Content-Type": 'application/json'
                 },
-                body: JSON.stringify(paramUser)
+                body: JSON.stringify(userInfo)
             };
 
             await dispatch({
@@ -152,10 +144,7 @@ export const createNewUser = (paramUser) => {
                 })
             }
         }
-
-
     }
-
 }
 
 //Get User Information 
@@ -171,129 +160,7 @@ const getUserInfo = (paramUser) => {
     }
 }
 
-// const sendRegisterInfo = async (paramUser) => {
-//     debugger
 
-//     try {
-//     debugger
-//         const requestOptions = {
-//             method: 'POST',
-//             headers: {
-//                 "Content-Type": 'application/json'
-//             },
-//             body: JSON.stringify(paramUser)
-//         };
-//         const res = await fetch(createUserUrl, requestOptions);
-//         const data =await res.json()
-//         await console.log(data)
-//         if (!res.ok) {
-//             console.log(res.statusText)
-//             return {
-//                 type: CREATE_USER_ERROR,
-//                 data: res.json().statusText
-//             }
-//         }
-//         console.log(data)
-
-//     } catch (error) {
-//        console.log(error)
-//     }
-// }
-
-// export const sendRegisterInfo = async (paramUser) => {
-//     debugger;
-//     try {
-//         const requestOptions = {
-//             method: 'POST',
-//             headers: {
-//                 "Content-Type": 'application/json'
-//             },
-//             body: JSON.stringify(paramUser)
-//         };
-//         const res = await fetch(createUserUrl, requestOptions);
-//         // if (res && res.status !== 201) {
-//         //     throw new Error("Something is wrong with status code : " + res.status)
-//         // }
-
-//         if (res.status === 201) {
-//             //     throw new Error("Something is wrong with status code : " + res.status)
-//             const resObj = res.json();
-//             return {
-//                 type: CREATE_USER_SUCCESS,
-//             }
-//         }
-
-//         // const resObj = await res.json();
-//         // console.log(resObj)
-//         // return resObj
-//     } catch (err) {
-//         console.log("error catch", err.message)
-//     }
-// }
-// return async (dispatch) => {
-// await dispatch({
-//     type: CREATE_USER_PENDING
-// });
-
-//     debugger
-//     console.log(paramUser)
-//     console.log("sendRegisterInfo")
-
-//     var requestOptions = {
-//         method: 'POST',
-//         headers: {
-//             "Content-Type": 'application/json'
-//         },
-//         body: JSON.stringify(paramUser)
-//     };
-
-//     // try {
-//     //     // const allProductsRes = await fetch("http://localhost:8000/products?brand=" + brand + "&minPrice=" + minPrice + "&maxPrice=" + maxPrice + "&ordinal=" + ordinal, requestOptions);
-//     //     const res = await fetch(createUserUrl, requestOptions);
-//     //     // const allProductsObj = await allProductsRes.json();
-//     //     const data = await res.json()
-//     //     console.log(data)
-//     //     if (!res.ok) {
-//     //         return dispatch({
-//     //             type: CREATE_USER_ERROR
-//     //         })
-//     //     }
-//     //     else {
-//     //         return dispatch({
-//     //             type: CREATE_USER_SUCCESS
-//     //         })
-//     //     }
-
-//     // } catch (err) {
-//     //     return dispatch({
-//     //         type: CREATE_USER_ERROR,
-//     //         error: err
-//     //     })
-//     // }
-// }
-// try {
-// debugger
-
-
-
-//     await console.log(data)
-//     if (!res.ok) {
-//         console.log(res.statusText)
-//         return {
-//             type: CREATE_USER_ERROR,
-//             data: res.json().statusText
-//         }
-//     }
-//     console.log(data)
-
-// } catch (error) {
-//    console.log(error)
-// }
-
-
-
-
-// Valid User Information
 export const validateUser = (paramUser) => {
     if (!validateEmail(paramUser.email)) {
         alert("You have entered an invalid Email!")
