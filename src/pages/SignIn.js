@@ -25,47 +25,42 @@ const theme = createTheme();
 
 export default function SignIn() {
 
-  
-  // useEffect(() => {
-  //   dispatch(fetchProducts(limit, currentPage, brand, minPrice, maxPrice, ordinal));
-  // }, [currentPage, brand, minPrice, maxPrice, ordinal]);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    console.log({
+      email: data.get('email'),
+      password: data.get('password'),
+    });
+  };
 
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   const data = new FormData(event.currentTarget);
-  //   console.log({
-  //     email: data.get('email'),
-  //     password: data.get('password'),
-  //   });
-  // };
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [user, setUser] = useState(null)
 
-  // const navigate = useNavigate();
-  // const dispatch = useDispatch();
-  // const [user, setUser] = useState(null)
-
-  // const loginGoogle = () => {
-  //   signInWithPopup(auth, provider)
-  //     .then((result) => {
-  //       setUser(result.user)
-  //       console.log(result.user)
-  //       dispatch(successLogIn(result.user.photoURL, result.user.displayName, result.user.email))
-  //       // navigate("/homepage")
-  //       navigate(-1)
-  //     })
-  //     .catch((error) => {
-  //       console.log(error)
-  //       setUser(null)
-  //     })
-  // }
-  // useEffect(() => {
-  //   onAuthStateChanged(auth, (result) => {
-  //     if (result) {
-  //       setUser(result)
-  //     } else {
-  //       setUser(null)
-  //     }
-  //   })
-  // }, [])
+  const loginGoogle = () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        setUser(result.user)
+        console.log(result.user)
+        dispatch(successLogIn(result.user.photoURL, result.user.displayName, result.user.email))
+        // navigate("/homepage")
+        navigate(-1)
+      })
+      .catch((error) => {
+        console.log(error)
+        setUser(null)
+      })
+  }
+  useEffect(() => {
+    onAuthStateChanged(auth, (result) => {
+      if (result) {
+        setUser(result)
+      } else {
+        setUser(null)
+      }
+    })
+  }, [])
 
   return (
     <ThemeProvider theme={theme}>
@@ -101,7 +96,7 @@ export default function SignIn() {
             <Typography component="h1" variant="h5">
               Sign in
             </Typography>
-            {/* <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
               <TextField
                 margin="normal"
                 required
@@ -131,12 +126,14 @@ export default function SignIn() {
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3 }}
+                onClick={loginGoogle}
               >
                 Sign In
               </Button>
               <h6 className="divider line one-line">Or</h6>
               <Button
                 type="submit"
+                margin="normal"
                 fullWidth
                 variant="contained"
                 sx={{ mb: 2, bgcolor: "#EA4335" }}
@@ -156,12 +153,7 @@ export default function SignIn() {
                   </Link >
                 </Grid>
               </Grid>
-            </Box> */}
-              <Grid item>
-                  <Link href="/signup" variant="body2">
-                    {"Don't have an account? Sign Up"}
-                  </Link >
-                </Grid>
+            </Box>
           </Box>
         </Grid>
       </Grid>

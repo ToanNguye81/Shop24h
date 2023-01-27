@@ -102,7 +102,7 @@ export const getCity = (paramCity) => {
 }
 
 //get address 
-export const getAddress =  (paramAddress) => {
+export const getAddress = (paramAddress) => {
     return {
         type: GET_ADDRESS,
         address: paramAddress,
@@ -112,9 +112,9 @@ export const getAddress =  (paramAddress) => {
 //Create new user
 export const createNewUser = (paramUser) => {
 
-    const userInfo =  getUserInfo(paramUser)
+    const userInfo = getUserInfo(paramUser)
 
-    const isValid =  validateUser(userInfo)
+    const isValid = validateUser(userInfo)
 
     if (isValid) {
         return async (dispatch) => {
@@ -133,6 +133,12 @@ export const createNewUser = (paramUser) => {
             try {
                 const res = await fetch(createUserUrl, requestOptions);
                 const resObj = await res.json();
+                console.log(res.ok)
+                if (!res.ok) {
+                    return dispatch({
+                        type: CREATE_USER_ERROR,
+                    })
+                }
                 return dispatch({
                     type: CREATE_USER_SUCCESS,
                     data: resObj
@@ -144,8 +150,44 @@ export const createNewUser = (paramUser) => {
                 })
             }
         }
+
+        // (async () => {
+        //     await sendRegisterUser(userInfo)
+        // })();
+
     }
 }
+
+//Fetch Post Create User
+// export const sendRegisterUser = (paramUser) => {
+//     return async (dispatch) => {
+//         const requestOptions = {
+//             method: 'POST',
+//             headers: {
+//                 "Content-Type": 'application/json'
+//             },
+//             body: JSON.stringify(paramUser)
+//         };
+
+//         await dispatch({
+//             type: CREATE_USER_PENDING
+//         });
+
+//         try {
+//             const res = await fetch(createUserUrl, requestOptions);
+//             const resObj = await res.json();
+//             return dispatch({
+//                 type: CREATE_USER_SUCCESS,
+//                 data: resObj
+//             })
+//         } catch (err) {
+//             return dispatch({
+//                 type: CREATE_USER_ERROR,
+//                 error: err
+//             })
+//         }
+//     }
+// }
 
 //Get User Information 
 const getUserInfo = (paramUser) => {

@@ -1,5 +1,5 @@
 import HomePage from "./pages/HomePage";
-import { SignInPage } from "./pages/SignInPage";
+// import { SignInPage } from "./pages/SignInPage";
 import { ProductsPage } from "./pages/ProductsPage";
 import { DetailProduct } from "./pages/DetailProduct";
 import { OrderPage } from "./pages/OrderPage";
@@ -9,7 +9,7 @@ import SignIn from "./pages/SignIn";
 const routerList = [
     { path: "/", element:  <HomePage /> },
     { path: "/homepage", element:  <HomePage /> },
-    { path: "/login", element: <SignInPage /> },
+    // { path: "/login", element: <SignInPage /> },
     { path: "/detail-product/:productId", element:  <DetailProduct/> },
     { path: "/orders", element:  <OrderPage/> },
     { path: "/products", element: <ProductsPage/> },
