@@ -139,6 +139,7 @@ export const createNewUser = (paramUser) => {
                         type: CREATE_USER_ERROR,
                     })
                 }
+                console.log(resObj)
                 return dispatch({
                     type: CREATE_USER_SUCCESS,
                     data: resObj
@@ -202,7 +203,7 @@ const getUserInfo = (paramUser) => {
     }
 }
 
-
+//Valid date User Input
 export const validateUser = (paramUser) => {
     if (!validateEmail(paramUser.email)) {
         alert("You have entered an invalid Email!")
