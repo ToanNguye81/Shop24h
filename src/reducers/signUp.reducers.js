@@ -63,8 +63,6 @@ export const signUpReducers = (state = initializeState, action) => {
             break;
         case CREATE_USER_SUCCESS:
             state.createNewUserPending = false
-            // state.createRes=action.data 
-            // console.log(state.createRes)
             console.log("CREATE_USER_SUCCESS")
             break;
         case CREATE_USER_ERROR:
