@@ -12,7 +12,7 @@ function App() {
     <React.Fragment>
       <BrowserRouter>
         <Header />
-        <Body />
+        {/* <Body /> */}
         <Footer/>
       </BrowserRouter>
     </React.Fragment>

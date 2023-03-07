@@ -4,7 +4,8 @@ import { INCREASE_QUANTITY,INCREASE_QUANTITY } from "../constants/order.constant
 export const addToCart = (cart, paramDetailProduct) => {
     
     //Hàm xử lý thêm sản phẩm lần đầu
-    if (cart[0].product === null) {
+     // if (cart[0].product === null) {
+if (cart.length=== 0) {
         console.log(paramDetailProduct)
         return {
             type: ADD_FIRST_PRODUCT,

@@ -4,7 +4,8 @@ const initialState = {
     user: null,
     pending: false,
     error: null,
-    cart: [{ product: null, quantity: null }],//{product:...,quantity:...}
+    // cart: [{ product: null, quantity: null }],//{product:...,quantity:...}
+    cart:[]
 }
 
 export const cartReducers = (state = initialState, action) => {

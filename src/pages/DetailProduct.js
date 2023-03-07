@@ -16,7 +16,6 @@ export const DetailProduct = () => {
     const { productId } = useParams();
     const { detailProduct } = useSelector((reduxData) => reduxData.detailReducers)
 
-    console.log(productId)
     console.log(productId);
     useEffect(() => {
         if (productId) {

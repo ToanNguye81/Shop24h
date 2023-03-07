@@ -28,10 +28,14 @@ export const productReducers = (state = initialState, action) => {
             state.pending = true;
             break;
         case FETCH_PRODUCTS_SUCCESS:
+            // state.pending = false;
+            // state.totalProduct = action.totalProduct;
+            // state.products = action.products;
+            // state.filteredProducts = action.filteredProducts;
+            console.log(action.products)
             state.pending = false;
             state.totalProduct = action.totalProduct;
             state.products = action.products;
-            state.filteredProducts = action.filteredProducts;
             break;
         case FETCH_PRODUCTS_ERROR:
             break;
