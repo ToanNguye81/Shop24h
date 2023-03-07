@@ -19,7 +19,7 @@ import { UserAvatar } from './UserAvatar';
 import { useNavigate } from 'react-router-dom';
 
 
-const pages = ['NIKE', 'ADIDAS', 'JORDAN', 'YEEZY', 'OTHER BRANDS', 'SALE', 'BLOG', 'ABOUT', 'CONTACT'];
+const pages = ['HOME', 'SHOP', 'BLOG', 'ABOUT', 'CONTACT'];
 
 
 export const AppBarHeader = () => {
@@ -44,9 +44,9 @@ export const AppBarHeader = () => {
     }
 
     return (
-        <AppBar position="static" sx={{ backgroundColor: "#FFFFFF" }}>
-            <Container maxWidth="xl">
-                <Toolbar disableGutters>
+        <AppBar position="static" sx={{ backgroundColor: "#FFFFFF"}}>
+            <Container maxWidth="xl" >
+                <Toolbar disableGutters >
                     <Box component="button" onClick={onBtnMiushopClick} backgroundColor="black" sx={{ display: { xs: 'none',sm:"none", md: 'flex' }, mr: 1 }}>
                         <img className='shoelogo' src={Logo} width="120" alt="logo" ></img>
                     </Box>
@@ -93,8 +93,8 @@ export const AppBarHeader = () => {
                                 key={page}
                                 onClick={handleCloseNavMenu}
                                 sx={{ my: 2, color: 'black', display: 'block' }}
-                            >
-                                {page}
+                            >   
+                                <strong>{page}</strong>
                             </Button>
                         ))}
                     </Box>
