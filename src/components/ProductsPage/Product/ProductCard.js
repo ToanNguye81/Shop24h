@@ -1,31 +1,20 @@
+import * as React from 'react';
 import { Box, Card, Link, Typography, Stack } from '@mui/material';
 import { styled } from '@mui/material/styles';
 // components
 import Label from '../../../components/label';
-
+import CardButton from './CardButton';
 // ----------------------------------------------------------------------
-
-const StyledProductImg = styled('img')({
-  top: 0,
-  width: '100%',
-  height: '100%',
-  objectFit: 'cover',
-  position: 'absolute',
-});
-
-// ----------------------------------------------------------------------
-
 
 export default function ProductCard({ product }) {
-  const { buyPrice, category, imageUrl, name, promotionPrice,} = product;
-
+  const { buyPrice, category, imageUrl, name, promotionPrice, } = product;
   return (
     <Card variant='none'>
       <Box sx={{ pt: '100%', position: 'relative' }}>
         {category && (
           <Label
             variant="filled"
-            color={(category === 'TRENDING' && 'error') || 'info'}
+            color={(category === 'DISCOUNT' && 'error') || (category === 'TRENDING' && 'info') || 'success'}
             sx={{
               zIndex: 9,
               top: 16,
@@ -37,7 +26,7 @@ export default function ProductCard({ product }) {
             {category}
           </Label>
         )}
-        <StyledProductImg alt={name} src={imageUrl} />
+        <CardButton imageUrl={imageUrl}/>
       </Box>
 
       <Stack spacing={2} sx={{ p: 3 }}>

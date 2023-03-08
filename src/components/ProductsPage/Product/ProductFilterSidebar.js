@@ -18,7 +18,8 @@ import {
 // components
 // import Scrollbar from '../../../components/scrollbar';
 // import { ColorMultiPicker } from '../../../components/color-utils';
-import { Clear, Close, Filter } from '@mui/icons-material';
+import { Clear, Close } from '@mui/icons-material';
+import FilterAltIcon from '@mui/icons-material/FilterAlt';
 
 // ----------------------------------------------------------------------
 
@@ -28,11 +29,14 @@ export const SORT_BY_OPTIONS = [
   { value: 'priceDesc', label: 'Price: High-Low' },
   { value: 'priceAsc', label: 'Price: Low-High' },
 ];
-export const FILTER_GENDER_OPTIONS = ['Men', 'Women', 'Kids'];
-export const FILTER_CATEGORY_OPTIONS = ['All', 'Shose', 'Apparel', 'Accessories'];
+export const FILTER_GENDER_OPTIONS = ['Men', 'Women'];
+export const FILTER_BRAND_OPTIONS = ['NIKE', ''];
+export const FILTER_CATEGORY_OPTIONS = ['All', 'Latest', 'Discount', 'Trending'];
 export const FILTER_RATING_OPTIONS = ['up4Star', 'up3Star', 'up2Star', 'up1Star'];
 export const FILTER_PRICE_OPTIONS = [
   { value: 'below', label: 'Below $25' },
+  { value: 'below', label: 'Below $25' },
+  { value: 'between', label: 'Between $25 - $75' },
   { value: 'between', label: 'Between $25 - $75' },
   { value: 'above', label: 'Above $75' },
 ];
@@ -58,31 +62,41 @@ ProductFilterSidebar.propTypes = {
 export default function ProductFilterSidebar({ openFilter, onOpenFilter, onCloseFilter }) {
   return (
     <>
-      <Button disableRipple color="inherit" endIcon={<Filter/>} onClick={onOpenFilter}>
+      <Button disableRipple color="inherit" endIcon={<FilterAltIcon/>} onClick={onOpenFilter}>
         Filters&nbsp;
       </Button>
-
       <Drawer
         anchor="right"
         open={openFilter}
         onClose={onCloseFilter}
         PaperProps={{
-          sx: { width: 280, border: 'none', overflow: 'hidden' },
+          sx: { width: 280, border: 'none' },
         }}
       >
         <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ px: 1, py: 2 }}>
           <Typography variant="subtitle1" sx={{ ml: 1 }}>
             Filters
           </Typography>
+    
           <IconButton onClick={onCloseFilter}>
-            {/* <Iconify icon="eva:close-fill" /> */}
             <Close/>
           </IconButton>
         </Stack>
 
         <Divider />
-
           <Stack spacing={3} sx={{ p: 3 }}>
+
+          <div>
+              <Typography variant="subtitle1" gutterBottom>
+                Brand
+              </Typography>
+              <RadioGroup>
+                {FILTER_BRAND_OPTIONS.map((item) => (
+                  <FormControlLabel key={item} control={<Checkbox />} label={item} />
+                ))}
+              </RadioGroup>
+            </div>
+
             <div>
               <Typography variant="subtitle1" gutterBottom>
                 Gender
@@ -107,19 +121,6 @@ export default function ProductFilterSidebar({ openFilter, onOpenFilter, onClose
 
             <div>
               <Typography variant="subtitle1" gutterBottom>
-                Colors
-              </Typography>
-              {/* <ColorMultiPicker
-                name="colors"
-                selected={[]}
-                colors={FILTER_COLOR_OPTIONS}
-                onChangeColor={(color) => [].includes(color)}
-                sx={{ maxWidth: 38 * 4 }}
-              /> */}
-            </div>
-
-            <div>
-              <Typography variant="subtitle1" gutterBottom>
                 Price
               </Typography>
               <RadioGroup>
@@ -129,7 +130,7 @@ export default function ProductFilterSidebar({ openFilter, onOpenFilter, onClose
               </RadioGroup>
             </div>
 
-            <div>
+            {/* <div>
               <Typography variant="subtitle1" gutterBottom>
                 Rating
               </Typography>
@@ -158,7 +159,7 @@ export default function ProductFilterSidebar({ openFilter, onOpenFilter, onClose
                   />
                 ))}
               </RadioGroup>
-            </div>
+            </div> */}
           </Stack>
 
         <Box sx={{ p: 3 }}>

@@ -24,7 +24,7 @@
 
 import { useEffect, useState } from 'react';
 // @mui
-import { Container, Stack, Typography } from '@mui/material';
+import { Button, Container, Stack } from '@mui/material';
 
 // mock
 import ProductFilterSidebar from '../components/ProductsPage/Product/ProductFilterSidebar';
@@ -48,15 +48,14 @@ export const ProductsPage = () => {
         dispatch(getAllProduct(rowsPerPage, page))
     }, [rowsPerPage, page]);
 
-    const handleChangeRowsPerPage = (event) => {
-        setPage(0);
-        setRowsPerPage(parseInt(event.target.value, 10));
-    };
+    // const handleChangeRowsPerPage = (event) => {
+    //     setPage(0);
+    //     setRowsPerPage(parseInt(event.target.value, 10));
+    // };
 
-    const handleChangePage = (event, newPage) => {
-        setPage(newPage);
-    };
-
+    // const handleChangePage = (event, newPage) => {
+    //     setPage(newPage);
+    // };
 
     const [openFilter, setOpenFilter] = useState(false);
 
@@ -69,7 +68,7 @@ export const ProductsPage = () => {
     };
 
     return (
-        <Container sx={{ mt: 20,mb:10 }} fullWidth>
+        <Container sx={{ mt: 20, mb: 10 }} fullWidth>
             <Stack direction="row" flexWrap="wrap-reverse" alignItems="center" justifyContent="flex-end" sx={{ mb: 5 }}>
                 <Stack direction="row" spacing={1} flexShrink={0} sx={{ my: 1 }}>
                     <ProductFilterSidebar
@@ -83,7 +82,11 @@ export const ProductsPage = () => {
             <Stack direction="row" spacing={1} flexShrink={0} sx={{ my: 1 }}>
                 <ProductList products={products} />
             </Stack>
-
+            <Stack direction="column" justifyContent="center" alignItems="center" sx={{mt:10}}>
+                <Button variant='contained' sx={{backgroundColor:"#222222"}} onClick={() => setRowsPerPage(rowsPerPage + 5)}>
+                    MORE
+                </Button>
+            </Stack>
         </Container>
     );
 }
