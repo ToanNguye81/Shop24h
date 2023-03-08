@@ -7,17 +7,21 @@ import Header from "./views/Header";
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import { Container } from "reactstrap";
+// theme
+import ThemeProvider from './theme';
 
 function App() {
   return (
     <React.Fragment>
-      <BrowserRouter>
-        <Container>
-          <Header />
-        </Container>
-        <Body />
-        <Footer />
-      </BrowserRouter>
+      <ThemeProvider>
+        <BrowserRouter>
+          <Container>
+            <Header />
+          </Container>
+          <Body/>
+          <Footer />
+        </BrowserRouter>
+      </ThemeProvider>
     </React.Fragment>
   );
 }

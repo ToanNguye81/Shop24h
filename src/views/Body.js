@@ -4,7 +4,6 @@ import HomePage from "../pages/HomePage";
 
 const Content = () => {
     return (
-        <div>
             <Routes>
                 {routes.map((router, index) => {
                     if (router.path) {
@@ -16,7 +15,6 @@ const Content = () => {
                 })}
                 <Route path="*" element={<HomePage />}></Route>
             </Routes>
-        </div>
     )
 }
 

@@ -15,14 +15,6 @@ const routerList = [
     { path: "/products", element: <ProductsPage/> },
     { path: "/signin", element: <SignIn/> },
     { path: "/signup", element: <SignUp/> },
-    
-    // { path: "/brand", element:  <Brand /> },
-    // { path: "/jordan", element: <SignInPage /> },
-    // { path: "/yeezy", element: <SignInPage /> },
-    // { path: "/sale", element: <SignInPage /> },
-    // { path: "/blog", element: <SignInPage /> },
-    // { path: "/about", element: <SignInPage /> },
-    // { path: "/contact", element: <SignInPage /> },
 ]
 
 export default routerList;

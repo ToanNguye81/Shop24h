@@ -44,7 +44,7 @@ export const AppBarHeader = () => {
     }
 
     return (
-        <AppBar position="static" sx={{ backgroundColor: "#FFFFFF"}}>
+        <AppBar position="static" sx={{ backgroundColor: "#FFFFFF"}} variant="none">
             <Container maxWidth="xl" >
                 <Toolbar disableGutters >
                     <Box component="button" onClick={onBtnMiushopClick} backgroundColor="black" sx={{ display: { xs: 'none',sm:"none", md: 'flex' }, mr: 1 }}>
