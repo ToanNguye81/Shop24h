@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import ButtonBase from '@mui/material/ButtonBase';
-import Typography from '@mui/material/Typography';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import { IconButton } from '@mui/material';
+import { Grid, IconButton, Tooltip } from '@mui/material';
+import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
+import { useNavigate } from 'react-router-dom';
 
 const StyledProductImg = styled('img')({
     top: 0,
@@ -12,7 +13,6 @@ const StyledProductImg = styled('img')({
     objectFit: 'cover',
     position: 'absolute',
 });
-
 
 // ----------------------------------------------------------------------
 
@@ -34,7 +34,7 @@ const ImageButton = styled(ButtonBase)(({ theme }) => ({
             opacity: "0",
         },
         '& .MuiTypography-root': {
-            border: '5px solid currentColor',
+            border: '4px solid currentColor',
         },
         '& .IconCart': {
             opacity: "100%",
@@ -66,29 +66,36 @@ const ImageBackdrop = styled('span')(({ theme }) => ({
 }));
 
 
-export default function CardButton({ imageUrl }) {
+export default function CardButton({ imageUrl, productId }) {
+    const navigate=useNavigate()
+
     return (
         <ImageButton
             focusRipple
         >
             <StyledProductImg src={imageUrl} />
-            <ImageBackdrop className="MuiImageBackdrop-root" />
+            <ImageBackdrop
+                className="MuiImageBackdrop-root" />
             <Image>
-                <Typography
-                    component="span"
-                    variant="subtitle1"
-                    color="inherit"
-                    sx={{
-                        position: 'relative',
-                        p: 4,
-                        pt: 2,
-                        pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
-                    }}
-                >
-                    <IconButton>
-                        <AddShoppingCartIcon className='IconCart' sx={{color:"white", opacity:"0"}}/>
-                    </IconButton>
-                </Typography>
+                <Grid container 
+                direction="row" 
+                justifyContent="space-evenly"
+                alignItems="center">
+                    <Tooltip title="Detail">
+                        <IconButton onClick={()=>(navigate(`/products/${productId}`))}
+                            className='IconCart' sx={{ color: "white", border: "4px solid white", opacity: "0" }}>
+                            <SearchOutlinedIcon
+                                className='IconCart' sx={{ color: "white", opacity: "0" }} />
+                        </IconButton>
+                    </Tooltip>
+                    <Tooltip title="Add to Cart">
+                        <IconButton
+                            className='IconCart' sx={{ color: "white", border: "4px solid white", opacity: "0" }}>
+                            <AddShoppingCartIcon
+                                className='IconCart' sx={{ color: "white", opacity: "0" }} />
+                        </IconButton>
+                    </Tooltip >
+                </Grid>
             </Image>
         </ImageButton>
     );

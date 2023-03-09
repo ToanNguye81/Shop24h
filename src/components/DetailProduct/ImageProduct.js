@@ -1,17 +1,17 @@
-import { Grid } from "@mui/material"
+import {  Card, Grid } from "@mui/material"
 import React from "react"
 
-export const ImageProduct = ({detailProduct}) => {
+export const ImageProduct = ({ product }) => {
     return (
-        <React.Fragment>
+        <Card sx={{minHeight:450}}>
             <Grid container
-                direction="row"
-                justifyContent="center"
-                alignItems="stretch" sx={{border:"none"}} >
-                <a href={detailProduct.imageUrl}>
-                    <img src={detailProduct.imageUrl} alt="product-img" width="100%" height="auto" />
-                </a>
-            </Grid>
-        </React.Fragment>
+                    direction="row"
+                    justifyContent="center"
+                    alignItems="stretch" sx={{ border: "none" }} >
+                    <a href={product.imageUrl}>
+                        <img src={product.imageUrl} alt="product-img"/>
+                    </a>
+                </Grid>
+        </Card>
     )
 }

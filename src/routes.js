@@ -5,6 +5,7 @@ import { DetailProduct } from "./pages/DetailProduct";
 import { OrderPage } from "./pages/OrderPage";
 import {SignUp} from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
+import { DetailProductPage } from "./pages/DetailProductPage";
 
 const routerList = [
     { path: "/", element:  <HomePage /> },
@@ -13,6 +14,7 @@ const routerList = [
     { path: "/detail-product/:productId", element:  <DetailProduct/> },
     { path: "/orders", element:  <OrderPage/> },
     { path: "/products", element: <ProductsPage/> },
+    { path: "/products/:productId", element:  <DetailProductPage/> },
     { path: "/signin", element: <SignIn/> },
     { path: "/signup", element: <SignUp/> },
 ]

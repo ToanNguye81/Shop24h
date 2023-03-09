@@ -6,10 +6,17 @@ import Label from '../../../components/label';
 import CardButton from './CardButton';
 // ----------------------------------------------------------------------
 
+const ExtendCard = styled(Card)(() => ({
+  border:"none",
+  '&:hover': {
+    border:"2px solid orange",
+  },
+}));
+
 export default function ProductCard({ product }) {
   const { buyPrice, category, imageUrl, name, promotionPrice, } = product;
   return (
-    <Card variant='none'>
+    <ExtendCard variant='none'>
       <Box sx={{ pt: '100%', position: 'relative' }}>
         {category && (
           <Label
@@ -26,15 +33,13 @@ export default function ProductCard({ product }) {
             {category}
           </Label>
         )}
-        <CardButton imageUrl={imageUrl}/>
+        <CardButton imageUrl={imageUrl} productId={product._id}/>
       </Box>
 
       <Stack spacing={2} sx={{ p: 3 }}>
-        <Link color="inherit" underline="hover">
           <Typography variant="subtitle2" noWrap>
             {name}
           </Typography>
-        </Link>
 
         <Stack direction="row" alignItems="flex-end" justifyContent="space-between">
           <Typography variant="subtitle1">
@@ -55,6 +60,6 @@ export default function ProductCard({ product }) {
           </Typography>
         </Stack>
       </Stack>
-    </Card>
+    </ExtendCard>
   );
 }

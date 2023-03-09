@@ -2,6 +2,11 @@ import {
     FETCH_PRODUCTS_ERROR,
     FETCH_PRODUCTS_PENDING,
     FETCH_PRODUCTS_SUCCESS,
+
+    GET_PRODUCT_BY_ID_ERROR,
+    GET_PRODUCT_BY_ID_PENDING,
+    GET_PRODUCT_BY_ID_SUCCESS,
+
     // PRODUCTS_PAGINATION_CHANGE,
     // BRAND_FILTER_CHANGE,
     // ORDINAL_FILTER_CHANGE,
@@ -56,6 +61,47 @@ export const getAllProduct = (paramLimit, paramPage, paramCondition) => {
         }
     }
 }
+
+//Get Product By Id
+export const getProductById = (productId) => {
+    const requestOptions = {
+        method: 'GET',
+        redirect: 'follow'
+    };
+
+    return async (dispatch) => {
+        try {
+            // dispatch pending state to update the UI
+            await dispatch({
+                type: GET_PRODUCT_BY_ID_PENDING
+            });
+
+            //fetch Product
+            const res = await fetch(`${gPRODUCT_API_URL}/${productId}`, requestOptions);
+
+            // parse the response as JSON
+            const resObj = await res.json();
+
+            // throw an error if the response is not successful
+            if (!res.ok) {
+                throw new Error(`${resObj.message}, status: ${res.status}`);
+            }
+            //Dispatch state
+            return dispatch({
+                type: GET_PRODUCT_BY_ID_SUCCESS,
+                productById: resObj.data
+            })
+
+        } catch (err) {
+            //if error
+            return dispatch({
+                type: GET_PRODUCT_BY_ID_ERROR,
+                error: err
+            })
+        }
+    }
+}
+
 
 // export const changePagination = (page) => {
 //     return {

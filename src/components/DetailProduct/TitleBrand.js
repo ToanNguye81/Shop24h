@@ -1,7 +1,5 @@
 import { Grid, Typography } from "@mui/material"
-import { useDispatch, useSelector } from "react-redux";
-export const TitleBrand = ({detailProduct}) => {
-    // const { detailProduct } = useSelector((reduxData) => reduxData.detailReducer);
+export const TitleBrand = ({product}) => {
     return (
         <Grid container
             direction="row"
@@ -16,7 +14,7 @@ export const TitleBrand = ({detailProduct}) => {
                 alignItems="center"
             >
                 <Typography variant="h2" sx={{ color: "#FFFFFF", fontFamily: "Poppins-Regular", fontWeight: 400 }}>
-                    {detailProduct.brand}
+                    {product.brand}
                 </Typography>
             </Grid>
         </Grid>
