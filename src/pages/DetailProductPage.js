@@ -43,7 +43,7 @@ export const DetailProductPage = () => {
                 <React.Fragment>
                     <TitleBrand xs={12} product={productById} />
                     <Grid container direction="row" justifyContent="center" alignItems="stretch" spacing={3} mt={5} >
-                        <Grid item xs={12} md={5}>
+                        <Grid item xs={12} md={5} >
                             <ImageProduct product={productById} />
                         </Grid>
                         <Grid item xs={12} md={5} pb={3}>
