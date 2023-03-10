@@ -7,6 +7,8 @@ import Header from "./views/Header";
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import { Container } from "reactstrap";
+import "./assets/styles/HeadSwiper.css";
+
 // theme
 import ThemeProvider from './theme';
 
