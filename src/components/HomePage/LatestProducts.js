@@ -13,7 +13,7 @@ function LatestProducts() {
         <Grid container direction="row"
           spacing={2} alignItems="center" >
           <Grid item xs={12} sm={4.5} md={4.5}>
-            <img src='https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/8439f823-86cf-4086-81d2-4f9ff9a66866/air-max-90-big-kids-shoe-1wzwJM.jpg' />
+            <img src='https://product.hstatic.net/1000383440/product/dscf5659_84d6fde8ddd141c08d356f4a00025078_master.jpg' />
           </Grid>
           <Grid item xs={12} sm={7.5} md={7.5}> <CardInfo ProductsData={Products} /></Grid>
         </Grid>

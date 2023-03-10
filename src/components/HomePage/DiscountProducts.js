@@ -8,7 +8,7 @@ function DiscountProducts() {
       <div>
         <h2 class="text-center mb-5 mt-5">DISCOUNT PRODUCT</h2>
       </div>
-      <Grid container sx={{ backgroundColor: "#8c7ae6" ,pt:5}} >
+      <Grid container sx={{ backgroundColor: "#2f3640" ,pt:5}} >
       <CardInfo ProductsData={Products}/>
       </Grid>
     </div>

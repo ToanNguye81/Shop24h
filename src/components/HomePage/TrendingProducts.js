@@ -12,7 +12,7 @@ function TrendingProducts() {
         <Grid container spacing={2} >
           <Grid item xs={12} sm={7} md={7}> <CardInfo ProductsData={Products} /></Grid>
           <Grid item xs={12} sm={5} md={5}>
-            <img src='https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/8439f823-86cf-4086-81d2-4f9ff9a66866/air-max-90-big-kids-shoe-1wzwJM.jpg' />
+            <img src='https://cdn11.bigcommerce.com/s-pbq04mq4he/images/stencil/1280x1280/products/5431/1720/_DSC1045__03956.1670265813.jpg?c=1' />
           </Grid>
         </Grid>
       </Grid>
