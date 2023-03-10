@@ -1,4 +1,4 @@
-import { Container } from '@mui/material';
+import { Container, Grid } from '@mui/material';
 import Products from "../../database_sample/productsData.json"
 import { CardInfo } from '../CardInfo';
 
@@ -8,9 +8,9 @@ function DiscountProducts() {
       <div>
         <h2 class="text-center mb-5 mt-5">DISCOUNT PRODUCT</h2>
       </div>
-      <Container>
+      <Grid container sx={{ backgroundColor: "#8c7ae6" ,pt:5}} >
       <CardInfo ProductsData={Products}/>
-      </Container>
+      </Grid>
     </div>
   );
 }

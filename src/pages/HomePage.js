@@ -1,11 +1,9 @@
-import { Box, Container, Grid } from "@mui/material";
+import { Box } from "@mui/material";
 import React from "react";
-import Accessory from "../components/HomePage/Accessory";
 import DiscountProducts from "../components/HomePage/DiscountProducts";
 import { HeadSwiper } from "../components/HomePage/HeadSwiper";
 import { Intro } from "../components/HomePage/Introduce";
 import LatestProducts from "../components/HomePage/LatestProducts"
-import News from "../components/HomePage/News";
 import TrendingProducts from "../components/HomePage/TrendingProducts";
 import { ViewAll } from "../components/HomePage/ViewAll";
 
@@ -13,14 +11,12 @@ function Body() {
 
     return (
         <React.Fragment>
-            <Box sx={{mt:8}}>
+            <Box sx={{ mt: 8 }}>
                 <HeadSwiper />
                 <Intro />
                 <LatestProducts />
                 <TrendingProducts />
                 <DiscountProducts />
-                <Accessory />
-                <News />
                 <ViewAll />
             </Box>
         </React.Fragment>
