@@ -1,4 +1,6 @@
+import { ShoppingCartCheckout } from "@mui/icons-material";
 import { Grid, Typography, Button } from "@mui/material"
+import MoneyIcon from '@mui/icons-material/Money';
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -6,20 +8,21 @@ import { addToCart } from "../../actions/cart.actions";
 
 export const ProductInfo = ({ product }) => {
     const dispatch = useDispatch();
-    const navigate =useNavigate()
+    const navigate = useNavigate()
     const { logged } = useSelector((reduxData) => reduxData.signInReducers);
     const { cart } = useSelector((reduxData) => reduxData.cartReducers);
 
 
-    const onBtnAddToCart=(paramDetailProduct)=> {
-        console.log(paramDetailProduct);
+    const onBtnAddToCart = (product) => {
+        console.log(product);
         if (logged) {
-                dispatch(addToCart(cart,paramDetailProduct))
-            }
-            else{
+            dispatch(addToCart(cart, product))
+        }
+        else {
             navigate("/login")
         }
     }
+
     const onBtnBuyInstantly = (product) => {
 
     }
@@ -31,68 +34,71 @@ export const ProductInfo = ({ product }) => {
                 direction="column"
                 justifyContent="space-between"
                 alignItems="stretch"
-                sx={{ display: { xs: 'none', md: 'flex' }, height: "100%" }}
+                sx={{ maxWidth: "800px", margin: "auto" }}
             >
-                <h1 style={{ color: "black" }}>
+                <h1 style={{ color: "black", textAlign: "center" }}>
                     <strong>{product.name}</strong>
                 </h1>
-                <Typography fontSize={30}>
+                <Typography fontSize={{ xs: 20, sm: 30 }}>
                     Type: <strong>{product.type}</strong>
                 </Typography>
-                <Typography fontSize={20}>Gender: {product.gender}</Typography>
+                <Typography fontSize={{ xs: 16, sm: 20 }}>Gender: {product.gender}</Typography>
                 <hr />
-                <Typography fontSize={20}>Size: </Typography>
+                <Typography fontSize={{ xs: 16, sm: 20 }}>Size: </Typography>
                 <hr />
-                <Typography fontSize={20}>Buy Price: {product.buyPrice}</Typography>
-                <Typography fontSize={20}>
+                <Typography fontSize={{ xs: 16, sm: 20 }}>Buy Price: {product.buyPrice}</Typography>
+                <Typography fontSize={{ xs: 16, sm: 20 }}>
                     Promotion Price: <strong style={{ color: "red" }}>{product.promotionPrice}</strong>
                 </Typography>
-                <Typography fontSize={20}>
+                <Typography fontSize={{ xs: 16, sm: 20 }}>
                     Description: {product.description}
                 </Typography>
-                <hr />
-                <Grid container
-                    direction="row"
-                    justifyContent="space-around"
-                    alignItems="stretch">
-                    <Button className="btn col-sm-4 rounded-pill pb-3 pt-3" sx={{color:"white",backgroundColor:"#717FE0"}} onClick={()=>onBtnAddToCart(product)}>ADD TO CART</Button>
-                    <Button className="btn col-sm-4 rounded-pill pb-3 pt-3" onClick={onBtnBuyInstantly}>BUY INSTANTLY</Button>
-                </Grid>
-            </Grid>
-
-            <Grid
-                container
-                direction="column"
-                justifyContent="center"
-                alignItems="center"
-                sx={{ display: { xs: 'flex', md: 'none' } }}
-            >
-                <h1 style={{ color: "black" }}>
-                    <strong>{product.name}</strong>
-                </h1>
-                <Typography fontSize={30}>
-                    Type: <strong>{product.type}</strong>
-                </Typography>
-                <Typography fontSize={20}>Gender: {product.gender}</Typography>
-                <hr />
-                <Typography fontSize={20}>Size: </Typography>
-                <hr />
-                <Typography fontSize={20}>
-                    Promotion Price: {product.promotionPrice}
-                </Typography>
-                <Typography fontSize={20}>Buy Price: <strong style={{ color: "red" }}>{product.buyPrice}</strong></Typography>
-                <Typography fontSize={20} sx={{ textAlign: 'center' }}>
-                    Description: {product.description}
-                </Typography>
-                <hr />
-                <Grid container
-                    direction="row"
-                    justifyContent="space-around"
-                    alignItems="stretch">
-                    <Button className="btn col-sm-3 rounded-pill pb-2 pt-2" sx={{color:"white",backgroundColor:"#717FE0"}} onClick={()=>onBtnAddToCart(product)}>ADD TO CART</Button>
-                    <Button className="btn col-sm-3 btn-danger rounded-pill pb-2 pt-2" onClick={onBtnBuyInstantly}>BUY INSTANTLY</Button>
+                <Grid
+                    container
+                    direction={{ xs: "column", sm: "row" }}
+                    justifyContent="space-evenly"
+                    alignItems="center"
+                    sx={{ marginTop: "16px" }}
+                >
+                    <Button 
+                        sx={{
+                            backgroundColor: "#6CB5FF",
+                            color: "#fff",
+                            borderRadius: "8px",
+                            padding: { xs: "10px 0", sm: "10px 20px" },
+                            margin: { xs: "10px 0 10px", sm: "10px 20px" },
+                            width: { xs: "100%", sm: "auto" },
+                            fontSize: { xs: 16, sm: 18 },
+                            "&:hover": {
+                                backgroundColor: "#5ED2FF",
+                            },
+                        }}
+                        onClick={() => onBtnAddToCart(product)}
+                    >
+                       <ShoppingCartCheckout sx={{ marginRight: "8px" }}/> ADD TO CART
+                    </Button>
+                    <Button
+                        sx={{
+                            backgroundColor: "#292929",
+                            color: "#fff",
+                            borderRadius: "8px",
+                            padding: { xs: "10px 0", sm: "10px 20px" },
+                            width: { xs: "100%", sm: "auto" },
+                            fontSize: { xs: 16, sm: 18 },
+                            boxShadow: "2px 2px 5px rgba(0, 0, 0, 0.1)",
+                            "&:hover": {
+                                backgroundColor: "#323232",
+                            },
+                        }}
+                        onClick={onBtnBuyInstantly}
+                    >
+                        <MoneyIcon sx={{ marginRight: "8px" }}/>  BUY NOW
+                    </Button>
                 </Grid>
             </Grid>
         </React.Fragment>
+
     );
 }
+
+

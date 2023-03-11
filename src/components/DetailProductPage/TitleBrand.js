@@ -5,7 +5,7 @@ export const TitleBrand = ({brand}) => {
             direction="row"
             justifyContent="space-around"
             alignItems="center"
-            sx={{ display: { md: 'flex' }, backgroundColor: "#222222", pt: 5, pb: 5 }}
+            sx={{ display: { md: 'flex' }, backgroundColor: "#222222", pt: 1, pb: 1 }}
         >
             <Grid item xs={12} md={4}
                 sx={{ textAlign: 'center' }}
@@ -13,7 +13,7 @@ export const TitleBrand = ({brand}) => {
                 justifyContent="center"
                 alignItems="center"
             >
-                <Typography variant="h2" sx={{ color: "#FFFFFF", fontFamily: "Poppins-Regular", fontWeight: 400 }}>
+                <Typography variant="h2" sx={{ color: "#FFFFFF", fontWeight: 400 }}>
                     {brand}
                 </Typography>
             </Grid>

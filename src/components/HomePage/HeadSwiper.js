@@ -48,7 +48,6 @@ export const HeadSwiper = ({ slides }) => {
       spaceBetween={0}
       slidesPerView={1}
       speed={200}
-      pagination={{ clickable: true }}
       className="head-swiper"
       loop={true}
       autoplay={{
