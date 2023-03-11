@@ -11,7 +11,7 @@ function Body() {
 
     return (
         <React.Fragment>
-            <Box sx={{ mt: 8 }}>
+            <Box>
                 <HeadSwiper />
                 <Intro />
                 <LatestProducts />

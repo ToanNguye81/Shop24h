@@ -2,10 +2,10 @@ import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import ButtonBase from '@mui/material/ButtonBase';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import { Grid, IconButton, Tooltip } from '@mui/material';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import { useNavigate } from 'react-router-dom';
-
 const StyledProductImg = styled('img')({
     top: 0,
     width: '100%',
@@ -88,7 +88,14 @@ export default function CardButton({ imageUrl, productId }) {
                                 className='IconCart' sx={{ color: "white", opacity: "0" }} />
                         </IconButton>
                     </Tooltip>
-                    <Tooltip title="Add to Cart">
+                    <Tooltip title="Buy Now">
+                        <IconButton
+                            className='IconCart' sx={{ color: "white", border: "4px solid white", opacity: "0" }}>
+                            <AttachMoneyIcon
+                                className='IconCart' sx={{ color: "white", opacity: "0" }} />
+                        </IconButton>
+                    </Tooltip >
+                    <Tooltip title="Add To Cart">
                         <IconButton
                             className='IconCart' sx={{ color: "white", border: "4px solid white", opacity: "0" }}>
                             <AddShoppingCartIcon

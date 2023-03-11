@@ -1,14 +1,15 @@
 import { Description, PendingActionsOutlined } from "@mui/icons-material"
-import { CircularProgress, Grid, Typography } from "@mui/material"
+import { Box, CircularProgress, Grid, Typography } from "@mui/material"
 import { Container, Stack } from "@mui/system"
 import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
 import { useParams } from "react-router-dom"
 import { getProductById } from "../actions/product.actions"
-import { ImageProduct } from "../components/DetailProduct/ImageProduct"
-import { ProductInfo } from "../components/DetailProduct/ProductInfo"
-import { TitleBrand } from "../components/DetailProduct/TitleBrand"
+import { ImageProduct } from "../components/DetailProductPage/ImageProduct"
+import { ProductInfo } from "../components/DetailProductPage/ProductInfo"
+import { TitleBrand } from "../components/DetailProductPage/TitleBrand"
+// import { TitleBrand } from "../components/DetailProductPage/TitleBrand"
 
 export const DetailProductPage = () => {
     const dispatch = useDispatch();
@@ -40,8 +41,8 @@ export const DetailProductPage = () => {
             {productById == null || productById === undefined ?
                 <PendingActionsOutlined />
                 :
-                <React.Fragment>
-                    <TitleBrand xs={12} product={productById} />
+                <Box>
+                    <TitleBrand brand={productById.brand}/>
                     <Grid container direction="row" justifyContent="center" alignItems="stretch" spacing={3} mt={5} >
                         <Grid item xs={12} md={5} >
                             <ImageProduct product={productById} />
@@ -53,7 +54,7 @@ export const DetailProductPage = () => {
                     <Grid xs={12}>
                         <Description product={productById} />
                     </Grid>
-                </React.Fragment>
+                </Box>
             }
         </React.Fragment>
     )

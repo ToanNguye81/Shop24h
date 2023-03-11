@@ -1,11 +1,11 @@
 import { Grid, Typography } from "@mui/material"
-export const TitleBrand = ({product}) => {
+export const TitleBrand = ({brand}) => {
     return (
         <Grid container
             direction="row"
             justifyContent="space-around"
             alignItems="center"
-            sx={{ display: { md: 'flex' }, backgroundColor: "#222222", pt: 12.5, pb: 1 }}
+            sx={{ display: { md: 'flex' }, backgroundColor: "#222222", pt: 5, pb: 5 }}
         >
             <Grid item xs={12} md={4}
                 sx={{ textAlign: 'center' }}
@@ -14,7 +14,7 @@ export const TitleBrand = ({product}) => {
                 alignItems="center"
             >
                 <Typography variant="h2" sx={{ color: "#FFFFFF", fontFamily: "Poppins-Regular", fontWeight: 400 }}>
-                    {product.brand}
+                    {brand}
                 </Typography>
             </Grid>
         </Grid>

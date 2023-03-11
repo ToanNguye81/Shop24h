@@ -6,7 +6,6 @@ import Body from './views/Body';
 import Header from "./views/Header";
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
-import { Container } from "reactstrap";
 import "./assets/styles/HeadSwiper.css";
 
 // theme
@@ -17,10 +16,8 @@ function App() {
     <React.Fragment>
       <ThemeProvider>
         <BrowserRouter>
-          <Container>
-            <Header />
-          </Container>
-          <Body/>
+          <Header />
+          <Body />
           <Footer />
         </BrowserRouter>
       </ThemeProvider>

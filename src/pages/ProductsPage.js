@@ -68,8 +68,8 @@ export const ProductsPage = () => {
     };
 
     return (
-        <Container sx={{ mt: 20, mb: 10 }} fullWidth>
-            <Stack direction="row" flexWrap="wrap-reverse" alignItems="center" justifyContent="flex-end" sx={{ mb: 5 }}>
+        <Container sx={{ mb: 10 }} fullWidth>
+            <Stack direction="row" flexWrap="wrap-reverse" alignItems="center" justifyContent="flex-end" sx={{ m: 5 }}>
                 <Stack direction="row" spacing={1} flexShrink={0} sx={{ my: 1 }}>
                     <ProductFilterSidebar
                         openFilter={openFilter}

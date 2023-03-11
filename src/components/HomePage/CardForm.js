@@ -26,7 +26,7 @@ export const CardForm = () => {
                   {item.description}
                 </p>
                 <div className="add-cart-container text-center mt-2">
-                  <button type="button" className="btn btn-success">Add to Cart</button>
+                  <button type="button" className="btn btn-success">Add To Cart</button>
                 </div>
               </div>
             </div>

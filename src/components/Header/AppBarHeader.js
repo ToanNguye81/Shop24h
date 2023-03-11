@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useEffect } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -24,6 +25,22 @@ const pages = ['HOME', 'SHOP', 'BLOG', 'ABOUT', 'CONTACT'];
 
 export const AppBarHeader = () => {
     const [anchorElNav, setAnchorElNav] = useState(null);
+    const [appBarHeight, setAppBarHeight] = useState(0);
+
+    useEffect(() => {
+        function updatePaddingTop() {
+            setAppBarHeight(document.querySelector('header').offsetHeight);
+        }
+
+        // update padding-top when reload
+        updatePaddingTop();
+
+        window.addEventListener('resize', updatePaddingTop);
+        return () => {
+            window.removeEventListener('resize', updatePaddingTop);
+        };
+    }, []);
+
     const navigate = useNavigate()
 
 
@@ -44,97 +61,99 @@ export const AppBarHeader = () => {
     }
 
     return (
-        <AppBar position="static" sx={{ backgroundColor: "#FFFFFF"}} variant="none">
-            <Container maxWidth="xl" >
-                <Toolbar disableGutters >
-                    <Box component="button" onClick={onBtnMiushopClick} backgroundColor="black" sx={{ display: { xs: 'none',sm:"none", md: 'flex' }, mr: 1 }}>
-                        <img className='shoelogo' src={Logo} width="120" alt="logo" ></img>
-                    </Box>
-                    <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-                        <IconButton
-                            size="large"
-                            aria-label="account of current user"
-                            aria-controls="menu-appbar"
-                            aria-haspopup="true"
-                            onClick={handleOpenNavMenu}
-                            color="black"
-                        >
-                            <MenuIcon />
-                        </IconButton>
-                        <Menu
-                            id="menu-appbar"
-                            anchorEl={anchorElNav}
-                            anchorOrigin={{
-                                vertical: 'bottom',
-                                horizontal: 'left',
-                            }}
-                            keepMounted
-                            transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'left',
-                            }}
-                            open={Boolean(anchorElNav)}
-                            onClose={handleCloseNavMenu}
-                            sx={{
-                                display: { xs: 'block', md: 'none' }
-                            }}
-                        >
+        <div style={{ paddingTop: appBarHeight }}>
+            <AppBar position="fixed" sx={{ backgroundColor: "#FFFFFF" }} variant="none">
+                <Container maxWidth="xl" >
+                    <Toolbar disableGutters >
+                        <Box component="button" onClick={onBtnMiushopClick} backgroundColor="black" sx={{ display: { xs: 'none', sm: "none", md: 'flex' }, mr: 1 }}>
+                            <img className='shoelogo' src={Logo} width="120" alt="logo" ></img>
+                        </Box>
+                        <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+                            <IconButton
+                                size="large"
+                                aria-label="account of current user"
+                                aria-controls="menu-appbar"
+                                aria-haspopup="true"
+                                onClick={handleOpenNavMenu}
+                                color="black"
+                            >
+                                <MenuIcon />
+                            </IconButton>
+                            <Menu
+                                id="menu-appbar"
+                                anchorEl={anchorElNav}
+                                anchorOrigin={{
+                                    vertical: 'bottom',
+                                    horizontal: 'left',
+                                }}
+                                keepMounted
+                                transformOrigin={{
+                                    vertical: 'top',
+                                    horizontal: 'left',
+                                }}
+                                open={Boolean(anchorElNav)}
+                                onClose={handleCloseNavMenu}
+                                sx={{
+                                    display: { xs: 'block', md: 'none' }
+                                }}
+                            >
+                                {pages.map((page) => (
+                                    <MenuItem key={page} onClick={handleCloseNavMenu}>
+                                        <Typography textAlign="center" sx={{ color: "black", fontFamily: 'Poppins' }}>{page}</Typography>
+                                    </MenuItem>
+                                ))}
+                            </Menu>
+                        </Box>
+
+                        <Box sx={{ flexGrow: 1, display: { xs: 'none', sm: "none", md: 'flex' } }}>
                             {pages.map((page) => (
-                                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center" sx={{ color: "black", fontFamily: 'Poppins' }}>{page}</Typography>
-                                </MenuItem>
+                                <Button
+                                    key={page}
+                                    onClick={handleCloseNavMenu}
+                                    sx={{ my: 2, color: 'black', display: 'block' }}
+                                >
+                                    <strong>{page}</strong>
+                                </Button>
                             ))}
-                        </Menu>
-                    </Box>
+                        </Box>
+                        <Typography
+                            noWrap
+                            component="a"
+                            href=""
+                            sx={{
+                                mr: 2,
+                                display: { xs: 'flex', sm: "center", md: 'none' },
+                                flexGrow: 1,
+                                fontFamily: 'Poppins',
+                                fontWeight: 700,
+                                letterSpacing: '.2rem',
+                                color: 'black',
+                                textDecoration: 'none',
+                            }}
+                        >
+                            <Box noWrap backgroundColor="black" sx={{ display: { xs: 'flex', sm: "center", md: 'center' }, mr: 1 }}>
+                                <img src={Logo} width="70" alt="logo" />
+                            </Box >
+                        </Typography>
 
-                    <Box sx={{ flexGrow: 1, display: { xs: 'none',sm:"none", md: 'flex' } }}>
-                        {pages.map((page) => (
-                            <Button
-                                key={page}
-                                onClick={handleCloseNavMenu}
-                                sx={{ my: 2, color: 'black', display: 'block' }}
-                            >   
-                                <strong>{page}</strong>
-                            </Button>
-                        ))}
-                    </Box>
-                    <Typography
-                        noWrap
-                        component="a"
-                        href=""
-                        sx={{
-                            mr: 2,
-                            display: { xs: 'flex',sm:"center", md: 'none' },
-                            flexGrow: 1,
-                            fontFamily: 'Poppins',
-                            fontWeight: 700,
-                            letterSpacing: '.2rem',
-                            color: 'black',
-                            textDecoration: 'none',
-                        }}
-                    >
-                        <Box noWrap backgroundColor="black" sx={{ display: { xs: 'flex',sm:"center", md: 'center' }, mr: 1 }}>
-                            <img src={Logo} width="70" alt="logo" />
-                        </Box >
-                    </Typography>
-
-                    <Box sx={{ flexGrow: 0 }}>
-                        <Tooltip title="Notification">
-                            <IconButton sx={{ pl: 1 }}>
-                                <NotificationsIcon sx={{ fontSize: 30, color: "#34495e" }} />
-                            </IconButton>
-                        </Tooltip>
-                    </Box>
-                    <Box sx={{ flexGrow: 0 }}>
-                        <Tooltip title="Your's Cart">
-                            <IconButton sx={{ pl: 1 }} onClick={onBtnCartClick}>
-                                <AddShoppingCartIcon sx={{ fontSize: 30, color: "#34495e" }} />
-                            </IconButton>
-                        </Tooltip>
-                    </Box>
-                    <UserAvatar />
-                </Toolbar>
-            </Container>
-        </AppBar>
+                        <Box sx={{ flexGrow: 0 }}>
+                            <Tooltip title="Notification">
+                                <IconButton sx={{ pl: 1 }}>
+                                    <NotificationsIcon sx={{ fontSize: 30, color: "#34495e" }} />
+                                </IconButton>
+                            </Tooltip>
+                        </Box>
+                        <Box sx={{ flexGrow: 0 }}>
+                            <Tooltip title="Your's Cart">
+                                <IconButton sx={{ pl: 1 }} onClick={onBtnCartClick}>
+                                    <AddShoppingCartIcon sx={{ fontSize: 30, color: "#34495e" }} />
+                                </IconButton>
+                            </Tooltip>
+                        </Box>
+                        <UserAvatar />
+                    </Toolbar>
+                </Container>
+            </AppBar>
+        </div>
     );
 }
