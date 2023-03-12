@@ -14,12 +14,11 @@ export const ProductInfo = ({ product }) => {
 
 
     const onBtnAddToCart = (product) => {
-        console.log(product);
         if (logged) {
             dispatch(addToCart(cart, product))
         }
         else {
-            navigate("/login")
+            navigate("/signin")
         }
     }
 

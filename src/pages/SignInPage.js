@@ -37,7 +37,7 @@ export const SignInPage = () => {
     }, [])
     return (
         <React.Fragment>
-            <div class="container-fluid div-background-picture mt-5 ">
+            <div class="container-fluid div-background-picture">
                 <div >
                     <div class="row d-flex align-items-center min-vh-100">
                         <div class="col-sm-4 text-center mx-auto my-0 jumbotron pt-3 pb-3">

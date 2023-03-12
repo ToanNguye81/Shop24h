@@ -22,7 +22,7 @@ function Info() {
               <dl className="contact-list">
                 <label>Address:</label>
                 <dd>
-                <a  href="dic:#">Phú Quang, Iahru, Gia Lai</a>
+                <a  href="dic:#">Phu Quang, Iahru, Gia Lai</a>
                 </dd>
               </dl>
               <dl className="contact-list">

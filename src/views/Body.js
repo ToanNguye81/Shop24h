@@ -1,9 +1,11 @@
 import routes from "../routes";
 import { Routes, Route } from "react-router-dom";
 import HomePage from "../pages/HomePage";
+import { Box } from "@mui/material";
 
 const Content = () => {
     return (
+        <Box sx={{mb:5}}>
             <Routes>
                 {routes.map((router, index) => {
                     if (router.path) {
@@ -15,6 +17,7 @@ const Content = () => {
                 })}
                 <Route path="*" element={<HomePage />}></Route>
             </Routes>
+        </Box>
     )
 }
 

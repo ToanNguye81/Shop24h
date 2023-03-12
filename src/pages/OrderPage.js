@@ -1,6 +1,5 @@
 import { Grid } from "@mui/material"
 import React from "react"
-import { Container } from "react-bootstrap"
 import { AllOrder } from "../components/OrderPage/AllOrder"
 import { Invoice } from "../components/OrderPage/Invoice"
 
@@ -10,7 +9,7 @@ export const OrderPage = () => {
                 <Grid container
                     direction="row"
                     justifyContent="space-evenly"
-                    alignItems="flex-start" mt={20}>
+                    alignItems="flex-start" mt={5}>
                     <Grid item xs={12} md={6.5}>
                         <AllOrder/>
                     </Grid>

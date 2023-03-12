@@ -6,7 +6,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { Button, ButtonGroup, Grid, TextField } from '@mui/material';
+import { Alert, Box, Button, ButtonGroup, Grid, Stack, TextField } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { useNavigate } from 'react-router-dom';
@@ -54,61 +54,67 @@ export const AllOrder = ({ products }) => {
 
     return (
         <React.Fragment>
-            <Grid container direction="row" justifyContent="center" alignItems="center">
-                <Grid item xs={11} md={12} >
-                    <TableContainer component={Paper}>
-                        <Table>
-                            <TableHead>
-                                <TableRow>
-                                    <TableCell align="center"><h5><strong>Products</strong></h5></TableCell>
-                                    <TableCell align="center"><h5><strong>Price</strong></h5></TableCell>
-                                    <TableCell align="center"><h5><strong>Quantity</strong></h5></TableCell>
-                                    <TableCell align="center"><h5><strong>Total &nbsp;($)</strong></h5></TableCell>
-                                </TableRow>
-                            </TableHead>
-                            {
-                                cart[0].product?
-                                <TableBody>
-                                {cart.map((item, index) => (
-                                    <TableRow key={index} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                                        <TableCell component="th" scope="item" width="25%">
-                                            <Grid container direction="column" justifyContent="flex-start" alignItems="center">
-                                                <img src={item.product.imageUrl} width="100" />
-                                                <Grid item textAlign="center">
-                                                    <strong>{item.product.name}</strong>
-                                                </Grid>
-                                            </Grid>
-                                        </TableCell>
-                                        <TableCell align="center" width="25%">$ {item.product.promotionPrice}</TableCell>
-                                        <TableCell align="center" width="25%">
-                                            <ButtonGroup>
-                                                <MyButton onClick={() => onBtnMinusClick(index)}><RemoveIcon /></MyButton>
-                                                <MyTextBox value={item.quantity}/>
-                                                <MyButton onClick={() => onBtnPlusClick(index)}><AddIcon /></MyButton>
-                                            </ButtonGroup>
-                                        </TableCell>
-                                        <TableCell align="center" width="25%">$ {item.product.promotionPrice*item.quantity}</TableCell>
-                                    </TableRow>
-                                ))}
-                                <TableRow>
-                                    <Grid container direction="column">
-                                        <TextField placeholder="Coupon Code"></TextField>
-                                        <Button>Apply coupon</Button>
-                                        <Button>Update Cart</Button>
-                                    </Grid>
-                                </TableRow>
-                            </TableBody>
-                                :null
-                            }
-                           
-                        </Table>
-                    </TableContainer>
-                </Grid>
-            </Grid>
-            <Grid container item sx={{ mt: 5, mb: 5, display: { xs: 12, md: 8 } }} direction="row" justifyContent="center" alignItems="stretch">
-                <Button onClick={onBtnBuyClick} class="btn col-sm-2 btn-warning rounded-pill pb-3 pt-3">Mua tiếp</Button>
-                <Button class="btn col-sm-2 btn-danger rounded-pill pb-3 pt-3">Đặt hàng</Button>
-            </Grid>
+            {
+                products ?
+                    <Box>
+                        <Grid container direction="row" justifyContent="center" alignItems="center">
+                            <Grid item xs={11} md={12} >
+                                <TableContainer component={Paper}>
+                                    <Table>
+                                        <TableHead>
+                                            <TableRow>
+                                                <TableCell align="center"><h5><strong>Products</strong></h5></TableCell>
+                                                <TableCell align="center"><h5><strong>Price</strong></h5></TableCell>
+                                                <TableCell align="center"><h5><strong>Quantity</strong></h5></TableCell>
+                                                <TableCell align="center"><h5><strong>Total &nbsp;($)</strong></h5></TableCell>
+                                            </TableRow>
+                                        </TableHead>
+                                        {
+                                            cart[0].product ?
+                                                <TableBody>
+                                                    {cart.map((item, index) => (
+                                                        <TableRow key={index} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                                                            <TableCell component="th" scope="item" width="25%">
+                                                                <Grid container direction="column" justifyContent="flex-start" alignItems="center">
+                                                                    <img src={item.product.imageUrl} width="100" />
+                                                                    <Grid item textAlign="center">
+                                                                        <strong>{item.product.name}</strong>
+                                                                    </Grid>
+                                                                </Grid>
+                                                            </TableCell>
+                                                            <TableCell align="center" width="25%">$ {item.product.promotionPrice}</TableCell>
+                                                            <TableCell align="center" width="25%">
+                                                                <ButtonGroup>
+                                                                    <MyButton onClick={() => onBtnMinusClick(index)}><RemoveIcon /></MyButton>
+                                                                    <MyTextBox value={item.quantity} />
+                                                                    <MyButton onClick={() => onBtnPlusClick(index)}><AddIcon /></MyButton>
+                                                                </ButtonGroup>
+                                                            </TableCell>
+                                                            <TableCell align="center" width="25%">$ {item.product.promotionPrice * item.quantity}</TableCell>
+                                                        </TableRow>
+                                                    ))}
+                                                </TableBody>
+                                                : null
+                                        }
+
+                                    </Table>
+                                </TableContainer>
+                            </Grid>
+                        </Grid>
+                        <Grid container
+                            direction={{ xs: "column", sm: "row" }}
+                            justifyContent="space-evenly"
+                            alignItems="center"
+                            sx={{ marginTop: "16px" }}>
+                            <Button variant='outlined' onClick={onBtnBuyClick} >Mua tiếp</Button>
+                            <Button variant="outlined">Đặt hàng</Button>
+                        </Grid>
+                    </Box> :
+                    <Stack sx={{ width: '100%' }} spacing={2}>
+                        <Alert variant="filled" severity="error" sx={{bgcolor:"#222222",color:"#fff"}}>You have no items in your shopping cart</Alert>
+                    </Stack>
+            }
+
         </React.Fragment>
 
     );
