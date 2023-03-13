@@ -5,7 +5,7 @@ import { Box } from "@mui/material";
 
 const Content = () => {
     return (
-        <Box sx={{mb:5}}>
+        <Box>
             <Routes>
                 {routes.map((router, index) => {
                     if (router.path) {
