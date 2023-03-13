@@ -82,7 +82,7 @@ export const ProductsPage = () => {
             <Stack direction="row" spacing={1} flexShrink={0} sx={{ my: 1 }}>
                 <ProductList products={products} />
             </Stack>
-            <Stack direction="column" justifyContent="center" alignItems="center" sx={{mt:10}}>
+            <Stack direction="column" justifyContent="center" alignItems="center" sx={{m:10}}>
                 <Button variant='contained' sx={{backgroundColor:"#222222"}} onClick={() => setRowsPerPage(rowsPerPage + 5)}>
                     MORE
                 </Button>

@@ -206,50 +206,6 @@ export default function SignIn() {
   const dispatch = useDispatch();
   const [user, setUser] = useState(null)
 
-  // const loginGoogle = () => {
-  //   signInWithPopup(auth, provider)
-  //     .then((result) => {
-  //       setUser(result.user)
-  //       console.log(result.user)
-  //       console.log(result.user.uid)
-  //       console.log(result.user.getIdToken())
-  
-        
-  //       dispatch(successLogIn(result.user.photoURL, result.user.displayName, result.user.email))
-  //       // navigate("/homepage")
-  //       navigate(-1)
-  //     })
-  //     .catch((error) => {
-  //       console.log(error)
-  //       setUser(null)
-  //     })
-  // }
-
-  // //Ver 3
-  // const loginGoogle = () => {
-  //   signInWithPopup(auth, provider)
-  //     .then((result) => {
-  //       const user = result.user
-  //       setUser(user)
-  //       console.log(user.uid)
-  //       console.log(user.accessToken)
-  //       // Lưu trữ accessToken vào localStorage
-  //       Cookies.set('accessToken', user.accessToken)
-  //       dispatch(successLogIn(user.photoURL, user.displayName, user.email))
-  //       navigate(-1)
-  //     })
-  //     .catch((error) => {
-  //       console.error(error)
-  //       setUser(null)
-  //       if (error.code === "auth/popup-closed-by-user") {
-  //         alert("Popup window closed before authentication was completed.")
-  //       } else {
-  //         alert("An error occurred while trying to sign in with Google.")
-  //       }
-  //     })
-  // }
-
-
   //VEr 4
   const loginGoogle = async () => {
     try {
