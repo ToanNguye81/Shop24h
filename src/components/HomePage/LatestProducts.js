@@ -1,7 +1,7 @@
 import { Container, Grid } from '@mui/material';
 import React from 'react';
 import Products from "../../database_sample/productsData.json"
-import { CardInfo } from '../CardInfo';
+import { CardInfo } from './CardInfo';
 
 function LatestProducts() {
   return (

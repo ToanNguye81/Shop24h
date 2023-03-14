@@ -1,133 +1,165 @@
-// import React from "react"
-// import auth from "../firebase.config"
-// import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup } from 'firebase/auth';
-// import { useEffect, useState } from 'react';
-// import { useNavigate } from "react-router-dom";
-// import { successLogIn } from "../actions/signIn.actions";
-// import { useDispatch } from "react-redux";
-// const provider = new GoogleAuthProvider();
 
-// export const SignInPage = () => {
-//     const navigate = useNavigate();
-//     const dispatch=useDispatch();
-//     const [user, setUser] = useState(null)
-
-//     const loginGoogle = () => {
-//         signInWithPopup(auth, provider)
-//             .then((result) => {
-//                 setUser(result.user)
-//                 console.log(result.user)
-//                 dispatch(successLogIn(result.user.photoURL,result.user.displayName, result.user.email))
-//                 // navigate("/homepage")
-//                 navigate(-1)
-//             })
-//             .catch((error) => {
-//                 console.log(error)
-//                 setUser(null)
-//             })
-//     }
-//     useEffect(() => {
-//         onAuthStateChanged(auth, (result) => {
-//             if (result) {
-//                 setUser(result)
-//             } else {
-//                 setUser(null)
-//             }
-//         })
-//     }, [])
-//     return (
-//         <React.Fragment>
-//             <div class="container-fluid div-background-picture">
-//                 <div >
-//                     <div class="row d-flex align-items-center min-vh-100">
-//                         <div class="col-sm-4 text-center mx-auto my-0 jumbotron pt-3 pb-3">
-//                             <div class="mb-2">
-//                                 <button onClick={loginGoogle} class="btn btn-block form-control btn-danger rounded-pill pb-3 pt-3">
-//                                     SIGN IN USING GOOGLE+
-//                                 </button>
-//                                 <h2 className="divider line one-line">Or</h2>
-//                             </div>
-//                             <div class="input-group mb-3">
-//                                 <input type="email" class="form-control rounded-pill pb-3 pt-3" placeholder="UserName" />
-//                             </div>
-
-//                             <div class="input-group mb-3 ">
-//                                 <input type="password" class="form-control rounded-pill pb-3 pt-3" placeholder="Password" />
-//                             </div>
-
-//                             <div class="mb-5">
-//                                 <a href="#" class="btn btn-block btn-success form-control rounded-pill pb-3 pt-3">
-//                                     SIGN IN
-//                                 </a>
-//                             </div>
-//                         </div>
-//                     </div>
-//                 </div>
-//             </div>
-
-//         </React.Fragment>
-//     )
-// }
-import React from "react"
+import * as React from 'react';
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+import Link from '@mui/material/Link';
+import Paper from '@mui/material/Paper';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import Typography from '@mui/material/Typography';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import auth from "../firebase.config"
-import { GoogleAuthProvider, onAuthStateChanged, signInWithRedirect } from 'firebase/auth';
-import { useEffect, useState } from 'react';
+import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup } from 'firebase/auth';
+import { useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import { successLogIn } from "../actions/signIn.actions";
 import { useDispatch } from "react-redux";
 
 const provider = new GoogleAuthProvider();
 
-export const SignInPage = () => {
+const theme = createTheme();
+
+export default function SignInPage() {
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    console.log({
+      email: data.get('email'),
+      password: data.get('password'),
+    });
+  };
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [user, setUser] = useState(null);
-
-  const loginGoogle = () => {
-    signInWithRedirect(auth, provider);
-  };
-
-  const loginLocal = () => {
-    // Do your local login logic here
-  };
+  //VEr 4
+  const loginGoogle = async () => {
+    try {
+      const user = await signInWithPopup(auth, provider)
+      await dispatch(successLogIn(user))
+      navigate(-1)
+    } catch (error) {
+      if (error.code === "auth/popup-closed-by-user") {
+        alert("Popup window closed before authentication was completed.")
+      } else {
+        alert("An error occurred while trying to sign in with Google.")
+      }
+    }
+  }
 
   useEffect(() => {
-    onAuthStateChanged(auth, (result) => {
-      if (result) {
-        setUser(result);
-        dispatch(successLogIn(result.user.photoURL, result.user.displayName, result.user.email));
-        navigate(-1);
-      } else {
-        setUser(null);
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        navigate("/profile")
       }
-    });
-  }, [dispatch, navigate]);
+    })
+  }, [])
 
   return (
-    <div className="container-fluid div-background-picture">
-      <div className="row d-flex align-items-center min-vh-100">
-        <div className="col-sm-4 text-center mx-auto my-0 jumbotron pt-3 pb-3">
-          <div className="mb-2">
-            <button onClick={loginGoogle} className="btn btn-block form-control btn-danger rounded-pill pb-3 pt-3">
-              SIGN IN WITH GOOGLE
-            </button>
-            <h2 className="divider line one-line">Or</h2>
-          </div>
-          <div className="input-group mb-3">
-            <input type="email" className="form-control rounded-pill pb-3 pt-3" placeholder="UserName" />
-          </div>
-
-          <div className="input-group mb-3 ">
-            <input type="password" className="form-control rounded-pill pb-3 pt-3" placeholder="Password" />
-          </div>
-
-          <div className="mb-5">
-            <button onClick={loginLocal} className="btn btn-block btn-success form-control rounded-pill pb-3 pt-3">
-              SIGN IN
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
+    <Box>
+      <ThemeProvider theme={theme}>
+        <Grid container component="main" >
+          <CssBaseline />
+          <Grid
+            item
+            xs={false}
+            sm={4}
+            md={7}
+            sx={{
+              backgroundImage: 'url(https://source.unsplash.com/random/?sneaker)',
+              backgroundRepeat: 'no-repeat',
+              backgroundColor: (t) =>
+                t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }}
+          />
+          <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+            <Box
+              sx={{
+                my: 8,
+                mx: 4,
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+              }}
+            >
+              <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+                <LockOutlinedIcon />
+              </Avatar>
+              <Typography component="h1" variant="h5">
+                Sign in
+              </Typography>
+              <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="email"
+                  label="Email Address"
+                  name="email"
+                  autoComplete="email"
+                  autoFocus
+                />
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  name="password"
+                  label="Password"
+                  type="password"
+                  id="password"
+                  autoComplete="current-password"
+                />
+                <FormControlLabel
+                  control={<Checkbox value="remember" color="primary" />}
+                  label="Remember me"
+                />
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  sx={{ mt: 3 }}
+                  onClick={loginGoogle}
+                >
+                  Sign In
+                </Button>
+                <h6 className="divider line one-line">Or</h6>
+                <Button
+                  fullWidth
+                  variant="contained"
+                  sx={{ mb: 2, bgcolor: "#EA4335" }}
+                  onClick={loginGoogle}
+                >
+                  <img
+                    style={{ height: "20px", paddingRight: "5px" }}
+                    src="https://img.icons8.com/color/16/000000/google-logo.png"
+                    alt=""
+                  />
+                  SIGN IN USING GOOGLE
+                </Button>
+                <Grid container>
+                  <Grid item xs>
+                    <Link href="#" variant="body2">
+                      Forgot password?
+                    </Link>
+                  </Grid>
+                  <Grid item>
+                    <Link href="/signup" variant="body2">
+                      {"Don't have an account? Sign Up"}
+                    </Link >
+                  </Grid>
+                </Grid>
+              </Box>
+            </Box>
+          </Grid>
+        </Grid>
+      </ThemeProvider>
+    </Box>
   );
-};
+}

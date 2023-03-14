@@ -1,20 +1,7 @@
-import { Card, CardContent, CardMedia, Grid, Typography, CardActionArea } from "@mui/material"
+import { CardMedia, Grid, CardActionArea } from "@mui/material"
 import React from "react"
-import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { getDetailProduct } from "../actions/detail.actions";
-
 
 export const CardInfo = ({ ProductsData }) => {
-  const dispatch = useDispatch();
-
-  const navigate = useNavigate();
-
-  const onBtnDetailClick = (idProduct) => {
-    navigate("/products/" + idProduct)
-    dispatch(getDetailProduct(idProduct)
-    )
-  }
 
   return (
     <React.Fragment>
@@ -23,7 +10,7 @@ export const CardInfo = ({ ProductsData }) => {
           ProductsData.slice(0, 8).map((item, i) => {
             return (
               <Grid item xs={6} sm={4} md={3} key={item._id} mb={5}>
-              <CardActionArea onClick={() => onBtnDetailClick(item.id)} key={item.id}>
+              <CardActionArea>
                 <CardMedia
                   component="img"
                   alt={item.brand}
