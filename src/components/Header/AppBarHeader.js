@@ -61,7 +61,7 @@ export const AppBarHeader = () => {
     }
 
     return (
-        <div style={{ paddingTop: appBarHeight }}>
+        <Box pt={{xs:7,sm:8,md:13}}>
             <AppBar position="fixed" sx={{ backgroundColor: "#FFFFFF" }} variant="none">
                 <Container maxWidth="xl" >
                     <Toolbar disableGutters >
@@ -154,6 +154,6 @@ export const AppBarHeader = () => {
                     </Toolbar>
                 </Container>
             </AppBar>
-        </div>
+        </Box >
     );
 }
