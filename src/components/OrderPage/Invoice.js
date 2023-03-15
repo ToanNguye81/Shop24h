@@ -9,24 +9,29 @@ background-color:#FFFFFF;
 padding: 1rem 3rem 3rem 3rem;
 margin-bottom: 3rem;
 `
-export const Invoice = () => {
-
-	const { userEmail } = useSelector((reduxData) => reduxData.signInReducers)
-
+export const Invoice = ({ user }) => {
 	return (
 		<MyGrid>
 			<h2>Invoice</h2>
 			<hr />
 			<Label />Your's information
-			<TextField fullWidth variant="standard" label="Full Name" />
-			<TextField fullWidth variant="standard" label="Phone" />
-			<TextField fullWidth variant="standard" value={userEmail ? userEmail : null} label="Email" />
+			<Grid container spacing={2}>
+				<Grid item xs={12} sm={6} md={6} >
+					<TextField fullWidth value={user} variant="standard" label="First Name" />
+				</Grid>
+				<Grid item xs={12} sm={6} md={6} >
+					<TextField fullWidth value={user} variant="standard" label="Last Name" />
+				</Grid>
+			</Grid>
+			<TextField fullWidth value={user} variant="standard" label="Phone" />
+			<TextField fullWidth value={user} variant="standard" label="Email" />
+			<TextField fullWidth value={user} variant="standard" label="City" />
+			<TextField fullWidth value={user} variant="standard" label="Country" />
 			<Label />Delivery address:
-			<TextField fullWidth variant="standard" label="Address" />
-			<TextField fullWidth variant="standard" label="City" />
-			<TextField fullWidth variant="standard" label="Country" />
+			<TextField fullWidth value={user} variant="standard" label="Address" />
 			<hr />
 			<Label />Subtotal:
+			<TextField fullWidth value={user} variant="standard" label="Transport" />
 			<h4>Total:</h4>
 		</MyGrid>
 	)

@@ -19,6 +19,7 @@ import { useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import { successLogIn } from "../actions/signIn.actions";
 import { useDispatch } from "react-redux";
+import Cookies from 'js-cookie'
 
 const provider = new GoogleAuthProvider();
 
@@ -37,7 +38,7 @@ export default function SignInPage() {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  //VEr 4
+  //Ver 4
   const loginGoogle = async () => {
     try {
       const user = await signInWithPopup(auth, provider)
@@ -55,6 +56,7 @@ export default function SignInPage() {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
+        Cookies.set('accessToken', user.accessToken)
         navigate("/profile")
       }
     })

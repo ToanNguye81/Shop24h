@@ -1,35 +1,53 @@
-import { INCREASE_QUANTITY } from "../constants/cart.constants"
-import { INCREASE_QUANTITY,INCREASE_QUANTITY } from "../constants/order.constants"
+import Cookies from "js-cookie";
+import {
+    CHECK_USER_SUCCESS,
+    CHECK_USER_PENDING,
+    CHECK_USER_ERROR
+} from "../constants/order.constants"
 
-export const addToCart = (cart, paramDetailProduct) => {
-    
-    //Hàm xử lý thêm sản phẩm lần đầu
-     // if (cart[0].product === null) {
-if (cart.length=== 0) {
-        console.log(paramDetailProduct)
-        return {
-            type: ADD_FIRST_PRODUCT,
-            product: paramDetailProduct,
-            quantity: 1
-        }
-    }
+const gAUTH_API_URL = "//localhost:8000/auth"
 
-    // Hàm tăng số lượng nếu sản phẩm đã có trong cart
-    else {
-        for (let index = 0; index < cart.length; index++) {
-            if (paramDetailProduct._id === cart[index].product._id) {
-                return {
-                    type: INCREASE_QUANTITY,
-                    index: index,
-                }
+//Get all product
+export const checkUser = () => {
+    const accessToken=Cookies.get("accessToken")
+    console.log(accessToken)
+    // options for the fetch request
+    const requestOptions = {
+        method: 'GET',
+        credentials: 'include'
+    };
+
+    return async (dispatch) => {
+        try {
+            // dispatch pending state to update the UI
+            await dispatch({
+                type: CHECK_USER_PENDING
+            });
+
+            //fetch Customer
+            const res = await fetch(`${gAUTH_API_URL}`, requestOptions);
+            console.log(res)
+
+            // throw an error if the response is not successful
+            if (!res.ok) {
+                throw new Error(`Could not load , status: ${res.status}`);
             }
-        }
-    }
+            // parse the response as JSON
+            const resObj = await res.json();
 
-    //Thêm một sản phẩm mới nếu cart có trên 1 sp
-    return {
-        type: ADD_NEW_PRODUCT,
-        product: paramDetailProduct,
-        quantity: 1,
+            //Dispatch state
+            return dispatch({
+                type: CHECK_USER_SUCCESS,
+                data:resObj
+            })
+
+        } catch (err) {
+            //if error
+            console.log(err)
+            return dispatch({
+                type: CHECK_USER_ERROR,
+                error: err
+            })
+        }
     }
 }
