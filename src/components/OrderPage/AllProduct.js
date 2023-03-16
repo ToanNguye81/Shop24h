@@ -102,14 +102,6 @@ export const AllProduct = ({ cart }) => {
                             }
                         </Grid>
                     </Grid>
-                    <Grid container
-                        direction={{ xs: "column", sm: "row" }}
-                        justifyContent="space-evenly"
-                        alignItems="center"
-                        sx={{ marginTop: "16px" }}>
-                        <Button variant='outlined' onClick={onBtnBuyClick} >Mua tiếp</Button>
-                        {cart?<Button variant="outlined">Đặt hàng</Button>:null}
-                    </Grid>
                 </Box>
             }
 
