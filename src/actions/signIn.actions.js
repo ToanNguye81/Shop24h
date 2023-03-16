@@ -6,8 +6,8 @@ export const setUser = (user) => {
         user: user
     }
 }
-export const successLogOut = () => {
-    console.log('successLogOut')
+export const logoutUser = () => {
+    console.log('logoutUser')
     return {
         type: SUCCESS_LOG_OUT,
     }

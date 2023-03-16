@@ -1,30 +1,29 @@
 import {
-    GET_ORDER_PRODUCT_SUCCESS,
-    GET_ORDER_PRODUCT_PENDING,
-    GET_ORDER_PRODUCT_ERROR,
+    OLD_CUSTOMER,
+    CHECK_USER_PENDING,
+    CHECK_USER_ERROR,
+    NEW_CUSTOMER
 } from "../constants/order.constants";
 
 const initializeState = {
     pendingDetail: false,
     error: null,
     orderProduct: null,
-    
+    customer: {}
 }
 
 export const orderReducers = (state = initializeState, action) => {
     console.log(action)
     switch (action.type) {
-        case GET_ORDER_PRODUCT_PENDING:
-            state.pendingDetail = true;
+        case OLD_CUSTOMER:
+            state.customer = action.customer
             break;
-        case GET_ORDER_PRODUCT_SUCCESS:
-            console.log(action.orderProduct)
-            state.pendingDetail= false;
-            state.orderProduct = action.orderProduct;
+        case CHECK_USER_PENDING:
             break;
-        case GET_ORDER_PRODUCT_ERROR:
-            state.error = action.error;
-            break;
+        case CHECK_USER_ERROR:
+            state.error = action.error
+        case NEW_CUSTOMER:
+            state.customer.email = action.email
         default:
             break;
     }

@@ -4,7 +4,7 @@ import auth from "../../firebase.config";
 import Stack from '@mui/material/Stack';
 import { useDispatch } from "react-redux";
 import React, { useEffect, useState } from "react";
-import { successLogOut } from "../../actions/signIn.actions";
+import { logoutUser } from "../../actions/signIn.actions";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { useNavigate } from 'react-router';
 import Cookies from "js-cookie";
@@ -45,7 +45,7 @@ export const UserAvatar = () => {
   const handleLogOutUser = () => {
     signOut(auth)
       .then(() => {
-        dispatch(successLogOut())
+        dispatch(logoutUser())
         Cookies.remove('accessToken')
         console.log("handleLogOutUser")
       })

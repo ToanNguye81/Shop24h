@@ -1,7 +1,8 @@
 import {
-    CHECK_USER_SUCCESS,
+    OLD_CUSTOMER,
     CHECK_USER_PENDING,
-    CHECK_USER_ERROR
+    CHECK_USER_ERROR,
+    NEW_CUSTOMER
 } from "../constants/order.constants"
 
 const gAUTH_API_URL = "//localhost:8000/auth"
@@ -23,7 +24,6 @@ export const checkUser = () => {
 
             //fetch Customer
             const res = await fetch(`${gAUTH_API_URL}`, requestOptions);
-            console.log(res)
 
             // throw an error if the response is not successful
             if (!res.ok) {
@@ -31,12 +31,23 @@ export const checkUser = () => {
             }
             // parse the response as JSON
             const resObj = await res.json();
+            console.log(resObj)
+
 
             //Dispatch state
-            return dispatch({
-                type: CHECK_USER_SUCCESS,
-                data:resObj
-            })
+            if (resObj.data) {
+                return dispatch({
+                    type: OLD_CUSTOMER,
+                    customer: resObj.data
+                })
+            } else {
+                return dispatch({
+                    type: NEW_CUSTOMER,
+                    email:resObj.email
+                })
+            }
+
+
 
         } catch (err) {
             //if error

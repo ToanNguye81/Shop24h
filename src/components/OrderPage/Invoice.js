@@ -10,7 +10,7 @@ background-color:#FFFFFF;
 padding: 1rem 3rem 3rem 3rem;
 margin-bottom: 3rem;
 `
-export const Invoice = ({ user,surcharge,total }) => {
+export const Invoice = ({ customer,surcharge,total }) => {
 	const navigate=useNavigate();
 	const onBtnBuyClick = () => {
 		navigate("/products")
@@ -22,18 +22,18 @@ export const Invoice = ({ user,surcharge,total }) => {
 			<Label />Your's information
 			<Grid container spacing={2}>
 				<Grid item xs={12} sm={6} md={6} >
-					<TextField fullWidth value={user.firstName} variant="standard" label="First Name" />
+					<TextField fullWidth value={customer.firstName} variant="standard" label="First Name" />
 				</Grid>
 				<Grid item xs={12} sm={6} md={6} >
-					<TextField fullWidth value={user.lastName} variant="standard" label="Last Name" />
+					<TextField fullWidth value={customer.lastName} variant="standard" label="Last Name" />
 				</Grid>
 			</Grid>
-			<TextField fullWidth value={user.phone} variant="standard" label="Phone" />
-			<TextField fullWidth value={user.email} variant="standard" label="Email" />
-			<TextField fullWidth value={user.city} variant="standard" label="City" />
-			<TextField fullWidth value={user.country} variant="standard" label="Country" />
+			<TextField fullWidth value={customer.phone} variant="standard" label="Phone" />
+			<TextField fullWidth value={customer.email} variant="standard" label="Email" />
+			<TextField fullWidth value={customer.city} variant="standard" label="City" />
+			<TextField fullWidth value={customer.country} variant="standard" label="Country" />
 			<Label />Delivery address:
-			<TextField fullWidth value={user.address} variant="standard" label="Address" />
+			<TextField fullWidth value={customer.address} variant="standard" label="Address" />
 			<Label />Surcharge:
 			<TextField fullWidth value={surcharge} variant="standard" label="Transport" />
 			<Box sx={{mt:2}}>
@@ -44,8 +44,8 @@ export const Invoice = ({ user,surcharge,total }) => {
 				justifyContent="space-evenly"
 				alignItems="center"
 				sx={{ marginTop: "16px" }}>
-				<Button variant='outlined' onClick={onBtnBuyClick} >Mua tiếp</Button>
-				<Button variant="outlined">Đặt hàng</Button>
+				<Button variant='outlined' onClick={onBtnBuyClick} >BUY MORE</Button>
+				<Button variant="outlined">CHECK OUT</Button>
 			</Grid>
 		</MyGrid>
 	)

@@ -4,6 +4,7 @@ import {productReducers} from "./product.reducers";
 import {cartReducers} from "./cart.reducers";
 import { detailReducers } from "./detail.reducers";
 import { signUpReducers } from "./signUp.reducers";
+import { orderReducers } from "./order.reducers";
 
 const rootReducer=combineReducers({
     signInReducers,
@@ -11,5 +12,6 @@ const rootReducer=combineReducers({
     cartReducers,
     detailReducers,
     signUpReducers,
+    orderReducers
 });
 export default rootReducer;
