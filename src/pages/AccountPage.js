@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import auth from "../firebase.config"
 
-export const ProfilePage=()=> {
+export const AccountPage=()=> {
   const navigate = useNavigate()
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {

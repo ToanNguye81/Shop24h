@@ -9,8 +9,6 @@ const gAUTH_API_URL = "//localhost:8000/auth"
 
 //Get all product
 export const checkUser = () => {
-    const accessToken=Cookies.get("accessToken")
-    console.log(accessToken)
     // options for the fetch request
     const requestOptions = {
         method: 'GET',

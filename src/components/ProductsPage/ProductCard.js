@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Box, Card, Link, Typography, Stack } from '@mui/material';
+import { Box, Card, Typography, Stack } from '@mui/material';
 import { styled } from '@mui/material/styles';
 // components
-import Label from '../../../components/label';
+import Label from '../../components/label';
 import CardButton from './CardButton';
 // ----------------------------------------------------------------------
 

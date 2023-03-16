@@ -57,7 +57,7 @@ export default function SignInPage() {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         Cookies.set('accessToken', user.accessToken)
-        navigate("/profile")
+        navigate("/products")
       }
     })
   }, [])

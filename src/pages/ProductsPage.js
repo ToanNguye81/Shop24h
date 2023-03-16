@@ -27,9 +27,9 @@ import { useEffect, useState } from 'react';
 import { Button, Container, Stack } from '@mui/material';
 
 // mock
-import ProductFilterSidebar from '../components/ProductsPage/Product/ProductFilterSidebar';
-import ProductSort from '../components/ProductsPage/Product/ProductSort';
-import ProductList from '../components/ProductsPage/Product/ProductList';
+import ProductFilterSidebar from '../components/ProductsPage/ProductFilterSidebar';
+import ProductSort from '../components/ProductsPage/ProductSort';
+import ProductList from '../components/ProductsPage/ProductList';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllProduct } from '../actions/product.actions';
 

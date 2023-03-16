@@ -2,11 +2,12 @@ import { Avatar, Box, MenuItem, Tooltip, IconButton, Typography, Menu } from "@m
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import auth from "../../firebase.config";
 import Stack from '@mui/material/Stack';
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import React, { useEffect, useState } from "react";
 import { successLogOut } from "../../actions/signIn.actions";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { useNavigate } from 'react-router';
+import Cookies from "js-cookie";
 
 
 const settings = ['Profile', 'Account', 'Dashboard'];
@@ -45,6 +46,7 @@ export const UserAvatar = () => {
     signOut(auth)
       .then(() => {
         dispatch(successLogOut())
+        Cookies.remove('accessToken')
         console.log("handleLogOutUser")
       })
       .catch((error) => {

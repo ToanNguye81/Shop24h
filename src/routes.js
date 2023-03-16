@@ -4,7 +4,7 @@ import { OrderPage } from "./pages/OrderPage";
 import {SignUp} from "./pages/SignUp";
 import SignInPage from "./pages/SignInPage";
 import { DetailProductPage } from "./pages/DetailProductPage";
-import { ProfilePage } from "./pages/ProfilePage";
+import { AccountPage } from "./pages/AccountPage";
 
 const routerList = [
     { path: "/", element:  <HomePage /> },
@@ -13,7 +13,7 @@ const routerList = [
     { path: "/products", element: <ProductsPage/> },
     { path: "/products/:productId", element:  <DetailProductPage/> },
     { path: "/signin", element: <SignInPage/> },
-    { path: "/profile", element: <ProfilePage/> },
+    { path: "/account", element: <AccountPage/> },
     { path: "/signup", element: <SignUp/> },
 ]
 
