@@ -47,8 +47,6 @@ export const checkUser = () => {
                 })
             }
 
-
-
         } catch (err) {
             //if error
             console.log(err)
