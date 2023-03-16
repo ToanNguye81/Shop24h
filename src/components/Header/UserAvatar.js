@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router';
 import Cookies from "js-cookie";
 
 
-const settings = ['Profile', 'Account', 'Dashboard'];
+const settings = ['Account', 'Dashboard'];
 
 export const UserAvatar = () => {
   const navigate = useNavigate();

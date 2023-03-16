@@ -33,7 +33,7 @@ export default function ProductCard({ product }) {
             {category}
           </Label>
         )}
-        <CardButton imageUrl={imageUrl} productId={product._id}/>
+        <CardButton product={product}/>
       </Box>
 
       <Stack spacing={2} sx={{ p: 3 }}>

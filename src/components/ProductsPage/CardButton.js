@@ -6,6 +6,8 @@ import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import { Grid, IconButton, Tooltip } from '@mui/material';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { addToCart } from '../../actions/cart.actions';
 const StyledProductImg = styled('img')({
     top: 0,
     width: '100%',
@@ -66,23 +68,27 @@ const ImageBackdrop = styled('span')(({ theme }) => ({
 }));
 
 
-export default function CardButton({ imageUrl, productId }) {
-    const navigate=useNavigate()
-
+export default function CardButton({ product }) {
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const { cart } = useSelector((reduxData) => reduxData.cartReducers);
+    const handleClickAddToCart = (product) => {
+        dispatch(addToCart(cart, product))
+    }
     return (
         <ImageButton
             focusRipple
         >
-            <StyledProductImg src={imageUrl} />
+            <StyledProductImg src={product.imageUrl} />
             <ImageBackdrop
                 className="MuiImageBackdrop-root" />
             <Image>
-                <Grid container 
-                direction="row" 
-                justifyContent="space-evenly"
-                alignItems="center">
+                <Grid container
+                    direction="row"
+                    justifyContent="space-evenly"
+                    alignItems="center">
                     <Tooltip title="Detail">
-                        <IconButton onClick={()=>(navigate(`/products/${productId}`))}
+                        <IconButton onClick={() => (navigate(`/products/${product._id}`))}
                             className='IconCart' sx={{ color: "white", border: "4px solid white", opacity: "0" }}>
                             <SearchOutlinedIcon
                                 className='IconCart' sx={{ color: "white", opacity: "0" }} />
@@ -97,6 +103,7 @@ export default function CardButton({ imageUrl, productId }) {
                     </Tooltip >
                     <Tooltip title="Add To Cart">
                         <IconButton
+                            onClick={() => handleClickAddToCart(product)}
                             className='IconCart' sx={{ color: "white", border: "4px solid white", opacity: "0" }}>
                             <AddShoppingCartIcon
                                 className='IconCart' sx={{ color: "white", opacity: "0" }} />

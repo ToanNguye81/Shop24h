@@ -16,8 +16,6 @@ export const ImageProduct = ({ product }) => {
                 borderRadius: "20px"
             }}
             />
-            {/* <Typography variant="h5" sx={{ fontWeight: "bold", marginTop: "16px" }}>{product.name}</Typography>
-                <Typography variant="body1" sx={{ textAlign: "center" }}>{product.description}</Typography> */}
         </Grid>
     )
 }

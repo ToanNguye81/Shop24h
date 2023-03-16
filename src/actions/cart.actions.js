@@ -23,15 +23,15 @@ export const increaseQuantity = (paramIndex) => {
 
 
 //Xử lý sự kiện nút AddToCart
-export const addToCart = (cart, paramDetailProduct) => {
+export const addToCart = (cart, product) => {
 
     //Hàm xử lý thêm sản phẩm lần đầu
-     // if (cart[0].product === null) {
-if (cart.length=== 0) {
-        console.log(paramDetailProduct)
+    // if (cart[0].product === null) {
+    if (cart.length === 0) {
+        console.log(product)
         return {
             type: ADD_FIRST_PRODUCT,
-            product: paramDetailProduct,
+            product: product,
             quantity: 1
         }
     }
@@ -39,7 +39,7 @@ if (cart.length=== 0) {
     // Hàm tăng số lượng nếu sản phẩm đã có trong cart
     else {
         for (let index = 0; index < cart.length; index++) {
-            if (paramDetailProduct._id === cart[index].product._id) {
+            if (product._id === cart[index].product._id) {
                 return {
                     type: INCREASE_QUANTITY,
                     index: index,
@@ -51,7 +51,7 @@ if (cart.length=== 0) {
     //Thêm một sản phẩm mới nếu cart có trên 1 sp
     return {
         type: ADD_NEW_PRODUCT,
-        product: paramDetailProduct,
+        product: product,
         quantity: 1,
     }
 }

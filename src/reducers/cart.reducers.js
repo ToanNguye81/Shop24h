@@ -23,8 +23,11 @@ export const cartReducers = (state = initialState, action) => {
             console.log(state.cart)
             break;
         case DECREASE_QUANTITY:
-            state.cart[action.index].quantity--
-            console.log(state.cart)
+            if (state.cart[action.index].quantity <= 1) {
+                state.cart.splice(action.index, 1)
+            } else {
+                state.cart[action.index].quantity--
+            }
             break;
         default:
             break;

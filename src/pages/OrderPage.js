@@ -1,14 +1,16 @@
 import { Grid } from "@mui/material"
 import { onAuthStateChanged } from "firebase/auth"
 import React, { useEffect} from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { checkUser } from "../actions/order.actions"
-import { AllOrder } from "../components/OrderPage/AllOrder"
+import { AllProduct } from "../components/OrderPage/AllProduct"
 import { Invoice } from "../components/OrderPage/Invoice"
 import auth from "../firebase.config"
 
 export const OrderPage = () => {
     const dispatch=useDispatch()
+    const { cart } = useSelector((reduxData) => reduxData.cartReducers);
+    
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
             if (user) {
@@ -24,7 +26,7 @@ export const OrderPage = () => {
                 justifyContent="space-evenly"
                 alignItems="flex-start" mt={5}>
                 <Grid item xs={12} md={6.5}>
-                    <AllOrder />
+                    <AllProduct cart={cart}/>
                 </Grid>
                 <Grid item xs={11} md={3.5}>
                     <Invoice />

@@ -9,21 +9,16 @@ import { addToCart } from "../../actions/cart.actions";
 export const ProductInfo = ({ product }) => {
     const dispatch = useDispatch();
     const navigate = useNavigate()
-    const { logged } = useSelector((reduxData) => reduxData.signInReducers);
     const { cart } = useSelector((reduxData) => reduxData.cartReducers);
 
 
-    const onBtnAddToCart = (product) => {
-        if (logged) {
-            dispatch(addToCart(cart, product))
-        }
-        else {
-            navigate("/signin")
-        }
+    const handleClickAddToCart = (product) => {
+       dispatch(addToCart(cart,product))
     }
 
-    const onBtnBuyInstantly = (product) => {
-
+    const handleClickBuyNow = (product) => {
+        dispatch(addToCart(cart,product))
+        navigate("/orders")
     }
 
     return (
@@ -61,8 +56,8 @@ export const ProductInfo = ({ product }) => {
                 >
                     <Button 
                         sx={{
-                            backgroundColor: "#6CB5FF",
-                            color: "#fff",
+                            // backgroundColor: "#6CB5FF",
+                            // color: "#fff",
                             borderRadius: "8px",
                             padding: { xs: "10px 0", sm: "10px 20px" },
                             margin: { xs: "10px 0 10px", sm: "10px 20px" },
@@ -72,7 +67,8 @@ export const ProductInfo = ({ product }) => {
                                 backgroundColor: "#5ED2FF",
                             },
                         }}
-                        onClick={() => onBtnAddToCart(product)}
+                        variant="outlined"
+                        onClick={() => handleClickAddToCart(product)}
                     >
                        <ShoppingCartCheckout sx={{ marginRight: "8px" }}/> ADD TO CART
                     </Button>
@@ -89,7 +85,7 @@ export const ProductInfo = ({ product }) => {
                                 backgroundColor: "#323232",
                             },
                         }}
-                        onClick={onBtnBuyInstantly}
+                        onClick={()=>handleClickBuyNow(product)}
                     >
                         <MoneyIcon sx={{ marginRight: "8px" }}/>  BUY NOW
                     </Button>
