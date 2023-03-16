@@ -1,4 +1,3 @@
-import Cookies from "js-cookie";
 import {
     CHECK_USER_SUCCESS,
     CHECK_USER_PENDING,

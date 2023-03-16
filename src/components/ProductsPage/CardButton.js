@@ -75,6 +75,10 @@ export default function CardButton({ product }) {
     const handleClickAddToCart = (product) => {
         dispatch(addToCart(cart, product))
     }
+    const handleClickBuyNow = (product) => {
+        dispatch(addToCart(cart, product))
+        navigate("/orders")
+    }
     return (
         <ImageButton
             focusRipple
@@ -96,6 +100,7 @@ export default function CardButton({ product }) {
                     </Tooltip>
                     <Tooltip title="Buy Now">
                         <IconButton
+                        onClick={()=>{handleClickBuyNow(product)}}
                             className='IconCart' sx={{ color: "white", border: "4px solid white", opacity: "0" }}>
                             <AttachMoneyIcon
                                 className='IconCart' sx={{ color: "white", opacity: "0" }} />

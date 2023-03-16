@@ -1,23 +1,21 @@
 import { Grid } from "@mui/material"
-import { onAuthStateChanged } from "firebase/auth"
-import React, { useEffect} from "react"
+import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
+import { useNavigate } from "react-router-dom"
 import { checkUser } from "../actions/order.actions"
 import { AllProduct } from "../components/OrderPage/AllProduct"
 import { Invoice } from "../components/OrderPage/Invoice"
-import auth from "../firebase.config"
 
 export const OrderPage = () => {
-    const dispatch=useDispatch()
+    const dispatch = useDispatch()
+    const navigate=useNavigate()
     const { cart } = useSelector((reduxData) => reduxData.cartReducers);
-    
+    const { user } = useSelector((reduxData) => reduxData.signInReducers);
+
     useEffect(() => {
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                dispatch(checkUser(user.accessToken))
-            }
-        })
-    }, [])
+        dispatch(checkUser())
+    }, [user]);
+
 
     return (
         <React.Fragment>
@@ -26,10 +24,10 @@ export const OrderPage = () => {
                 justifyContent="space-evenly"
                 alignItems="flex-start" mt={5}>
                 <Grid item xs={12} md={6.5}>
-                    <AllProduct cart={cart}/>
+                    <AllProduct cart={cart} />
                 </Grid>
                 <Grid item xs={11} md={3.5}>
-                    <Invoice />
+                    <Invoice user={user} />
                 </Grid>
             </Grid>
         </React.Fragment>

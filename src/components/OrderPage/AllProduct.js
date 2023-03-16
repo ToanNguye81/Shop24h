@@ -39,10 +39,6 @@ export const AllProduct = ({ cart }) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const onBtnBuyClick = () => {
-        navigate("/products")
-    }
-
     const onBtnPlusClick = (paramIndex) => {
         dispatch(increaseQuantity(paramIndex))
     }
@@ -52,60 +48,55 @@ export const AllProduct = ({ cart }) => {
     }
 
     return (
-        <React.Fragment>
-            {
-                <Box>
-                    <Grid container direction="row" justifyContent="center" alignItems="center">
-                        <Grid item xs={11} md={12} >
-                            {cart[0]?
-                                <TableContainer component={Paper}>
-                                    <Table>
-                                        <TableHead>
-                                            <TableRow>
-                                                <TableCell align="center"><h5><strong>Products</strong></h5></TableCell>
-                                                <TableCell align="center"><h5><strong>Price</strong></h5></TableCell>
-                                                <TableCell align="center"><h5><strong>Quantity</strong></h5></TableCell>
-                                                <TableCell align="center"><h5><strong>Total &nbsp;($)</strong></h5></TableCell>
-                                            </TableRow>
-                                        </TableHead>
+        <Box>
+            <Grid container direction="row" justifyContent="center" alignItems="center">
+                <Grid item xs={11} md={12} >
+                    {cart[0] ?
+                        <TableContainer component={Paper}>
+                            <Table>
+                                <TableHead>
+                                    <TableRow>
+                                        <TableCell align="center"><h5><strong>Products</strong></h5></TableCell>
+                                        <TableCell align="center"><h5><strong>Price</strong></h5></TableCell>
+                                        <TableCell align="center"><h5><strong>Quantity</strong></h5></TableCell>
+                                        <TableCell align="center"><h5><strong>Total &nbsp;($)</strong></h5></TableCell>
+                                    </TableRow>
+                                </TableHead>
 
-                                        <TableBody>
-                                            {cart.map((item, index) => (
-                                                <TableRow key={index} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                                                    <TableCell component="th" scope="item" width="25%">
-                                                        <Grid container direction="column" justifyContent="flex-start" alignItems="center">
-                                                            <img src={item.product.imageUrl} width="100" />
-                                                            <Grid item textAlign="center">
-                                                                <strong>{item.product.name}</strong>
-                                                            </Grid>
-                                                        </Grid>
-                                                    </TableCell>
-                                                    <TableCell align="center" width="25%">$ {item.product.promotionPrice}</TableCell>
-                                                    <TableCell align="center" width="25%">
-                                                        <ButtonGroup>
-                                                            <MyButton onClick={() => onBtnMinusClick(index)}><RemoveIcon /></MyButton>
-                                                            <MyTextBox value={item.quantity} />
-                                                            <MyButton onClick={() => onBtnPlusClick(index)}><AddIcon /></MyButton>
-                                                        </ButtonGroup>
-                                                    </TableCell>
-                                                    <TableCell align="center" width="25%">$ {item.product.promotionPrice * item.quantity}</TableCell>
-                                                </TableRow>
-                                            ))}
-                                        </TableBody>
-                                    </Table>
-                                </TableContainer>
-                                :
-                                <Stack sx={{ width: '100%' }} spacing={2}>
-                                    <Alert variant="filled" severity="error" sx={{ bgcolor: "#222222", color: "#fff" }}>You have no items in your shopping cart</Alert>
-                                </Stack>
+                                <TableBody>
+                                    {cart.map((item, index) => (
+                                        <TableRow key={index} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                                            <TableCell component="th" scope="item" width="25%">
+                                                <Grid container direction="column" justifyContent="flex-start" alignItems="center">
+                                                    <img src={item.product.imageUrl} width="100" />
+                                                    <Grid item textAlign="center">
+                                                        <strong>{item.product.name}</strong>
+                                                    </Grid>
+                                                </Grid>
+                                            </TableCell>
+                                            <TableCell align="center" width="25%">$ {item.product.promotionPrice}</TableCell>
+                                            <TableCell align="center" width="25%">
+                                                <ButtonGroup>
+                                                    <MyButton onClick={() => onBtnMinusClick(index)}><RemoveIcon /></MyButton>
+                                                    <MyTextBox value={item.quantity} />
+                                                    <MyButton onClick={() => onBtnPlusClick(index)}><AddIcon /></MyButton>
+                                                </ButtonGroup>
+                                            </TableCell>
+                                            <TableCell align="center" width="25%">$ {item.product.promotionPrice * item.quantity}</TableCell>
+                                        </TableRow>
+                                    ))}
+                                </TableBody>
+                            </Table>
+                        </TableContainer>
+                        :
+                        <Stack sx={{ width: '100%' }} spacing={2}>
+                            <Alert variant="filled" severity="error" sx={{ bgcolor: "#222222", color: "#fff" }}>You have no items in your shopping cart</Alert>
+                        </Stack>
 
-                            }
-                        </Grid>
-                    </Grid>
-                </Box>
-            }
-
-        </React.Fragment>
+                    }
+                </Grid>
+            </Grid>
+        </Box>
 
     );
 }
