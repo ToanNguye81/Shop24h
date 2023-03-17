@@ -5,7 +5,7 @@ function Social () {
         <div className="container-fluid col-sm-2 mt-5 row footer-socical">
           <div className="col-sm-3">
             <a className="social-inner" href="#facebook">
-              <span class="fa fa-facebook-official fa-3x"></span>
+              <span  className="fa fa-facebook-official fa-3x"></span>
             </a>
           </div>
           <div className="col-sm-3">

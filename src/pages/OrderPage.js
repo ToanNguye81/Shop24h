@@ -15,10 +15,8 @@ export const OrderPage = () => {
     // const [user, setUser] = useState({})
     const { cart,cartCost } = useSelector((reduxData) => reduxData.cartReducers);
     const { customer } = useSelector((reduxData) => reduxData.orderReducers);
-    console.log(cart)
 
     useEffect(() => {
-        // tạo một bản sao của mảng cart để thay đổi giá trị bên trong
         dispatch(changeCartCost(cart));
     }, [cart])
    
@@ -46,8 +44,9 @@ export const OrderPage = () => {
                 </Grid>
                 <Grid item xs={11} md={3.5}>
                     <Invoice 
-                    customer={customer}
+                    initCustomer={customer}
                     total={cartCost}
+                    cart
                      />
                 </Grid>
             </Grid>

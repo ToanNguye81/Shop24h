@@ -9,6 +9,7 @@ export const TitleBrand = ({brand}) => {
         >
             <Grid item xs={12} md={4}
                 sx={{ textAlign: 'center' }}
+                container
                 direction="column"
                 justifyContent="center"
                 alignItems="center"

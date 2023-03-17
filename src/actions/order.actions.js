@@ -57,3 +57,8 @@ export const checkUser = () => {
         }
     }
 }
+
+
+export const createNewOrder=(value)=>{
+    console.log(value)
+}

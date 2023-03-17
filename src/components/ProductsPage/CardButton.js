@@ -18,7 +18,7 @@ const StyledProductImg = styled('img')({
 
 // ----------------------------------------------------------------------
 
-const ImageButton = styled(ButtonBase)(({ theme }) => ({
+const ImageButton = styled("div")(({ theme }) => ({
     top: 0,
     width: '100%',
     height: '100%',

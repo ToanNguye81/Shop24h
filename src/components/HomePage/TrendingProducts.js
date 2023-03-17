@@ -4,11 +4,11 @@ import { CardInfo } from './CardInfo';
 
 function TrendingProducts() {
   return (
-    <div class="pr-3 pl-3">
+    <div  className="pr-3 pl-3">
       <div>
-        <h2 class="text-center mb-5 mt-5">TRENDING PRODUCT</h2>
+        <h2  className="text-center mb-5 mt-5">TRENDING PRODUCT</h2>
       </div>
-      <Grid container fullWidth sx={{ backgroundColor: "#D84A34" ,pt:5}}>
+      <Grid container sx={{ backgroundColor: "#D84A34" ,pt:5}}>
         <Grid container spacing={2} >
           <Grid item xs={12} sm={7} md={7}> <CardInfo ProductsData={Products} /></Grid>
           <Grid item xs={12} sm={5} md={5}>

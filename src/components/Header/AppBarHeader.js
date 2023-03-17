@@ -117,7 +117,6 @@ export const AppBarHeader = () => {
                             ))}
                         </Box>
                         <Typography
-                            noWrap
                             component="a"
                             href=""
                             sx={{
@@ -131,7 +130,8 @@ export const AppBarHeader = () => {
                                 textDecoration: 'none',
                             }}
                         >
-                            <Box noWrap backgroundColor="black" sx={{ display: { xs: 'flex', sm: "center", md: 'center' }, mr: 1 }}>
+                            <Box 
+                             backgroundColor="black" sx={{ display: { xs: 'flex', sm: "center", md: 'center' }, mr: 1 }}>
                                 <img src={Logo} width="70" alt="logo" />
                             </Box >
                         </Typography>

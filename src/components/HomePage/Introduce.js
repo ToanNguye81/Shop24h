@@ -11,6 +11,7 @@ export const Intro = () => {
             sx={{ display: {md: 'flex' }, backgroundColor: "#F2F2F2", pt:4,pb:4 }}
             >
             <Grid item xs={12} md={3}
+                container
                 sx={{ textAlign: 'center' }}
                 direction="column"
                 justifyContent="center"

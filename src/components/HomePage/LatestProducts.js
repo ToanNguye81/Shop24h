@@ -7,9 +7,9 @@ function LatestProducts() {
   return (
     <React.Fragment>
       <div>
-        <h2 class="text-center mb-5 mt-5">LATEST PRODUCT</h2 >
+        <h2  className="text-center mb-5 mt-5">LATEST PRODUCT</h2 >
       </div>
-      <Grid container fullWidth sx={{ backgroundColor: "#34495E" ,pt:5}}>
+      <Grid container sx={{ backgroundColor: "#34495E" ,pt:5}}>
         <Grid container direction="row"
           spacing={2} alignItems="center" >
           <Grid item xs={12} sm={4.5} md={4.5}>

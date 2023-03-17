@@ -7,9 +7,9 @@ export const CardInfo = ({ ProductsData }) => {
     <React.Fragment>
       <Grid container spacing={{ xs: 2, md: 2 }} >
         {
-          ProductsData.slice(0, 8).map((item, i) => {
+          ProductsData.slice(0, 8).map((item, index) => {
             return (
-              <Grid item xs={6} sm={4} md={3} key={item._id} mb={5}>
+              <Grid item xs={6} sm={4} md={3} key={index} mb={5}>
               <CardActionArea>
                 <CardMedia
                   component="img"
