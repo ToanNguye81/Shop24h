@@ -14,6 +14,9 @@ margin-bottom: 3rem;
 export const Invoice = ({ customer, surcharge, total }) => {
 	const [note, setNote] = useState("")
 	const navigate = useNavigate();
+
+
+
 	const onBtnBuyClick = () => {
 		navigate("/products")
 	}
@@ -39,19 +42,19 @@ export const Invoice = ({ customer, surcharge, total }) => {
 				<TextField sx={{mt:2}} fullWidth InputProps={{
 					startAdornment: <InputAdornment position="start">Country: </InputAdornment>,
 				}} value={customer.country} variant="standard" />
-				<Label />Delivery address:
+				<Label />Delivery address
 				<TextField  fullWidth multiline InputProps={{
 					startAdornment: <InputAdornment position="start">Address: </InputAdornment>,
 				}} value={customer.address} variant="standard" />
 				<TextField sx={{mt:2}} fullWidth multiline InputProps={{
 					startAdornment: <InputAdornment position="start">Note: </InputAdornment>,
 				}} value={note} variant="standard" onChange={(e)=>setNote(e.target.value)} />
-				<Label />Surcharge:
+				<Label />Surcharge
 				<TextField  fullWidth InputProps={{
 					startAdornment: <InputAdornment position="start">Transport: </InputAdornment>,
 				}} value={surcharge} variant="standard" />
 				<Box sx={{ mt: 2 }}>
-					<h4>Total:{total}</h4>
+					<h4>Total:$ {total}</h4>
 				</Box>
 				<Grid container
 					direction={{ xs: "column", sm: "row" }}

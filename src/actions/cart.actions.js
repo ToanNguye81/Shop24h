@@ -2,7 +2,8 @@ import {
     DECREASE_QUANTITY,
     INCREASE_QUANTITY,
     ADD_NEW_PRODUCT,
-    ADD_FIRST_PRODUCT
+    ADD_FIRST_PRODUCT,
+    CHANGE_CART_COST,
 } from "../constants/cart.constants"
 
 //Xử lý nút giảm quantity
@@ -53,5 +54,17 @@ export const addToCart = (cart, product) => {
         type: ADD_NEW_PRODUCT,
         product: product,
         quantity: 1,
+    }
+}
+
+export const changeCartCost=(cart)=>{
+    let cartCost=0;
+    console.log(cart)
+    cart.map((item, index)=>{
+        cartCost=cartCost+item.product.promotionPrice*item.quantity
+    })
+    return{
+        type: CHANGE_CART_COST,
+        cartCost: cartCost
     }
 }

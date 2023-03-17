@@ -13,6 +13,7 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { decreaseQuantity, increaseQuantity } from '../../actions/cart.actions';
+import { useEffect } from 'react';
 
 const MyButton = styled.button`
 height:45px;
@@ -46,6 +47,7 @@ export const AllProduct = ({ cart }) => {
     const onBtnMinusClick = (paramIndex) => {
         dispatch(decreaseQuantity(paramIndex))
     }
+
 
     return (
         <Box>
