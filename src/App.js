@@ -10,8 +10,8 @@ import "./assets/styles/HeadSwiper.css";
 
 // theme
 import ThemeProvider from './theme';
-
 function App() {
+
   return (
     <React.Fragment>
       <ThemeProvider>

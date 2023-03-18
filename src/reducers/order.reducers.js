@@ -63,13 +63,24 @@ import {
   
     //Order
     checkUserPending: false,
-    customer: {
+    // customer: {
+    //   email: "",
+    //   name: "",
+    //   phone: "",
+    //   address: ""
+    // },
+    totalCost: 0,
+    customer : {
+      firstName: "",
+      address: "",
+      lastName: "",
+      phone: 0,
       email: "",
-      name: "",
-      phone: "",
-      address: ""
-    },
-    totalCost: 0
+      city: "",
+      country: "",
+      address: "",
+      note: "",
+  }
   };
   
   export const orderReducers = (state = initialState, action) => {

@@ -13,13 +13,14 @@ export const OrderPage = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     // const [user, setUser] = useState({})
-    const { cart,cartCost } = useSelector((reduxData) => reduxData.cartReducers);
+    const { cart, cartCost } = useSelector((reduxData) => reduxData.cartReducers);
     const { customer } = useSelector((reduxData) => reduxData.orderReducers);
 
     useEffect(() => {
         dispatch(changeCartCost(cart));
     }, [cart])
-   
+    
+
     //Check customer with logged account
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
@@ -31,7 +32,7 @@ export const OrderPage = () => {
                 navigate("/signin")
             }
         })
-    },[])
+    }, [])
 
     return (
         <React.Fragment>
@@ -43,11 +44,10 @@ export const OrderPage = () => {
                     <AllProduct cart={cart} />
                 </Grid>
                 <Grid item xs={11} md={3.5}>
-                    <Invoice 
-                    initCustomer={customer}
-                    total={cartCost}
-                    cart
-                     />
+                    <Invoice
+                        initCustomer={initCustomer}
+                        // total={cartCost}
+                    />
                 </Grid>
             </Grid>
         </React.Fragment>

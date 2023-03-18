@@ -37,7 +37,7 @@ export default function ProductCard({ product }) {
       </Box>
 
       <Stack spacing={2} sx={{ p: 3 }}>
-          <Typography variant="subtitle2" noWrap>
+          <Typography variant="subtitle2" >
             {name}
           </Typography>
 

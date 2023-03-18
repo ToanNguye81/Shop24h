@@ -23,7 +23,7 @@ const validOrderSchema = Yup.object().shape({
 	city: Yup.string().required('City is required').trim(),
 	country: Yup.string().required('Country is required').trim(),
 	address: Yup.string().required('Address is required').trim(),
-	note: Yup.string().required('Note is required').trim(),
+	// note: Yup.string().required('Note is required').trim(),
 });
 
 export const Invoice = ({ initCustomer, surcharge, total }) => {
@@ -31,130 +31,145 @@ export const Invoice = ({ initCustomer, surcharge, total }) => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 
-	const onBtnBuyClick = () => {
-		navigate("/products")
-	}
-
-	// const handleOrderClick = () => {
-	// 	dispatch(createNewOrder())
-	// }
-
-	const handleOrderClick = (event) => {
-		event.preventDefault();
-		const values = event.currentTarget.formik.values;
-		console.log(values);
-		dispatch(createNewOrder(values));
+	const handleSubmit = async (values) => {
+		//   await dispatch(updateProductById(initCustomer._id, values));
+		//   await setOpenSnackBar(true)
+		console.log("Handle submit")
+		console.log(values)
 	};
-	const valud = { firstName: "holo" }
-
 
 	return (
 		<React.Fragment>
-			<Formik initialValues={valud} validationSchema={validOrderSchema} >
+			<Formik initialValues={initCustomer} validationSchema={validOrderSchema} onSubmit={handleSubmit}>
 				{({ errors, touched, values, handleChange }) => (
 					<Form>
 						<MyGrid>
 							<h2>Invoice</h2>
 							<Label />Your's information
-							<TextField fullWidth
+							<TextField
 								InputProps={{
 									startAdornment: <InputAdornment position="start">First Name: </InputAdornment>,
 								}}
+								fullWidth
 								value={values.firstName}
 								id="firstName"
-								label="First Name"
 								name="firstName"
 								variant="standard"
 								onChange={handleChange}
 								error={errors.firstName && touched.firstName}
+								helperText={touched.firstName && errors.firstName}
 							/>
-							<TextField sx={{ mt: 2 }} fullWidth InputProps={{
-								startAdornment: <InputAdornment position="start">Last Name: </InputAdornment>,
-							}} value={values.lastName}
+							<TextField sx={{ mt: 2 }}
+								InputProps={{
+									startAdornment: <InputAdornment position="start">Last Name: </InputAdornment>,
+								}}
+								fullWidth
+								value={values.lastName}
 								id="lastName"
 								name="lastName"
 								onChange={handleChange}
-								error={errors.lastName}
-
+								error={errors.lastName && touched.lastName}
+								helperText={touched.lastName && errors.lastName}
 								variant="standard"
 							/>
-							<TextField sx={{ mt: 2 }} fullWidth InputProps={{
-								startAdornment: <InputAdornment position="start">Phone: </InputAdornment>,
-							}}
+							<TextField sx={{ mt: 2 }}
+								InputProps={{
+									startAdornment: <InputAdornment position="start">Phone: </InputAdornment>,
+								}}
+								fullWidth
 								value={values.phone}
 								id="phone"
 								name="phone"
 								onChange={handleChange}
-								error={errors.phone}
-
+								error={errors.phone && touched.phone}
+								helperText={touched.phone && errors.phone}
 								variant="standard"
 							/>
-
-							<TextField sx={{ mt: 2 }} fullWidth InputProps={{
-								startAdornment: <InputAdornment position="start">Email: </InputAdornment>,
-							}} value={values.email}
+							<TextField sx={{ mt: 2 }}
+								InputProps={{
+									startAdornment: <InputAdornment position="start">Email: </InputAdornment>,
+								}}
+								fullWidth
+								value={values.email}
 								id="email"
 								name="email"
-								error={errors.email}
-
+								error={errors.email && touched.email}
+								helperText={touched.email && errors.email}
+								onChange={handleChange}
 								variant="standard"
 							/>
-							<TextField sx={{ mt: 2 }} fullWidth InputProps={{
-								startAdornment: <InputAdornment position="start">City: </InputAdornment>,
-							}} value={values.city}
+							<TextField sx={{ mt: 2 }}
+								InputProps={{
+									startAdornment: <InputAdornment position="start">City: </InputAdornment>,
+								}}
+								fullWidth
+								value={values.city}
 								id="city"
 								name="city"
 								onChange={handleChange}
-								error={errors.city}
-
+								error={errors.city && touched.city}
+								helperText={touched.city && errors.city}
 								variant="standard"
 							/>
-							<TextField sx={{ mt: 2 }} fullWidth InputProps={{
-								startAdornment: <InputAdornment position="start">Country: </InputAdornment>,
-							}} value={values.country}
+							<TextField sx={{ mt: 2 }}
+								InputProps={{
+									startAdornment: <InputAdornment position="start">Country: </InputAdornment>,
+								}}
+								fullWidth
+								value={values.country}
 								id="country"
 								name="country"
 								onChange={handleChange}
-								error={errors.country}
-
+								error={errors.country && touched.country}
+								helperText={touched.country && errors.country}
 								variant="standard"
 							/>
-							<Label />Delivery address
-							<TextField fullWidth multiline InputProps={{
-								startAdornment: <InputAdornment position="start">Address: </InputAdornment>,
-							}} value={values.address}
+							<Label />Delivery address:
+							<TextField
+								fullWidth
+								multiline
+								value={values.address}
 								id="address"
 								name="address"
 								onChange={handleChange}
-								error={errors.address}
-
+								error={errors.address && touched.address}
+								helperText={touched.address && errors.address}
 								variant="standard"
 							/>
-							<TextField sx={{ mt: 2 }} fullWidth multiline InputProps={{
-								startAdornment: <InputAdornment position="start">Note: </InputAdornment>,
-							}} value={note}
+							<Label />Note:
+							<TextField
+								fullWidth
+								multiline
+								value={note}
+								id="note"
+								name="note"
 								variant="standard" onChange={(e) => setNote(e.target.value)} />
 							<Label />Surcharge
-							<TextField fullWidth InputProps={{
-								startAdornment: <InputAdornment position="start">Transport: </InputAdornment>,
-							}} value={surcharge}
+							<TextField
+								InputProps={{
+									startAdornment: <InputAdornment position="start">Transport: </InputAdornment>,
+								}}
+								fullWidth
+								id="surcharge"
+								name="surcharge"
+								value={0}
 								variant="standard"
 							/>
 							<Box sx={{ mt: 2 }}>
-								<h4>Total:$ {total}</h4>
+								<h4>Total: $ {"total"}</h4>
 							</Box>
 							<Grid container
-								direction={{ xs: "column", sm: "row" }}
+								direction="row"
 								justifyContent="space-evenly"
 								alignItems="center"
 								sx={{ marginTop: "16px" }}
 							>
-								<Button variant="outlined" onClick={onBtnBuyClick} >
+								<Button variant="outlined" onClick={() => navigate("/products")} >
 									BUY MORE
 								</Button>
 								<Button
 									variant="contained"
-									onClick={(event) => handleOrderClick(event)}
+									type="submit"
 									sx={{ backgroundColor: "#222222" }}
 								>
 									ORDER
@@ -167,3 +182,4 @@ export const Invoice = ({ initCustomer, surcharge, total }) => {
 		</React.Fragment>
 	)
 }
+
