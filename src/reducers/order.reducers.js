@@ -74,7 +74,7 @@ import {
       firstName: "",
       address: "",
       lastName: "",
-      phone: 0,
+      phone: "",
       email: "",
       city: "",
       country: "",

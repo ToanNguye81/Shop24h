@@ -45,7 +45,7 @@ export const OrderPage = () => {
                 </Grid>
                 <Grid item xs={11} md={3.5}>
                     <Invoice
-                        initCustomer={initCustomer}
+                        initCustomer={customer}
                         // total={cartCost}
                     />
                 </Grid>
