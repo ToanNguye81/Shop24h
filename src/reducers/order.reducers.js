@@ -63,12 +63,7 @@ import {
   
     //Order
     checkUserPending: false,
-    // customer: {
-    //   email: "",
-    //   name: "",
-    //   phone: "",
-    //   address: ""
-    // },
+
     totalCost: 0,
     customer : {
       firstName: "",

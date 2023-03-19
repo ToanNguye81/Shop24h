@@ -40,13 +40,31 @@ function Body() {
           description: 'The classic Clogs The classic American-made sneaker'
         },
       ];
+      const images = [
+        {
+          url: 'https://source.unsplash.com/random/1200x650/?sneaker',
+          title: 'Sneakers',
+          width: '30%',
+        },
+        {
+          url: 'https://source.unsplash.com/random/1200x650/?nikeairforce1',
+          title: 'Nike',
+          width: '40%',
+        },
+        {
+          url: 'https://source.unsplash.com/random/1200x650/?Ultraboost',
+          title: 'Ultraboost',
+          width: '30%',
+        },
+      ];
       
     return (
         <React.Fragment>
             <Box>
                 <HeadSwiper slides={sneakerSlides}/>
                 <Intro />
-                <LatestProducts />
+                {/* <ButtonBases images={images}/> */}
+                <LatestProducts images={images}/>
                 <TrendingProducts />
                 <DiscountProducts />
                 <ViewAll />

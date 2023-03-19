@@ -156,7 +156,7 @@ export const Invoice = ({ initCustomer, surcharge, total }) => {
 								variant="standard"
 							/>
 							<Box sx={{ mt: 2 }}>
-								<h4>Total: $ {"total"}</h4>
+								<h4>Total: $ {total}</h4>
 							</Box>
 							<Grid container
 								direction="row"
