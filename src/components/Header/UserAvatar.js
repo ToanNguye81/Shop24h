@@ -36,7 +36,7 @@ export const UserAvatar = () => {
       .then(() => {
         dispatch(logoutUser())
         Cookies.remove("accessToken")
-        console.log("handleLogOutUser ")
+        console.log("handleLogOutUser")
         navigate("/homepage")
       })
       .catch((error) => {

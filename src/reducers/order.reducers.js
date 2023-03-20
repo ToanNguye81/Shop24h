@@ -60,7 +60,7 @@ export const orderReducers = (state = initialState, action) => {
       return {
         ...state,
         checkUserPending: false,
-        customer: action.customer
+        totalCost: action.total
       };
     default:
       return state;

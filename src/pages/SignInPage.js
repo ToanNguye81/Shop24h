@@ -41,8 +41,7 @@ export default function SignInPage() {
   //Ver 4
   const loginGoogle = async () => {
     try {
-      const result = await signInWithPopup(auth, provider)
-      console.log(result.user)
+      const loginResult = await signInWithPopup(auth, provider)
     } catch (error) {
       if (error.code === "auth/popup-closed-by-user") {
         alert("Popup window closed before authentication was completed.")
