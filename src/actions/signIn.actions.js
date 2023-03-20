@@ -1,4 +1,4 @@
-import { ERROR_LOG_IN, SUCCESS_LOG_IN, SUCCESS_LOG_OUT } from "../constants/signIn.constants"
+import { ERROR_LOG_IN, SUCCESS_LOG_IN, SUCCESS_LOG_OUT,RESET_USER } from "../constants/signIn.constants"
 
 export const setUser = (user) => {
     return {
@@ -10,5 +10,13 @@ export const logoutUser = () => {
     console.log('logoutUser')
     return {
         type: SUCCESS_LOG_OUT,
+    }
+}
+
+// resetUser 
+export const resetUser=()=>{
+    console.log("Set User")
+    return {
+        type: RESET_USER,
     }
 }

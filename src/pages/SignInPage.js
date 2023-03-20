@@ -17,9 +17,9 @@ import auth from "../firebase.config"
 import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup } from 'firebase/auth';
 import { useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
-import { setUser } from "../actions/signIn.actions";
+import { setUser, resetUser } from "../actions/signIn.actions";
 import { useDispatch } from "react-redux";
-import Cookies from 'js-cookie'
+import Cookies from 'js-cookie';
 
 const provider = new GoogleAuthProvider();
 
@@ -43,8 +43,6 @@ export default function SignInPage() {
     try {
       const result = await signInWithPopup(auth, provider)
       console.log(result.user)
-      // await dispatch(setUser(result.user))
-      // navigate(-1)
     } catch (error) {
       if (error.code === "auth/popup-closed-by-user") {
         alert("Popup window closed before authentication was completed.")
@@ -57,9 +55,12 @@ export default function SignInPage() {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        Cookies.set('accessToken', user.accessToken)
         dispatch(setUser(user))
+        Cookies.set("accessToken",user.accessToken)
         navigate("/products")
+      }
+      else {
+        dispatch(resetUser())
       }
     })
   }, [])

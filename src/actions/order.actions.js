@@ -33,7 +33,6 @@ export const checkUser = () => {
             const resObj = await res.json();
             console.log(resObj)
 
-
             //Dispatch state
             if (resObj.data) {
                 return dispatch({
@@ -59,6 +58,41 @@ export const checkUser = () => {
 }
 
 
-export const createNewOrder=(value)=>{
-    console.log(value)
+//Create new order
+export const createNewOrder = (customerId,note) => {
+    // if (isValid) {
+    return async (dispatch) => {
+        const requestOptions = {
+            method: 'POST',
+            headers: {
+                "Content-Type": 'application/json',
+            },
+            body: JSON.stringify({note:note}),
+        };
+
+        await dispatch({
+            type: CREATE_ORDER_PENDING
+        });
+
+        try {
+            const res = await fetch(`${gCUSTOMER_API_URL}/${customerId}/orders`, requestOptions);
+            const resObj = await res.json();
+
+            if (!res.ok) {
+                return dispatch({
+                    type: CREATE_ORDER_ERROR,
+                })
+            }
+
+            return dispatch({
+                type: CREATE_ORDER_SUCCESS,
+                data: resObj.data
+            })
+        } catch (err) {
+            return dispatch({
+                type: CREATE_ORDER_ERROR,
+                error: err
+            })
+        }
+    }
 }

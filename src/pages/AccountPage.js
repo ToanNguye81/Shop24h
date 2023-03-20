@@ -1,19 +1,19 @@
 import { Grid, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import { onAuthStateChanged } from "firebase/auth";
 import { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import auth from "../firebase.config"
 
 export const AccountPage=()=> {
   const navigate = useNavigate()
+
+  const {user} =useSelector(reduxData=>reduxData.signInReducers)
+
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (!user) {
-        navigate("/signup")
-      }
-    })
-  }, [])
+    if(!user.displayName) {
+          navigate("/signup")
+        }
+  },[])
 
   return (
     <Box>

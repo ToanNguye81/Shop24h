@@ -1,8 +1,8 @@
 import { Avatar, Box, MenuItem, Tooltip, IconButton, Typography, Menu } from "@mui/material";
-import { onAuthStateChanged, signOut } from "firebase/auth";
+import { signOut } from "firebase/auth";
 import auth from "../../firebase.config";
 import Stack from '@mui/material/Stack';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
 import { logoutUser } from "../../actions/signIn.actions";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -15,9 +15,9 @@ const settings = ['Account', 'Dashboard'];
 export const UserAvatar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [user, setUser] = useState(null)
 
   const [anchorElUser, setAnchorElUser] = useState(null);
+  const {user} =useSelector(reduxData=>reduxData.signInReducers)
 
   const handleLogin = (event) => {
     navigate("/signin")
@@ -31,23 +31,13 @@ export const UserAvatar = () => {
     setAnchorElUser(null);
   };
 
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setUser(user)
-      }
-      else {
-        setUser(null)
-      }
-    })
-  }, [])
-
   const handleLogOutUser = () => {
     signOut(auth)
       .then(() => {
         dispatch(logoutUser())
-        Cookies.remove('accessToken')
-        console.log("handleLogOutUser")
+        Cookies.remove("accessToken")
+        console.log("handleLogOutUser ")
+        navigate("/homepage")
       })
       .catch((error) => {
         console.log(error)
@@ -57,7 +47,7 @@ export const UserAvatar = () => {
 
   return (
     <>
-      {user ?
+      {user.displayName ?
         <Stack>
           <Box sx={{ flexGrow: 0 }} >
             <Tooltip title={user.displayName}>

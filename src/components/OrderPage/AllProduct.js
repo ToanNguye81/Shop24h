@@ -47,13 +47,13 @@ export const AllProduct = ({ cart }) => {
     const onBtnMinusClick = (paramIndex) => {
         dispatch(decreaseQuantity(paramIndex))
     }
-
+    const setQuantity=()=>{}
 
     return (
         <Box>
             <Grid container direction="row" justifyContent="center" alignItems="center">
                 <Grid item xs={11} md={12} >
-                    {cart[0] ?
+                    {cart[0]?
                         <TableContainer component={Paper}>
                             <Table>
                                 <TableHead>
@@ -80,7 +80,7 @@ export const AllProduct = ({ cart }) => {
                                             <TableCell align="center" width="25%">
                                                 <ButtonGroup>
                                                     <MyButton onClick={() => onBtnMinusClick(index)}><RemoveIcon /></MyButton>
-                                                    <MyTextBox value={item.quantity} />
+                                                    <MyTextBox value={item.quantity} onChange={setQuantity} />
                                                     <MyButton onClick={() => onBtnPlusClick(index)}><AddIcon /></MyButton>
                                                 </ButtonGroup>
                                             </TableCell>

@@ -1,7 +1,7 @@
 import { Label } from "@mui/icons-material"
 import { Box, Button, Grid, InputAdornment, TextField } from "@mui/material"
 import React, { useState } from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
 import { Form, Formik } from 'formik';
@@ -30,6 +30,8 @@ export const Invoice = ({ initCustomer, surcharge, total }) => {
 	const [note, setNote] = useState("")
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
+    const { customer } = useSelector((reduxData) => reduxData.orderReducers);
+
 
 	const handleSubmit = async (values) => {
 		//   await dispatch(updateProductById(initCustomer._id, values));
@@ -40,7 +42,7 @@ export const Invoice = ({ initCustomer, surcharge, total }) => {
 
 	return (
 		<React.Fragment>
-			<Formik initialValues={initCustomer} validationSchema={validOrderSchema} onSubmit={handleSubmit}>
+			<Formik initialValues={customer} validationSchema={validOrderSchema} onSubmit={handleSubmit}>
 				{({ errors, touched, values, handleChange }) => (
 					<Form>
 						<MyGrid>
@@ -95,7 +97,7 @@ export const Invoice = ({ initCustomer, surcharge, total }) => {
 								name="email"
 								error={errors.email && touched.email}
 								helperText={touched.email && errors.email}
-								onChange={handleChange}
+								// onChange={handleChange}
 								variant="standard"
 							/>
 							<TextField sx={{ mt: 2 }}

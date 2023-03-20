@@ -23,7 +23,7 @@
 //     return { ...state }
 // }
 
-import { ERROR_LOG_IN, SUCCESS_LOG_IN, SUCCESS_LOG_OUT } from "../constants/signIn.constants";
+import { ERROR_LOG_IN, RESET_USER, SUCCESS_LOG_IN, SUCCESS_LOG_OUT } from "../constants/signIn.constants";
 
 const initialState = {
   logged: false,
@@ -45,6 +45,11 @@ export const signInReducers = (state = initialState, action) => {
       return {
         ...state,
         logged: false,
+        user: {},
+      };
+    case RESET_USER:
+      return {
+        ...state,
         user: {},
       };
     default:
