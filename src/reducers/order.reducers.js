@@ -21,10 +21,9 @@ const initialState = {
     email: "",
     city: "",
     country: "",
-  },
-  note: "",
-  address: "",
-
+    note: "",
+    address: ""
+  }
 };
 
 export const orderReducers = (state = initialState, action) => {

@@ -1,12 +1,13 @@
 import { Label } from "@mui/icons-material"
 import { Box, Button, Grid, InputAdornment, TextField } from "@mui/material"
-import React, { useState } from "react"
-import { useDispatch } from "react-redux"
+import React, { useEffect, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
 import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import { createNewOrder } from "../../actions/order.actions"
+import { useSnackbar } from "notistack"
 
 const MyGrid = styled.div`
 border:1.5px solid #E6E6E6;
@@ -16,7 +17,6 @@ margin-bottom: 3rem;
 `
 const validOrderSchema = Yup.object().shape({
 	firstName: Yup.string().required('First Name is required').trim(),
-	address: Yup.string().required('Address is required').trim(),
 	lastName: Yup.string().required('Last Name is required').trim(),
 	phone: Yup.string().required('Phone is required').matches(/^[0-9]+$/, 'Phone number should only contain digits'),
 	email: Yup.string().required('Email is required').email('Invalid email').trim(),
@@ -27,20 +27,31 @@ const validOrderSchema = Yup.object().shape({
 });
 
 export const Invoice = ({ initCustomer, surcharge, total }) => {
-	const [note, setNote] = useState("")
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
+	const { cart } = useSelector(reduxData => reduxData.cartReducers)
 
-	const handleSubmit = async (values) => {
-		//   await dispatch(updateProductById(initCustomer._id, values));
-		//   await setOpenSnackBar(true)
-		console.log("Handle submit")
-		console.log(values)
+	const [savedValues, setSavedValues] = useState({});
+
+	useEffect(() => {
+		const savedValuesStr = localStorage.getItem('invoiceFormValues');
+		if (savedValuesStr) {
+			setSavedValues(JSON.parse(savedValuesStr));
+		}
+	}, []);
+	const { enqueueSnackbar } = useSnackbar();
+
+	const handleSubmit = (values) => {
+		cart[0] ?
+			// dispatch(createNewOrder)
+			enqueueSnackbar('Đã có đơn hàng',{ variant: 'success' })
+			:
+			enqueueSnackbar('Bạn chưa có đơn hàng', { variant: 'error' });
 	};
 
 	return (
 		<React.Fragment>
-			<Formik initialValues={initCustomer} validationSchema={validOrderSchema} onSubmit={handleSubmit}>
+			<Formik initialValues={{ ...initCustomer, ...savedValues }} validationSchema={validOrderSchema} onSubmit={handleSubmit}>
 				{({ errors, touched, values, handleChange }) => (
 					<Form>
 						<MyGrid>
@@ -48,7 +59,7 @@ export const Invoice = ({ initCustomer, surcharge, total }) => {
 							<Label />Your's information
 							<TextField
 								InputProps={{
-									startAdornment: <InputAdornment position="start">First Name: </InputAdornment>,
+									startAdornment: <InputAdornment position="start">First Name * : </InputAdornment>,
 								}}
 								fullWidth
 								value={values.firstName}
@@ -61,7 +72,7 @@ export const Invoice = ({ initCustomer, surcharge, total }) => {
 							/>
 							<TextField sx={{ mt: 2 }}
 								InputProps={{
-									startAdornment: <InputAdornment position="start">Last Name: </InputAdornment>,
+									startAdornment: <InputAdornment position="start">Last Name * : </InputAdornment>,
 								}}
 								fullWidth
 								value={values.lastName}
@@ -74,7 +85,7 @@ export const Invoice = ({ initCustomer, surcharge, total }) => {
 							/>
 							<TextField sx={{ mt: 2 }}
 								InputProps={{
-									startAdornment: <InputAdornment position="start">Phone: </InputAdornment>,
+									startAdornment: <InputAdornment position="start">Phone * : </InputAdornment>,
 								}}
 								fullWidth
 								value={values.phone}
@@ -87,7 +98,7 @@ export const Invoice = ({ initCustomer, surcharge, total }) => {
 							/>
 							<TextField sx={{ mt: 2 }}
 								InputProps={{
-									startAdornment: <InputAdornment position="start">Email: </InputAdornment>,
+									startAdornment: <InputAdornment position="start">Email * : </InputAdornment>,
 								}}
 								fullWidth
 								value={values.email}
@@ -95,12 +106,11 @@ export const Invoice = ({ initCustomer, surcharge, total }) => {
 								name="email"
 								error={errors.email && touched.email}
 								helperText={touched.email && errors.email}
-								// onChange={handleChange}
 								variant="standard"
 							/>
 							<TextField sx={{ mt: 2 }}
 								InputProps={{
-									startAdornment: <InputAdornment position="start">City: </InputAdornment>,
+									startAdornment: <InputAdornment position="start">City * : </InputAdornment>,
 								}}
 								fullWidth
 								value={values.city}
@@ -113,7 +123,7 @@ export const Invoice = ({ initCustomer, surcharge, total }) => {
 							/>
 							<TextField sx={{ mt: 2 }}
 								InputProps={{
-									startAdornment: <InputAdornment position="start">Country: </InputAdornment>,
+									startAdornment: <InputAdornment position="start">Country * : </InputAdornment>,
 								}}
 								fullWidth
 								value={values.country}
@@ -124,10 +134,9 @@ export const Invoice = ({ initCustomer, surcharge, total }) => {
 								helperText={touched.country && errors.country}
 								variant="standard"
 							/>
-							<Label />Delivery address:
+							<Label />Delivery address * :
 							<TextField
 								fullWidth
-								multiline
 								value={values.address}
 								id="address"
 								name="address"
@@ -139,11 +148,10 @@ export const Invoice = ({ initCustomer, surcharge, total }) => {
 							<Label />Note:
 							<TextField
 								fullWidth
-								multiline
-								value={note}
+								onChange={handleChange}
 								id="note"
 								name="note"
-								variant="standard" onChange={(e) => setNote(e.target.value)} />
+								variant="standard" />
 							<Label />Surcharge
 							<TextField
 								InputProps={{
@@ -164,7 +172,9 @@ export const Invoice = ({ initCustomer, surcharge, total }) => {
 								alignItems="center"
 								sx={{ marginTop: "16px" }}
 							>
-								<Button variant="outlined" onClick={() => navigate("/products")} >
+								<Button variant="outlined"
+									onClick={() => navigate("/products")}
+								>
 									BUY MORE
 								</Button>
 								<Button

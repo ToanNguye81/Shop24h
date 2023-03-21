@@ -26,10 +26,10 @@ export const OrderPage = () => {
                         direction="row"
                         justifyContent="space-evenly"
                         alignItems="flex-start" mt={5}>
-                        <Grid item xs={12} md={6.5}>
+                        <Grid item xs={12} sm={11} md={6}>
                             <AllProduct cart={cart} />
                         </Grid>
-                        <Grid item xs={11} md={3.5}>
+                        <Grid item xs={11} sm={10} md={4}>
                             {checkUserPending ?
                                 <CircularProgress />
                                 :
