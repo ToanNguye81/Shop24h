@@ -18,6 +18,7 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import { UserAvatar } from './UserAvatar';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 
 const pages = ['HOME', 'SHOP', 'BLOG', 'ABOUT', 'CONTACT'];
@@ -25,23 +26,9 @@ const pages = ['HOME', 'SHOP', 'BLOG', 'ABOUT', 'CONTACT'];
 
 export const AppBarHeader = () => {
     const [anchorElNav, setAnchorElNav] = useState(null);
-    const [appBarHeight, setAppBarHeight] = useState(0);
-
-    useEffect(() => {
-        function updatePaddingTop() {
-            setAppBarHeight(document.querySelector('header').offsetHeight);
-        }
-
-        // update padding-top when reload
-        updatePaddingTop();
-
-        window.addEventListener('resize', updatePaddingTop);
-        return () => {
-            window.removeEventListener('resize', updatePaddingTop);
-        };
-    }, []);
 
     const navigate = useNavigate()
+    const dispatch=useDispatch()
 
 
     const handleOpenNavMenu = (event) => {
@@ -60,8 +47,9 @@ export const AppBarHeader = () => {
         navigate("/orders")
     }
 
+
     return (
-        <Box pt={{xs:7,sm:8,md:13}}>
+        <Box pt={{ xs: 7, sm: 8, md: 13 }}>
             <AppBar position="fixed" sx={{ backgroundColor: "#FFFFFF" }} variant="none">
                 <Container maxWidth="xl" >
                     <Toolbar disableGutters >
@@ -130,8 +118,8 @@ export const AppBarHeader = () => {
                                 textDecoration: 'none',
                             }}
                         >
-                            <Box 
-                             backgroundColor="black" sx={{ display: { xs: 'flex', sm: "center", md: 'center' }, mr: 1 }}>
+                            <Box
+                                backgroundColor="black" sx={{ display: { xs: 'flex', sm: "center", md: 'center' }, mr: 1 }}>
                                 <img src={Logo} width="70" alt="logo" />
                             </Box >
                         </Typography>

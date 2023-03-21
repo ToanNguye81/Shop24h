@@ -13,7 +13,6 @@ const initialState = {
 
   //Order
   checkUserPending: false,
-
   totalCost: 0,
   customer: {
     firstName: "",

@@ -15,17 +15,18 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import auth from "../firebase.config"
 import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup } from 'firebase/auth';
-import { useEffect } from 'react';
-import { useNavigate } from "react-router-dom";
-import { setUser, resetUser } from "../actions/signIn.actions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Cookies from 'js-cookie';
+import { checkUser } from '../actions/order.actions';
+import { OrderPage } from './OrderPage';
 
 const provider = new GoogleAuthProvider();
 
 const theme = createTheme();
 
 export default function SignInPage() {
+
+  const { loggedUser } = useSelector(reduxData => reduxData.signInReducers)
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -36,12 +37,10 @@ export default function SignInPage() {
     });
   };
 
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
   //Ver 4
   const loginGoogle = async () => {
     try {
-      const loginResult = await signInWithPopup(auth, provider)
+      await signInWithPopup(auth, provider)
     } catch (error) {
       if (error.code === "auth/popup-closed-by-user") {
         alert("Popup window closed before authentication was completed.")
@@ -51,21 +50,8 @@ export default function SignInPage() {
     }
   }
 
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        dispatch(setUser(user))
-        Cookies.set("accessToken",user.accessToken)
-        navigate("/products")
-      }
-      else {
-        dispatch(resetUser())
-      }
-    })
-  }, [])
-
   return (
-    <Box>
+    <Box>{loggedUser ? <OrderPage /> :
       <ThemeProvider theme={theme}>
         <Grid container component="main" >
           <CssBaseline />
@@ -163,7 +149,7 @@ export default function SignInPage() {
             </Box>
           </Grid>
         </Grid>
-      </ThemeProvider>
+      </ThemeProvider>}
     </Box>
   );
 }

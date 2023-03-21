@@ -15,7 +15,7 @@ export const logoutUser = () => {
 
 // resetUser 
 export const resetUser=()=>{
-    console.log("Set User")
+    console.log("Reset User")
     return {
         type: RESET_USER,
     }
