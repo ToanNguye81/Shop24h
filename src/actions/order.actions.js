@@ -1,12 +1,19 @@
+import { enqueueSnackbar } from "notistack";
 import {
     OLD_CUSTOMER,
     CHECK_USER_PENDING,
     CHECK_USER_ERROR,
     NEW_CUSTOMER,
 
+    CREATE_CUSTOMER_PENDING,
+    CREATE_CUSTOMER_ERROR,
+    CREATE_CUSTOMER_SUCCESS,
 } from "../constants/order.constants"
 
 const gAUTH_API_URL = "//localhost:8000/auth"
+const gCUSTOMER_API_URL = '//localhost:8000/customers';
+const gORDERS_API_URL = '//localhost:8000/orders';
+
 
 //Get all product
 export const checkUser = () => {
@@ -58,42 +65,223 @@ export const checkUser = () => {
     }
 }
 
+// export const createNewOrder =  ({ customer, cart }) => {
+//     return async (dispatch) => {
+//         try {
+//             //Kiểm tra customer và tạo mới nếu không có
+//             const requestOptions = {
+//                 method: 'POST',
+//                 headers: {
+//                     "Content-Type": 'application/json'
+//                 },
+//                 body: JSON.stringify(customer)
+//             };
 
-//Create new order
-export const createNewOrder = (customerId, note) => {
-    // if (isValid) {
-    return async (dispatch) => {
-        const requestOptions = {
-            method: 'POST',
-            headers: {
-                "Content-Type": 'application/json',
-            },
-            body: JSON.stringify({ note: note }),
-        };
+//             await dispatch({
+//                 type: CREATE_CUSTOMER_PENDING
+//             });
 
-        await dispatch({
-            type: CREATE_ORDER_PENDING
-        });
+//             const res = await fetch(gCUSTOMER_API_URL, requestOptions);
+//             const resObj = await res.json();
 
-        try {
-            const res = await fetch(`${gCUSTOMER_API_URL}/${customerId}/orders`, requestOptions);
-            const resObj = await res.json();
+//             if (!res.ok) {
+//                 enqueueSnackbar(resObj.message, { variant: "warning" })
+//                 return dispatch({
+//                     type: CREATE_CUSTOMER_ERROR,
+//                 })
+//             }
 
-            if (!res.ok) {
-                return dispatch({
-                    type: CREATE_ORDER_ERROR,
+//             const customerId = resObj.data._id
+
+//             if (!cart.length) {
+//                 // Warning if cart is empty
+//                 return enqueueSnackbar("Your cart is empty", { variant: "warning" })
+//             }
+
+//             if (customerId && cart.length) {
+
+//                 const orderResult = await createOrder(customerId, customer.note)
+//                 const orderId = orderResult.data._id;
+
+//                 if (orderId) {
+
+//                     const orderDetailPromises = cart.map((orderDetail) =>
+
+
+//                     )
+
+//                     await Promise.all(orderDetailPromises)
+//                     // Show success Snackbar
+//                     enqueueSnackbar(`Create successfully Order: ${orderResult.data.orderCode}`, { variant: "success" })
+//                 }
+//             }
+
+//         } catch (error) {
+//             // Handle any errors here
+//             console.log(error)
+//             // Show success Snackbar
+//             enqueueSnackbar('Something went wrong.', { variant: "error" })
+//         }
+//     }
+// }
+
+
+// //Create new order
+// export const createOrder = (customerId,note) => {
+//     // if (isValid) {
+//     return async (dispatch) => {
+//         const requestOptions = {
+//             method: 'POST',
+//             headers: {
+//                 "Content-Type": 'application/json',
+//             },
+//             body: JSON.stringify({note:note}),
+//         };
+
+//         try {
+//             const res = await fetch(`${gCUSTOMER_API_URL}/${customerId}/orders`, requestOptions);
+//             const resObj = await res.json();
+
+//             return dispatch({
+//                 type: CREATE_ORDER_SUCCESS,
+//                 data: resObj.data
+//             })
+
+//         } catch (err) {
+//             return dispatch({
+//                 type: CREATE_ORDER_ERROR,
+//                 error: err
+//             })
+//         }
+//     }
+// }
+
+
+export const handleCreateOrder = async ({ customer, cart }) => {
+    try {
+        const customerResult = await createNewCustomer(customer)
+
+        const customerId = await customerResult.data._id
+
+        if (!cart.length) {
+            // Warning if cart is empty
+            enqueueSnackbar("Your cart is empty", { variant: "warning" })
+        }
+
+        if (customerId && cart.length) {
+            const orderResult = await createNewOrder(customerId, customer.note)
+
+            const orderId = orderResult.data._id;
+
+            if (orderId) {
+                const orderDetailPromises = cart.map(async (orderDetail) => {
+                    await createNewOrderDetail(orderId, orderDetail)
                 })
-            }
 
-            return dispatch({
-                type: CREATE_ORDER_SUCCESS,
-                data: resObj.data
-            })
-        } catch (err) {
-            return dispatch({
-                type: CREATE_ORDER_ERROR,
-                error: err
-            })
+                await Promise.all(orderDetailPromises)
+
+                // Show success Snackbar
+                enqueueSnackbar(`Create successfully Order: ${orderResult.data.orderCode}`, { variant: "success" })
+            }
+        }
+
+    } catch (error) {
+        // Handle any errors here
+        console.log(error)
+        // Show success Snackbar
+        enqueueSnackbar('Something went wrong.', { variant: "error" })
+    }
+}
+
+
+export const createNewCustomer = async (customer) => {
+    const requestOptions = {
+        method: 'POST',
+        headers: {
+            "Content-Type": 'application/json'
+
+        },
+        body: JSON.stringify(customer)
+    };
+
+    try {
+        const res = await fetch(gCUSTOMER_API_URL, requestOptions);
+        const resObj = await res.json();
+
+        return {
+            type: CREATE_CUSTOMER_SUCCESS,
+            data: resObj.data
+        }
+
+    } catch (err) {
+        return {
+            type: CREATE_CUSTOMER_ERROR,
+            error: err
         }
     }
 }
+
+
+//Create new order
+export const createNewOrder = async (customerId, note) => {
+    // if (isValid) {
+    const requestOptions = {
+        method: 'POST',
+        headers: {
+            "Content-Type": 'application/json',
+        },
+        body: JSON.stringify({ note: note }),
+    };
+
+    try {
+        const res = await fetch(`${gCUSTOMER_API_URL}/${customerId}/orders`, requestOptions);
+        const resObj = await res.json();
+        console.log(resObj)
+
+        return {
+            type: "CREATE_ORDER_SUCCESS",
+            data: resObj.data
+        }
+
+    } catch (err) {
+        return {
+            type: "CREATE_ORDER_ERROR",
+            error: err
+        }
+    }
+    }
+
+
+
+    
+//Create new orderDetail
+export const createNewOrderDetail = async (orderId, orderDetail) => {
+    const detail = {
+        productId: orderDetail.product._id,
+        quantity: orderDetail.quantity
+    }
+
+        const requestOptions = {
+            method: 'POST',
+            headers: {
+                "Content-Type": 'application/json'
+            },
+            body: JSON.stringify(detail)
+        };
+
+        try {
+            const res = await fetch(`${gORDERS_API_URL}/${orderId}/orderDetails`, requestOptions);
+            const resObj = await res.json();
+
+            return {
+                type: "CREATE_ORDER_DETAIL_SUCCESS",
+                data: resObj.data
+            }
+
+        } catch (err) {
+            return {
+                type: "CREATE_ORDER_DETAIL_ERROR",
+                error: err
+            }
+        }
+    }

@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
 import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
-import { createNewOrder } from "../../actions/order.actions"
+import { handleCreateOrder } from "../../actions/order.actions"
 
 const MyGrid = styled.div`
 border:1.5px solid #E6E6E6;
@@ -22,7 +22,6 @@ const validOrderSchema = Yup.object().shape({
 	city: Yup.string().required('City is required').trim(),
 	country: Yup.string().required('Country is required').trim(),
 	address: Yup.string().required('Address is required').trim(),
-	// note: Yup.string().required('Note is required').trim(),
 });
 
 export const Invoice = ({ surcharge, total }) => {
@@ -32,8 +31,8 @@ export const Invoice = ({ surcharge, total }) => {
 	const { customer } = useSelector(reduxData => reduxData.orderReducers)
 
 
-	const handleSubmit = (values) => {
-		console.log({ values, cart })
+	const handleSubmit = (customer) => {
+		dispatch(handleCreateOrder({customer,cart}))
 	};
 
 	const updateChange = (event) => {

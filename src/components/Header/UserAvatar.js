@@ -52,6 +52,7 @@ export const UserAvatar = () => {
       .then(() => {
         dispatch(logoutUser())
         Cookies.remove("accessToken")
+        localStorage.removeItem("firstName","lastName","phone","email","city","country","note","address")
         navigate("/homepage")
       })
       .catch((error) => {
