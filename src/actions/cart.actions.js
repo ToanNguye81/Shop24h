@@ -1,3 +1,4 @@
+import { enqueueSnackbar } from "notistack"
 import {
     DECREASE_QUANTITY,
     INCREASE_QUANTITY,
@@ -25,11 +26,10 @@ export const increaseQuantity = (paramIndex) => {
 
 //Xử lý sự kiện nút AddToCart
 export const addToCart = (cart, product) => {
-
     //Hàm xử lý thêm sản phẩm lần đầu
+    enqueueSnackbar(`Add product ${product.name} to cart `, { variant: 'success' });
     // if (cart[0].product === null) {
     if (cart.length === 0) {
-        console.log(product)
         return {
             type: ADD_FIRST_PRODUCT,
             product: product,
@@ -48,7 +48,6 @@ export const addToCart = (cart, product) => {
             }
         }
     }
-
     //Thêm một sản phẩm mới nếu cart có trên 1 sp
     return {
         type: ADD_NEW_PRODUCT,
@@ -57,13 +56,13 @@ export const addToCart = (cart, product) => {
     }
 }
 
-export const changeCartCost=(cart)=>{
-    let cartCost=0;
+export const changeCartCost = (cart) => {
+    let cartCost = 0;
     console.log(cart)
-    cart.map((item, index)=>{
-        cartCost=cartCost+item.product.promotionPrice*item.quantity
+    cart.map((item, index) => {
+        cartCost = cartCost + item.product.promotionPrice * item.quantity
     })
-    return{
+    return {
         type: CHANGE_CART_COST,
         cartCost: cartCost
     }

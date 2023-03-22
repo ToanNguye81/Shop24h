@@ -16,7 +16,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <SnackbarProvider maxSnack={3} anchorOrigin={{vertical: 'top',horizontal: 'right',}}>
+      <SnackbarProvider maxSnack={3} anchorOrigin={{vertical: 'top',horizontal: 'right',}} autoHideDuration={1500}>
         <App />
       </SnackbarProvider>
     </Provider>

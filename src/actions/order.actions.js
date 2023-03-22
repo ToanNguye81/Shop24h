@@ -2,7 +2,8 @@ import {
     OLD_CUSTOMER,
     CHECK_USER_PENDING,
     CHECK_USER_ERROR,
-    NEW_CUSTOMER
+    NEW_CUSTOMER,
+
 } from "../constants/order.constants"
 
 const gAUTH_API_URL = "//localhost:8000/auth"
@@ -42,7 +43,7 @@ export const checkUser = () => {
             } else {
                 return dispatch({
                     type: NEW_CUSTOMER,
-                    email:resObj.email
+                    email: resObj.email
                 })
             }
 
@@ -59,7 +60,7 @@ export const checkUser = () => {
 
 
 //Create new order
-export const createNewOrder = (customerId,note) => {
+export const createNewOrder = (customerId, note) => {
     // if (isValid) {
     return async (dispatch) => {
         const requestOptions = {
@@ -67,7 +68,7 @@ export const createNewOrder = (customerId,note) => {
             headers: {
                 "Content-Type": 'application/json',
             },
-            body: JSON.stringify({note:note}),
+            body: JSON.stringify({ note: note }),
         };
 
         await dispatch({

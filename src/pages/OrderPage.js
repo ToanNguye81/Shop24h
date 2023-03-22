@@ -11,7 +11,7 @@ import { CircularProgress } from "@mui/material"
 export const OrderPage = () => {
     const dispatch = useDispatch()
     const { cart, cartCost } = useSelector((reduxData) => reduxData.cartReducers);
-    const { customer, checkUserPending } = useSelector((reduxData) => reduxData.orderReducers);
+    const { checkUserPending } = useSelector((reduxData) => reduxData.orderReducers);
     const { loggedUser } = useSelector((reduxData) => reduxData.signInReducers);
 
     useEffect(() => {
@@ -34,7 +34,6 @@ export const OrderPage = () => {
                                 <CircularProgress />
                                 :
                                 <Invoice
-                                    initCustomer={customer}
                                     total={cartCost}
                                 />
                             }

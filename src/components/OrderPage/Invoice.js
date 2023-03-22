@@ -7,7 +7,6 @@ import styled from "styled-components"
 import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import { createNewOrder } from "../../actions/order.actions"
-import { useSnackbar } from "notistack"
 
 const MyGrid = styled.div`
 border:1.5px solid #E6E6E6;
@@ -26,33 +25,27 @@ const validOrderSchema = Yup.object().shape({
 	// note: Yup.string().required('Note is required').trim(),
 });
 
-export const Invoice = ({ initCustomer, surcharge, total }) => {
+export const Invoice = ({ surcharge, total }) => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const { cart } = useSelector(reduxData => reduxData.cartReducers)
+	const { customer } = useSelector(reduxData => reduxData.orderReducers)
 
-	const [savedValues, setSavedValues] = useState({});
-
-	useEffect(() => {
-		const savedValuesStr = localStorage.getItem('invoiceFormValues');
-		if (savedValuesStr) {
-			setSavedValues(JSON.parse(savedValuesStr));
-		}
-	}, []);
-	const { enqueueSnackbar } = useSnackbar();
 
 	const handleSubmit = (values) => {
-		cart[0] ?
-			// dispatch(createNewOrder)
-			enqueueSnackbar('Đã có đơn hàng',{ variant: 'success' })
-			:
-			enqueueSnackbar('Bạn chưa có đơn hàng', { variant: 'error' });
+		console.log({ values, cart })
 	};
 
+	const updateChange = (event) => {
+		const { name, value } = event.target;
+		localStorage.setItem(name, value);
+	  };
+
+	// 
 	return (
 		<React.Fragment>
-			<Formik initialValues={{ ...initCustomer, ...savedValues }} validationSchema={validOrderSchema} onSubmit={handleSubmit}>
-				{({ errors, touched, values, handleChange }) => (
+			<Formik initialValues={{ ...customer }} validationSchema={validOrderSchema} onSubmit={handleSubmit}>
+				{({ errors, touched, values,handleChange}) => (
 					<Form>
 						<MyGrid>
 							<h2>Invoice</h2>
@@ -66,7 +59,8 @@ export const Invoice = ({ initCustomer, surcharge, total }) => {
 								id="firstName"
 								name="firstName"
 								variant="standard"
-								onChange={handleChange}
+								onChange={handleChange} 
+								onBlur={updateChange}
 								error={errors.firstName && touched.firstName}
 								helperText={touched.firstName && errors.firstName}
 							/>
@@ -78,7 +72,8 @@ export const Invoice = ({ initCustomer, surcharge, total }) => {
 								value={values.lastName}
 								id="lastName"
 								name="lastName"
-								onChange={handleChange}
+								onChange={handleChange} 
+								onBlur={updateChange}
 								error={errors.lastName && touched.lastName}
 								helperText={touched.lastName && errors.lastName}
 								variant="standard"
@@ -91,7 +86,8 @@ export const Invoice = ({ initCustomer, surcharge, total }) => {
 								value={values.phone}
 								id="phone"
 								name="phone"
-								onChange={handleChange}
+								onChange={handleChange} 
+								onBlur={updateChange}
 								error={errors.phone && touched.phone}
 								helperText={touched.phone && errors.phone}
 								variant="standard"
@@ -116,7 +112,8 @@ export const Invoice = ({ initCustomer, surcharge, total }) => {
 								value={values.city}
 								id="city"
 								name="city"
-								onChange={handleChange}
+								onChange={handleChange} 
+								onBlur={updateChange}
 								error={errors.city && touched.city}
 								helperText={touched.city && errors.city}
 								variant="standard"
@@ -129,7 +126,8 @@ export const Invoice = ({ initCustomer, surcharge, total }) => {
 								value={values.country}
 								id="country"
 								name="country"
-								onChange={handleChange}
+								onChange={handleChange} 
+								onBlur={updateChange}
 								error={errors.country && touched.country}
 								helperText={touched.country && errors.country}
 								variant="standard"
@@ -140,7 +138,8 @@ export const Invoice = ({ initCustomer, surcharge, total }) => {
 								value={values.address}
 								id="address"
 								name="address"
-								onChange={handleChange}
+								onChange={handleChange} 
+								onBlur={updateChange}
 								error={errors.address && touched.address}
 								helperText={touched.address && errors.address}
 								variant="standard"
@@ -148,7 +147,8 @@ export const Invoice = ({ initCustomer, surcharge, total }) => {
 							<Label />Note:
 							<TextField
 								fullWidth
-								onChange={handleChange}
+								onChange={handleChange} 
+								onBlur={updateChange}
 								id="note"
 								name="note"
 								variant="standard" />

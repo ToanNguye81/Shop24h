@@ -15,14 +15,14 @@ const initialState = {
   checkUserPending: false,
   totalCost: 0,
   customer: {
-    firstName: "",
-    lastName: "",
-    phone: "",
-    email: "",
-    city: "",
-    country: "",
-    note: "",
-    address: ""
+    firstName: localStorage.getItem("firstName")||"",
+    lastName:localStorage.getItem("lastName")|| "",
+    phone:localStorage.getItem("phone")|| "",
+    email:localStorage.getItem("email")|| "",
+    city:localStorage.getItem("city")|| "",
+    country:localStorage.getItem("country")|| "",
+    note:localStorage.getItem("note")|| "",
+    address:localStorage.getItem("address")|| ""
   }
 };
 
