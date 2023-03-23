@@ -158,11 +158,15 @@ const initialState = {
     updateError: null,
 
     //Filter and sort
-    productPerPage:10,
-    page:0,
-    sortBy:"",
-    sortOrder:"",
-    condition:{},
+    productPerPage: 10,
+    page: 0,
+    sortBy: "",
+    sortOrder: "",
+    gender:[],
+    brand:[],
+    category:[],
+    minPrice:"",
+    maxPrice:"",
 }
 
 export const productReducers = (state = initialState, action) => {

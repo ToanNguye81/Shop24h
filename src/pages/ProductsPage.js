@@ -7,7 +7,7 @@ import ProductFilterSidebar from '../components/ProductsPage/ProductFilterSideba
 import ProductSort from '../components/ProductsPage/ProductSort';
 import ProductList from '../components/ProductsPage/ProductList';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllProduct,setPage } from '../actions/product.actions';
+import { getAllProduct, setPage } from '../actions/product.actions';
 import * as React from 'react';
 import Pagination from '@mui/material/Pagination';
 
@@ -16,8 +16,8 @@ import Pagination from '@mui/material/Pagination';
 
 export const ProductsPage = () => {
 
-    const { products, pending, totalProduct, error,
-        productPerPage, page, sortBy, sortOrder, condition } = useSelector((reduxData) => reduxData.productReducers);
+    const { products, pending, totalProduct, error,category,
+        productPerPage, page, sortBy, sortOrder,gender,brand,minPrice,maxPrice } = useSelector((reduxData) => reduxData.productReducers);
 
     console.log(products)
     const dispatch = useDispatch();
@@ -25,12 +25,14 @@ export const ProductsPage = () => {
     const totalPages = Math.ceil(totalProduct / productPerPage)
 
     useEffect(() => {
-        dispatch(getAllProduct({ productPerPage, page,sortBy, sortOrder, condition }))
-    }, [page,page,sortBy, sortOrder, condition ]);
+        dispatch(getAllProduct({
+            productPerPage, page, sortBy, sortOrder, gender,brand,minPrice,maxPrice,category
+        }))
+    }, [page, page, sortBy, sortOrder, gender,brand,minPrice,maxPrice,category]);
 
     const handleChangePage = (event, value) => {
-        dispatch(setPage(value-1));
-      };
+        dispatch(setPage(value - 1));
+    };
 
 
     const [openFilter, setOpenFilter] = useState(false);
@@ -59,9 +61,9 @@ export const ProductsPage = () => {
                 <ProductList products={products} />
             </Stack>
             <Stack direction="column" justifyContent="center" alignItems="center" sx={{ m: 10 }}>
-                <Pagination count={totalPages} page={page+1} 
-                onChange={handleChangePage}
-                variant="outlined" color="secondary" />
+                <Pagination count={totalPages} page={page + 1}
+                    onChange={handleChangePage}
+                    variant="outlined" color="secondary" />
             </Stack>
         </Container>
     );

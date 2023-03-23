@@ -20,15 +20,12 @@ const gPRODUCT_API_URL = "//localhost:8000/products"
 
 //Get all product
 // export const getAllProduct = (paramLimit, paramPage, paramCondition) => {
-export const getAllProduct = ({productPerPage, page,sortBy,sortOrder,condition}) => {
-    console.log({productPerPage, page})
+export const getAllProduct = ({productPerPage, page,sortBy,sortOrder,gender,brand, minPrice, maxPrice,category}) => {
     
     // build the request string
-    let vCondition = encodeURIComponent(JSON.stringify(condition ? condition : {}));
-    const request = `limit=${productPerPage}&page=${page}&sortBy=${sortBy}&sortOrder=${sortOrder}&condition=${vCondition}`
+    const request = `limit=${productPerPage}&page=${page}&sortBy=${sortBy}&sortOrder=${sortOrder}&gender=${gender.join('&gender=')}&brand=${brand.join('&brand=')}&minPrice=${minPrice}&maxPrice=${maxPrice}&category=${category.join('&category=')}`
 
     console.log(request)
-
     // options for the fetch request
     const requestOptions = {
         method: 'GET',
