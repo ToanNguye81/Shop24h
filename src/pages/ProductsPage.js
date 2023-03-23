@@ -19,7 +19,7 @@ export const ProductsPage = () => {
     const { products, pending, totalProduct, error,category,
         productPerPage, page, sortBy, sortOrder,gender,brand,minPrice,maxPrice } = useSelector((reduxData) => reduxData.productReducers);
 
-    console.log(products)
+    console.log(sortOrder)
     const dispatch = useDispatch();
 
     const totalPages = Math.ceil(totalProduct / productPerPage)

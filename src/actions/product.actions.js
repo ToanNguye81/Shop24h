@@ -122,46 +122,46 @@ export const setSortBy = (SortBy) => {
         payload: SortBy
     }
 }
-//set SortOrder
-export const setSortOrder = (SortOrder) => {
+//set sortOrder
+export const setSortOrder = (sortOrder) => {
     return {
         type: SET_SORT_ORDER,
-        payload: SortOrder
+        payload: sortOrder
     }
 }
 //set Gender
-export const setGender = (Gender) => {
+export const setGender = (gender) => {
     return {
         type: SET_GENDER,
-        payload: Gender
+        payload: gender
     }
 }
 //set Brand
-export const setBrand = (Brand) => {
+export const setBrand = (brand) => {
     return {
         type: SET_BRAND,
-        payload: Brand
+        payload: brand
     }
 }
 //set Category
-export const setCategory = (Category) => {
+export const setCategory = (category) => {
     return {
         type: SET_CATEGORY,
-        payload: Category
+        payload: category
     }
 }
 //set MinPrice
-export const setMinPrice = (MinPrice) => {
+export const setMinPrice = (minPrice) => {
     return {
         type: SET_MIN_PRICE,
-        payload: MinPrice
+        payload: minPrice
     }
 }
 //set MaxPrice
-export const setMaxPrice = (MaxPrice) => {
+export const setMaxPrice = (maxPrice) => {
     return {
         type: SET_MAX_PRICE,
-        payload: MaxPrice
+        payload: maxPrice
     }
 }
 

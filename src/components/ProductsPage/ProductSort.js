@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 // @mui
-import { Menu, Button, MenuItem, Typography } from '@mui/material';
+import { Menu, Button, MenuItem, Typography, Divider } from '@mui/material';
 import { Sort } from '@mui/icons-material';
 import { useDispatch, useSelector } from 'react-redux';
-import { setSortBy } from '../../actions/product.actions';
+import { setSortBy, setSortOrder } from '../../actions/product.actions';
 // component
 
 // ----------------------------------------------------------------------
@@ -12,7 +12,7 @@ const SORT_BY_OPTIONS = [
   { value: 'createdAt', label: 'Newest' },
   { value: 'category', label: 'Category' },
   { value: 'brand', label: 'Brand' },
-  { value: 'price', label: 'Price' },
+  { value: 'promotionPrice', label: 'Price' },
 ];
 
 const SORT_ORDER_OPTIONS = [
@@ -22,8 +22,8 @@ const SORT_ORDER_OPTIONS = [
 
 export default function ProductSort() {
   const [open, setOpen] = useState(null);
-  const {sortBy,sortOrder}=useSelector(reduxData=>reduxData.productReducers)
-  const dispatch=useDispatch()
+  const { sortBy, sortOrder } = useSelector(reduxData => reduxData.productReducers)
+  const dispatch = useDispatch()
 
   const handleOpen = (event) => {
     setOpen(event.currentTarget);
@@ -37,7 +37,8 @@ export default function ProductSort() {
     setOpen(null)
 
   }
-  const handleClickSortOrder = () => {
+  const handleClickSortOrder = (sortOrder) => {
+    dispatch(setSortOrder(sortOrder))
     setOpen(null)
   }
 
@@ -51,7 +52,8 @@ export default function ProductSort() {
       >
         Sort By:&nbsp;
         <Typography component="span" variant="subtitle2" sx={{ color: 'text.secondary' }}>
-          Newest
+          {
+          SORT_BY_OPTIONS.map((option,index)=>sortBy===option.value?option.label:null)}
         </Typography>
       </Button>
       <Menu
@@ -62,21 +64,22 @@ export default function ProductSort() {
         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
         transformOrigin={{ vertical: 'top', horizontal: 'right' }}
       >
-        {SORT_BY_OPTIONS.map((option) => (
+        {SORT_BY_OPTIONS.map((option,index) => (
           <MenuItem
             key={option.value}
-            // selected={option.value === 'createdAt'}
-            onClick={()=>handleClickSortBy(option.value)}
+            selected={option.value === sortBy}
+            onClick={() => handleClickSortBy(option.value)}
             sx={{ typography: 'body2' }}
           >
             {option.label}
           </MenuItem>
         ))}
+        <hr/>
         {SORT_ORDER_OPTIONS.map((option) => (
           <MenuItem
             key={option.value}
-            selected={option.value === 'newest'}
-            onClick={()=>handleClickSortOrder(option.value)}
+            selected={option.value === sortOrder}
+            onClick={() => handleClickSortOrder(option.value)}
             sx={{ typography: 'body2' }}
           >
             {option.label}
