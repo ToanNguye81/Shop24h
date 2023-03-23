@@ -7,21 +7,23 @@ import {
     GET_PRODUCT_BY_ID_PENDING,
     GET_PRODUCT_BY_ID_SUCCESS,
 
+    //Set filter Condition
     SET_PAGE,
-
-    // PRODUCTS_PAGINATION_CHANGE,
-    // BRAND_FILTER_CHANGE,
-    // ORDINAL_FILTER_CHANGE,
-    // MIN_PRICE_CHANGE,
-    // MAX_PRICE_CHANGE
+    SET_SORT_BY,
+    SET_SORT_ORDER,
+    SET_GENDER,
+    SET_BRAND,
+    SET_CATEGORY,
+    SET_MIN_PRICE,
+    SET_MAX_PRICE,
 } from "../constants/product.constants";
 
 const gPRODUCT_API_URL = "//localhost:8000/products"
 
 //Get all product
 // export const getAllProduct = (paramLimit, paramPage, paramCondition) => {
-export const getAllProduct = ({productPerPage, page,sortBy,sortOrder,gender,brand, minPrice, maxPrice,category}) => {
-    
+export const getAllProduct = ({ productPerPage, page, sortBy, sortOrder, gender, brand, minPrice, maxPrice, category }) => {
+
     // build the request string
     const request = `limit=${productPerPage}&page=${page}&sortBy=${sortBy}&sortOrder=${sortOrder}&gender=${gender.join('&gender=')}&brand=${brand.join('&brand=')}&minPrice=${minPrice}&maxPrice=${maxPrice}&category=${category.join('&category=')}`
 
@@ -105,140 +107,61 @@ export const getProductById = (productId) => {
     }
 }
 
-// //Change product per page
-// export const changeProductPerPage=(currentProductPerPage)=>{
-// return{
-//     type:CHANGE_PRODUCT_PER_PAGE,
-//     payload:currentProductPerPage+5,
-// }
-// }
-
-//set Page 
-export const setPage = (page)=>{
-    return{
+//set Page
+export const setPage = (page) => {
+    return {
         type: SET_PAGE,
         payload: page
     }
 }
 
-
-
-// export const changePagination = (page) => {
-//     return {
-//         type: PRODUCTS_PAGINATION_CHANGE,
-//         page: page
-//     }
-// }
-
-// export const changeBrand = (brand) => {
-//     return {
-//         type: BRAND_FILTER_CHANGE,
-//         brand: brand,
-//     }
-// }
-
-// export const changeMinPrice = (minPrice) => {
-//     console.log(minPrice)
-//     return {
-//         type: MIN_PRICE_CHANGE,
-//         minPrice: minPrice,
-//     }
-// }
-
-// export const changeMaxPrice = (maxPrice) => {
-//     console.log(maxPrice)
-//     return {
-//         type: MAX_PRICE_CHANGE,
-//         maxPrice: maxPrice,
-//     }
-// }
-
-// export const changeOrdinal = (ordinal) => {
-//     return {
-//         type: ORDINAL_FILTER_CHANGE,
-//         ordinal: ordinal,
-//     }
-// }
-
-// export const fetchProducts = (limit, currentPage, brand, minPrice, maxPrice, ordinal) => {
-//     return async (dispatch) => {
-//         var requestOptions = {
-//             method: 'GET',
-//             redirect: 'follow'
-//         };
-
-//         await dispatch({
-//             type: FETCH_PRODUCTS_PENDING
-//         });
-
-//         try {
-//             const allProductsRes = await fetch("http://localhost:8000/products?brand=" + brand + "&minPrice=" + minPrice + "&maxPrice=" + maxPrice + "&ordinal=" + ordinal, requestOptions);
-
-//             const allProductsObj = await allProductsRes.json();
-
-//             const filteredProductRes = await fetch("http://localhost:8000/products?start=" + ((currentPage - 1) * limit) + "&limit=" + limit + "&brand=" + brand + "&minPrice=" + minPrice + "&maxPrice=" + maxPrice + "&ordinal=" + ordinal, requestOptions);
-//             const filteredProductObj = await filteredProductRes.json();
-//             console.log(filteredProductObj)
-
-//             return dispatch({
-//                 type: FETCH_PRODUCTS_SUCCESS,
-//                 products: allProductsObj.products,
-//                 totalProduct: allProductsObj.products.length,
-//                 filteredProducts: filteredProductObj.products,
-
-//             })
-//         } catch (err) {
-//             return dispatch({
-//                 type: FETCH_PRODUCTS_ERROR,
-//                 error: err
-//             })
-//         }
-//     }
-// }
-
-// export const fetchProducts = (paramLimit, paramPage, paramCondition,paramSortBy,paramSortOrder) => {
-//     // build the request string
-//     let condition = encodeURIComponent(JSON.stringify(paramCondition ? paramCondition : {}));
-//     const request = `limit=${paramLimit}&page=${paramPage}&condition=${condition}&sortBy=${paramSortBy}&sortOrder=${paramSortOrder}`
-
-//     // options for the fetch request
-//     const requestOptions = {
-//         method: 'GET',
-//         redirect: 'follow'
-//     };
-
-//     return async (dispatch) => {
-//         try {
-//             // dispatch pending state to update the UI
-//             await dispatch({
-//                 type: FETCH_PRODUCTS_PENDING
-//             });
-
-//             //fetch fetchProduct
-//             const res = await fetch(`${gPRODUCT_API_URL}?${request}`, requestOptions);
-
-//             // throw an error if the response is not successful
-//             if (!res.ok) {
-//                 throw new Error(`Could not find products, status: ${res.status}`);
-//             }
-//             // parse the response as JSON
-//             const resObj = await res.json();
-//             console.log(resObj)
-
-//             //Dispatch state
-//             return dispatch({
-//                 type: FETCH_PRODUCTS_SUCCESS,
-//                 totalProduct: resObj.totalCount,
-//                 products: resObj.data
-//             })
-
-//         } catch (err) {
-//             //if error
-//             return dispatch({
-//                 type: FETCH_PRODUCTS_ERROR,
-//                 error: err
-//             })
-//         }
-//     }
-// }
+//set SortBy
+export const setSortBy = (SortBy) => {
+    return {
+        type: SET_SORT_BY,
+        payload: SortBy
+    }
+}
+//set SortOrder
+export const setSortOrder = (SortOrder) => {
+    return {
+        type: SET_SORT_ORDER,
+        payload: SortOrder
+    }
+}
+//set Gender
+export const setGender = (Gender) => {
+    return {
+        type: SET_GENDER,
+        payload: Gender
+    }
+}
+//set Brand
+export const setBrand = (Brand) => {
+    return {
+        type: SET_BRAND,
+        payload: Brand
+    }
+}
+//set Category
+export const setCategory = (Category) => {
+    return {
+        type: SET_CATEGORY,
+        payload: Category
+    }
+}
+//set MinPrice
+export const setMinPrice = (MinPrice) => {
+    return {
+        type: SET_MIN_PRICE,
+        payload: MinPrice
+    }
+}
+//set MaxPrice
+export const setMaxPrice = (MaxPrice) => {
+    return {
+        type: SET_MAX_PRICE,
+        payload: MaxPrice
+    }
+}
 

@@ -137,7 +137,15 @@ import {
     GET_PRODUCT_BY_ID_PENDING,
     GET_PRODUCT_BY_ID_SUCCESS,
 
+    //Set Filter Condition
     SET_PAGE,
+    SET_SORT_BY,
+    SET_SORT_ORDER,
+    SET_GENDER,
+    SET_BRAND,
+    SET_CATEGORY,
+    SET_MIN_PRICE,
+    SET_MAX_PRICE,
 } from "../constants/product.constants";
 
 
@@ -162,11 +170,11 @@ const initialState = {
     page: 0,
     sortBy: "",
     sortOrder: "",
-    gender:[],
-    brand:[],
-    category:[],
-    minPrice:"",
-    maxPrice:"",
+    gender: [],
+    brand: [],
+    category: [],
+    minPrice: 0,
+    maxPrice: 100000,
 }
 
 export const productReducers = (state = initialState, action) => {
@@ -214,6 +222,41 @@ export const productReducers = (state = initialState, action) => {
                 ...state,
                 page: action.payload
             };
+        case SET_SORT_BY:
+            return {
+                ...state,
+                sortBy: action.payload
+            }
+        case SET_SORT_ORDER:
+            return {
+                ...state,
+                sortOrder:action.payload
+            }
+        case SET_GENDER:
+            return {
+                ...state,
+                gender:action.payload
+            }
+        case SET_BRAND:
+            return {
+                ...state,
+                brand: action.payload
+            }
+        case SET_CATEGORY:
+            return {
+                ...state,
+                category:action.payload
+            }
+        case SET_MIN_PRICE:
+            return {
+                ...state,
+                minPrice:action.payload
+            }
+        case SET_MAX_PRICE:
+            return {
+                ...state,
+                maxPrice:action.payload
+            }
         default:
             return state;
     }
