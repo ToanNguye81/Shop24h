@@ -7,6 +7,8 @@ import {
     GET_PRODUCT_BY_ID_PENDING,
     GET_PRODUCT_BY_ID_SUCCESS,
 
+    SET_PAGE,
+
     // PRODUCTS_PAGINATION_CHANGE,
     // BRAND_FILTER_CHANGE,
     // ORDINAL_FILTER_CHANGE,
@@ -17,11 +19,15 @@ import {
 const gPRODUCT_API_URL = "//localhost:8000/products"
 
 //Get all product
-export const getAllProduct = (paramLimit, paramPage, paramCondition) => {
-
+// export const getAllProduct = (paramLimit, paramPage, paramCondition) => {
+export const getAllProduct = ({productPerPage, page,sortBy,sortOrder,condition}) => {
+    console.log({productPerPage, page})
+    
     // build the request string
-    let condition = encodeURIComponent(JSON.stringify(paramCondition ? paramCondition : {}));
-    const request = `limit=${paramLimit}&page=${paramPage}&condition=${condition}`
+    let vCondition = encodeURIComponent(JSON.stringify(condition ? condition : {}));
+    const request = `limit=${productPerPage}&page=${page}&sortBy=${sortBy}&sortOrder=${sortOrder}&condition=${vCondition}`
+
+    console.log(request)
 
     // options for the fetch request
     const requestOptions = {
@@ -101,6 +107,23 @@ export const getProductById = (productId) => {
         }
     }
 }
+
+// //Change product per page
+// export const changeProductPerPage=(currentProductPerPage)=>{
+// return{
+//     type:CHANGE_PRODUCT_PER_PAGE,
+//     payload:currentProductPerPage+5,
+// }
+// }
+
+//set Page 
+export const setPage = (page)=>{
+    return{
+        type: SET_PAGE,
+        payload: page
+    }
+}
+
 
 
 // export const changePagination = (page) => {

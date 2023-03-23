@@ -29,28 +29,16 @@ export const SORT_BY_OPTIONS = [
   { value: 'priceDesc', label: 'Price: High-Low' },
   { value: 'priceAsc', label: 'Price: Low-High' },
 ];
-export const FILTER_GENDER_OPTIONS = ['Men', 'Women'];
-export const FILTER_BRAND_OPTIONS = ['NIKE', ''];
-export const FILTER_CATEGORY_OPTIONS = ['All', 'Latest', 'Discount', 'Trending'];
-export const FILTER_RATING_OPTIONS = ['up4Star', 'up3Star', 'up2Star', 'up1Star'];
-export const FILTER_PRICE_OPTIONS = [
-  { value: 'below', label: 'Below $25' },
+export const GENDER_OPTIONS = ['MEN', 'WOMEN',"KIDS"];
+export const BRAND_OPTIONS = ["Nike","Adidas","Vans","Balenciaga","Converse","MLB","Fila","Reebok","Puma","Asics"];
+export const CATEGORY_OPTIONS = ['All', 'Latest', 'Discount', 'Trending'];
+export const RATING_OPTIONS = ['up4Star', 'up3Star', 'up2Star', 'up1Star'];
+export const PRICE_OPTIONS = [
   { value: 'below', label: 'Below $25' },
   { value: 'between', label: 'Between $25 - $75' },
   { value: 'between', label: 'Between $25 - $75' },
   { value: 'above', label: 'Above $75' },
 ];
-export const FILTER_COLOR_OPTIONS = [
-  '#00AB55',
-  '#000000',
-  '#FFFFFF',
-  '#FFC0CB',
-  '#FF4842',
-  '#1890FF',
-  '#94D82D',
-  '#FFC107',
-];
-
 // ----------------------------------------------------------------------
 
 ProductFilterSidebar.propTypes = {
@@ -91,7 +79,7 @@ export default function ProductFilterSidebar({ openFilter, onOpenFilter, onClose
                 Brand
               </Typography>
               <RadioGroup>
-                {FILTER_BRAND_OPTIONS.map((item) => (
+                {BRAND_OPTIONS.map((item) => (
                   <FormControlLabel key={item} control={<Checkbox />} label={item} />
                 ))}
               </RadioGroup>
@@ -102,7 +90,7 @@ export default function ProductFilterSidebar({ openFilter, onOpenFilter, onClose
                 Gender
               </Typography>
               <FormGroup>
-                {FILTER_GENDER_OPTIONS.map((item) => (
+                {GENDER_OPTIONS.map((item) => (
                   <FormControlLabel key={item} control={<Checkbox />} label={item} />
                 ))}
               </FormGroup>
@@ -113,7 +101,7 @@ export default function ProductFilterSidebar({ openFilter, onOpenFilter, onClose
                 Category
               </Typography>
               <RadioGroup>
-                {FILTER_CATEGORY_OPTIONS.map((item) => (
+                {CATEGORY_OPTIONS.map((item) => (
                   <FormControlLabel key={item} value={item} control={<Radio />} label={item} />
                 ))}
               </RadioGroup>
@@ -124,7 +112,7 @@ export default function ProductFilterSidebar({ openFilter, onOpenFilter, onClose
                 Price
               </Typography>
               <RadioGroup>
-                {FILTER_PRICE_OPTIONS.map((item) => (
+                {PRICE_OPTIONS.map((item) => (
                   <FormControlLabel key={item.value} value={item.value} control={<Radio />} label={item.label} />
                 ))}
               </RadioGroup>
@@ -135,7 +123,7 @@ export default function ProductFilterSidebar({ openFilter, onOpenFilter, onClose
                 Rating
               </Typography>
               <RadioGroup>
-                {FILTER_RATING_OPTIONS.map((item, index) => (
+                {RATING_OPTIONS.map((item, index) => (
                   <FormControlLabel
                     key={item}
                     value={item}

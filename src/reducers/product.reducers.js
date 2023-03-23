@@ -136,6 +136,8 @@ import {
     GET_PRODUCT_BY_ID_ERROR,
     GET_PRODUCT_BY_ID_PENDING,
     GET_PRODUCT_BY_ID_SUCCESS,
+
+    SET_PAGE,
 } from "../constants/product.constants";
 
 
@@ -153,7 +155,14 @@ const initialState = {
     //Update Product
     updateProductPending: false,
     updateStatus: null,
-    updateError: null
+    updateError: null,
+
+    //Filter and sort
+    productPerPage:10,
+    page:0,
+    sortBy:"",
+    sortOrder:"",
+    condition:{},
 }
 
 export const productReducers = (state = initialState, action) => {
@@ -194,6 +203,12 @@ export const productReducers = (state = initialState, action) => {
             return {
                 ...state,
                 error: action.error
+            };
+        case SET_PAGE:
+            console.log(action.payload)
+            return {
+                ...state,
+                page: action.payload
             };
         default:
             return state;

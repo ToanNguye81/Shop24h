@@ -1,61 +1,37 @@
-// import { Grid } from "@mui/material"
-// import React from "react"
-// import { FilterBar } from "../components/ProductsPage/FilterBar"
-// import { FilterResult } from "../components/ProductsPage/FilterResult"
-// import { Breadcrumb } from "../components/BreadCrumb"
-
-// export const ProductsPage = () => {
-//     return (
-//         <React.Fragment>
-//             <Grid item xs={4} md={3} pt={3}>
-//                     <FilterBar />
-//                 </Grid>
-//             <Grid container justifyContent={"center"} spacing={2} mt={3} pl={10} pr={2} mb={0} pb={0}>
-//                 <Grid item xs={12} md={12}>
-//                     <Breadcrumb></Breadcrumb>
-//                 </Grid>
-//                 <Grid item xs={12} md={12}>
-//                     <FilterResult />
-//                 </Grid>
-//             </Grid>
-//         </React.Fragment>
-//     )
-// }
 
 import { useEffect, useState } from 'react';
 // @mui
-import { Button, Container, Stack } from '@mui/material';
-
+import { Container, Stack } from '@mui/material';
 // mock
 import ProductFilterSidebar from '../components/ProductsPage/ProductFilterSidebar';
 import ProductSort from '../components/ProductsPage/ProductSort';
 import ProductList from '../components/ProductsPage/ProductList';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllProduct } from '../actions/product.actions';
+import { getAllProduct,setPage } from '../actions/product.actions';
+import * as React from 'react';
+import Pagination from '@mui/material/Pagination';
+
 
 // ----------------------------------------------------------------------
 
 export const ProductsPage = () => {
 
-    const { products, pending, totalProduct, error } = useSelector((reduxData) => reduxData.productReducers);
+    const { products, pending, totalProduct, error,
+        productPerPage, page, sortBy, sortOrder, condition } = useSelector((reduxData) => reduxData.productReducers);
 
     console.log(products)
     const dispatch = useDispatch();
-    const [page, setPage] = useState(0);
-    const [rowsPerPage, setRowsPerPage] = useState(10);
+
+    const totalPages = Math.ceil(totalProduct / productPerPage)
 
     useEffect(() => {
-        dispatch(getAllProduct(rowsPerPage, page))
-    }, [rowsPerPage, page]);
+        dispatch(getAllProduct({ productPerPage, page,sortBy, sortOrder, condition }))
+    }, [page,page,sortBy, sortOrder, condition ]);
 
-    // const handleChangeRowsPerPage = (event) => {
-    //     setPage(0);
-    //     setRowsPerPage(parseInt(event.target.value, 10));
-    // };
+    const handleChangePage = (event, value) => {
+        dispatch(setPage(value-1));
+      };
 
-    // const handleChangePage = (event, newPage) => {
-    //     setPage(newPage);
-    // };
 
     const [openFilter, setOpenFilter] = useState(false);
 
@@ -68,7 +44,7 @@ export const ProductsPage = () => {
     };
 
     return (
-        <Container mt={{xs:2,sm:10,md:10}} mb={{xs:2,sm:10,md:10}}>
+        <Container mt={{ xs: 2, sm: 10, md: 10 }} mb={{ xs: 2, sm: 10, md: 10 }}>
             <Stack direction="row" flexWrap="wrap-reverse" alignItems="center" justifyContent="flex-end" sx={{ m: 5 }}>
                 <Stack direction="row" spacing={1} flexShrink={0} sx={{ my: 1 }}>
                     <ProductFilterSidebar
@@ -82,10 +58,10 @@ export const ProductsPage = () => {
             <Stack direction="row" spacing={1} flexShrink={0} sx={{ my: 1 }}>
                 <ProductList products={products} />
             </Stack>
-            <Stack direction="column" justifyContent="center" alignItems="center" sx={{m:10}}>
-                <Button variant='contained' sx={{backgroundColor:"#222222"}} onClick={() => setRowsPerPage(rowsPerPage + 5)}>
-                    MORE
-                </Button>
+            <Stack direction="column" justifyContent="center" alignItems="center" sx={{ m: 10 }}>
+                <Pagination count={totalPages} page={page+1} 
+                onChange={handleChangePage}
+                variant="outlined" color="secondary" />
             </Stack>
         </Container>
     );

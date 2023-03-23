@@ -7,9 +7,9 @@ import CardButton from './CardButton';
 // ----------------------------------------------------------------------
 
 const ExtendCard = styled(Card)(() => ({
-  border:"none",
+  border: "none",
   '&:hover': {
-    border:"2px solid orange",
+    border: "2px solid orange",
   },
 }));
 
@@ -33,13 +33,16 @@ export default function ProductCard({ product }) {
             {category}
           </Label>
         )}
-        <CardButton product={product}/>
+        <CardButton product={product} />
       </Box>
 
       <Stack spacing={2} sx={{ p: 3 }}>
-          <Typography variant="subtitle2" >
-            {name}
-          </Typography>
+        <Typography variant="subtitle2" style={{
+          whiteSpace: 'nowrap', overflow: 'hidden',
+          textOverflow: 'ellipsis'
+        }}>
+          {name}
+        </Typography>
 
         <Stack direction="row" alignItems="flex-end" justifyContent="space-between">
           <Typography variant="subtitle1">
