@@ -5,6 +5,7 @@ import { SignUp } from "./pages/SignUp";
 import SignInPage from "./pages/SignInPage";
 import { DetailProductPage } from "./pages/DetailProductPage";
 import { AccountPage } from "./pages/AccountPage";
+import { MyOrderPage } from "./pages/MyOrderPage";
 
 const routerList = [
     { path: "/", element: <HomePage /> },
@@ -15,6 +16,7 @@ const routerList = [
     { path: "/signin", element: <SignInPage /> },
     { path: "/account", element: <AccountPage /> },
     { path: "/signup", element: <SignUp /> },
+    { path: "/customers/:customerId/orders", element: <MyOrderPage/> },
 ];
 
 export default routerList;

@@ -13,7 +13,7 @@ import { resetUser, setUser } from '../../actions/signIn.actions';
 import { checkUser } from '../../actions/order.actions';
 
 
-const settings = ['Account', 'Dashboard',"My Orders"];
+const settings = ['Account', 'Dashboard'];
 
 export const UserAvatar = () => {
   const navigate = useNavigate();
@@ -21,6 +21,7 @@ export const UserAvatar = () => {
 
   const [anchorElUser, setAnchorElUser] = useState(null);
   const { user, loggedUser, loading } = useSelector(reduxData => reduxData.signInReducers)
+  const { customer } = useSelector(reduxData => reduxData.orderReducers)
   const handleLogin = (event) => {
     navigate("/signin")
   };
@@ -32,6 +33,10 @@ export const UserAvatar = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+  const handleClickMyOrders=()=>{
+    setAnchorElUser(null);
+    navigate(`customers/${customer._id}/orders`)
+  }
 
   useEffect(() => {
     onAuthStateChanged(auth, async (user) => {
@@ -98,6 +103,9 @@ export const UserAvatar = () => {
                       <Typography textAlign="center">{setting}</Typography>
                     </MenuItem>
                   ))}
+                   <MenuItem key="order" onClick={handleClickMyOrders}>
+                      <Typography textAlign="center">My Orders</Typography>
+                    </MenuItem>
                   <MenuItem key={"logout"} onClick={handleLogOutUser}>
                     <Typography textAlign="center">Logout</Typography>
                   </MenuItem>

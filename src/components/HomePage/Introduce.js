@@ -19,32 +19,24 @@ export const Intro = () => {
             >
                 <HighQualityIcon sx={{ fontSize: 40, color: "inherit" }} />
                 <Typography variant="h5" sx={{ fontWeight: 400 }}>100% AUTHENTIC</Typography>
-                <Typography variant="h6" sx={{ color: "Black", fontWeight: 400 }}>Cam kết chính hãng</Typography>
-                <Typography variant="p" sx={{ color: "#2c3e50", fontWeight: 300 }}>Cam kết sản phẩm chính hãng từ Châu Âu</Typography>               
+                <Typography variant="h6" sx={{ color: "Black", fontWeight: 400 }}>Genuine commitment</Typography>
+                <Typography variant="p" sx={{ color: "#2c3e50", fontWeight: 300 }}>Guaranteed genuine products from Europe</Typography>               
             </Grid>
             <Grid item xs={12} md={3}
                 sx={{ textAlign: 'center' }}
             >
                 <DeliveryDiningIcon sx={{ fontSize: 40, color: "inherit" }} />
                 <Typography variant="h5" sx={{ fontWeight: 400 }}>Express delivery</Typography>
-                <Typography variant="h6" sx={{ color: "Black", fontWeight: 400 }}>Giao hàng trong 24H</Typography>
-                <Typography variant="p" sx={{ color: "#2c3e50", fontWeight: 300 }}>SHIP hỏa tốc 1h nhận hàng trong nội thành HCM</Typography>               
+                <Typography variant="h6" sx={{ color: "Black", fontWeight: 400 }}>Delivery in 24HOURS</Typography>
+                <Typography variant="p" sx={{ color: "#2c3e50", fontWeight: 300 }}>Express delivery 1 hour to receive goods within HCM City</Typography>               
             </Grid>
             <Grid item xs={12} md={3}
                 sx={{ textAlign: 'center' }}
             >
                 <WifiCallingIcon sx={{ fontSize: 40, color: "inherit" }} />
                 <Typography variant="h5" sx={{ fontWeight: 400 }}>Supporting 24/24</Typography>
-                <Typography variant="h6" sx={{ color: "Black", fontWeight: 400 }}>Hố trợ 24/24</Typography>
-                <Typography variant="p" sx={{ color: "#2c3e50", fontWeight: 300 }}>Gọi ngay 0333.447.111</Typography>               
-            </Grid>
-            <Grid item xs={12} md={3}
-                sx={{ textAlign: 'center' }}
-            >
-                <WifiCallingIcon sx={{ fontSize: 40, color: "inherit" }} />
-                <Typography variant="h5" sx={{ fontWeight: 400 }}>Supporting 24/24</Typography>
-                <Typography variant="h6" sx={{ color: "Black", fontWeight: 400 }}>Hố trợ 24/24</Typography>
-                <Typography variant="p" sx={{ color: "#2c3e50", fontWeight: 300 }}>Gọi ngay 0333.447.111</Typography>               
+                <Typography variant="h6" sx={{ color: "Black", fontWeight: 400 }}>Supporting 24/24</Typography>
+                <Typography variant="p" sx={{ color: "#2c3e50", fontWeight: 300 }}>Call now 0333.447.111</Typography>               
             </Grid>
         </Grid>
     )
