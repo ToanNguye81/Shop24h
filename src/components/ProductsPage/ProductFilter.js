@@ -2,11 +2,9 @@ import PropTypes from 'prop-types';
 // @mui
 import {
   Box,
-  Radio,
   Stack,
   Button,
   Drawer,
-  Rating,
   Divider,
   Checkbox,
   FormGroup,
@@ -14,33 +12,21 @@ import {
   Typography,
   RadioGroup,
   FormControlLabel,
+  Grid,
 } from '@mui/material';
-// components
-// import Scrollbar from '../../../components/scrollbar';
-// import { ColorMultiPicker } from '../../../components/color-utils';
-import { Clear, ClearOutlined, Close } from '@mui/icons-material';
+import { ClearOutlined, Close } from '@mui/icons-material';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
+import PriceRange from './ProductFilter/PriceRange';
+import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { setBrand, setCategory, setGender } from '../../actions/product.actions';
 
 // ----------------------------------------------------------------------
 
-export const SORT_BY_OPTIONS = [
-  { value: 'featured', label: 'Featured' },
-  { value: 'newest', label: 'Newest' },
-  { value: 'priceDesc', label: 'Price: High-Low' },
-  { value: 'priceAsc', label: 'Price: Low-High' },
-];
 export const GENDER_OPTIONS = ['MEN', 'WOMEN', "KIDS"];
-export const BRAND_OPTIONS = ["Nike", "Adidas", "Vans", "Balenciaga", "Converse", "MLB", "Fila", "Reebok", "Puma", "Asics"];
-export const CATEGORY_OPTIONS = ['All', 'Latest', 'Discount', 'Trending'];
+export const BRAND_OPTIONS = ["NIKE", "ADIDAS", "Vans", "Balenciaga", "Converse", "MLB", "Fila", "Reebok", "Puma", "Asics"];
+export const CATEGORY_OPTIONS = ['LATEST', 'DISCOUNT', 'TRENDING'];
 
-export const RATING_OPTIONS = ['up4Star', 'up3Star', 'up2Star', 'up1Star'];
-
-export const PRICE_OPTIONS = [
-  { value: 'below', label: 'Below $25' },
-  { value: 'between', label: 'Between $25 - $75' },
-  { value: 'between', label: 'Between $25 - $75' },
-  { value: 'above', label: 'Above $75' },
-];
 // ----------------------------------------------------------------------
 
 ProductFilter.propTypes = {
@@ -50,6 +36,53 @@ ProductFilter.propTypes = {
 };
 
 export default function ProductFilter({ openFilter, onOpenFilter, onCloseFilter }) {
+
+  const dispatch = useDispatch();
+  const { brand, category, gender } = useSelector(reduxData => reduxData.productReducers)
+  const [checkedBrands, setCheckedBrands] = useState(brand);
+  const [checkedGenders, setCheckedGenders] = useState(gender);
+  const [checkedCategories, setCheckedCategories] = useState(category);
+
+  const handleBrandCheckboxChange = (event) => {
+    const brandName = event.target.name;
+    if (event.target.checked) {
+      setCheckedBrands([...checkedBrands, brandName]);
+    } else {
+      setCheckedBrands(checkedBrands.filter((brand) => brand !== brandName));
+    }
+  };
+  const handleGenderCheckboxChange = (event) => {
+    const genderName = event.target.name;
+    if (event.target.checked) {
+      setCheckedGenders([...checkedGenders, genderName]);
+    } else {
+      setCheckedGenders(checkedGenders.filter((gender) => gender !== genderName));
+    }
+  };
+  const handleCategoryCheckboxChange = (event) => {
+    const categoryName = event.target.name;
+    if (event.target.checked) {
+      setCheckedCategories([...checkedCategories, categoryName]);
+    } else {
+      setCheckedCategories(checkedCategories.filter((category) => category !== categoryName));
+    }
+  };
+
+  useEffect(() => {
+    dispatch(setBrand(checkedBrands));
+    console.log(brand)
+  }, [checkedBrands]);
+
+  useEffect(() => {
+    dispatch(setGender(checkedGenders));
+    console.log(gender)
+  }, [checkedGenders]);
+
+  useEffect(() => {
+    dispatch(setCategory(checkedCategories));
+    console.log(gender)
+  }, [checkedCategories]);
+
   return (
     <>
       <Button disableRipple color="inherit" endIcon={<FilterAltIcon />} onClick={onOpenFilter}>
@@ -78,11 +111,22 @@ export default function ProductFilter({ openFilter, onOpenFilter, onCloseFilter 
 
           <div>
             <Typography variant="subtitle1" gutterBottom>
+              Price
+            </Typography>
+            <Grid container>
+              <PriceRange />
+            </Grid>
+          </div>
+
+          <div>
+            <Typography variant="subtitle1" gutterBottom>
               Brand
             </Typography>
             <RadioGroup>
               {BRAND_OPTIONS.map((item) => (
-                <FormControlLabel key={item} control={<Checkbox />} label={item} />
+                <FormControlLabel key={item}
+                  label={item}
+                  control={<Checkbox checked={checkedBrands.includes(item)} onChange={handleBrandCheckboxChange} name={item} />} />
               ))}
             </RadioGroup>
           </div>
@@ -93,8 +137,10 @@ export default function ProductFilter({ openFilter, onOpenFilter, onCloseFilter 
             </Typography>
             <FormGroup>
               {GENDER_OPTIONS.map((item) => (
-                <FormControlLabel key={item} control={<Checkbox />} label={item} />
-              ))}
+                 <FormControlLabel key={item}
+                 label={item}
+                 control={<Checkbox checked={checkedGenders.includes(item)} onChange={handleGenderCheckboxChange} name={item} />} />
+             ))}
             </FormGroup>
           </div>
 
@@ -102,25 +148,28 @@ export default function ProductFilter({ openFilter, onOpenFilter, onCloseFilter 
             <Typography variant="subtitle1" gutterBottom>
               Category
             </Typography>
-            <RadioGroup>
+              <FormGroup>
               {CATEGORY_OPTIONS.map((item) => (
-                <FormControlLabel key={item} value={item} control={<Radio />} label={item} />
-              ))}
-            </RadioGroup>
-          </div>
-
-          <div>
-            <Typography variant="subtitle1" gutterBottom>
-              Price
-            </Typography>
-            <RadioGroup>
-              {PRICE_OPTIONS.map((item) => (
-                <FormControlLabel key={item.value} value={item.value} control={<Radio />} label={item.label} />
-              ))}
-            </RadioGroup>
+                 <FormControlLabel key={item}
+                 label={item}
+                 control={<Checkbox checked={checkedCategories.includes(item)} onChange={handleCategoryCheckboxChange} name={item} />} />
+             ))}
+            </FormGroup>
           </div>
 
         </Stack>
+        <Box sx={{ p: 3 }}>
+          <Button
+            fullWidth
+            size="large"
+            type="submit"
+            color="inherit"
+            variant="outlined"
+            startIcon={<ClearOutlined />}
+          >
+            Clear All
+          </Button>
+        </Box>
 
         <Box sx={{ p: 3 }}>
           <Button

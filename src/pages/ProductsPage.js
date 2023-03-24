@@ -26,7 +26,7 @@ export const ProductsPage = () => {
 
     useEffect(() => {
         dispatch(getAllProduct({productPerPage, page, sortBy, sortOrder, gender,brand,minPrice,maxPrice,category}))
-    }, [page, page, sortBy, sortOrder, gender,brand,minPrice,maxPrice,category]);
+    }, [page, page, sortBy, sortOrder]);
 
     const handleChangePage = (event, value) => {
         dispatch(setPage(value - 1));
