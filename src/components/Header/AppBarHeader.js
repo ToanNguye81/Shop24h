@@ -21,14 +21,20 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 
-const pages = ['HOME', 'SHOP', 'BLOG', 'ABOUT', 'CONTACT'];
+const pages = [
+    { label: 'HOME', link: "homepage" },
+    { label: 'SHOP', link: "products" },
+    { label: 'BLOG', link: "blog" },
+    { label: 'ABOUT', link: "about" },
+    { label: 'CONTACT', link: "contact" },
+]
 
 
 export const AppBarHeader = () => {
     const [anchorElNav, setAnchorElNav] = useState(null);
 
     const navigate = useNavigate()
-    const dispatch=useDispatch()
+    const dispatch = useDispatch()
 
 
     const handleOpenNavMenu = (event) => {
@@ -38,6 +44,11 @@ export const AppBarHeader = () => {
     const handleCloseNavMenu = () => {
         setAnchorElNav(null);
     };
+
+    const handleClickPage=(link)=>{
+        setAnchorElNav(null);
+        navigate(`/${link}`)
+    }
 
     const onBtnMiushopClick = () => {
         navigate("/homepage")
@@ -85,9 +96,11 @@ export const AppBarHeader = () => {
                                     display: { xs: 'block', md: 'none' }
                                 }}
                             >
-                                {pages.map((page) => (
-                                    <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                        <Typography textAlign="center" sx={{ color: "black", fontFamily: 'Poppins' }}>{page}</Typography>
+                                {pages.map((page,index) => (
+                                    <MenuItem key={index} 
+                                    onClick={()=>handleClickPage(page.link)}
+                                    >
+                                        <Typography textAlign="center" sx={{ color: "black", fontFamily: 'Poppins' }}>{page.label}</Typography>
                                     </MenuItem>
                                 ))}
                             </Menu>
@@ -96,11 +109,11 @@ export const AppBarHeader = () => {
                         <Box sx={{ flexGrow: 1, display: { xs: 'none', sm: "none", md: 'flex' } }}>
                             {pages.map((page) => (
                                 <Button
-                                    key={page}
-                                    onClick={handleCloseNavMenu}
+                                    key={page.label}
+                                    onClick={()=>handleClickPage(page.link)}
                                     sx={{ my: 2, color: 'black', display: 'block' }}
                                 >
-                                    <strong>{page}</strong>
+                                    <strong>{page.label}</strong>
                                 </Button>
                             ))}
                         </Box>

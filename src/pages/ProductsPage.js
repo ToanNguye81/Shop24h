@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 // @mui
 import { Container, Stack } from '@mui/material';
 // mock
-import ProductFilterSidebar from '../components/ProductsPage/ProductFilterSidebar';
+import ProductFilter from '../components/ProductsPage/ProductFilter';
 import ProductSort from '../components/ProductsPage/ProductSort';
 import ProductList from '../components/ProductsPage/ProductList';
 import { useDispatch, useSelector } from 'react-redux';
@@ -25,9 +25,7 @@ export const ProductsPage = () => {
     const totalPages = Math.ceil(totalProduct / productPerPage)
 
     useEffect(() => {
-        dispatch(getAllProduct({
-            productPerPage, page, sortBy, sortOrder, gender,brand,minPrice,maxPrice,category
-        }))
+        dispatch(getAllProduct({productPerPage, page, sortBy, sortOrder, gender,brand,minPrice,maxPrice,category}))
     }, [page, page, sortBy, sortOrder, gender,brand,minPrice,maxPrice,category]);
 
     const handleChangePage = (event, value) => {
@@ -49,7 +47,8 @@ export const ProductsPage = () => {
         <Container mt={{ xs: 2, sm: 10, md: 10 }} mb={{ xs: 2, sm: 10, md: 10 }}>
             <Stack direction="row" flexWrap="wrap-reverse" alignItems="center" justifyContent="flex-end" sx={{ m: 5 }}>
                 <Stack direction="row" spacing={1} flexShrink={0} sx={{ my: 1 }}>
-                    <ProductFilterSidebar
+                    <ProductFilter
+                
                         openFilter={openFilter}
                         onOpenFilter={handleOpenFilter}
                         onCloseFilter={handleCloseFilter}

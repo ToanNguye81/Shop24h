@@ -33,13 +33,13 @@ export default function ProductSort() {
     setOpen(null);
   };
   const handleClickSortBy = (sortBy) => {
-    dispatch(setSortBy(sortBy))
     setOpen(null)
+    dispatch(setSortBy(sortBy))
 
   }
   const handleClickSortOrder = (sortOrder) => {
-    dispatch(setSortOrder(sortOrder))
     setOpen(null)
+    dispatch(setSortOrder(sortOrder))
   }
 
   return (
