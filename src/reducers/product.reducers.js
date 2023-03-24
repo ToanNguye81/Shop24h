@@ -146,6 +146,7 @@ import {
     SET_CATEGORY,
     SET_MIN_PRICE,
     SET_MAX_PRICE,
+    RESET_CONDITION,
 } from "../constants/product.constants";
 
 
@@ -174,7 +175,7 @@ const initialState = {
     brand: [],
     category: [],
     minPrice: 0,
-    maxPrice: 100000,
+    maxPrice: 2000,
 }
 
 export const productReducers = (state = initialState, action) => {
@@ -256,6 +257,15 @@ export const productReducers = (state = initialState, action) => {
             return {
                 ...state,
                 maxPrice:action.payload
+            }
+        case RESET_CONDITION:
+            return {
+                ...state,
+                gender: [],
+                brand: [],
+                category: [],
+                minPrice: 0,
+                maxPrice: 2000,
             }
         default:
             return state;

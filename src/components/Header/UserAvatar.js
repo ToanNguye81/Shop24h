@@ -13,7 +13,7 @@ import { resetUser, setUser } from '../../actions/signIn.actions';
 import { checkUser } from '../../actions/order.actions';
 
 
-const settings = ['Account', 'Dashboard'];
+const settings = ['Account', 'Dashboard',"My Orders"];
 
 export const UserAvatar = () => {
   const navigate = useNavigate();

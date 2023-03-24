@@ -15,6 +15,7 @@ export const SET_BRAND="SET_BRAND"
 export const SET_CATEGORY="SET_CATEGORY"
 export const SET_MIN_PRICE="SET_MIN_PRICE"
 export const SET_MAX_PRICE="SET_MAX_PRICE"
+export const RESET_CONDITION="RESET_CONDITION"
 
 
 

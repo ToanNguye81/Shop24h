@@ -16,6 +16,7 @@ import {
     SET_CATEGORY,
     SET_MIN_PRICE,
     SET_MAX_PRICE,
+    RESET_CONDITION
 } from "../constants/product.constants";
 
 const gPRODUCT_API_URL = "//localhost:8000/products"
@@ -165,3 +166,9 @@ export const setMaxPrice = (maxPrice) => {
     }
 }
 
+//Reset Condition
+export const resetCondition=()=>{
+    return {
+        type: RESET_CONDITION,
+    }
+}
