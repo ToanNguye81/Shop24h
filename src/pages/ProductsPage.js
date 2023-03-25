@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAllProduct, setPage } from '../actions/product.actions';
 import * as React from 'react';
 import Pagination from '@mui/material/Pagination';
+import { CartV2Component } from '../components/CartV2Component';
 
 
 // ----------------------------------------------------------------------
@@ -64,6 +65,7 @@ export const ProductsPage = () => {
                     onChange={handleChangePage}
                     variant="outlined" color="secondary" />
             </Stack>
+            <CartV2Component />
         </Container>
     );
 }

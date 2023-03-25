@@ -56,8 +56,6 @@ export const ProductInfo = ({ product }) => {
                 >
                     <Button 
                         sx={{
-                            // backgroundColor: "#6CB5FF",
-                            // color: "#fff",
                             borderRadius: "8px",
                             padding: { xs: "10px 0", sm: "10px 20px" },
                             margin: { xs: "10px 0 10px", sm: "10px 20px" },

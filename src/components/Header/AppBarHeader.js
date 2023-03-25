@@ -19,6 +19,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import { UserAvatar } from './UserAvatar';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import CartIcon from './CartIcon';
 
 
 const pages = [
@@ -45,7 +46,7 @@ export const AppBarHeader = () => {
         setAnchorElNav(null);
     };
 
-    const handleClickPage=(link)=>{
+    const handleClickPage = (link) => {
         setAnchorElNav(null);
         navigate(`/${link}`)
     }
@@ -96,9 +97,9 @@ export const AppBarHeader = () => {
                                     display: { xs: 'block', md: 'none' }
                                 }}
                             >
-                                {pages.map((page,index) => (
-                                    <MenuItem key={index} 
-                                    onClick={()=>handleClickPage(page.link)}
+                                {pages.map((page, index) => (
+                                    <MenuItem key={index}
+                                        onClick={() => handleClickPage(page.link)}
                                     >
                                         <Typography textAlign="center" sx={{ color: "black", fontFamily: 'Poppins' }}>{page.label}</Typography>
                                     </MenuItem>
@@ -110,7 +111,7 @@ export const AppBarHeader = () => {
                             {pages.map((page) => (
                                 <Button
                                     key={page.label}
-                                    onClick={()=>handleClickPage(page.link)}
+                                    onClick={() => handleClickPage(page.link)}
                                     sx={{ my: 2, color: 'black', display: 'block' }}
                                 >
                                     <strong>{page.label}</strong>
@@ -133,7 +134,9 @@ export const AppBarHeader = () => {
                         >
                             <Box
                                 backgroundColor="black" sx={{ display: { xs: 'flex', sm: "center", md: 'center' }, mr: 1 }}>
-                                <img src={Logo} width="70" alt="logo" />
+                                <IconButton onClick={onBtnMiushopClick}>
+                                    <img src={Logo} width="70" alt="logo" />
+                                </IconButton>
                             </Box >
                         </Typography>
 
@@ -144,13 +147,14 @@ export const AppBarHeader = () => {
                                 </IconButton>
                             </Tooltip>
                         </Box>
-                        <Box sx={{ flexGrow: 0 }}>
+                        {/* <Box sx={{ flexGrow: 0 }}>
                             <Tooltip title="Your's Cart">
                                 <IconButton sx={{ pl: 1 }} onClick={onBtnCartClick}>
-                                    <AddShoppingCartIcon sx={{ fontSize: 30, color: "#34495e" }} />
+                                    <CartIcon/>
                                 </IconButton>
                             </Tooltip>
-                        </Box>
+                        </Box> */}
+                        <CartIcon />
                         <UserAvatar />
                     </Toolbar>
                 </Container>
