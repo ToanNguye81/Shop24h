@@ -50,8 +50,8 @@ export const cartV2Reducers = (state = initialState, action) => {
 
         // Cập nhật số lượng sản phẩm trong giỏ hàng
         case UPDATE_QUANTITY:
-            const { _id, newQuantity } = action.payload;
-            const itemIndexToUpdate = state.cart.findIndex((item) => item.product._id === _id);
+            const { productIdToUpdate, newQuantity } = action.payload;
+            const itemIndexToUpdate = state.cart.findIndex((item) => item.product._id === productIdToUpdate);
 
             if (itemIndexToUpdate !== -1 && newQuantity >= 0) {
                 // Nếu sản phẩm tồn tại và số lượng mới hợp lệ

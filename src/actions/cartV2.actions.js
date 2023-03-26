@@ -37,10 +37,10 @@ export const removeFromCart = (productId) => ({
 
 
 // Cập nhật số lượng sản phẩm trong giỏ hàng
-export const updateQuantity = (product, newQuantity) => ({
+export const updateQuantity = (productId, newQuantity) => ({
     type: UPDATE_QUANTITY,
     payload: {
-        product,
-        newQuantity,
+        productIdToUpdate:productId,
+        newQuantity:newQuantity,
     },
 });
