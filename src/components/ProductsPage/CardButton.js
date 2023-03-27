@@ -71,12 +71,12 @@ const ImageBackdrop = styled('span')(({ theme }) => ({
 export default function CardButton({ product }) {
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const { cart } = useSelector((reduxData) => reduxData.cartReducers);
+    // const { cart } = useSelector((reduxData) => reduxData.cartReducers);
     const handleClickAddToCart = (product) => {
-        dispatch(addToCart(cart, product))
+        dispatch(addToCart(product))
     }
     const handleClickBuyNow = (product) => {
-        dispatch(addToCart(cart, product))
+        dispatch(addToCart(product))
         navigate("/orders")
     }
     return (

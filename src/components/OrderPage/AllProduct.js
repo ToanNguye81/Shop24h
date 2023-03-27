@@ -6,14 +6,15 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { Alert, Box, Button, ButtonGroup, Grid, Stack, TextField } from '@mui/material';
+import { Alert, Box, ButtonGroup, Grid, Stack } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { useDispatch, useSelector } from 'react-redux';
-import { decreaseQuantity, increaseQuantity } from '../../actions/cart.actions';
-import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { decreaseQuantity, increaseQuantity, removeFromCart, updateQuantity } from '../../actions/cart.actions';
+import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
+
 
 const MyButton = styled.button`
 height:45px;
@@ -40,20 +41,28 @@ export const AllProduct = ({ cart }) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const onBtnPlusClick = (paramIndex) => {
-        dispatch(increaseQuantity(paramIndex))
+    const handleIncreaseQuantity = (productId) => {
+        dispatch(increaseQuantity(productId))
     }
 
-    const onBtnMinusClick = (paramIndex) => {
-        dispatch(decreaseQuantity(paramIndex))
+    const handleDecreaseQuantity = (productId) => {
+        dispatch(decreaseQuantity(productId))
     }
-    const setQuantity=()=>{}
+
+    const handleRemoveFromCart = (productId) => {
+        dispatch(removeFromCart(productId));
+    };
+
+    const handleUpdateQuantity = (productId, newQuantity) => {
+
+        dispatch(updateQuantity(productId, newQuantity));
+    };
 
     return (
         <Box>
             <Grid container direction="row" justifyContent="center" alignItems="center">
                 <Grid item xs={11} md={12} >
-                    {cart[0]?
+                    {cart[0] ?
                         <TableContainer component={Paper}>
                             <Table>
                                 <TableHead>
@@ -79,9 +88,22 @@ export const AllProduct = ({ cart }) => {
                                             <TableCell align="center" width="25%">$ {item.product.promotionPrice}</TableCell>
                                             <TableCell align="center" width="25%">
                                                 <ButtonGroup>
-                                                    <MyButton onClick={() => onBtnMinusClick(index)}><RemoveIcon /></MyButton>
-                                                    <MyTextBox value={item.quantity} onChange={setQuantity} />
-                                                    <MyButton onClick={() => onBtnPlusClick(index)}><AddIcon /></MyButton>
+                                                    <MyButton onClick={() => handleDecreaseQuantity(item.product._id)}><RemoveIcon /></MyButton>
+                                                    <MyTextBox
+                                                        variant="outlined"
+                                                        size="small"
+                                                        value={item.quantity === null ? "" : item.quantity}
+                                                        onChange={(event) => {
+                                                            const value = event.target.value;
+                                                            const isValidInput = /^[1-9]\d*$/.test(value) || value === '';
+                                                            if (isValidInput) {
+                                                                handleUpdateQuantity(item.product._id, value === "" ? null : parseInt(value));
+                                                            }
+                                                        }}
+                                                        inputProps={{ min: 1 }}
+                                                    />
+                                                    <MyButton onClick={() => handleIncreaseQuantity(item.product._id)}><AddIcon /></MyButton>
+                                                    <MyButton onClick={() => handleRemoveFromCart(item.product._id)} ><DeleteOutlineOutlinedIcon variant="outlined" sx={{color:"red"}}/></MyButton>
                                                 </ButtonGroup>
                                             </TableCell>
                                             <TableCell align="center" width="25%">$ {item.product.promotionPrice * item.quantity}</TableCell>

@@ -1,3 +1,4 @@
+import { enqueueSnackbar } from "notistack"
 import {
     ADD_TO_CART,
     REMOVE_FROM_CART,
@@ -14,6 +15,7 @@ const initialState = {
     cart: JSON.parse(localStorage.getItem("cart")) || [],
     cartCost: 0,
 }
+
 
 export const cartReducers = (state = initialState, action) => {
     switch (action.type) {
@@ -32,7 +34,8 @@ export const cartReducers = (state = initialState, action) => {
             }
 
             localStorage.setItem("cart", JSON.stringify(newCart));
-            return { ...state, cart: newCart };
+            enqueueSnackbar(`Add product ${product.name} to cart `, { variant: 'success' });
+            return { ...state, cart: newCart }; 
         }
 
         // Giảm số lượng sản phẩm trong giỏ hàng
