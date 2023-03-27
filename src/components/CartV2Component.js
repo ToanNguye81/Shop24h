@@ -16,25 +16,26 @@ import { RemoveShoppingCart } from '@mui/icons-material';
 import {
     addToCart,
     increaseQuantity,
-    decreaseQuantity,
     removeFromCart,
+    decreaseQuantity,
     updateQuantity,
-} from '../actions/cartV2.actions';
+} from '../actions/cart.actions';
 export const CartV2Component = () => {
     const dispatch = useDispatch();
     const { products } = useSelector((state) => state.productReducers);
-    const { cart } = useSelector((state) => state.cartV2Reducers);
+    const { cart } = useSelector((state) => state.cartReducers);
 
     const handleAddToCart = (product) => {
-        dispatch(addToCart(product, 1));
+        dispatch(addToCart(product));
     };
 
     const handleRemoveFromCart = (productId) => {
         dispatch(removeFromCart(productId));
     };
 
-    const handleUpdateQuantity = (productId, quantity) => {
-        dispatch(updateQuantity(productId, quantity));
+    const handleUpdateQuantity = (productId, newQuantity) => {
+        
+        dispatch(updateQuantity(productId, newQuantity));
     };
 
     const handleIncreaseQuantity = (productId) => {
@@ -42,9 +43,8 @@ export const CartV2Component = () => {
     };
 
     const handleDecreaseQuantity = (productId) => {
-        dispatch(decreaseQuantity(productId));
-    };
-
+        dispatch(decreaseQuantity(productId))
+    }
     return (
         <Grid container spacing={2}>
             {products.map((product, index) => (
@@ -93,13 +93,17 @@ export const CartV2Component = () => {
                                     </Grid>
                                     <Grid item xs={6} sm={3}>
                                         <TextField
-                                            type="number"
                                             variant="outlined"
                                             size="small"
-                                            value={item.quantity}
-                                            onChange={(event) =>
-                                                handleUpdateQuantity(item.product._id, event.target.value)
-                                            }
+                                            value={item.quantity === null ? "" : item.quantity}
+                                            onChange={(event) => {
+                                                const value = event.target.value;
+                                                // const isValidInput = /^\d*$/.test(value) || value === '';
+                                                const isValidInput = /^[1-9]\d*$/.test(value) || value === '';
+                                                if (isValidInput) {
+                                                  handleUpdateQuantity(item.product._id, value === "" ? null : parseInt(value));
+                                                }
+                                              }}
                                             inputProps={{ min: 1 }}
                                         />
                                     </Grid>

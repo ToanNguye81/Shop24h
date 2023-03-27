@@ -8,11 +8,10 @@ import {
 } from "../constants/cartV2.constants"
 
 // Thêm sản phẩm vào giỏ hàng
-export const addToCart = (product, quantity) => ({
+export const addToCart = (product) => ({
     type: ADD_TO_CART,
     payload: {
         product,
-        quantity,
     },
 });
 
@@ -22,11 +21,12 @@ export const increaseQuantity = (productId) => ({
     payload: productId,
 });
 
-//Giảm số lượng
+// Giảm số lượng quantity
 export const decreaseQuantity = (productId) => ({
     type: DECREASE_QUANTITY,
-    payload: productId,
-});
+    payload: productId
+}
+)
 
 
 // Xóa sản phẩm khỏi giỏ hàng
@@ -40,7 +40,7 @@ export const removeFromCart = (productId) => ({
 export const updateQuantity = (productId, newQuantity) => ({
     type: UPDATE_QUANTITY,
     payload: {
-        productIdToUpdate:productId,
-        newQuantity:newQuantity,
+        productIdToUpdate: productId,
+        newQuantity: newQuantity,
     },
 });
