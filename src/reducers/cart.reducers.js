@@ -11,7 +11,6 @@ const initialState = {
     user: null,
     pending: false,
     error: null,
-    // cart:[],
     cart: JSON.parse(localStorage.getItem("cart")) || [],
     cartCost: 0,
 }
