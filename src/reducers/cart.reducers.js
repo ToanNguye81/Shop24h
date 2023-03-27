@@ -42,7 +42,7 @@ export const cartReducers = (state = initialState, action) => {
         case DECREASE_QUANTITY: {
             const productIdToDecrease = action.payload;
             const itemIndexToDecrease = state.cart.findIndex((item) => item.product._id === productIdToDecrease);
-            if (itemIndexToDecrease !== -1) {
+            if (itemIndexToDecrease !== -1 && state.cart[itemIndexToDecrease].quantity) {
                 const newCart = [...state.cart];
                 const newQuantity = newCart[itemIndexToDecrease].quantity - 1;
 
@@ -83,14 +83,17 @@ export const cartReducers = (state = initialState, action) => {
             );
             let newCart;
             if (itemIndexToUpdate !== -1) {
+                console.log(1)
                 // Nếu sản phẩm tồn tại
                 newCart = [...state.cart];
                 newCart[itemIndexToUpdate].quantity = newQuantity;
             } else {
+                console.log(2)
                 return state;
             }
 
             if (Number.isInteger(newQuantity) && newQuantity >= 1) {
+                console.log(3)
                 localStorage.setItem("cart", JSON.stringify(newCart));
             }
 
