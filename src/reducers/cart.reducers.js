@@ -83,7 +83,6 @@ export const cartReducers = (state = initialState, action) => {
             );
             let newCart;
             if (itemIndexToUpdate !== -1) {
-                console.log(1)
                 // Nếu sản phẩm tồn tại
                 newCart = [...state.cart];
                 newCart[itemIndexToUpdate].quantity = newQuantity;

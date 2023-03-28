@@ -20,10 +20,24 @@ import {
     decreaseQuantity,
     updateQuantity,
 } from '../actions/cart.actions';
+import { useEffect, useState } from 'react';
 export const CartV2Component = () => {
     const dispatch = useDispatch();
     const { products } = useSelector((state) => state.productReducers);
     const { cart } = useSelector((state) => state.cartReducers);
+    const [newQuantities, setNewQuantities] = useState(cart.map(item => item.quantity));
+
+    useEffect(() => {
+        setNewQuantities(cart.map(item => item.quantity));
+    }, [cart]);
+
+    const handleQuantityChange = (productId, index) => (event) => {
+        const value = parseInt(event.target.value, 10);
+        setNewQuantities(value)
+        if (value > 0) {
+            dispatch(updateQuantity(productId, value));
+        }
+    }
 
     const handleAddToCart = (product) => {
         dispatch(addToCart(product));
@@ -31,11 +45,6 @@ export const CartV2Component = () => {
 
     const handleRemoveFromCart = (productId) => {
         dispatch(removeFromCart(productId));
-    };
-
-    const handleUpdateQuantity = (productId, newQuantity) => {
-        
-        dispatch(updateQuantity(productId, newQuantity));
     };
 
     const handleIncreaseQuantity = (productId) => {
@@ -95,17 +104,22 @@ export const CartV2Component = () => {
                                         <TextField
                                             variant="outlined"
                                             size="small"
-                                            value={item.quantity === null ? "" : item.quantity}
-                                            onChange={(event) => {
-                                                const value = event.target.value;
-                                                // const isValidInput = /^\d*$/.test(value) || value === '';
-                                                const isValidInput = /^[1-9]\d*$/.test(value) || value === '';
-                                                if (isValidInput) {
-                                                  handleUpdateQuantity(item.product._id, value === "" ? null : parseInt(value));
-                                                }
-                                              }}
-                                            inputProps={{ min: 1 }}
+                                            type="number"
+                                            // value={item.quantity === null ? "" : item.quantity}
+                                            // onChange={(event) => {
+                                            //     const value = event.target.value;
+                                            //     const isValidInput = /^[1-9]\d*$/.test(value) || value === '';
+                                            //     if (isValidInput) {
+                                            //       handleUpdateQuantity(item.product._id, value === "" ? null : parseInt(value));
+                                            //     }
+                                            //   }}
+                                            value={newQuantities[index]}
+                                            onChange={handleQuantityChange(item.product._id, index)}
+                                            inputProps={{ min: 0 }}
                                         />
+                                        <Typography variant="subtitle1" component=""  onChange={handleQuantityChange(item.product._id, index)}>
+                                            Quantity: {item.quantity}
+                                        </Typography>
                                     </Grid>
                                     <Grid item xs={6} sm={3}>
                                         <Grid container spacing={1}>
