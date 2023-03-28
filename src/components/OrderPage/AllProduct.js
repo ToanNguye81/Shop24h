@@ -14,6 +14,7 @@ import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { decreaseQuantity, increaseQuantity, removeFromCart, updateQuantity } from '../../actions/cart.actions';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
+import { QuantityBox } from './QuantityBox';
 
 
 const MyButton = styled.button`
@@ -38,7 +39,6 @@ font-family: "Poppins";
 
 export const AllProduct = ({ cart }) => {
 
-    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const handleIncreaseQuantity = (productId) => {
@@ -51,11 +51,6 @@ export const AllProduct = ({ cart }) => {
 
     const handleRemoveFromCart = (productId) => {
         dispatch(removeFromCart(productId));
-    };
-
-    const handleUpdateQuantity = (productId, newQuantity) => {
-
-        dispatch(updateQuantity(productId, newQuantity));
     };
 
     return (
@@ -89,21 +84,10 @@ export const AllProduct = ({ cart }) => {
                                             <TableCell align="center" width="25%">
                                                 <ButtonGroup>
                                                     <MyButton onClick={() => handleDecreaseQuantity(item.product._id)}><RemoveIcon /></MyButton>
-                                                    <MyTextBox
-                                                        variant="outlined"
-                                                        size="small"
-                                                        value={item.quantity === null ? "" : item.quantity}
-                                                        onChange={(event) => {
-                                                            const value = event.target.value;
-                                                            const isValidInput = /^[1-9]\d*$/.test(value) || value === '';
-                                                            if (isValidInput) {
-                                                                handleUpdateQuantity(item.product._id, value === "" ? null : parseInt(value));
-                                                            }
-                                                        }}
-                                                        inputProps={{ min: 1 }}
-                                                    />
+                                                    <QuantityBox initQuantity={item.quantity} productId={item.product._id}/>
                                                     <MyButton onClick={() => handleIncreaseQuantity(item.product._id)}><AddIcon /></MyButton>
                                                     <MyButton onClick={() => handleRemoveFromCart(item.product._id)} ><DeleteOutlineOutlinedIcon variant="outlined" sx={{color:"red"}}/></MyButton>
+
                                                 </ButtonGroup>
                                             </TableCell>
                                             <TableCell align="center" width="25%">$ {item.product.promotionPrice * item.quantity}</TableCell>

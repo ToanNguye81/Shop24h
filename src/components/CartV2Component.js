@@ -21,23 +21,34 @@ import {
     updateQuantity,
 } from '../actions/cart.actions';
 import { useEffect, useState } from 'react';
+import { QuantityBox } from './OrderPage/QuantityBox';
 export const CartV2Component = () => {
     const dispatch = useDispatch();
     const { products } = useSelector((state) => state.productReducers);
     const { cart } = useSelector((state) => state.cartReducers);
-    const [newQuantities, setNewQuantities] = useState(cart.map(item => item.quantity));
+    // const [newQuantities,setNewQuantities]=useState(cart.map(item => item.quantity))
 
-    useEffect(() => {
-        setNewQuantities(cart.map(item => item.quantity));
-    }, [cart]);
+    // useEffect(() => {
+    //     setNewQuantities(cart.map(item => item.quantity));
+    // }, [cart]);
 
-    const handleQuantityChange = (productId, index) => (event) => {
-        const value = parseInt(event.target.value, 10);
-        setNewQuantities(value)
-        if (value > 0) {
-            dispatch(updateQuantity(productId, value));
-        }
-    }
+    // const handleQuantityChange = (event,productId, index ) => {
+    //     const value = parseInt(event.target.value, 10);
+    //     // const value = event.target.value
+    //     // const isValidInput = /^[1-9]\d*$/.test(value) || value === '';
+
+    //     // console.log(isValidInput)
+    //     // if (isValidInput) {
+    //     // }
+    //     setNewQuantities(value)
+    //     if (value > 0) {
+    //         dispatch(updateQuantity(productId, value));
+    //     }
+    // }
+
+    // const handleQuantityChange=(value)=>{
+    //     setNewQuantities(value)
+    // }
 
     const handleAddToCart = (product) => {
         dispatch(addToCart(product));
@@ -101,7 +112,7 @@ export const CartV2Component = () => {
                                         </Typography>
                                     </Grid>
                                     <Grid item xs={6} sm={3}>
-                                        <TextField
+                                        {/* <TextField
                                             variant="outlined"
                                             size="small"
                                             type="number"
@@ -114,10 +125,15 @@ export const CartV2Component = () => {
                                             //     }
                                             //   }}
                                             value={newQuantities[index]}
-                                            onChange={handleQuantityChange(item.product._id, index)}
+                                            onChange={(event)=>handleQuantityChange(event.target.value)}
+                                            // value={newQuantities[index]}
+                                            // onChange={ (event)=>handleQuantityChange(event,item.product._id, index)
+                                            // }
                                             inputProps={{ min: 0 }}
-                                        />
-                                        <Typography variant="subtitle1" component=""  onChange={handleQuantityChange(item.product._id, index)}>
+                                        /> */}
+
+                                        <QuantityBox initQuantity={item.quantity} productId={item.product._id}/>
+                                        <Typography variant="subtitle1" >
                                             Quantity: {item.quantity}
                                         </Typography>
                                     </Grid>

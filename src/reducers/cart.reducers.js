@@ -35,7 +35,7 @@ export const cartReducers = (state = initialState, action) => {
 
             localStorage.setItem("cart", JSON.stringify(newCart));
             enqueueSnackbar(`Add product ${product.name} to cart `, { variant: 'success' });
-            return { ...state, cart: newCart }; 
+            return { ...state, cart: newCart };
         }
 
         // Giảm số lượng sản phẩm trong giỏ hàng
@@ -78,6 +78,8 @@ export const cartReducers = (state = initialState, action) => {
         // Thay số lượng sản phẩm trong giỏ hàng
         case UPDATE_QUANTITY:
             const { productIdToUpdate, newQuantity } = action.payload;
+            console.log("UPDATE_QUANTITY2")
+
             const itemIndexToUpdate = state.cart.findIndex(
                 (item) => item.product._id === productIdToUpdate
             );
@@ -86,14 +88,9 @@ export const cartReducers = (state = initialState, action) => {
                 // Nếu sản phẩm tồn tại
                 newCart = [...state.cart];
                 newCart[itemIndexToUpdate].quantity = newQuantity;
-            } else {
-                console.log(2)
-                return state;
-            }
-
-            if (Number.isInteger(newQuantity) && newQuantity >= 1) {
-                console.log(3)
                 localStorage.setItem("cart", JSON.stringify(newCart));
+            } else {
+                return state;
             }
 
             return { ...state, cart: newCart };
