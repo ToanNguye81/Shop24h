@@ -23,7 +23,7 @@ const ImageIconButton = styled(ButtonBase)(({ theme }) => ({
   height: '50vh',
   [theme.breakpoints.down('md')]: {
     width: '100% !important',
-    height: 100,
+    height: 200,
   },
   '&:hover': {
     zIndex: 1,
@@ -102,11 +102,11 @@ const images = [
 
 export default function ProductCategories() {
   return (
-    <Container component="section" sx={{ mt: 8, mb: 4 }}>
+    <Box component="section" sx={{ mt: 8, mb: 4,mr:2,ml:2 }}>
       <Typography variant="h4" marked="center" align="center" component="h2">
         For all tastes and all desires
       </Typography>
-      <Box sx={{ mt: 8, display: 'flex', flexWrap: 'wrap' }}>
+      <Box sx={{ mt: 8, display: 'flex', flexWrap: 'wrap', spacing:6}}>
         {images.map((image) => (
           <ImageIconButton
             key={image.title}
@@ -153,6 +153,6 @@ export default function ProductCategories() {
           </ImageIconButton>
         ))}
       </Box>
-    </Container>
+    </Box>
   );
 }

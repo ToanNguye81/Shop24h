@@ -16,21 +16,25 @@ import Pagination from '@mui/material/Pagination';
 
 export const ProductsPage = () => {
 
-    const { products, pending, totalProduct, error,category,
-        productPerPage, page, sortBy, sortOrder,gender,brand,minPrice,maxPrice } = useSelector((reduxData) => reduxData.productReducers);
+    const { products, pending, totalProduct, error, category,
+        productPerPage, page, sortBy, sortOrder, gender, brand, minPrice, maxPrice } = useSelector((reduxData) => reduxData.productReducers);
 
     const dispatch = useDispatch();
 
     const totalPages = Math.ceil(totalProduct / productPerPage)
 
     useEffect(() => {
-        dispatch(getAllProduct({productPerPage, page, sortBy, sortOrder, gender,brand,minPrice,maxPrice,category}))
-    }, [page, sortBy, sortOrder, gender,brand,minPrice,maxPrice,category]);
+        dispatch(getAllProduct({ productPerPage, page, sortBy, sortOrder, gender, brand, minPrice, maxPrice, category }))
+    }, [page, sortBy, sortOrder, gender, brand, minPrice, maxPrice, category]);
+
 
     const handleChangePage = (event, value) => {
         dispatch(setPage(value - 1));
     };
 
+    useEffect(() => {
+        dispatch(setPage(0))
+    }, [gender, brand, minPrice, maxPrice, category])
 
     const [openFilter, setOpenFilter] = useState(false);
 
@@ -47,7 +51,7 @@ export const ProductsPage = () => {
             <Stack direction="row" flexWrap="wrap-reverse" alignItems="center" justifyContent="flex-end" sx={{ m: 5 }}>
                 <Stack direction="row" spacing={1} flexShrink={0} sx={{ my: 1 }}>
                     <ProductFilter
-                
+
                         openFilter={openFilter}
                         onOpenFilter={handleOpenFilter}
                         onCloseFilter={handleCloseFilter}
@@ -58,10 +62,13 @@ export const ProductsPage = () => {
             <Stack direction="row" spacing={1} flexShrink={0} sx={{ my: 1 }}>
                 <ProductList products={products} />
             </Stack>
-            <Stack direction="column" justifyContent="center" alignItems="center" sx={{ m: 10 }}>
-                <Pagination count={totalPages} page={page + 1}
+            <Stack direction="row" justifyContent="center" alignItems="center" sx={{ mt: 5, mb: 5 }}>
+                <Pagination
+                    count={totalPages}
+                    page={page + 1}
                     onChange={handleChangePage}
-                    variant="outlined" color="secondary" />
+                    variant="outlined" color="secondary"
+                />
             </Stack>
         </Container>
     );

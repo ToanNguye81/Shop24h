@@ -14,7 +14,7 @@ const ExtendCard = styled(Card)(() => ({
 }));
 
 export default function ProductCard({ product }) {
-  const { buyPrice, category, imageUrl, name, promotionPrice, } = product;
+  const { buyPrice, category, name, promotionPrice, } = product;
   return (
     <ExtendCard variant='none'>
       <Box sx={{ pt: '100%', position: 'relative' }}>

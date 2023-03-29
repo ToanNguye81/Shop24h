@@ -1,6 +1,5 @@
 import { Box } from "@mui/material";
 import React from "react";
-import { CartV2Component } from "../components/CartV2Component";
 import DiscountProducts from "../components/HomePage/DiscountProducts";
 import { HeadSwiper } from "../components/HomePage/HeadSwiper";
 import { Intro } from "../components/HomePage/Introduce";
