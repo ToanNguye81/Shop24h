@@ -10,7 +10,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAllProduct, setPage } from '../actions/product.actions';
 import * as React from 'react';
 import Pagination from '@mui/material/Pagination';
-import { CartV2Component } from '../components/CartV2Component';
 
 
 // ----------------------------------------------------------------------
@@ -20,7 +19,6 @@ export const ProductsPage = () => {
     const { products, pending, totalProduct, error,category,
         productPerPage, page, sortBy, sortOrder,gender,brand,minPrice,maxPrice } = useSelector((reduxData) => reduxData.productReducers);
 
-    console.log(sortOrder)
     const dispatch = useDispatch();
 
     const totalPages = Math.ceil(totalProduct / productPerPage)
@@ -65,7 +63,6 @@ export const ProductsPage = () => {
                     onChange={handleChangePage}
                     variant="outlined" color="secondary" />
             </Stack>
-            <CartV2Component />
         </Container>
     );
 }

@@ -5,6 +5,7 @@ import DiscountProducts from "../components/HomePage/DiscountProducts";
 import { HeadSwiper } from "../components/HomePage/HeadSwiper";
 import { Intro } from "../components/HomePage/Introduce";
 import LatestProducts from "../components/HomePage/LatestProducts"
+import ProductCategories from "../components/HomePage/ProductCategories";
 import TrendingProducts from "../components/HomePage/TrendingProducts";
 import { ViewAll } from "../components/HomePage/ViewAll";
 
@@ -102,11 +103,10 @@ function Body() {
                 <HeadSwiper slides={sneakerSlides}/>
                 <Intro />
                 <LatestProducts images={images}/>
+                <ProductCategories/>
                 <TrendingProducts products={products}/>
                 <DiscountProducts />
                 <ViewAll />
-            <CartV2Component />
-
             </Box>
         </React.Fragment>
     )

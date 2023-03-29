@@ -54,7 +54,7 @@ export const AllProduct = ({ cart }) => {
     };
 
     return (
-        <Box>
+        <Box sx={{mb:5}}>
             <Grid container direction="row" justifyContent="center" alignItems="center">
                 <Grid item xs={11} md={12} >
                     {cart[0] ?
@@ -100,7 +100,6 @@ export const AllProduct = ({ cart }) => {
                         <Stack sx={{ width: '100%' }} spacing={2}>
                             <Alert variant="filled" severity="error" sx={{ bgcolor: "#222222", color: "#fff" }}>You have no items in your shopping cart</Alert>
                         </Stack>
-
                     }
                 </Grid>
             </Grid>
