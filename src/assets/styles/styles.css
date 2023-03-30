@@ -2,11 +2,11 @@
     font-family: "Poppins";
 }
 .bg-grey {
-    background-color: #222222;
+    background-color: #24292E;
 }
 
 .bg-hor {
-    background-color: #222222;
+    background-color: #24292E;
 }
 
 .bg-min {
@@ -114,7 +114,7 @@ body {
     max-width: 100%;
     height: auto;
     text-align: center;
-    background: #222222;
+    background: #24292E;
 }
 
 .custom-tag>img {
@@ -163,5 +163,5 @@ hr{
 
 .one-line:before,
 .one-line:after {
-    background: #222222;
+    background: #24292E;
 }

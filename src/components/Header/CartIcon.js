@@ -4,13 +4,19 @@ import Badge from '@mui/material/Badge';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { IconButton, Tooltip } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 export default function CartIcon() {
-    const [count, setCount] = React.useState(0);
-    const navigate=useNavigate()
+    const navigate = useNavigate()
+    const { cart } = useSelector(reduxData => reduxData.cartReducers)
+    const [count, setCount] = React.useState(cart.length);
     const onBtnCartClick = () => {
         navigate("/orders")
     }
+
+    React.useEffect(() => {
+        setCount(cart.length)
+    }, [cart])
 
     return (
         <Box

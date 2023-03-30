@@ -179,7 +179,7 @@ export const Invoice = ({ surcharge, total }) => {
 								<Button
 									variant="contained"
 									type="submit"
-									sx={{ backgroundColor: "#222222" }}
+									sx={{ backgroundColor: "#24292E" }}
 								>
 									ORDER
 								</Button>

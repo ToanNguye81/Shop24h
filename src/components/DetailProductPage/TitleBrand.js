@@ -5,7 +5,7 @@ export const TitleBrand = ({brand}) => {
             direction="row"
             justifyContent="space-around"
             alignItems="center"
-            sx={{ display: { md: 'flex' }, backgroundColor: "#222222", pt: 1, pb: 1 }}
+            sx={{ display: { md: 'flex' }, backgroundColor: "#24292E", pt: 1, pb: 1 }}
         >
             <Grid item xs={12} md={4}
                 sx={{ textAlign: 'center' }}

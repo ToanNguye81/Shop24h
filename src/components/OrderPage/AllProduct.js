@@ -98,7 +98,7 @@ export const AllProduct = ({ cart }) => {
                         </TableContainer>
                         :
                         <Stack sx={{ width: '100%' }} spacing={2}>
-                            <Alert variant="filled" severity="error" sx={{ bgcolor: "#222222", color: "#fff" }}>You have no items in your shopping cart</Alert>
+                            <Alert variant="filled" severity="error" sx={{ bgcolor: "#24292E", color: "#fff" }}>You have no items in your shopping cart</Alert>
                         </Stack>
                     }
                 </Grid>
