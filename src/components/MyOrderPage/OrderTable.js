@@ -13,7 +13,7 @@ import {
   Box,
   Typography,
 } from "@mui/material";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
@@ -34,6 +34,9 @@ const TABLE_HEAD =
   ];
 
 export const OrderTable = ({ orders, pending }) => {
+
+    const [expand, setExpand]=useState(false)
+
   return (
     <React.Fragment>
       {pending ?
@@ -56,7 +59,7 @@ export const OrderTable = ({ orders, pending }) => {
             </TableHead>
             <TableBody>
               {orders.map((order, index) => (
-                <Row key={index} row={index} order={order} />
+                <Row key={index} row={index} order={order} expand={expand} />
               ))}
             </TableBody>
           </Table>
@@ -66,14 +69,19 @@ export const OrderTable = ({ orders, pending }) => {
   );
 };
 
-export const Row = ({ order, row }) => {
-
+export const Row = ({ order, row, expand }) => {
   const dispatch = useDispatch()
-  const [open, setOpen] = React.useState(false);
-  const orderId=order._id
+  const [open, setOpen] = React.useState(expand);
+  const orderId = order._id
   useEffect(() => {
-    const result = dispatch(getAllOrderDetailOfOrder({orderId}))
-  }, [])
+    if (open) {
+      const result = dispatch(getAllOrderDetailOfOrder({ orderId }))
+      console.log(result)
+    }
+  }, [open])
+  // useEffect(() => {
+  //   const result = dispatch(getAllOrderDetailOfOrder({orderId}))
+  // }, [])
   return (
     <React.Fragment>
       <TableRow key={row}>
@@ -116,7 +124,7 @@ export const Row = ({ order, row }) => {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {result.map((historyRow) => (
+                  {/* {result.map((historyRow) => (
                     <TableRow key={historyRow.date}>
                       <TableCell component="th" scope="row">
                         {historyRow.name}
@@ -127,7 +135,7 @@ export const Row = ({ order, row }) => {
                         {Math.round(historyRow.amount * row.price * 100) / 100}
                       </TableCell>
                     </TableRow>
-                  ))}
+                  ))} */}
                 </TableBody>
               </Table>
             </Box>
