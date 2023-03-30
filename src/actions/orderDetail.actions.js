@@ -23,7 +23,8 @@ export const getAllOrderDetailOfOrder = ({limit, page, paramCondition, orderId})
         try {
             // dispatch pending state to update the UI
             await dispatch({
-                type: GET_ORDER_DETAILS_PENDING
+                type: GET_ORDER_DETAILS_PENDING,
+                orderId:orderId
             });
 
             //fetch OrderDetail
@@ -43,7 +44,8 @@ export const getAllOrderDetailOfOrder = ({limit, page, paramCondition, orderId})
             return dispatch({
                 type: GET_ORDER_DETAILS_SUCCESS,
                 totalOrderDetail: resObj.totalCount,
-                orderDetails: resObj.data
+                orderDetails: resObj.data,
+                orderId:orderId
             })
 
         } catch (err) {

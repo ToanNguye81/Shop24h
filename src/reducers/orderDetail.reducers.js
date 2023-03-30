@@ -10,6 +10,7 @@ const initialState = {
     orderDetails: [],
     pending: false,
     error: null,
+    detailOfOrderId:""
 }
 
 export const orderDetailReducers=(state = initialState, action)=> {
@@ -17,6 +18,7 @@ export const orderDetailReducers=(state = initialState, action)=> {
         //Load OrderDetail
         case GET_ORDER_DETAILS_PENDING:
             state.pending = true;
+            state.detailOfOrderId=action.orderId;
             break;
         case GET_ORDER_DETAILS_SUCCESS:
             state.pending = false;

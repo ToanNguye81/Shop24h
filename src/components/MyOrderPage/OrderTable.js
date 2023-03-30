@@ -6,18 +6,16 @@ import {
   Table,
   TableCell,
   TableHead,
-  Button,
   IconButton,
   TableContainer,
   Collapse,
   Box,
   Typography,
 } from "@mui/material";
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect} from "react";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getAllOrderDetailOfOrder } from "../../actions/orderDetail.actions";
 
 const TABLE_HEAD =
@@ -34,8 +32,6 @@ const TABLE_HEAD =
   ];
 
 export const OrderTable = ({ orders, pending }) => {
-
-    const [expand, setExpand]=useState(false)
 
   return (
     <React.Fragment>
@@ -59,7 +55,7 @@ export const OrderTable = ({ orders, pending }) => {
             </TableHead>
             <TableBody>
               {orders.map((order, index) => (
-                <Row key={index} row={index} order={order} expand={expand} />
+                <Row key={index} row={index} order={order} />
               ))}
             </TableBody>
           </Table>
@@ -69,22 +65,29 @@ export const OrderTable = ({ orders, pending }) => {
   );
 };
 
-export const Row = ({ order, row, expand }) => {
+export const Row = ({ order, row }) => {
+
   const dispatch = useDispatch()
-  const [open, setOpen] = React.useState(expand);
+  const [expand, setExpand] = React.useState(false);
+  const { detailOfOrderId, orderDetails } = useSelector(reduxData => reduxData.orderDetailReducers)
   const orderId = order._id
+
   useEffect(() => {
-    if (open) {
-      const result = dispatch(getAllOrderDetailOfOrder({ orderId }))
-      console.log(result)
+    if (expand) {
+      dispatch(getAllOrderDetailOfOrder({ orderId }))
     }
-  }, [open])
-  // useEffect(() => {
-  //   const result = dispatch(getAllOrderDetailOfOrder({orderId}))
-  // }, [])
+  }, [expand])
+
+  useEffect(() => {
+    if (orderId !== detailOfOrderId) {
+      setExpand(false)
+    }
+  }, [detailOfOrderId])
+  
+
   return (
     <React.Fragment>
-      <TableRow key={row}>
+      <TableRow key={row} onClick={() => setExpand(!expand)}>
         <TableCell>{order.orderCode}</TableCell>
         <TableCell>{order.orderDate}</TableCell>
         <TableCell>{order.cost}</TableCell>
@@ -94,48 +97,44 @@ export const Row = ({ order, row, expand }) => {
         <TableCell>{order.note}</TableCell>
         <TableCell>{order.status}</TableCell>
         <TableCell>
-          {/* <Button variant="outlined" size="small" onClick={() => navigate(`/dashboard/orders/${order._id}/orderDetails`)} value={order._id}>
-              ORDER DETAIL
-            </Button> */}
-          {/* Ô chứ cell */}
-          <IconButton aria-label="expand row" size="small" onClick={() => setOpen(!open)}>
-            {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+          <IconButton aria-label="expand row" size="small" onClick={() => setExpand(!expand)}>
+            {expand ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
         </TableCell>
       </TableRow>
 
-      {/* Ô bị ẩn đi */}
-      <TableRow>
-        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={9}>
-          <Collapse in={open} timeout="auto" unmountOnExit>
-            <Box sx={{ margin: 1 }}>
+       {/* Collapse Row */}     
+      <TableRow sx={{border:"1px solid #D23F57"}}>
+        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={9} >
+          <Collapse in={expand} timeout="auto" unmountOnExit>
+            <Box sx={{ margin: 3}}>
               <Typography variant="h6" gutterBottom component="div">
                 Order Detail
               </Typography>
-              <Table size="small" aria-label="purchases">
-                <TableHead>
-                  <TableRow>
-                    <TableCell>Image</TableCell>
+              <Table size="small" aria-label="purchases" >
+                <TableHead >
+                  <TableRow >
+                    <TableCell >Image</TableCell>
                     <TableCell>Brand</TableCell>
                     <TableCell >Name</TableCell>
                     <TableCell >Type</TableCell>
-                    <TableCell align="right">Quantity</TableCell>
-                    <TableCell align="right">Price</TableCell>
+                    <TableCell >Quantity</TableCell>
+                    <TableCell >Price</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {/* {result.map((historyRow) => (
-                    <TableRow key={historyRow.date}>
+                  {orderDetails.map((orderDetail, index) => (
+                    <TableRow key={index}>
                       <TableCell component="th" scope="row">
-                        {historyRow.name}
+                      <img alt="Girl in a jacket" width="100" height="auto" src={orderDetail.product.imageUrl} />
                       </TableCell>
-                      <TableCell>{historyRow.customerId}</TableCell>
-                      <TableCell align="right">{historyRow.amount}</TableCell>
-                      <TableCell align="right">
-                        {Math.round(historyRow.amount * row.price * 100) / 100}
-                      </TableCell>
+                      <TableCell>{orderDetail.product.brand}</TableCell>
+                      <TableCell >{orderDetail.product.name}</TableCell>
+                      <TableCell >{orderDetail.product.type}</TableCell>
+                      <TableCell >{orderDetail.product.promotionPrice}</TableCell>
+                      <TableCell >{orderDetail.quantity}</TableCell>
                     </TableRow>
-                  ))} */}
+                  ))}
                 </TableBody>
               </Table>
             </Box>
