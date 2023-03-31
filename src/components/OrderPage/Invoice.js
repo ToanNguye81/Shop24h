@@ -1,5 +1,5 @@
 import { Label } from "@mui/icons-material"
-import { Box, Button, Grid, InputAdornment, TextField } from "@mui/material"
+import { Box, Button, Grid, InputAdornment, MenuItem, Select, TextField } from "@mui/material"
 import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
@@ -7,6 +7,7 @@ import styled from "styled-components"
 import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import { handleCreateOrder } from "../../actions/order.actions"
+import { fetchCities, fetchCountries } from "../../actions/signUp.actions"
 
 const MyGrid = styled.div`
 border:1.5px solid #E6E6E6;
@@ -29,22 +30,33 @@ export const Invoice = ({ surcharge, total }) => {
 	const dispatch = useDispatch();
 	const { cart } = useSelector(reduxData => reduxData.cartReducers)
 	const { customer } = useSelector(reduxData => reduxData.orderReducers)
+	const { loadCountriesPending, countryOptions, cityOptions } = useSelector((reduxData) => reduxData.signUpReducers);
 
 
 	const handleSubmit = (customer) => {
-		dispatch(handleCreateOrder({customer,cart}))
+		dispatch(handleCreateOrder({ customer, cart }))
 	};
 
-	const updateChange = (event) => {
-		const { name, value } = event.target;
-		localStorage.setItem(name, value);
-	  };
+	useEffect(() => {
+		dispatch(fetchCountries());
+	}, []);
+
+	useEffect(() => {
+		if(customer&&countryOptions)
+		dispatch(fetchCities(customer.country));
+	}, [countryOptions,customer]);
+
+	
+
+	const handleCountryChange = (event) => {
+		dispatch(fetchCities(event.target.value));
+	}
 
 	// 
 	return (
 		<React.Fragment>
 			<Formik initialValues={{ ...customer }} validationSchema={validOrderSchema} onSubmit={handleSubmit}>
-				{({ errors, touched, values,handleChange}) => (
+				{({ errors, touched, values, handleChange }) => (
 					<Form>
 						<MyGrid>
 							<h2>Invoice</h2>
@@ -58,8 +70,7 @@ export const Invoice = ({ surcharge, total }) => {
 								id="firstName"
 								name="firstName"
 								variant="standard"
-								onChange={handleChange} 
-								onBlur={updateChange}
+								onChange={handleChange}
 								error={errors.firstName && touched.firstName}
 								helperText={touched.firstName && errors.firstName}
 							/>
@@ -71,8 +82,7 @@ export const Invoice = ({ surcharge, total }) => {
 								value={values.lastName}
 								id="lastName"
 								name="lastName"
-								onChange={handleChange} 
-								onBlur={updateChange}
+								onChange={handleChange}
 								error={errors.lastName && touched.lastName}
 								helperText={touched.lastName && errors.lastName}
 								variant="standard"
@@ -85,8 +95,7 @@ export const Invoice = ({ surcharge, total }) => {
 								value={values.phone}
 								id="phone"
 								name="phone"
-								onChange={handleChange} 
-								onBlur={updateChange}
+								onChange={handleChange}
 								error={errors.phone && touched.phone}
 								helperText={touched.phone && errors.phone}
 								variant="standard"
@@ -103,21 +112,8 @@ export const Invoice = ({ surcharge, total }) => {
 								helperText={touched.email && errors.email}
 								variant="standard"
 							/>
-							<TextField sx={{ mt: 2 }}
-								InputProps={{
-									startAdornment: <InputAdornment position="start">City * : </InputAdornment>,
-								}}
-								fullWidth
-								value={values.city}
-								id="city"
-								name="city"
-								onChange={handleChange} 
-								onBlur={updateChange}
-								error={errors.city && touched.city}
-								helperText={touched.city && errors.city}
-								variant="standard"
-							/>
-							<TextField sx={{ mt: 2 }}
+
+							{/* <TextField sx={{ mt: 2 }}
 								InputProps={{
 									startAdornment: <InputAdornment position="start">Country * : </InputAdornment>,
 								}}
@@ -125,20 +121,70 @@ export const Invoice = ({ surcharge, total }) => {
 								value={values.country}
 								id="country"
 								name="country"
-								onChange={handleChange} 
-								onBlur={updateChange}
+								onChange={handleChange}
 								error={errors.country && touched.country}
 								helperText={touched.country && errors.country}
 								variant="standard"
-							/>
+							/> */}
+							<Select
+								sx={{ mt: 2 }}
+								fullWidth
+								value={values.country}
+								id="country"
+								name="country"
+								onChange={(e) => {
+									handleChange(e);
+									handleCountryChange(e);
+								}}
+								error={errors.country && touched.country}
+								helperText={touched.country && errors.country}
+								variant="standard"
+								startAdornment={<InputAdornment position="start">Country * : </InputAdornment>}
+							>
+								{countryOptions && countryOptions.map((option,index) => (
+									<MenuItem key={index} value={option.iso2}>
+										{option.name}
+									</MenuItem>
+								))}
+							</Select>
+							{/* <TextField sx={{ mt: 2 }}
+								InputProps={{
+									startAdornment: <InputAdornment position="start">City * : </InputAdornment>,
+								}}
+								fullWidth
+								value={values.city}
+								id="city"
+								name="city"
+								onChange={handleChange}
+								error={errors.city && touched.city}
+								helperText={touched.city && errors.city}
+								variant="standard"
+							/> */}
+							<Select
+								sx={{ mt: 2 }}
+								fullWidth
+								value={values.city}
+								id="city"
+								name="city"
+								onChange={(e) => {handleChange(e);}}
+								error={errors.city && touched.city}
+								helpertext={touched.city && errors.city}
+								variant="standard"
+								startAdornment={<InputAdornment position="start">Country * : </InputAdornment>}
+							>
+								{cityOptions&&cityOptions.map((option,index) => (
+									<MenuItem key={index} value={option.id}>
+										{option.name}
+									</MenuItem>
+								))}
+							</Select>
 							<Label />Delivery address * :
 							<TextField
 								fullWidth
 								value={values.address}
 								id="address"
 								name="address"
-								onChange={handleChange} 
-								onBlur={updateChange}
+								onChange={handleChange}
 								error={errors.address && touched.address}
 								helperText={touched.address && errors.address}
 								variant="standard"
@@ -146,8 +192,7 @@ export const Invoice = ({ surcharge, total }) => {
 							<Label />Note:
 							<TextField
 								fullWidth
-								onChange={handleChange} 
-								onBlur={updateChange}
+								onChange={handleChange}
 								id="note"
 								name="note"
 								variant="standard" />

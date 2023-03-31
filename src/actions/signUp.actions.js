@@ -3,12 +3,15 @@ import {
     FETCH_COUNTRIES_ERROR,
     FETCH_COUNTRIES_PENDING,
     FETCH_COUNTRIES_SUCCESS,
+
     GET_CITY,
     GET_ADDRESS,
     GET_COUNTRY,
+    
     FETCH_CITIES_ERROR,
     FETCH_CITIES_PENDING,
     FETCH_CITIES_SUCCESS,
+    
     CREATE_USER_PENDING,
     CREATE_USER_SUCCESS,
     CREATE_USER_ERROR,
@@ -16,8 +19,6 @@ import {
 
 const createUserUrl = "http://localhost:8000/customers/"
 const countriesUrl = "https://api.countrystatecity.in/v1/countries/"
-// const countriesUrl="https://restcountries.com/v3.1/all" 
-// const countriesUrl="https://countriesnow.space/api/v0.1/countries/states" 
 const myCountryKey = "NjFRSUdoSm5EY2RIaE9TSTlMdHcxOExGN2QwWnJJTFVNelFQQVExVQ=="
 
 // Get cities list with REST_API

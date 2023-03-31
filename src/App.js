@@ -10,11 +10,13 @@ import "./assets/styles/HeadSwiper.css";
 
 // theme
 import ThemeProvider from './theme';
+import { CssBaseline } from "@mui/material";
 function App() {
 
   return (
     <React.Fragment>
       <ThemeProvider>
+        <CssBaseline/>
         <BrowserRouter>
           <Header />
           <Body />
