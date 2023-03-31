@@ -1,14 +1,16 @@
-import { Container, Grid } from '@mui/material';
+import { Box, Grid } from '@mui/material';
 import Products from "../../database_sample/productsData.json"
 import { CardInfo } from './CardInfo';
+import Typography from '../common/Typography';
+
 
 function TrendingProducts() {
   return (
-    <div  className="pr-3 pl-3">
-      <div>
-        <h2  className="text-center mb-5 mt-5">TRENDING PRODUCT</h2>
-      </div>
-      <Grid container sx={{ backgroundColor: "#D84A34" ,pt:5}}>
+    <Box component="section" sx={{ mt: 8, mb: 4 }}>
+      <Typography variant="h4" marked="center" align="center" component="h2" mb={7}>
+        Trending products
+      </Typography>
+      <Grid container sx={{ backgroundColor: "#D84A34", pt: 5 }}>
         <Grid container spacing={2} >
           <Grid item xs={12} sm={7} md={7}> <CardInfo ProductsData={Products} /></Grid>
           <Grid item xs={12} sm={5} md={5}>
@@ -16,7 +18,7 @@ function TrendingProducts() {
           </Grid>
         </Grid>
       </Grid>
-    </div>
+    </Box>
   );
 }
 export default TrendingProducts;

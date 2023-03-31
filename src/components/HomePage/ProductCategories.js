@@ -2,7 +2,6 @@ import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import ButtonBase from '@mui/material/ButtonBase';
-import Container from '@mui/material/Container';
 import Typography from '../common/Typography';
 const ImageBackdrop = styled('div')(({ theme }) => ({
   position: 'absolute',
@@ -102,7 +101,7 @@ const images = [
 
 export default function ProductCategories() {
   return (
-    <Box component="section" sx={{ mt: 8, mb: 4,mr:2,ml:2 }}>
+    <Box component="section" sx={{ mt: 8, mb: 4}}>
       <Typography variant="h4" marked="center" align="center" component="h2">
         For all tastes and all desires
       </Typography>

@@ -147,13 +147,6 @@ export const AppBarHeader = () => {
                                 </IconButton>
                             </Tooltip>
                         </Box>
-                        {/* <Box sx={{ flexGrow: 0 }}>
-                            <Tooltip title="Your's Cart">
-                                <IconButton sx={{ pl: 1 }} onClick={onBtnCartClick}>
-                                    <CartIcon/>
-                                </IconButton>
-                            </Tooltip>
-                        </Box> */}
                         <CartIcon />
                         <UserAvatar />
                     </Toolbar>
