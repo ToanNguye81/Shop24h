@@ -12,7 +12,7 @@ import {
   Box,
   Typography,
 } from "@mui/material";
-import React, { useEffect} from "react";
+import React, { useEffect, useState } from "react";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { useDispatch, useSelector } from "react-redux";
@@ -69,6 +69,7 @@ export const Row = ({ order, row }) => {
 
   const dispatch = useDispatch()
   const [expand, setExpand] = React.useState(false);
+  const [color, setColor] = useState(expand?"Gray":"White")
   const { detailOfOrderId, orderDetails } = useSelector(reduxData => reduxData.orderDetailReducers)
   const orderId = order._id
 
@@ -76,6 +77,7 @@ export const Row = ({ order, row }) => {
     if (expand) {
       dispatch(getAllOrderDetailOfOrder({ orderId }))
     }
+    expand?setColor("#FFB74D"):setColor("White")
   }, [expand])
 
   useEffect(() => {
@@ -83,11 +85,10 @@ export const Row = ({ order, row }) => {
       setExpand(false)
     }
   }, [detailOfOrderId])
-  
 
   return (
     <React.Fragment>
-      <TableRow key={row} onClick={() => setExpand(!expand)}>
+      <TableRow key={row} onClick={() => setExpand(!expand)} sx={{ backgroundColor: color }}>
         <TableCell>{order.orderCode}</TableCell>
         <TableCell>{order.orderDate}</TableCell>
         <TableCell>{order.cost}</TableCell>
@@ -103,11 +104,11 @@ export const Row = ({ order, row }) => {
         </TableCell>
       </TableRow>
 
-       {/* Collapse Row */}     
-      <TableRow sx={{border:"1px solid #D23F57"}}>
+      {/* Collapse Row */}
+      <TableRow sx={{ border: "1px solid #FFB74D" }}>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={9} >
           <Collapse in={expand} timeout="auto" unmountOnExit>
-            <Box sx={{ margin: 3}}>
+            <Box sx={{ margin: 3 }} >
               <Typography variant="h6" gutterBottom component="div">
                 Order Detail
               </Typography>
@@ -126,7 +127,7 @@ export const Row = ({ order, row }) => {
                   {orderDetails.map((orderDetail, index) => (
                     <TableRow key={index}>
                       <TableCell component="th" scope="row">
-                      <img alt="Girl in a jacket" width="100" height="auto" src={orderDetail.product.imageUrl} />
+                        <img alt="Girl in a jacket" width="100" height="auto" src={orderDetail.product.imageUrl} />
                       </TableCell>
                       <TableCell>{orderDetail.product.brand}</TableCell>
                       <TableCell >{orderDetail.product.name}</TableCell>

@@ -29,7 +29,7 @@ export default function CartIcon() {
         >
             <div>
                 <IconButton onClick={onBtnCartClick}>
-                    <Tooltip title="Your's Cart">
+                    <Tooltip title="Your Cart">
                         <Badge color="secondary" badgeContent={count}>
                             <AddShoppingCartIcon sx={{ fontSize: 30, color: "#34495e" }} />
                         </Badge>

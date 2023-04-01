@@ -60,7 +60,7 @@ export const Invoice = ({ surcharge, total }) => {
 					<Form>
 						<MyGrid>
 							<h2>Invoice</h2>
-							<Label />Your's information
+							<Label />Your information
 							<TextField
 								InputProps={{
 									startAdornment: <InputAdornment position="start">First Name * : </InputAdornment>,
@@ -137,7 +137,7 @@ export const Invoice = ({ surcharge, total }) => {
 									handleCountryChange(e);
 								}}
 								error={errors.country && touched.country}
-								helperText={touched.country && errors.country}
+								helpertext={touched.country && errors.country}
 								variant="standard"
 								startAdornment={<InputAdornment position="start">Country * : </InputAdornment>}
 							>
@@ -157,7 +157,7 @@ export const Invoice = ({ surcharge, total }) => {
 								name="city"
 								onChange={handleChange}
 								error={errors.city && touched.city}
-								helperText={touched.city && errors.city}
+								t={touched.city && errors.city}
 								variant="standard"
 							/> */}
 							<Select
