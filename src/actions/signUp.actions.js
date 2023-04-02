@@ -152,44 +152,8 @@ export const createNewUser = (paramUser) => {
                 })
             }
         }
-
-        // (async () => {
-        //     await sendRegisterUser(userInfo)
-        // })();
-
     }
 }
-
-//Fetch Post Create User
-// export const sendRegisterUser = (paramUser) => {
-//     return async (dispatch) => {
-//         const requestOptions = {
-//             method: 'POST',
-//             headers: {
-//                 "Content-Type": 'application/json'
-//             },
-//             body: JSON.stringify(paramUser)
-//         };
-
-//         await dispatch({
-//             type: CREATE_USER_PENDING
-//         });
-
-//         try {
-//             const res = await fetch(createUserUrl, requestOptions);
-//             const resObj = await res.json();
-//             return dispatch({
-//                 type: CREATE_USER_SUCCESS,
-//                 data: resObj
-//             })
-//         } catch (err) {
-//             return dispatch({
-//                 type: CREATE_USER_ERROR,
-//                 error: err
-//             })
-//         }
-//     }
-// }
 
 //Get User Information 
 const getUserInfo = (paramUser) => {

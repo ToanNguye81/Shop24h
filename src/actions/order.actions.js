@@ -65,98 +65,7 @@ export const checkUser = () => {
     }
 }
 
-// export const createNewOrder =  ({ customer, cart }) => {
-//     return async (dispatch) => {
-//         try {
-//             //Kiểm tra customer và tạo mới nếu không có
-//             const requestOptions = {
-//                 method: 'POST',
-//                 headers: {
-//                     "Content-Type": 'application/json'
-//                 },
-//                 body: JSON.stringify(customer)
-//             };
-
-//             await dispatch({
-//                 type: CREATE_CUSTOMER_PENDING
-//             });
-
-//             const res = await fetch(gCUSTOMER_API_URL, requestOptions);
-//             const resObj = await res.json();
-
-//             if (!res.ok) {
-//                 enqueueSnackbar(resObj.message, { variant: "warning" })
-//                 return dispatch({
-//                     type: CREATE_CUSTOMER_ERROR,
-//                 })
-//             }
-
-//             const customerId = resObj.data._id
-
-//             if (!cart.length) {
-//                 // Warning if cart is empty
-//                 return enqueueSnackbar("Your cart is empty", { variant: "warning" })
-//             }
-
-//             if (customerId && cart.length) {
-
-//                 const orderResult = await createOrder(customerId, customer.note)
-//                 const orderId = orderResult.data._id;
-
-//                 if (orderId) {
-
-//                     const orderDetailPromises = cart.map((orderDetail) =>
-
-
-//                     )
-
-//                     await Promise.all(orderDetailPromises)
-//                     // Show success Snackbar
-//                     enqueueSnackbar(`Create successfully Order: ${orderResult.data.orderCode}`, { variant: "success" })
-//                 }
-//             }
-
-//         } catch (error) {
-//             // Handle any errors here
-//             console.log(error)
-//             // Show success Snackbar
-//             enqueueSnackbar('Something went wrong.', { variant: "error" })
-//         }
-//     }
-// }
-
-
-// //Create new order
-// export const createOrder = (customerId,note) => {
-//     // if (isValid) {
-//     return async (dispatch) => {
-//         const requestOptions = {
-//             method: 'POST',
-//             headers: {
-//                 "Content-Type": 'application/json',
-//             },
-//             body: JSON.stringify({note:note}),
-//         };
-
-//         try {
-//             const res = await fetch(`${gCUSTOMER_API_URL}/${customerId}/orders`, requestOptions);
-//             const resObj = await res.json();
-
-//             return dispatch({
-//                 type: CREATE_ORDER_SUCCESS,
-//                 data: resObj.data
-//             })
-
-//         } catch (err) {
-//             return dispatch({
-//                 type: CREATE_ORDER_ERROR,
-//                 error: err
-//             })
-//         }
-//     }
-// }
-
-
+//Create Order
 export const handleCreateOrder = async ({ customer, cart }) => {
     try {
         const customerResult = await createNewCustomer(customer)
@@ -204,7 +113,10 @@ export const createNewCustomer = async (customer) => {
         body: JSON.stringify(customer)
     };
 
+
+
     try {
+
         const res = await fetch(gCUSTOMER_API_URL, requestOptions);
         const resObj = await res.json();
 

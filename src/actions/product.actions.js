@@ -22,7 +22,6 @@ import {
 const gPRODUCT_API_URL = "//localhost:8000/products"
 
 //Get all product
-// export const getAllProduct = (paramLimit, paramPage, paramCondition) => {
 export const getAllProduct = ({ productPerPage, page, sortBy, sortOrder, gender, brand, minPrice, maxPrice, category }) => {
 
     // build the request string
@@ -167,7 +166,7 @@ export const setMaxPrice = (maxPrice) => {
 }
 
 //Reset Condition
-export const resetCondition=()=>{
+export const resetCondition = () => {
     return {
         type: RESET_CONDITION,
     }

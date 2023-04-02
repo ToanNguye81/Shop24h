@@ -1,4 +1,4 @@
-import { Container, Grid, Typography } from "@mui/material"
+import { Grid } from "@mui/material"
 import React from "react"
 
 export const ImageProduct = ({ product }) => {
