@@ -15,7 +15,7 @@ background-color:#FFFFFF;
 padding: 1rem 3rem 3rem 3rem;
 margin-bottom: 3rem;
 `
-const validOrderSchema = Yup.object().shape({
+const validCustomerSchema = Yup.object().shape({
 	firstName: Yup.string().required('First Name is required').trim(),
 	lastName: Yup.string().required('Last Name is required').trim(),
 	phone: Yup.string().required('Phone is required').matches(/^[0-9]+$/, 'Phone number should only contain digits'),
@@ -55,7 +55,7 @@ export const Invoice = ({ surcharge, total }) => {
 	// 
 	return (
 		<React.Fragment>
-			<Formik initialValues={{ ...customer }} validationSchema={validOrderSchema} onSubmit={handleSubmit}>
+			<Formik initialValues={{ ...customer }} validationSchema={validCustomerSchema} onSubmit={handleSubmit}>
 				{({ errors, touched, values, handleChange }) => (
 					<Form>
 						<MyGrid>
