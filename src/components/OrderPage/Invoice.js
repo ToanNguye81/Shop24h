@@ -173,9 +173,10 @@ export const Invoice = ({ surcharge, total }) => {
 								startAdornment={<InputAdornment position="start">Country * : </InputAdornment>}
 							>
 								{cityOptions&&cityOptions.map((option,index) => (
-									<MenuItem key={index} value={option.id}>
+									<MenuItem key={index} value={option.name}>
 										{option.name}
 									</MenuItem>
+									
 								))}
 							</Select>
 							<Label />Delivery address * :
