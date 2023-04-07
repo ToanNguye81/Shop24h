@@ -46,17 +46,14 @@ export const Invoice = ({ surcharge, total }) => {
 		dispatch(fetchCities(customer.country));
 	}, [countryOptions,customer]);
 
-	
-
 	const handleCountryChange = (event) => {
 		dispatch(fetchCities(event.target.value));
 	}
 
-	// 
 	return (
 		<React.Fragment>
 			<Formik initialValues={{ ...customer }} validationSchema={validCustomerSchema} onSubmit={handleSubmit}>
-				{({ errors, touched, values, handleChange }) => (
+				{({ errors, touched, values, handleChange,setFieldValue }) => (
 					<Form>
 						<MyGrid>
 							<h2>Invoice</h2>
@@ -135,6 +132,7 @@ export const Invoice = ({ surcharge, total }) => {
 								onChange={(e) => {
 									handleChange(e);
 									handleCountryChange(e);
+									setFieldValue("city", "")
 								}}
 								error={errors.country && touched.country}
 								helpertext={touched.country && errors.country}
