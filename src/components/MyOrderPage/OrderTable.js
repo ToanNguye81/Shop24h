@@ -92,9 +92,9 @@ export const Row = ({ order, row }) => {
         <TableCell>{order.orderCode}</TableCell>
         <TableCell>{order.orderDate}</TableCell>
         <TableCell>{order.cost}</TableCell>
-        <TableCell>{order.customer}</TableCell>
-        <TableCell>{order.phone}</TableCell>
-        <TableCell>{order.address}</TableCell>
+        <TableCell>{order.customer.firstName} {order.customer.lastName}</TableCell>
+        <TableCell>{order.customer.phone}</TableCell>
+        <TableCell>{order.customer.address}</TableCell>
         <TableCell>{order.note}</TableCell>
         <TableCell>{order.status}</TableCell>
         <TableCell>
