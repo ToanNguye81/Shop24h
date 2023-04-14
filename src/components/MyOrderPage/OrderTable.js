@@ -66,7 +66,6 @@ export const OrderTable = ({ orders, pending }) => {
 };
 
 export const Row = ({ order, row }) => {
-
   const dispatch = useDispatch()
   const [expand, setExpand] = React.useState(false);
   const [color, setColor] = useState(expand?"Gray":"White")
