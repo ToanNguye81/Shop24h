@@ -161,10 +161,7 @@ export const createNewOrder = async (customerId, note) => {
             error: err
         }
     }
-    }
-
-
-
+}
     
 //Create new orderDetail
 export const createNewOrderDetail = async (orderId, orderDetail) => {

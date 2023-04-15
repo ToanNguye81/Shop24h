@@ -21,21 +21,13 @@ import {
 
 
 const initialState = {
+    //load product
     totalProduct: 0,
     products: [],
     pending: false,
     error: null,
     currentPage: 1,
-
-    //Product detail
-    productById: {},
-    getProductByIdPending: false,
-
-    //Update Product
-    updateProductPending: false,
-    updateStatus: null,
-    updateError: null,
-
+    
     //Filter and sort
     productPerPage: 10,
     page: 0,
@@ -46,6 +38,10 @@ const initialState = {
     category: [],
     minPrice: 0,
     maxPrice: 2000,
+
+    //Product detail
+    productById: {},
+    getProductByIdPending: false,
 }
 
 export const productReducers = (state = initialState, action) => {
@@ -87,6 +83,7 @@ export const productReducers = (state = initialState, action) => {
                 ...state,
                 error: action.error
             };
+
         case SET_PAGE:
             console.log(action.payload)
             return {
