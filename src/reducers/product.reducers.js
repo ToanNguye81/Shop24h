@@ -1,7 +1,7 @@
 import {
-    FETCH_PRODUCTS_PENDING,
-    FETCH_PRODUCTS_ERROR,
-    FETCH_PRODUCTS_SUCCESS,
+    LOAD_PRODUCTS_PENDING,
+    LOAD_PRODUCTS_ERROR,
+    LOAD_PRODUCTS_SUCCESS,
 
     GET_PRODUCT_BY_ID_ERROR,
     GET_PRODUCT_BY_ID_PENDING,
@@ -46,12 +46,12 @@ const initialState = {
 
 export const productReducers = (state = initialState, action) => {
     switch (action.type) {
-        case FETCH_PRODUCTS_PENDING:
+        case LOAD_PRODUCTS_PENDING:
             return {
                 ...state,
                 pending: true
             };
-        case FETCH_PRODUCTS_SUCCESS:
+        case LOAD_PRODUCTS_SUCCESS:
             return {
                 ...state,
                 pending: false,
@@ -59,7 +59,7 @@ export const productReducers = (state = initialState, action) => {
                 products: action.products,
                 error: null
             };
-        case FETCH_PRODUCTS_ERROR:
+        case LOAD_PRODUCTS_ERROR:
             return {
                 ...state,
                 error: action.error

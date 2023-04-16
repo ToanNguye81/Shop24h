@@ -1,17 +1,29 @@
 import {
-    FETCH_ORDERS_PENDING,
-    FETCH_ORDERS_ERROR,
-    FETCH_ORDERS_SUCCESS,
+    LOAD_ORDERS_PENDING,
+    LOAD_ORDERS_ERROR,
+    LOAD_ORDERS_SUCCESS,
+    SET_PAGE
 } from "../constants/myOrder.constants";
 
 const initialState = {
+    // //Load order
+    // totalOrder: 0,
+    // orders: [],
+    // pending: false,
+    // error: null,
+    // orderCondition: "",
+
     //Load order
     totalOrder: 0,
     orders: [],
     pending: false,
     error: null,
-    currentPage: 1,
-    orderCondition: "",
+    searchQuery: "",
+    sortBy: "orderDate",
+    sortOrder: "desc",
+    page: 0,
+    limit:5,
+
 
     //Modal Delete Order
     deleteOrderPending: false,
@@ -19,34 +31,34 @@ const initialState = {
     //Add To Cart
     cart: [],//{product:...,quantity:...}
     note: "",
+
     //Create Order
     orderId: null,
-
 
     //Order detail
     orderById: {},
     getOrderByIdPending: false,
 
-    //Update Order
-    updateOrderPending: false,
-    updateStatus: null,//Demo
-    updateError: null
 }
-export const myOrderReducers=(state = initialState, action)=> {
+export const myOrderReducers = (state = initialState, action) => {
     switch (action.type) {
         //Load Order
-        case FETCH_ORDERS_PENDING:
+        case LOAD_ORDERS_PENDING:
             state.pending = true;
             break;
-        case FETCH_ORDERS_SUCCESS:
+        case LOAD_ORDERS_SUCCESS:
             state.pending = false;
             state.totalOrder = action.totalOrder;
             state.orders = action.orders;
             state.error = null;
+
             break;
-        case FETCH_ORDERS_ERROR:
+        case LOAD_ORDERS_ERROR:
             state.error = action.error
             break;
+        case SET_PAGE:
+            state.page = action.payload
+            break
         default:
             break;
     }

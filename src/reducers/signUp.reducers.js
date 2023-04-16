@@ -1,13 +1,13 @@
 import {
-    FETCH_COUNTRIES_PENDING,
-    FETCH_COUNTRIES_SUCCESS,
-    FETCH_COUNTRIES_ERROR,
+    LOAD_COUNTRIES_PENDING,
+    LOAD_COUNTRIES_SUCCESS,
+    LOAD_COUNTRIES_ERROR,
     GET_COUNTRY,
     GET_CITY,
     GET_ADDRESS,
-    FETCH_CITIES_PENDING,
-    FETCH_CITIES_SUCCESS,
-    FETCH_CITIES_ERROR,
+    LOAD_CITIES_PENDING,
+    LOAD_CITIES_SUCCESS,
+    LOAD_CITIES_ERROR,
     CREATE_USER_PENDING,
     CREATE_USER_SUCCESS,
     CREATE_USER_ERROR
@@ -26,25 +26,25 @@ const initializeState = {
 }
 export const signUpReducers = (state = initializeState, action) => {
     switch (action.type) {
-        case FETCH_COUNTRIES_PENDING:
+        case LOAD_COUNTRIES_PENDING:
             state.loadCountriesPending = true
             break;
-        case FETCH_COUNTRIES_SUCCESS:
+        case LOAD_COUNTRIES_SUCCESS:
             state.loadCountriesPending = false
             state.countryOptions = action.countryOptions
             console.log(action.countryOptions)
             break;
-        case FETCH_COUNTRIES_ERROR:
+        case LOAD_COUNTRIES_ERROR:
             break;
 
-        case FETCH_CITIES_PENDING:
+        case LOAD_CITIES_PENDING:
             state.loadCitiesPending = true
             break;
-        case FETCH_CITIES_SUCCESS:
+        case LOAD_CITIES_SUCCESS:
             state.loadCitiesPending = false
             state.cityOptions = action.cityOptions
             break;
-        case FETCH_CITIES_ERROR:
+        case LOAD_CITIES_ERROR:
             break;
 
         case GET_COUNTRY:

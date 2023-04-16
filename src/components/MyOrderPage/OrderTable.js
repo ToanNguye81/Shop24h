@@ -11,12 +11,15 @@ import {
   Collapse,
   Box,
   Typography,
+  Pagination,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { useDispatch, useSelector } from "react-redux";
 import { getAllOrderDetailOfOrder } from "../../actions/orderDetail.actions";
+import { useParams } from "react-router-dom";
+import { getAllOrderOfCustomer, setPage } from "../../actions/myOrder.action";
 
 const TABLE_HEAD =
   [
@@ -31,7 +34,19 @@ const TABLE_HEAD =
     "Order Detail"
   ];
 
-export const OrderTable = ({ orders, pending }) => {
+export const OrderTable = () => {
+  const { customerId } = useParams()
+  const dispatch = useDispatch();
+  const { limit,page, searchQuery, sortBy, sortOrder, pending, orders, totalOrder } = useSelector(reduxData => reduxData.myOrderReducers)
+  const totalPages = Math.ceil(totalOrder / limit)
+  useEffect(() => {
+    dispatch(getAllOrderOfCustomer({ limit, page, searchQuery, customerId, sortBy, sortOrder }))
+  }, [page, customerId, searchQuery, sortBy, sortOrder]);
+
+
+  const handleChangePage = (event, value) => {
+    dispatch(setPage(value - 1));
+  };
 
   return (
     <React.Fragment>
@@ -61,6 +76,12 @@ export const OrderTable = ({ orders, pending }) => {
           </Table>
         </TableContainer>
       }
+      <Pagination
+        count={totalPages}
+        page={page + 1}
+        onChange={handleChangePage}
+        variant="outlined" color="secondary"
+      />
     </React.Fragment>
   );
 };
@@ -68,7 +89,7 @@ export const OrderTable = ({ orders, pending }) => {
 export const Row = ({ order, row }) => {
   const dispatch = useDispatch()
   const [expand, setExpand] = React.useState(false);
-  const [color, setColor] = useState(expand?"Gray":"White")
+  const [color, setColor] = useState(expand ? "Gray" : "White")
   const { detailOfOrderId, orderDetails } = useSelector(reduxData => reduxData.orderDetailReducers)
   const orderId = order._id
 
@@ -76,7 +97,7 @@ export const Row = ({ order, row }) => {
     if (expand) {
       dispatch(getAllOrderDetailOfOrder({ orderId }))
     }
-    expand?setColor("#FFB74D"):setColor("White")
+    expand ? setColor("#FFB74D") : setColor("White")
   }, [expand])
 
   useEffect(() => {
@@ -141,6 +162,8 @@ export const Row = ({ order, row }) => {
           </Collapse>
         </TableCell>
       </TableRow>
+
+
     </React.Fragment>
   );
 }

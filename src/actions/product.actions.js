@@ -1,7 +1,7 @@
 import {
-    FETCH_PRODUCTS_ERROR,
-    FETCH_PRODUCTS_PENDING,
-    FETCH_PRODUCTS_SUCCESS,
+    LOAD_PRODUCTS_ERROR,
+    LOAD_PRODUCTS_PENDING,
+    LOAD_PRODUCTS_SUCCESS,
 
     GET_PRODUCT_BY_ID_ERROR,
     GET_PRODUCT_BY_ID_PENDING,
@@ -37,7 +37,7 @@ export const getAllProduct = ({ productPerPage, page, sortBy, sortOrder, gender,
         try {
             // dispatch pending state to update the UI
             await dispatch({
-                type: FETCH_PRODUCTS_PENDING
+                type: LOAD_PRODUCTS_PENDING
             });
 
             //fetch Product
@@ -52,7 +52,7 @@ export const getAllProduct = ({ productPerPage, page, sortBy, sortOrder, gender,
             console.log(resObj)
             //Dispatch state
             return dispatch({
-                type: FETCH_PRODUCTS_SUCCESS,
+                type: LOAD_PRODUCTS_SUCCESS,
                 totalProduct: resObj.totalCount,
                 products: resObj.data
             })
@@ -60,7 +60,7 @@ export const getAllProduct = ({ productPerPage, page, sortBy, sortOrder, gender,
         } catch (err) {
             //if error
             return dispatch({
-                type: FETCH_PRODUCTS_ERROR,
+                type: LOAD_PRODUCTS_ERROR,
                 error: err
             })
         }

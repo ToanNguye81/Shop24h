@@ -1,16 +1,16 @@
 
 import {
-    FETCH_COUNTRIES_ERROR,
-    FETCH_COUNTRIES_PENDING,
-    FETCH_COUNTRIES_SUCCESS,
+    LOAD_COUNTRIES_ERROR,
+    LOAD_COUNTRIES_PENDING,
+    LOAD_COUNTRIES_SUCCESS,
 
     GET_CITY,
     GET_ADDRESS,
     GET_COUNTRY,
     
-    FETCH_CITIES_ERROR,
-    FETCH_CITIES_PENDING,
-    FETCH_CITIES_SUCCESS,
+    LOAD_CITIES_ERROR,
+    LOAD_CITIES_PENDING,
+    LOAD_CITIES_SUCCESS,
     
     CREATE_USER_PENDING,
     CREATE_USER_SUCCESS,
@@ -34,7 +34,7 @@ export const fetchCities = (paramIsoCountry) => {
         };
 
         await dispatch({
-            type: FETCH_CITIES_PENDING
+            type: LOAD_CITIES_PENDING
         });
 
         try {
@@ -42,12 +42,12 @@ export const fetchCities = (paramIsoCountry) => {
             const allCitiesObj = await allCitiesRes.json();
             console.log(allCitiesObj)
             return dispatch({
-                type: FETCH_CITIES_SUCCESS,
+                type: LOAD_CITIES_SUCCESS,
                 cityOptions: allCitiesObj
             })
         } catch (err) {
             return dispatch({
-                type: FETCH_CITIES_ERROR,
+                type: LOAD_CITIES_ERROR,
                 error: err
             })
         }
@@ -67,19 +67,19 @@ export const fetchCountries = () => {
         };
 
         await dispatch({
-            type: FETCH_COUNTRIES_PENDING
+            type: LOAD_COUNTRIES_PENDING
         });
 
         try {
             const allCountriesRes = await fetch(countriesUrl, requestOptions);
             const allCountriesObj = await allCountriesRes.json();
             return dispatch({
-                type: FETCH_COUNTRIES_SUCCESS,
+                type: LOAD_COUNTRIES_SUCCESS,
                 countryOptions: allCountriesObj
             })
         } catch (err) {
             return dispatch({
-                type: FETCH_COUNTRIES_ERROR,
+                type: LOAD_COUNTRIES_ERROR,
                 error: err
             })
         }
