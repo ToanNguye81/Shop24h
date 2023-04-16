@@ -1,3 +1,5 @@
+
+import { enqueueSnackbar } from "notistack";
 import {
     OLD_CUSTOMER,
     CHECK_USER_PENDING,
@@ -12,7 +14,7 @@ import {
 const gAUTH_API_URL = "//localhost:8000/auth"
 const gCUSTOMER_API_URL = '//localhost:8000/customers';
 const gORDERS_API_URL = '//localhost:8000/orders';
-const { enqueueSnackbar } = useSnackbar()
+
 
 
 //Get all product
