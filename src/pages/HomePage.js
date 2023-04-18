@@ -41,12 +41,10 @@ function Body() {
   return (
     <React.Fragment>
       <Box>
+
         <HeadSwiper slides={sneakerSlides} />
 
         <Intro />
-
-        {/* Latest product */}
-
 
         {/* Trending product */}
         <LoadProduct
@@ -56,6 +54,7 @@ function Body() {
           widthDivide={['25%', '25%', '25%', '25%', '33%', '34%', '33%']}
         />
 
+        {/* Latest product */}
         <LoadProduct
           title="Latest"
           category={["LATEST"]}
