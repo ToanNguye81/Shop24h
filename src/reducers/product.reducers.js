@@ -43,11 +43,6 @@ const initialState = {
     productById: {},
     getProductByIdPending: false,
 
-    //Load home product
-    loadHomePage:false,
-    latestProduct:{},
-    trendingProduct:{},
-    discountProduct:{},
 }
 
 export const productReducers = (state = initialState, action) => {

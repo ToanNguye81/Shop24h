@@ -47,8 +47,6 @@ export const updateQuantity = (productId, newQuantity) => {
     }
 };
 
-
-
 //Change Cart Cost
 export const changeCartCost = (cart) => {
     let cartCost = 0;
