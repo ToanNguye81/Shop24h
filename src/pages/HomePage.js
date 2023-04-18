@@ -46,19 +46,21 @@ function Body() {
         <Intro />
 
         {/* Latest product */}
-        <LoadProduct
-          title="Latest"
-          category={["LATEST"]}
-          limit={6}
-          widthDivide={['33%', '34%', '33%', '33%', '34%', '33%']}
-        />
+
 
         {/* Trending product */}
         <LoadProduct
           title="Trending"
           category={["TRENDING"]}
           limit={7}
-          widthDivide={['33%', '34%', '33%', '25%', '25%', '25%', '25%']}
+          widthDivide={['25%', '25%', '25%', '25%', '33%', '34%', '33%']}
+        />
+
+        <LoadProduct
+          title="Latest"
+          category={["LATEST"]}
+          limit={6}
+          widthDivide={['33%', '34%', '33%', '33%', '34%', '33%']}
         />
 
         {/* Discount product */}
@@ -71,6 +73,7 @@ function Body() {
 
         {/* Navigate shop */}
         <ViewAll />
+
       </Box>
     </React.Fragment>
   )
