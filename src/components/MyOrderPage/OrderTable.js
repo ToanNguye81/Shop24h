@@ -37,7 +37,7 @@ const TABLE_HEAD =
 export const OrderTable = () => {
   const { customerId } = useParams()
   const dispatch = useDispatch();
-  const { limit,page, searchQuery, sortBy, sortOrder, pending, orders, totalOrder } = useSelector(reduxData => reduxData.myOrderReducers)
+  const { limit, page, searchQuery, sortBy, sortOrder, pending, orders, totalOrder } = useSelector(reduxData => reduxData.myOrderReducers)
   const totalPages = Math.ceil(totalOrder / limit)
   useEffect(() => {
     dispatch(getAllOrderOfCustomer({ limit, page, searchQuery, customerId, sortBy, sortOrder }))
@@ -76,12 +76,19 @@ export const OrderTable = () => {
           </Table>
         </TableContainer>
       }
-      <Pagination
-        count={totalPages}
-        page={page + 1}
-        onChange={handleChangePage}
-        variant="outlined" color="secondary"
-      />
+      <Grid
+        container
+        direction="row"
+        justifyContent="center"
+        alignItems="center"
+        mt={3} mb={3}>
+        <Pagination
+          count={totalPages}
+          page={page + 1}
+          onChange={handleChangePage}
+          variant="outlined" color="secondary"
+        />
+      </Grid>
     </React.Fragment>
   );
 };

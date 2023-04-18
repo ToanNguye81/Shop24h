@@ -27,9 +27,9 @@ const initialState = {
     pending: false,
     error: null,
     currentPage: 1,
-    
+
     //Filter and sort
-    productPerPage: 10,
+    limit: 10,
     page: 0,
     sortBy: "",
     sortOrder: "",
@@ -42,6 +42,12 @@ const initialState = {
     //Product detail
     productById: {},
     getProductByIdPending: false,
+
+    //Load home product
+    loadHomePage:false,
+    latestProduct:{},
+    trendingProduct:{},
+    discountProduct:{},
 }
 
 export const productReducers = (state = initialState, action) => {

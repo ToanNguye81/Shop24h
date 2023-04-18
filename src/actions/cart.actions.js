@@ -58,6 +58,6 @@ export const changeCartCost = (cart) => {
     })
     return {
         type: CHANGE_CART_COST,
-        cartCost: cartCost
+        payload: cartCost
     }
 }

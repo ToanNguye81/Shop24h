@@ -109,20 +109,6 @@ export const Invoice = ({ surcharge, total }) => {
 								helperText={touched.email && errors.email}
 								variant="standard"
 							/>
-
-							{/* <TextField sx={{ mt: 2 }}
-								InputProps={{
-									startAdornment: <InputAdornment position="start">Country * : </InputAdornment>,
-								}}
-								fullWidth
-								value={values.country}
-								id="country"
-								name="country"
-								onChange={handleChange}
-								error={errors.country && touched.country}
-								helperText={touched.country && errors.country}
-								variant="standard"
-							/> */}
 							<Select
 								sx={{ mt: 2 }}
 								fullWidth
@@ -145,19 +131,6 @@ export const Invoice = ({ surcharge, total }) => {
 									</MenuItem>
 								))}
 							</Select>
-							{/* <TextField sx={{ mt: 2 }}
-								InputProps={{
-									startAdornment: <InputAdornment position="start">City * : </InputAdornment>,
-								}}
-								fullWidth
-								value={values.city}
-								id="city"
-								name="city"
-								onChange={handleChange}
-								error={errors.city && touched.city}
-								t={touched.city && errors.city}
-								variant="standard"
-							/> */}
 							<Select
 								sx={{ mt: 2 }}
 								fullWidth

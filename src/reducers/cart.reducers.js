@@ -114,7 +114,7 @@ export const cartReducers = (state = initialState, action) => {
         case CHANGE_CART_COST:
             return {
                 ...state,
-                cartCost: action.cartCost
+                cartCost: action.payload
             };
 
         default:

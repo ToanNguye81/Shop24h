@@ -17,14 +17,14 @@ import Pagination from '@mui/material/Pagination';
 export const ProductsPage = () => {
 
     const { products, pending, totalProduct, error, category,
-        productPerPage, page, sortBy, sortOrder, gender, brand, minPrice, maxPrice } = useSelector((reduxData) => reduxData.productReducers);
+        limit, page, sortBy, sortOrder, gender, brand, minPrice, maxPrice,loadHomePage } = useSelector((reduxData) => reduxData.productReducers);
 
     const dispatch = useDispatch();
 
-    const totalPages = Math.ceil(totalProduct / productPerPage)
+    const totalPages = Math.ceil(totalProduct / limit)
 
     useEffect(() => {
-        dispatch(getAllProduct({ productPerPage, page, sortBy, sortOrder, gender, brand, minPrice, maxPrice, category }))
+        dispatch(getAllProduct({ limit, page, sortBy, sortOrder, gender, brand, minPrice, maxPrice, category }))
     }, [page, sortBy, sortOrder, gender, brand, minPrice, maxPrice, category]);
 
 
