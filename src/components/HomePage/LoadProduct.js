@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { getAllProduct } from '../../actions/product.actions';
 import { enqueueSnackbar } from 'notistack';
+import { useNavigate } from 'react-router-dom';
 
 const ImageBackdrop = styled('div')(({ theme }) => ({
     position: 'absolute',
@@ -27,7 +28,7 @@ const ImageIconButton = styled(ButtonBase)(({ theme }) => ({
     height: '50vh',
     [theme.breakpoints.down('md')]: {
         width: '100% !important',
-        height: 150,
+        height: 300,
     },
     '&:hover': {
         zIndex: 1,
@@ -58,18 +59,19 @@ const ImageIconButton = styled(ButtonBase)(({ theme }) => ({
 
 
 
-export const LoadProduct = ({ category, title, widthDivide,limit }) => {
+export const LoadProduct = ({ category, title, widthDivide, limit }) => {
 
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const [products, setProducts] = React.useState(null)
-    
+
     useEffect(() => {
-        handleLoadProduct(category,limit)
+        handleLoadProduct(category, limit)
     }, [])
 
-    const handleLoadProduct = async (paramCategory,paramLimit) => {
+    const handleLoadProduct = async (paramCategory, paramLimit) => {
         try {
-            const {products} = await dispatch(getAllProduct({ category: paramCategory,limit:paramLimit }))
+            const { products } = await dispatch(getAllProduct({ category: paramCategory, limit: paramLimit }))
             setProducts(products)
         } catch (error) {
             enqueueSnackbar("There something's wrong")
@@ -86,6 +88,7 @@ export const LoadProduct = ({ category, title, widthDivide,limit }) => {
             {products ? <Box sx={{ mt: 8, display: 'flex', flexWrap: 'wrap', spacing: 6 }}>
                 {products && products.map((product, index) => (
                     <ImageIconButton
+                        onClick={() => (navigate(`/products/${product._id}`))}
                         key={product.name}
                         style={{
                             width: widthDivide[index],

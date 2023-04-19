@@ -3,13 +3,14 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import ButtonBase from '@mui/material/ButtonBase';
 import Typography from '@mui/material/Typography';
+import { useNavigate } from 'react-router-dom';
 
 const ImageButton = styled(ButtonBase)(({ theme }) => ({
   position: 'relative',
   height: 400,
   [theme.breakpoints.down('sm')]: {
     width: '100% !important', // Overrides inline-style
-    height: 200,
+    height: 400,
   },
   '&:hover, &.Mui-focusVisible': {
     zIndex: 1,
@@ -69,6 +70,7 @@ const ImageMarked = styled('span')(({ theme }) => ({
 }));
 
 export const ButtonBases =({images})=> {
+  const navigate=useNavigate()
   return (
     <Box sx={{ display: 'flex', flexWrap: 'wrap', minWidth: 300, width: '100%' }}>
       {images.map((image) => (

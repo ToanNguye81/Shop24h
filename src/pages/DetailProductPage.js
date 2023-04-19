@@ -24,13 +24,13 @@ export const DetailProductPage = () => {
             {productById == null || productById === undefined ?
                 <CircularProgress />
                 :
-                <Box>
+                <Box mt={{xs:2,md:0}} mr={{xs:2,md:0}} ml={{xs:2,md:0}}>
                     <TitleBrand brand={productById.brand}/>
                     <Grid container direction="row" justifyContent="center" alignItems="stretch" spacing={3} mt={{xs:0,sm:5,md:5}} >
                         <Grid item xs={12} md={5} >
                             <ImageProduct product={productById} />
                         </Grid>
-                        <Grid item xs={12} md={5} pb={3}>
+                        <Grid item xs={12} md={5} pb={3} >
                             <ProductInfo product={productById} />
                         </Grid>
                     </Grid>
