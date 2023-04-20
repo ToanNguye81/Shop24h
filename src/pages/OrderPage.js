@@ -15,6 +15,7 @@ export const OrderPage = () => {
     const { loggedUser } = useSelector((reduxData) => reduxData.signInReducers);
 
     useEffect(() => {
+        window.scrollTo(0, 0);
         dispatch(changeCartCost(cart));
     }, [cart])
 
