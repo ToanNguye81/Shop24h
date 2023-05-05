@@ -141,7 +141,7 @@ export const Invoice = ({ surcharge, total }) => {
 								error={errors.city && touched.city}
 								helpertext={touched.city && errors.city}
 								variant="standard"
-								startAdornment={<InputAdornment position="start">Country * : </InputAdornment>}
+								startAdornment={<InputAdornment position="start">City * : </InputAdornment>}
 							>
 								{cityOptions&&cityOptions.map((option,index) => (
 									<MenuItem key={index} value={option.name}>
